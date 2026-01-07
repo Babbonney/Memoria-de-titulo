@@ -1,0 +1,1 @@
+var modelInfo = {model:"interruptor"};var modelHierarchy=[{model:"interruptor",relativePath:"_internal.html",parent:"null"},];var AddCode = true;var ProtectedModel = false;
