@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<fmiModelDescription fmiVersion="2.0" generationDateAndTime="2026-01-08T14:58:24Z" generationTool="Simulink (R2025a)" guid="{d8171cd2-137a-3ec8-ba53-d804d5f9fdb9}" modelName="pruebafmu2" numberOfEventIndicators="0" variableNamingConvention="structured" version="1.1">
+  <CoSimulation canBeInstantiatedOnlyOncePerProcess="true" canGetAndSetFMUstate="true" canHandleVariableCommunicationStepSize="false" canNotUseMemoryManagementFunctions="true" canSerializeFMUstate="true" modelIdentifier="pruebafmu2"/>
+  <DefaultExperiment startTime="0" stepSize="0.001"/>
+  <VendorAnnotations>
+    <Tool name="Simulink">
+      <Simulink>
+        <ImportCompatibility FMUProduct="standalone FMU" canSourceFileCodeGeneration="false" requireMATLABOnPath="no" requireRelease="all"/>
+        <SimulinkModelInterface>
+          <Inport blockPath="pruebafmu2/thrust" dataType="double" dimension="[1]" portName="thrust" portNumber="1" sampleTime="[0.001     0]" uniquePortName="thrust" unit=""/>
+          <Inport blockPath="pruebafmu2/roll" dataType="double" dimension="[1]" portName="roll" portNumber="2" sampleTime="[0.005     0]" uniquePortName="roll" unit=""/>
+          <Inport blockPath="pruebafmu2/phi" dataType="double" dimension="[1]" portName="phi" portNumber="3" sampleTime="[0.005     0]" uniquePortName="phi" unit=""/>
+          <Inport blockPath="pruebafmu2/arm2" dataType="double" dimension="[1]" portName="arm2" portNumber="4" sampleTime="[0.001     0]" uniquePortName="arm2" unit=""/>
+          <Inport blockPath="pruebafmu2/Roll rate" dataType="double" dimension="[1]" portName="Roll rate" portNumber="5" sampleTime="[0.001     0]" uniquePortName="RollRate" unit=""/>
+          <Inport blockPath="pruebafmu2/In6" dataType="double" dimension="[1]" portName="In6" portNumber="6" sampleTime="[0.005     0]" uniquePortName="In6" unit=""/>
+          <Inport blockPath="pruebafmu2/In7" dataType="double" dimension="[1]" portName="In7" portNumber="7" sampleTime="[0.005     0]" uniquePortName="In7" unit=""/>
+          <Inport blockPath="pruebafmu2/pitch rate" dataType="double" dimension="[1]" portName="pitch rate" portNumber="8" sampleTime="[0.001     0]" uniquePortName="pitchRate" unit=""/>
+          <Outport blockPath="pruebafmu2/Out1" dataType="double" dimension="[4]" portName="Out1" portNumber="1" sampleTime="[0.001     0]" uniquePortName="Out1" unit=""/>
+        </SimulinkModelInterface>
+      </Simulink>
+    </Tool>
+  </VendorAnnotations>
+  <ModelVariables>
+    <ScalarVariable causality="input" description="thrust" name="thrust" valueReference="0" variability="continuous">
+      <Real start="0"/>
+      <!--Index = 1-->
+    </ScalarVariable>
+    <ScalarVariable causality="input" description="roll" name="roll" valueReference="1" variability="continuous">
+      <Real start="0"/>
+      <!--Index = 2-->
+    </ScalarVariable>
+    <ScalarVariable causality="input" description="phi" name="phi" valueReference="2" variability="continuous">
+      <Real start="0"/>
+      <!--Index = 3-->
+    </ScalarVariable>
+    <ScalarVariable causality="input" description="arm2" name="arm2" valueReference="3" variability="continuous">
+      <Real start="0"/>
+      <!--Index = 4-->
+    </ScalarVariable>
+    <ScalarVariable causality="input" description="Roll rate" name="RollRate" valueReference="4" variability="continuous">
+      <Real start="0"/>
+      <!--Index = 5-->
+    </ScalarVariable>
+    <ScalarVariable causality="input" description="In6" name="In6" valueReference="5" variability="continuous">
+      <Real start="0"/>
+      <!--Index = 6-->
+    </ScalarVariable>
+    <ScalarVariable causality="input" description="In7" name="In7" valueReference="6" variability="continuous">
+      <Real start="0"/>
+      <!--Index = 7-->
+    </ScalarVariable>
+    <ScalarVariable causality="input" description="pitch rate" name="pitchRate" valueReference="7" variability="continuous">
+      <Real start="0"/>
+      <!--Index = 8-->
+    </ScalarVariable>
+    <ScalarVariable causality="output" description="Out1(1)" initial="calculated" name="Out1[1]" valueReference="8" variability="continuous">
+      <Real/>
+      <!--Index = 9-->
+    </ScalarVariable>
+    <ScalarVariable causality="output" description="Out1(2)" initial="calculated" name="Out1[2]" valueReference="9" variability="continuous">
+      <Real/>
+      <!--Index = 10-->
+    </ScalarVariable>
+    <ScalarVariable causality="output" description="Out1(3)" initial="calculated" name="Out1[3]" valueReference="10" variability="continuous">
+      <Real/>
+      <!--Index = 11-->
+    </ScalarVariable>
+    <ScalarVariable causality="output" description="Out1(4)" initial="calculated" name="Out1[4]" valueReference="11" variability="continuous">
+      <Real/>
+      <!--Index = 12-->
+    </ScalarVariable>
+    <ScalarVariable causality="independent" description="time" name="time" valueReference="12" variability="continuous">
+      <Real/>
+      <!--Index = 13-->
+    </ScalarVariable>
+  </ModelVariables>
+  <ModelStructure>
+    <Outputs>
+      <Unknown index="9"/>
+      <Unknown index="10"/>
+      <Unknown index="11"/>
+      <Unknown index="12"/>
+    </Outputs>
+    <InitialUnknowns>
+      <Unknown index="9"/>
+      <Unknown index="10"/>
+      <Unknown index="11"/>
+      <Unknown index="12"/>
+    </InitialUnknowns>
+  </ModelStructure>
+</fmiModelDescription>
