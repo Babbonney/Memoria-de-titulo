@@ -7,9 +7,9 @@
 //
 // Code generated for Simulink model 'pruebafmu'.
 //
-// Model version                  : 12.34
+// Model version                  : 12.35
 // Simulink Coder version         : 25.1 (R2025a) 21-Nov-2024
-// C/C++ source code generated on : Thu Jan  8 12:17:43 2026
+// C/C++ source code generated on : Fri Jan  9 12:18:50 2026
 //
 // Target selection: ert.tlc
 // Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -25,9 +25,11 @@
 #include "sysran_types.h"
 #include "MW_uORB_Read.h"
 #include "MW_PX4_Actuators.h"
+#include "DAHostLib_Network.h"
 #include "pruebafmu_types.h"
 #include <uORB/topics/vehicle_odometry.h>
 #include <uORB/topics/sensor_gyro.h>
+#include <string.h>
 
 extern "C"
 {
@@ -43,7 +45,6 @@ extern "C"
 
 }
 
-#include <string.h>
 #include <stddef.h>
 
 // Macros for accessing real-time model data structure
@@ -95,9 +96,24 @@ struct B_pruebafmu_T {
   real32_T motorValues_m[12];
   px4_Bus_sensor_gyro In1_e;           // '<S5>/In1'
   px4_Bus_sensor_gyro r1;
-  real32_T servoValues[8];
-  real_T FMU[4];                       // '<Root>/FMU'
+  real_T DataTypeConversion4;          // '<Root>/Data Type Conversion4'
+  real_T DataTypeConversion9;          // '<Root>/Data Type Conversion9'
+  real_T DataTypeConversion8;          // '<Root>/Data Type Conversion8'
+  real_T ByteUnpack[4];                // '<Root>/Byte Unpack'
+  real_T DataTypeConversion1;          // '<Root>/Data Type Conversion1'
+  real_T DataTypeConversion6;          // '<Root>/Data Type Conversion6'
+  real_T DataTypeConversion7;          // '<Root>/Data Type Conversion7'
+  real_T DataTypeConversion5;          // '<Root>/Data Type Conversion5'
   real32_T DataTypeConversion[4];      // '<Root>/Data Type Conversion'
+  uint8_T BytePack[8];                 // '<Root>/Byte Pack'
+  uint8_T BytePack1[8];                // '<Root>/Byte Pack1'
+  uint8_T BytePack2[8];                // '<Root>/Byte Pack2'
+  uint8_T BytePack6[8];                // '<Root>/Byte Pack6'
+  uint8_T UDPReceive_o1[32];           // '<Root>/UDP Receive'
+  uint8_T BytePack3[8];                // '<Root>/Byte Pack3'
+  uint8_T BytePack4[8];                // '<Root>/Byte Pack4'
+  uint8_T BytePack7[8];                // '<Root>/Byte Pack7'
+  uint8_T BytePack5[8];                // '<Root>/Byte Pack5'
 };
 
 // Block states (default storage) for system '<Root>'
@@ -105,19 +121,19 @@ struct DW_pruebafmu_T {
   px4_internal_block_PX4Actuato_T obj; // '<Root>/PX4 Actuator Write'
   px4_internal_block_Subscriber_T obj_c;// '<S6>/SourceBlock'
   px4_internal_block_Subscriber_T obj_d;// '<S4>/SourceBlock'
-  real_T FMU_FmuPrevTime;              // '<Root>/FMU'
-  real_T FMU_slPrevTime;               // '<Root>/FMU'
-  real_T FMU_ValContInReal[8];         // '<Root>/FMU'
-  real_T FMU_ValOutReal[4];            // '<Root>/FMU'
-  void* FMU_FmuStruct2;                // '<Root>/FMU'
-  void *FMU_PWORK[3];                  // '<Root>/FMU'
+  real_T UDPSend_NetworkLib[137];      // '<Root>/UDP Send'
+  real_T UDPSend1_NetworkLib[137];     // '<Root>/UDP Send1'
+  real_T UDPSend3_NetworkLib[137];     // '<Root>/UDP Send3'
+  real_T UDPSend4_NetworkLib[137];     // '<Root>/UDP Send4'
+  real_T UDPReceive_NetworkLib[137];   // '<Root>/UDP Receive'
+  real_T UDPSend7_NetworkLib[137];     // '<Root>/UDP Send7'
+  real_T UDPSend5_NetworkLib[137];     // '<Root>/UDP Send5'
+  real_T UDPSend6_NetworkLib[137];     // '<Root>/UDP Send6'
+  real_T UDPSend2_NetworkLib[137];     // '<Root>/UDP Send2'
   struct {
     void *LoggedData;
   } Scope1_PWORK;                      // '<Root>/Scope1'
 
-  int32_T FMU_FmuIsInitialized;        // '<Root>/FMU'
-  int32_T FMU_FmuParamIdxToOffset;     // '<Root>/FMU'
-  int32_T FMU_FmuEnumValueList;        // '<Root>/FMU'
   int8_T EnabledSubsystem_SubsysRanBC; // '<S6>/Enabled Subsystem'
   int8_T EnabledSubsystem_SubsysRanBC_f;// '<S4>/Enabled Subsystem'
   boolean_T doneDoubleBufferReInit;    // '<Root>/quat2eul'
@@ -125,6 +141,33 @@ struct DW_pruebafmu_T {
 
 // Parameters (default storage)
 struct P_pruebafmu_T_ {
+  int32_T UDPReceive_localPort;        // Mask Parameter: UDPReceive_localPort
+                                          //  Referenced by: '<Root>/UDP Receive'
+
+  int32_T UDPSend_remotePort;          // Mask Parameter: UDPSend_remotePort
+                                          //  Referenced by: '<Root>/UDP Send'
+
+  int32_T UDPSend1_remotePort;         // Mask Parameter: UDPSend1_remotePort
+                                          //  Referenced by: '<Root>/UDP Send1'
+
+  int32_T UDPSend3_remotePort;         // Mask Parameter: UDPSend3_remotePort
+                                          //  Referenced by: '<Root>/UDP Send3'
+
+  int32_T UDPSend4_remotePort;         // Mask Parameter: UDPSend4_remotePort
+                                          //  Referenced by: '<Root>/UDP Send4'
+
+  int32_T UDPSend7_remotePort;         // Mask Parameter: UDPSend7_remotePort
+                                          //  Referenced by: '<Root>/UDP Send7'
+
+  int32_T UDPSend5_remotePort;         // Mask Parameter: UDPSend5_remotePort
+                                          //  Referenced by: '<Root>/UDP Send5'
+
+  int32_T UDPSend6_remotePort;         // Mask Parameter: UDPSend6_remotePort
+                                          //  Referenced by: '<Root>/UDP Send6'
+
+  int32_T UDPSend2_remotePort;         // Mask Parameter: UDPSend2_remotePort
+                                          //  Referenced by: '<Root>/UDP Send2'
+
   px4_Bus_vehicle_odometry Out1_Y0;    // Computed Parameter: Out1_Y0
                                           //  Referenced by: '<S7>/Out1'
 
@@ -151,12 +194,6 @@ struct P_pruebafmu_T_ {
 
   real32_T Gain1_Gain;                 // Computed Parameter: Gain1_Gain
                                           //  Referenced by: '<Root>/Gain1'
-
-  uint32_T FMU_VRContInReal[8];        // Computed Parameter: FMU_VRContInReal
-                                          //  Referenced by: '<Root>/FMU'
-
-  uint32_T FMU_VROutReal[4];           // Computed Parameter: FMU_VROutReal
-                                          //  Referenced by: '<Root>/FMU'
 
   boolean_T Constant1_Value;           // Computed Parameter: Constant1_Value
                                           //  Referenced by: '<Root>/Constant1'
@@ -288,6 +325,7 @@ extern volatile boolean_T runModel;
 //  Block '<S2>/Signal Copy' : Unused code path elimination
 //  Block '<S2>/Signal Copy1' : Unused code path elimination
 //  Block '<S2>/Signal Copy2' : Unused code path elimination
+//  Block '<Root>/Data Type Conversion10' : Eliminate redundant data type conversion
 
 
 //-

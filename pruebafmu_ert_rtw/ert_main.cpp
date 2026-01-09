@@ -7,9 +7,9 @@
 //
 // Code generated for Simulink model 'pruebafmu'.
 //
-// Model version                  : 12.34
+// Model version                  : 12.35
 // Simulink Coder version         : 25.1 (R2025a) 21-Nov-2024
-// C/C++ source code generated on : Thu Jan  8 12:17:43 2026
+// C/C++ source code generated on : Fri Jan  9 12:18:50 2026
 //
 // Target selection: ert.tlc
 // Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -46,7 +46,8 @@ void *threadJoinStatus;
 int terminatingmodel = 0;
 void *baseRateTask(void *arg)
 {
-  runModel = (rtmGetErrorStatus(pruebafmu_M) == (NULL));
+  runModel = (rtmGetErrorStatus(pruebafmu_M) == (NULL)) && !rtmGetStopRequested
+    (pruebafmu_M);
   while (runModel) {
     px4_sem_wait(&baserateTaskSem);
     extmodeSimulationTime_T currentTime = (extmodeSimulationTime_T)
@@ -57,7 +58,8 @@ void *baseRateTask(void *arg)
 
     // Trigger External Mode event
     extmodeEvent(0, currentTime);
-    stopRequested = !((rtmGetErrorStatus(pruebafmu_M) == (NULL)));
+    stopRequested = !((rtmGetErrorStatus(pruebafmu_M) == (NULL)) &&
+                      !rtmGetStopRequested(pruebafmu_M));
     runModel = !stopRequested && !extmodeSimulationComplete() &&
       !extmodeStopRequested();
   }
