@@ -1,0 +1,1 @@
+var modelInfo = {model:"mpcprueba23"};var modelHierarchy=[{model:"mpcprueba23",relativePath:"_internal.html",parent:"null"},];var AddCode = true;var ProtectedModel = false;

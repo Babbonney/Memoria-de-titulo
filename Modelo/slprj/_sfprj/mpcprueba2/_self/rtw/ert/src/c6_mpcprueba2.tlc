@@ -1,0 +1,181 @@
+%implements "chartSource" "C"
+%function ChartConfig(block, system) void
+  %createrecord chartConfiguration { ...
+          executeAtInitialization  0 ...
+  }
+  %return chartConfiguration
+%endfunction
+%function ChartDataMap(block, system) void
+  %createrecord ChartDataElements {\
+    NumChartData   22 \
+    ChartDataDefaults {\
+      RecordType   "ChartData"\
+      Dimensions   []\
+      IsTestPoint  0\
+    }\
+    ChartData {\
+      Name         "sfEvent"\
+      Description  "ActiveChartEvent"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "doneDoubleBufferReInit"\
+      Description  "DoubleBufferInitCheck"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "A"\
+      Description  "EmlPersistent"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "mpcprueba2:354:103-104"\
+      Dimensions   [3,3]\
+    }\
+    ChartData {\
+      Name         "A_not_empty"\
+      Description  "EmlPersistentSentinel"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "mpcprueba2:354:103-104"\
+    }\
+    ChartData {\
+      Name         "B"\
+      Description  "EmlPersistent"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "mpcprueba2:354:105-106"\
+      Dimensions   [3,3]\
+    }\
+    ChartData {\
+      Name         "B_not_empty"\
+      Description  "EmlPersistentSentinel"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "mpcprueba2:354:105-106"\
+    }\
+    ChartData {\
+      Name         "Phi"\
+      Description  "EmlPersistent"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "mpcprueba2:354:107-110"\
+      Dimensions   [18,18]\
+    }\
+    ChartData {\
+      Name         "Phi_not_empty"\
+      Description  "EmlPersistentSentinel"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "mpcprueba2:354:107-110"\
+    }\
+    ChartData {\
+      Name         "F_f"\
+      Description  "EmlPersistent"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "mpcprueba2:354:111-114"\
+      Dimensions   [18,3]\
+    }\
+    ChartData {\
+      Name         "F_f_not_empty"\
+      Description  "EmlPersistentSentinel"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "mpcprueba2:354:111-114"\
+    }\
+    ChartData {\
+      Name         "H"\
+      Description  "EmlPersistent"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "mpcprueba2:354:115-116"\
+      Dimensions   [18,18]\
+    }\
+    ChartData {\
+      Name         "H_not_empty"\
+      Description  "EmlPersistentSentinel"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "mpcprueba2:354:115-116"\
+    }\
+    ChartData {\
+      Name         "M"\
+      Description  "EmlPersistent"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "mpcprueba2:354:117-118"\
+      Dimensions   [4,4]\
+    }\
+    ChartData {\
+      Name         "M_not_empty"\
+      Description  "EmlPersistentSentinel"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "mpcprueba2:354:117-118"\
+    }\
+    ChartData {\
+      Name         "options"\
+      Description  "EmlPersistent"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "mpcprueba2:354:119-126"\
+    }\
+    ChartData {\
+      Name         "options_not_empty"\
+      Description  "EmlPersistentSentinel"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "mpcprueba2:354:119-126"\
+    }\
+    ChartData {\
+      Name         "lb"\
+      Description  "EmlPersistent"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "mpcprueba2:354:127-129"\
+      Dimensions   [18]\
+    }\
+    ChartData {\
+      Name         "lb_not_empty"\
+      Description  "EmlPersistentSentinel"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "mpcprueba2:354:127-129"\
+    }\
+    ChartData {\
+      Name         "ub"\
+      Description  "EmlPersistent"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "mpcprueba2:354:130-132"\
+      Dimensions   [18]\
+    }\
+    ChartData {\
+      Name         "ub_not_empty"\
+      Description  "EmlPersistentSentinel"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "mpcprueba2:354:130-132"\
+    }\
+    ChartData {\
+      Name         "Q_big"\
+      Description  "EmlPersistent"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "mpcprueba2:354:133-138"\
+      Dimensions   [18,18]\
+    }\
+    ChartData {\
+      Name         "Q_big_not_empty"\
+      Description  "EmlPersistentSentinel"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "mpcprueba2:354:133-138"\
+    }\
+  }
+  %return ChartDataElements
+%endfunction
