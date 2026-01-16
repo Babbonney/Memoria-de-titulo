@@ -1,18 +1,22 @@
 clear all; clc; close all;
 
 % 1. Matrices del sistema
-A = [0.9347, 0.0728, 0.6931; 0.0043, 0.9492, 0.1273; -0.0283, -0.0333, 0.7369];
-B = [0.0094, -0.0779, -0.2379; -0.0359, 0.1212, -0.0441; 0.1047, 0.0299, 0.0955];
+A = [1.333650695949998	-1.668714910244021	5.632342547392557;
+1.220605709316355	-1.768083035175748	2.980769476932811;
+0.324324414735769	-0.426047177599778	-0.281734621621188];
+B = [-2.122185994762327	-1.353681217245696	-1.462094492977615;
+    -1.013280130692134	-1.854604300287162 -0.351287697129404;
+    0.578625448174987	-0.128607817414752	0.510736009980700];
 
 n_estados = 3; n_entradas = 3;
-Ts = 0.01; Pasos = 150; 
-N = 6; % <--- NUEVO: Horizonte de predicción
+Ts = 0.01; Pasos = 1000; 
+N = 5; % <--- NUEVO: Horizonte de predicción
 
 x = [0; 0; 0]; referencia = [0; 0; 0]; 
 
 % 2. Pesos del controlador (Mantenemos tus valores equilibrados)
 Q_inst = eye(n_estados) * 1; 
-R_inst = eye(n_entradas) * 10; 
+R_inst = diag([20 20 40]); 
 
 % --- CONSTRUCCIÓN DE MATRICES MPC (HORIZONTE N=6) ---
 % Esto expande el problema para mirar 6 pasos adelante
@@ -46,7 +50,7 @@ M = [-1, 1, 1, -1; 1, -1, 1, -1; 1, 1, -1, -1; 1, 1, 1, 1];
 
 % 4. Bucle de simulación
 for k = 1:Pasos
-    if k == 40, x = x + [15; 0; 0]; end 
+    if k == 40, x = x + [1; 1; 0]; end 
     
     hist_x(:, k) = x;
     

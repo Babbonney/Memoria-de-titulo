@@ -1,84 +1,84 @@
-%% Simulación: Control con Desglose de Motores (Corregido)
-clear all; clc;
+clearvars; close all; clc;
 
-% 1. Matrices del sistema
-A = [      0.9347    0.0728    0.6931;
-    0.0043    0.9492    0.1273;
-   -0.0283   -0.0333    0.7369];
-B = [    0.0094   -0.0779   -0.2379;
-   -0.0359    0.1212   -0.0441;
-    0.1047    0.0299    0.0955];
+%% 1. DEFINICIÓN DEL MODELO (Tus matrices identificadas)
+A = [-0.935710267868369,  0.114535661043099,  4.926101069998020;
+     -0.003429981478181, -1.040331777969572,  2.779697729794189;
+     -0.093493041620156, -0.275240626618720,  1.498523193279717];
 
-n_estados = 3; n_entradas = 3;
-Ts = 0.01; Pasos = 150; 
-x = [0; 0; 0]; referencia = [0; 0; 0]; 
+B = [-1.904610791203760, -0.587512074882609, -2.268399108168063;
+     -0.394955416789158, -1.757390846313468, -1.171599117715514;
+     -0.076794484292644, -0.219181465035995, -0.214112941381796];
 
-% 2. Pesos del controlador
-Q = eye(n_estados) * 1; 
-R = diag([1, 1, 1]); 
+C = eye(3); 
+D = zeros(3);
+sys = ss(A, B, C, D);
 
-options = optimoptions('quadprog', 'Algorithm', 'interior-point-convex', 'Display', 'off');
-v_max = 60; lb = -2*ones(3,1); ub = 2*ones(3,1);
+%% 2. CONFIGURACIÓN DE LA PRUEBA (Modifica estos valores para probar)
+t = 0:0.01:5;           % Simulación de 2 segundos
+u_roll  = 0.2;          % Comando de Roll deseado (u1)
+u_pitch = 0.0;          % Comando de Pitch deseado (u2)
+u_yaw   = 0.0;          % Comando de Yaw deseado (u3)
+u_hover = 0.35;         % Base de aceleración (Throttle)
 
-% --- MATRIZ DE MEZCLA DEFINITIVA ---
-M = [ -1,  1,  1, -1;   % u1
-       1, -1,  1, -1;   % u2
-       1,  1, -1, -1;   % u3
-       1,  1,  1,  1 ]; % u4 (Throttle)
+% Crear el vector de entrada con un escalón a los 0.2 segundos
+U_control = zeros(length(t), 3);
+U_control(t > 0.2, 1) = u_roll;
+U_control(t > 0.2, 2) = u_pitch;
+U_control(t > 0.2, 3) = u_yaw;
 
-% 3. Inicialización
-hist_x = zeros(n_estados, Pasos);
-hist_u = zeros(n_entradas, Pasos);
-hist_pwm = zeros(4, Pasos); % Cambiamos hist_m por hist_pwm para ver realidad
+%% 3. SIMULACIÓN DE LA DINÁMICA (Salida de Velocidades)
+[y_vel, t_out] = lsim(sys, U_control, t);
 
-% 4. Bucle de control
-for k = 1:Pasos
-    if k == 40, x = x + [0; 15; 0]; end 
+%% 4. CÁLCULO DE LA REACCIÓN DE LOS MOTORES (Mixer Inverso)
+% Basado en la configuración en X de tu código original:
+% m1 = th + p + y - r
+% m2 = th - p + y + r
+% m3 = th + p - y + r
+% m4 = th - p - y - r
+
+M = zeros(length(t), 4);
+for i = 1:length(t)
+    r = U_control(i,1); % Comando Roll
+    p = U_control(i,2); % Comando Pitch
+    y = U_control(i,3); % Comando Yaw
+    th = u_hover;       % Aceleración constante
     
-    hist_x(:, k) = x;
-    
-    % Optimización
-    H = B' * Q * B + R;
-    f = B' * Q * (A * x - referencia);
-    A_ineq = [B; -B];
-    b_ineq = [ones(3,1)*v_max - A*x; ones(3,1)*v_max + A*x];
-    
-    [u_opt, ~, exitflag] = quadprog(H, f, A_ineq, b_ineq, [], [], lb, ub, [], options);
-    u = u_opt;
-    if exitflag < 1, u = zeros(3,1); end
-    hist_u(:, k) = u;
-    
-    % --- DESMEZCLA Y CONVERSIÓN A PWM CORRECTA ---
-    % u_total incluye u1, u2, u3 y el throttle base (1.4 = 0.35 * 4)
-    u_total = [u(1); u(2); u(3); 1.4]; 
-    
-    % Calculamos m_normalizado mediante la inversa de M
-    m_calc = M \ u_total; 
-    
-    % Convertimos a PWM (1100 a 1900)
-    pwm_val = m_calc * 800 + 1100;
-    
-    % Saturación de seguridad
-    pwm_val = max(min(pwm_val, 1900), 1100);
-    hist_pwm(:, k) = pwm_val;
-    
-    % Simulación del sistema
-    x = A * x + B * u;
+    M(i,1) = th + p + y - r; 
+    M(i,2) = th - p + y + r; 
+    M(i,3) = th + p - y + r; 
+    M(i,4) = th - p - y - r; 
 end
 
-% 5. Gráficos
-t = (0:Pasos-1)*Ts;
-figure('Color', 'w', 'Position', [100, 50, 800, 850]);
+%% 5. GRÁFICAS DE REACCIÓN TOTAL
+figure('Color', 'w', 'Name', 'Análisis Dinámico: Modelo vs Motores', 'Position', [100 100 800 600]);
 
-subplot(3,1,1); plot(t, hist_x', 'LineWidth', 2);
-ylabel('rad/s'); title('Salida: Velocidades Angulares');
-legend('Roll', 'Pitch', 'Yaw'); grid on;
+% --- Gráfica de Velocidades Angulares (Salida de A y B) ---
+subplot(2,1,1);
+plot(t_out, y_vel(:,1), 'r', 'LineWidth', 2); hold on;
+plot(t_out, y_vel(:,2), 'g', 'LineWidth', 2);
+plot(t_out, y_vel(:,3), 'b', 'LineWidth', 2);
+grid on; ylabel('Vel. Angular (rad/s)');
+legend('p (Roll Rate)', 'q (Pitch Rate)', 'r (Yaw Rate)');
+title('Respuesta de las Velocidades (Salida del Modelo A/B)');
 
-subplot(3,1,2); plot(t, hist_u', 'LineWidth', 1.5);
-ylabel('Amplitud U'); title('Acciones de Control Combinadas');
-legend('u1', 'u2', 'u3'); grid on;
+% --- Gráfica de los Motores (Entrada del Sistema) ---
+subplot(2,1,2);
+plot(t_out, M(:,1), 'LineWidth', 1.5); hold on;
+plot(t_out, M(:,2), 'LineWidth', 1.5);
+plot(t_out, M(:,3), 'LineWidth', 1.5);
+plot(t_out, M(:,4), 'LineWidth', 1.5);
+yline(u_hover, 'k--', 'Hover (0.35)');
+grid on; ylabel('Potencia Motor (0-1)');
+xlabel('Tiempo (s)');
+legend('M1', 'M2', 'M3', 'M4');
+title('Reacción de los Motores para generar ese comando');
 
-subplot(3,1,3); plot(t, hist_pwm', 'LineWidth', 1.5);
-ylabel('PWM (\mu s)'); title('Señales PWM de Motores (Base 1380)');
-xlabel('Tiempo (s)'); legend('m1', 'm2', 'm3', 'm4'); grid on;
-ylim([1100 1900]);
+%% 6. ANÁLISIS DE ESTABILIDAD
+disp('--- Diagnóstico del Sistema ---');
+polos = eig(A);
+disp('Polos del sistema (Autovalores de A):');
+disp(polos);
+if any(real(polos) > 0)
+    fprintf('AVISO: El sistema es INESTABLE (un polo es positivo).\n');
+    fprintf('Las velocidades crecerán exponencialmente.\n');
+end

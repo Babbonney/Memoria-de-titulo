@@ -52,7 +52,7 @@ t_ref = t_ref(idx);
 
 % RECORTAR PRIMEROS Y ÚLTIMOS 100 DATOS
 
-recorte = 430; % número de datos a recortar
+recorte = 70; % número de datos a recortar
 roll_i  = roll_i(recorte+1:end-recorte);
 pitch_i = pitch_i(recorte+1:end-recorte);
 yaw_i   = yaw_i(recorte+1:end-recorte);
@@ -103,27 +103,27 @@ m.Structure = S;
 % configuracion del system identification
 opt = ssestOptions;
 opt.InitializeMethod = 'n4sid';
-opt.InitialState = 'zero';
+opt.InitialState = 'estimate';
 opt.Focus = 'simulation';  
 opt.EnforceStability = true;
-opt.SearchMethod = 'gna';
+opt.SearchMethod = 'lm';
 optc = compareOptions('InitialCondition','estimate');
 
 mm = ssest(data_entrlo,m,opt);
 s_lo = pem(data_entrlo,mm,opt);  % modelo longitudinal 
 
-% compare: compara el modelo con los datos de validacion 
+% % compare: compara el modelo con los datos de validacion 
 compare(data_vallo,s_lo,optc)
-% 1. Ver el mapa de polos y ceros (¿Es el modelo físicamente posible?)
-figure;
-pzmap(s_lo);
-title('Polos del modelo identificado (Deben estar dentro del círculo)');
-
-% 2. Ver la respuesta al escalón de los datos identificados
-figure;
-step(s_lo);
-title('Respuesta al escalón del modelo (¿Tienen sentido las magnitudes?)');
-
-% 3. Ver el residuo (Si hay mucha correlación, el modelo es pobre)
-figure;
-resid(data_vallo, s_lo);
+% % 1. Ver el mapa de polos y ceros (¿Es el modelo físicamente posible?)
+% figure;
+% pzmap(s_lo);
+% title('Polos del modelo identificado (Deben estar dentro del círculo)');
+% 
+% % 2. Ver la respuesta al escalón de los datos identificados
+% figure;
+% step(s_lo);
+% title('Respuesta al escalón del modelo (¿Tienen sentido las magnitudes?)');
+% 
+% % 3. Ver el residuo (Si hay mucha correlación, el modelo es pobre)
+% figure;
+% resid(data_vallo, s_lo);
