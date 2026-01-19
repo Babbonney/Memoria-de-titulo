@@ -34,7 +34,7 @@ y_raw = [d_vel.xyz_0_, d_vel.xyz_1_, d_vel.xyz_2_];
 
 %% 4. PRE-PROCESAMIENTO
 idx = ~isnan(y_raw(:,1)) & ~isnan(u1);
-span = 6 ; 
+span = 30 ; 
 y_filt = movmean(y_raw(idx,:), span);
 u_filt = [u1(idx), u2(idx), u3(idx)];
 u_filt = movmean(u_filt(idx,:), span);
@@ -43,8 +43,8 @@ t_ref = t_ref(idx);
 y_clean = detrend(y_filt);
 u_clean = detrend(u_filt);
 
-recorte = 1950; 
-recorte2 = 300;
+recorte = 700; 
+recorte2 = 100;
 y_final = y_clean(recorte+1:end-recorte2, :);
 u_final = u_clean(recorte+1:end-recorte2, :);
 t_ref   = t_ref(recorte+1:end-recorte2);
@@ -79,7 +79,7 @@ m.Structure = S;
 opt = ssestOptions;
 opt.InitializeMethod = 'n4sid';
 opt.InitialState = 'estimate';
-opt.Focus = 'simulation';  
+opt.Focus = 'prediction';  
 opt.EnforceStability = false;
 opt.SearchMethod = 'lm';
 optc = compareOptions('InitialCondition','estimate');
