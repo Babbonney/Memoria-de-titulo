@@ -43,7 +43,7 @@ if Ts <= 0 || isnan(Ts), Ts = 0.01; end % Protección contra Ts inválido
 fs = 1/Ts;
 
 % D. Filtro Butterworth de Fase Cero (Protegido)
-fc = 5; % Frecuencia de corte en Hz
+fc = 4; % Frecuencia de corte en Hz
 Wn = fc / (fs/2); 
 if Wn >= 1, Wn = 0.99; end % Evita el error en la función butter
 
@@ -74,8 +74,8 @@ recorte2 = 300;
 y_final = y_clean(recorte+1:end-recorte2, :);
 u_final = u_clean(recorte+1:end-recorte2, :);
 
-data_tr = iddata(y_final(1:floor(0.8*end), :), u_final(1:floor(0.8*end), :), Ts);
-data_va = iddata(y_final(floor(0.8*end)+1:end, :), u_final(floor(0.8*end)+1:end, :), Ts);
+data_tr = iddata(y_final(1:floor(0.7*end), :), u_final(1:floor(0.7*end), :), Ts);
+data_va = iddata(y_final(floor(0.7*end)+1:end, :), u_final(floor(0.7*end)+1:end, :), Ts);
 
 %% 5. ESTIMACIÓN DEL MODELO (ORDEN 3)
 % Definir estructura base de Espacio de Estados
@@ -93,7 +93,7 @@ opt.InitializeMethod = 'n4sid';
 opt.InitialState = 'estimate';
 opt.Focus = 'simulation';  
 opt.EnforceStability = false;
-opt.SearchMethod = 'lm'; % Levenberg-Marquardt para mayor robustez
+opt.SearchMethod = 'gn'; 
 
 % Estimación
 mm = ssest(data_tr, m_base, opt);
@@ -104,14 +104,14 @@ optc = compareOptions('InitialCondition', 'estimate');
 figure('Name', 'Validación del Modelo', 'Color', 'w');
 compare(data_va, s_lo, optc);
 
-% Análisis de Residuos
-figure('Name', 'Análisis de Residuos');
-resid(data_va, s_lo);
+% % Análisis de Residuos
+% figure('Name', 'Análisis de Residuos');
+% resid(data_va, s_lo);
 
-% Mapa de Polos y Ceros
-figure('Name', 'Mapa de Polos y Ceros');
-pzmap(s_lo);
-title('Polos y Ceros del modelo identificado');
+% % Mapa de Polos y Ceros
+% figure('Name', 'Mapa de Polos y Ceros');
+% pzmap(s_lo);
+% title('Polos y Ceros del modelo identificado');
 
 % Mostrar Matrices Finales para el MPC
 disp('--- MATRICES IDENTIFICADAS ---');

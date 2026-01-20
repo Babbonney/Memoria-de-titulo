@@ -1,4 +1,6 @@
-clearvars; close all; clc;
+clearvars; 
+% close all; 
+clc;
 
 %% 1. CARGA DE DATOS
 tiempomotores = readtable('datosmotores.xlsx');
@@ -12,8 +14,8 @@ m2 = (d_motores.output_1_ - 1100) ./ 800 - 0.35;
 m3 = (d_motores.output_2_ - 1100) ./ 800 - 0.35;
 m4 = (d_motores.output_3_ - 1100) ./ 800 - 0.35;
 
-u1_raw = -m1 + m2 + m3 - m4; % Roll
-u2_raw =  m1 - m2 + m3 - m4; % Pitch
+u1_raw = (-m1 + m2 + m3 - m4)*sqrt(2)/2; % Roll
+u2_raw =  (m1 - m2 + m3 - m4)*sqrt(2)/2; % Pitch
 u3_raw =  m1 + m2 - m3 - m4; % Yaw
 
 %% 3. SINCRONIZACIÓN INICIAL
@@ -88,12 +90,14 @@ S.K.Free = false;
 m_base.Structure = S;
 
 % Configuración del algoritmo de identificación
+inicial=[y_final(1,1);y_final(1,2);y_final(1,3)];
 opt = ssestOptions;
 opt.InitializeMethod = 'n4sid';
-opt.InitialState = 'estimate';
+% opt.InitialState = inicial;
+% opt.InitialState = 'estimate';
 opt.Focus = 'simulation';  
-opt.EnforceStability = true;
-opt.SearchMethod = 'gn'; % Levenberg-Marquardt para mayor robustez
+opt.EnforceStability = false;
+opt.SearchMethod = 'gna'; 
 
 % Estimación
 mm = ssest(data_tr, m_base, opt);
@@ -104,16 +108,18 @@ optc = compareOptions('InitialCondition', 'estimate');
 figure('Name', 'Validación del Modelo', 'Color', 'w');
 compare(data_va, s_lo, optc);
 
-% Análisis de Residuos
-figure('Name', 'Análisis de Residuos');
-resid(data_va, s_lo);
+% % Análisis de Residuos
+% figure('Name', 'Análisis de Residuos');
+% resid(data_va, s_lo);
 
-% Mapa de Polos y Ceros
-figure('Name', 'Mapa de Polos y Ceros');
-pzmap(s_lo);
-title('Polos y Ceros del modelo identificado');
+% % Mapa de Polos y Ceros
+% figure('Name', 'Mapa de Polos y Ceros');
+% pzmap(s_lo);
+% title('Polos y Ceros del modelo identificado');
 
 % Mostrar Matrices Finales para el MPC
 disp('--- MATRICES IDENTIFICADAS ---');
 fprintf('Matriz A:\n'); disp(s_lo.A);
 fprintf('Matriz B:\n'); disp(s_lo.B);
+
+s_lo.Report.Fit.FitPercent
