@@ -19,17 +19,17 @@
 % m=3;
 % 
 % %% Costos
-% Q = diag([1 1 1]);
-% R = diag([1 1 1]);
+% Q = diag([1 1 2]);
+% R = diag([3 3 3]);
 % K = -dlqr(A,B,Q,R);
 % 
 % %% Restricciones
 % U = Polyhedron('lb',-[0.7;0.7;0.7],'ub',[1.3;1.3;1.3]);
-% X = Polyhedron('lb',-[1,1,0.3],'ub',[1,1,0.3]);
+% X = Polyhedron('lb',-[2.1,2.1,1],'ub',[2.1,2.1,1]);
 % 
 % %% Ingredientes MPC
 % % Horizonte
-% N = 5;
+% N = 3;
 % 
 % % Costo final (P)
 % [P,~,~] = dare(A,B,Q,R);
@@ -43,7 +43,7 @@
 % 
 % % Region de atraccion
 % [XN,~,~]=sinfsetMPT(A,B,X,U,Xf,N);
-% 
+
 % --- Visualización de conjuntos ---
 figure(1);clf;
 hold on
@@ -65,9 +65,9 @@ Qvec=blkdiag(Qvec,P);
 Rvec=kron(eye(N),R);
 
 H = G'*Qvec*G+Rvec;
-u = zeros(m, T);
 T = 100;
-x0 = [0.4;0.2;0.1];
+u = zeros(m, T);
+x0 = [0.4;0.2;10];
 x(:,1) = x0;
 for i = 1:T
     f = (2*x(:,i)'*F'*Qvec*G)';

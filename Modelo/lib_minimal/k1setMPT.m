@@ -61,7 +61,7 @@ if nargin >= 9
   if ~isempty(W) 
     EW=W.affineMap(E);
     T = minus(T,EW);
-    T.minHRep;
+    T.minHRep();
   end
 end
 
@@ -77,22 +77,22 @@ if (rA==n) % If [A,B] certain then this method could be faster than
 %     save('mpt','T','U','Q','QA')
     
     Q = Q.affineMap(inv(A));
-    Q.minHRep;
+    Q.minHRep();
   else
 	Q = T+U.affineMap(-B);       % MOD 20/7/2001 - polymap(inv(A),...) was
                                  % applied here - not necessary - is
                                  % actually also done two lines later!
     Q = Q.affineMap(inv(A));
-    Q.minHRep;
+    Q.minHRep();
   end
   
   % Intersect with X
   if cap == 1
     Q = intersect(Q,X);
-    Q.minHRep;
+    Q.minHRep();
   end
-  Q.minHRep;
-  Q.minVRep;
+  Q.minHRep();
+  Q.minVRep();
   K1 = Q;
   
 else % if (A,B) uncertain
@@ -113,25 +113,25 @@ else % if (A,B) uncertain
 	v = [v; s];
   end
   Vp=Polyhedron(V,v);
-  Vp.minHRep;
+  Vp.minHRep();
 
   % Add constraints on the control
   Vp=intersect(Vp,Ulf);
-  Vp.minHRep;
+  Vp.minHRep();
 
   % Intersect with X
   if cap == 1
     Vp=intersect(Vp,Xlf);
-    Vp.minHRep;
+    Vp.minHRep();
   end
 
-  Vp.minHRep;
-  Vp.minVRep;
+  Vp.minHRep();
+  Vp.minVRep();
   K1 = Vp.projection(1:n); % Projects onto the x subspace by solving
                            % the linear inequalities using the
                            % Fourier-Motzkin elimination method
-  K1.minHRep;
-  K1.minVRep;
+  K1.minHRep();
+  K1.minVRep();
 
 end
 
