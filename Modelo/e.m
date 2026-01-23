@@ -1,5 +1,5 @@
 clearvars; 
-% close all; 
+close all; 
 clc;
 
 %% 1. CARGA DE DATOS
@@ -9,13 +9,13 @@ d_motores = readtable('prueba_actuator_outputs_0.csv');
 d_vel = readtable('prueba_vehicle_angular_velocity_0.csv');
 
 %% 2. PROCESAMIENTO DE MOTORES
-m1 = (d_motores.output_0_ - 1100) ./ 800 - 0.35;
-m2 = (d_motores.output_1_ - 1100) ./ 800 - 0.35;
-m3 = (d_motores.output_2_ - 1100) ./ 800 - 0.35;
-m4 = (d_motores.output_3_ - 1100) ./ 800 - 0.35;
+m1 = (d_motores.output_0_ - 1100) ./ 800 - 0.3727;
+m2 = (d_motores.output_1_ - 1100) ./ 800 - 0.4703;
+m3 = (d_motores.output_2_ - 1100) ./ 800 - 0.3530;
+m4 = (d_motores.output_3_ - 1100) ./ 800 - 0.4557;
 
-u1_raw = (-m1 + m2 + m3 - m4)*sqrt(2)/2; % Roll
-u2_raw =  (m1 - m2 + m3 - m4)*sqrt(2)/2; % Pitch
+u1_raw = -m1 + m2 + m3 - m4; % Roll
+u2_raw =  m1 - m2 + m3 - m4; % Pitch
 u3_raw =  m1 + m2 - m3 - m4; % Yaw
 
 %% 3. SINCRONIZACIÓN INICIAL
@@ -37,7 +37,7 @@ u_clean = [u1(idx), u2(idx), u3(idx)];
 t_ref = t_ref(idx);
 
 % B. Remoción de Outliers (Picos de vibración)
-y_clean = filloutliers(y_clean, 'linear', 'movmedian', 30);
+% y_clean = filloutliers(y_clean, 'linear', 'movmedian', 30);
 
 % C. Cálculo robusto de Ts y fs
 Ts = mean(diff(t_ref));
@@ -45,7 +45,7 @@ if Ts <= 0 || isnan(Ts), Ts = 0.01; end % Protección contra Ts inválido
 fs = 1/Ts;
 
 % D. Filtro Butterworth de Fase Cero (Protegido)
-fc = 4; % Frecuencia de corte en Hz
+fc = 3; % Frecuencia de corte en Hz
 Wn = fc / (fs/2); 
 if Wn >= 1, Wn = 0.99; end % Evita el error en la función butter
 
@@ -67,11 +67,11 @@ if delay_samples > 0
 end
 
 % F. Detrend (Eliminar componentes de DC/Offset)
-y_clean = detrend(y_clean);
-u_clean = detrend(u_clean);
+% y_clean = detrend(y_clean);
+% u_clean = detrend(u_clean);
 
 % G. Recorte Final y División de Datos
-recorte = 5000; 
+recorte = 3000; 
 recorte2 = 300;
 y_final = y_clean(recorte+1:end-recorte2, :);
 u_final = u_clean(recorte+1:end-recorte2, :);
@@ -97,7 +97,7 @@ opt.InitializeMethod = 'n4sid';
 % opt.InitialState = 'estimate';
 opt.Focus = 'simulation';  
 opt.EnforceStability = false;
-opt.SearchMethod = 'gna'; 
+opt.SearchMethod = 'fmincon'; 
 
 % Estimación
 mm = ssest(data_tr, m_base, opt);

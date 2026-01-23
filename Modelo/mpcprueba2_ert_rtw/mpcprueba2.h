@@ -7,9 +7,9 @@
 //
 // Code generated for Simulink model 'mpcprueba2'.
 //
-// Model version                  : 12.42
+// Model version                  : 12.49
 // Simulink Coder version         : 25.1 (R2025a) 21-Nov-2024
-// C/C++ source code generated on : Wed Jan 14 15:02:40 2026
+// C/C++ source code generated on : Fri Jan 23 15:03:24 2026
 //
 // Target selection: ert.tlc
 // Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -20,15 +20,10 @@
 #define mpcprueba2_h_
 #include <cstdio>
 #include <cstring>
-#include <poll.h>
-#include <uORB/uORB.h>
 #include "rtwtypes.h"
 #include "rtw_extmode.h"
 #include "sysran_types.h"
-#include "MW_uORB_Read.h"
-#include "MW_PX4_Actuators.h"
 #include "mpcprueba2_types.h"
-#include <uORB/topics/sensor_gyro.h>
 
 extern "C"
 {
@@ -97,60 +92,48 @@ extern "C"
 
 // Block signals (default storage)
 struct B_mpcprueba2_T {
-  sBSaEu6uV23R8SnQxWoeC5G_mpcpr_T CholRegManager;
-  sIxc6e90CRmt17sP6BCIycE_mpcpr_T QRManager;
-  shMFFa6ZZiYob3JbcpnnDNC_mpcpr_T WorkingSet;
-  shMFFa6ZZiYob3JbcpnnDNC_mpcpr_T b_workingset;
-  sDXqx68fEcBxWtF9wVQzAm_mpcpru_T memspace;
-  real_T B[703];
-  real_T H_tmp[324];
-  real_T H_tmp_m[324];
-  real_T H_tmp_c[324];
-  szTgroxymWCv1wbPz1KDaqC_mpcpr_T solution;
-  real_T b[54];
-  sSitMryErsR3bMncKlW48mF_mpcpr_T QPObjective;
-  int8_T R_big_mat[324];
-  real_T work[37];
-  real_T vn1[37];
-  real_T vn2[37];
-  real_T work_k[37];
-  real_T work_c[19];
-  real_T Ref_seq[18];
-  real_T dv[18];
-  real_T dv1[18];
-  real_T dv2[18];
-  real_T A[16];
-  real_T dv3[9];
-  real_T b_a[9];
-  real_T cBuffer[9];
-  real_T aBuffer[9];
-  real_T cBuffer_b[9];
-  real_T b_x[9];
+  sbYdmyzq7l8Oes4F6y6cc2C_mpcpr_T WorkingSet;
+  sbYdmyzq7l8Oes4F6y6cc2C_mpcpr_T b_workingset;
+  sOWFOmKuLvD2kpFwfdM45bG_mpcpr_T CholRegManager;
+  ssq2hyGkLOLhNlUBS6YfcCD_mpcpr_T QRManager;
+  sFevNsrsl34D5b5aqm3qNjD_mpcpr_T memspace;
+  real_T B[1072];
+  real_T b_H[225];
+  sqvdR3NQrfOjUOrC18Muj0B_mpcpr_T solution;
+  real_T work[67];
+  real_T vn1[67];
+  real_T vn2[67];
+  real_T work_m[67];
+  real_T b_x[66];
+  s3c01M66EFWFQJ5qmFcUbmD_mpcpr_T QPObjective;
+  real_T work_c[16];
+  real_T uvec[15];
+  real_T f[15];
+  real_T dv[15];
+  real_T b_A[12];
   sqZVQFgLZG74FDpCArykMHB_mpcpr_T expl_temp;
-  real32_T motorValues[12];
-  real32_T motorValues_p[12];
-  px4_Bus_sensor_gyro In1;             // '<S4>/In1'
-  px4_Bus_sensor_gyro r;
-  real32_T servoValues[8];
-  real_T m_final[4];
-  int32_T varargin_2_tmp_tmp[6];
-  int32_T b_x_tmp[6];
+  real_T M[4];
+  real_T work_k[4];
+  real_T vn1_c[4];
+  real_T vn2_b[4];
+  real_T dv1[3];
+  real_T b_B[3];
+  real_T tau[3];
+  sIOJhD9KwAkF5sEguPjYquC_mpcpr_T expl_temp_p;
   sIOJhD9KwAkF5sEguPjYquC_mpcpr_T expl_temp_c;
   sIOJhD9KwAkF5sEguPjYquC_mpcpr_T expl_temp_f;
   sIOJhD9KwAkF5sEguPjYquC_mpcpr_T expl_temp_g;
-  sIOJhD9KwAkF5sEguPjYquC_mpcpr_T expl_temp_g1;
-  real_T rtb_DataTypeConversion12_idx_0;
-  real_T rtb_DataTypeConversion12_idx_1;
-  real_T rtb_DataTypeConversion12_idx_2;
-  real_T d;
-  real_T d1;
-  real_T d2;
-  real_T options_ConstraintTolerance;
-  real_T H_infnrm;
-  real_T f_infnrm;
+  real_T Saturation;                   // '<Root>/Saturation'
+  real_T Saturation1;                  // '<Root>/Saturation1'
+  real_T Saturation3;                  // '<Root>/Saturation3'
+  real_T Saturation2;                  // '<Root>/Saturation2'
+  real_T u[3];                         // '<Root>/MATLAB Function5'
   real_T colSum;
+  real_T f_infnrm;
+  real_T b_colSum;
+  real_T f_g;
   real_T maxConstr_new;
-  real_T d3;
+  real_T d;
   real_T tolDelta;
   real_T normDelta;
   real_T minLambda;
@@ -162,32 +145,30 @@ struct B_mpcprueba2_T {
   real_T temp_m;
   real_T s;
   real_T b_atmp;
-  real_T tau;
+  real_T tau_n;
   real_T xnorm;
   real_T a;
   real_T scale;
   real_T absxk;
   real_T t;
-  real_T e;
-  real_T ed2;
-  real_T d4;
-  real_T c;
-  real_T c_n;
-  real_T absx11;
+  real_T temp2_p;
+  real_T smax;
+  real_T s_l;
+  real_T scale_j;
   real_T constrViolation;
   real_T tol;
   real_T qtb;
   real_T b_c;
-  real_T constrViolation_p;
-  real_T tol_l;
+  real_T constrViolation_d;
+  real_T tol_g;
   real_T maxDiag;
   real_T u1;
-  real_T c_j;
+  real_T c;
   real_T b_SCALED_REG_PRIMAL;
   real_T b_temp;
-  real_T u1_d;
+  real_T u1_l;
   real_T alpha1;
-  real_T temp_g;
+  real_T temp_d;
   real_T p_max;
   real_T denomTol;
   real_T alphaTemp;
@@ -197,52 +178,29 @@ struct B_mpcprueba2_T {
   real_T ratio;
   real_T c_c;
   real_T b_s;
-  real_T b_temp_l;
+  real_T b_temp_d;
   real_T roe;
   real_T absa;
   real_T absb;
-  real_T scale_d;
-  real_T denomTol_d;
-  real_T alphaTemp_l;
-  real_T phaseOneCorrectionX_o;
+  real_T scale_l;
+  real_T denomTol_o;
+  real_T alphaTemp_b;
+  real_T phaseOneCorrectionX_n;
   real_T phaseOneCorrectionP_b;
-  real_T pk_corrected_n;
-  real_T s_b;
-  real_T temp_l;
+  real_T pk_corrected_l;
   real_T a_h;
-  int8_T ipiv[4];
-  real32_T x;     // '<S1>/SigConversion_InsertedFor_Bus Selector_at_outport_0'
-  real32_T y;     // '<S1>/SigConversion_InsertedFor_Bus Selector_at_outport_1'
-  real32_T z;     // '<S1>/SigConversion_InsertedFor_Bus Selector_at_outport_2'
-  real32_T TmpSignalConversionAtTAQSigLogg[3];
-  // '<Root>/TmpSignal ConversionAtTAQSigLogging_InsertedFor_Mux3_at_outport_0Inport1' 
-  real32_T Gain3;                      // '<Root>/Gain3'
-  real32_T Gain4;                      // '<Root>/Gain4'
-  real32_T Gain5;                      // '<Root>/Gain5'
-  real32_T TmpSignalConversionAtTAQSigLo_m[3];
-  // '<Root>/TmpSignal ConversionAtTAQSigLogging_InsertedFor_Mux4_at_outport_0Inport1' 
-  real32_T DataTypeConversion7[4];     // '<Root>/Data Type Conversion7'
-  int32_T ibcol;
-  int32_T itilerow;
-  int32_T jA;
-  int32_T i;
-  int32_T Q_big_tmp;
-  int32_T b_tmp;
-  int32_T Phi_tmp;
-  int32_T mUB;
-  int32_T mFixed;
+  real_T b;
+  real_T s_b;
+  real_T temp_da;
   int32_T idxFillStart;
-  int32_T colOffsetATw;
-  int32_T c_b;
-  int32_T d_d;
-  int32_T c_k;
-  int32_T i_e;
+  int32_T colPos;
+  int32_T i;
   int32_T mConstr;
   int32_T idxStartIneq;
   int32_T idxEndIneq;
   int32_T b_idxStartIneq;
   int32_T b_idxEndIneq;
-  int32_T i_b;
+  int32_T i_e;
   int32_T activeSetChangeID;
   int32_T nVar;
   int32_T globalActiveConstrIdx;
@@ -251,16 +209,16 @@ struct B_mpcprueba2_T {
   int32_T ix0;
   int32_T iy0;
   int32_T minmn;
-  int32_T i_j;
-  int32_T nVar_f;
+  int32_T i_b;
+  int32_T nVar_j;
   int32_T mWConstr;
-  int32_T nVar_a;
+  int32_T nVar_f;
   int32_T offsetQR;
   int32_T rankQR;
   int32_T ldq;
   int32_T jBcol;
   int32_T iAcol;
-  int32_T d_j;
+  int32_T d_a;
   int32_T ix;
   int32_T b_ar;
   int32_T minmn_j;
@@ -268,32 +226,30 @@ struct B_mpcprueba2_T {
   int32_T mmi;
   int32_T pvt;
   int32_T itemp;
-  int32_T ix_o;
-  int32_T iy;
-  int32_T nVar_n;
+  int32_T ix_j;
+  int32_T nVar_o;
   int32_T mTotalWorkingEq;
   int32_T nDepInd;
   int32_T idx_row;
-  int32_T idxStartIneq_i;
-  int32_T ix0_o;
-  int32_T iy0_n;
+  int32_T idxStartIneq_n;
+  int32_T ix0_i;
+  int32_T iy0_o;
   int32_T totalRank;
-  int32_T b_idx;
-  int32_T nVar_m;
-  int32_T mTotalWorkingEq_c;
-  int32_T nDepInd_m;
+  int32_T nVar_n;
+  int32_T mTotalWorkingEq_m;
+  int32_T nDepInd_c;
   int32_T idxStartIneq_m;
-  int32_T ix0_j;
-  int32_T iy0_h;
-  int32_T i_c;
+  int32_T ix0_m;
+  int32_T iy0_j;
+  int32_T i_h;
   int32_T nActiveConstr;
   int32_T nFixedConstr;
   int32_T nVar_c;
-  int32_T b_idx_p;
-  int32_T ix0_p;
-  int32_T iy0_a;
+  int32_T b_idx;
+  int32_T ix0_c;
+  int32_T iy0_p;
   int32_T b_k;
-  int32_T nVar_e;
+  int32_T nVar_p;
   int32_T mNull;
   int32_T nullStartIdx;
   int32_T b_idx_a;
@@ -302,72 +258,62 @@ struct B_mpcprueba2_T {
   int32_T lastColC;
   int32_T br;
   int32_T ar;
-  int32_T g;
-  int32_T idx;
+  int32_T b_idx_e;
   int32_T ix_a;
-  int32_T idxmax;
+  int32_T idx;
+  int32_T iy;
 };
 
 // Block states (default storage) for system '<Root>'
 struct DW_mpcprueba2_T {
-  sCBS0Ia3qD76sOwKERvBoFE_mpcpr_T options;// '<Root>/MATLAB Function5'
-  px4_internal_block_PX4Actuato_T obj; // '<Root>/PX4 Actuator Write1'
-  px4_internal_block_Subscriber_T obj_i;// '<S3>/SourceBlock'
-  real_T Phi[324];                     // '<Root>/MATLAB Function5'
-  real_T F_f[54];                      // '<Root>/MATLAB Function5'
-  real_T H[324];                       // '<Root>/MATLAB Function5'
-  real_T M[16];                        // '<Root>/MATLAB Function5'
-  real_T lb[18];                       // '<Root>/MATLAB Function5'
-  real_T ub[18];                       // '<Root>/MATLAB Function5'
-  real_T Q_big[324];                   // '<Root>/MATLAB Function5'
-  struct {
-    void *LoggedData;
-  } Scope4_PWORK;                      // '<Root>/Scope4'
-
-  struct {
-    void *LoggedData;
-  } Scope5_PWORK;                      // '<Root>/Scope5'
-
-  struct {
-    void *LoggedData;
-  } Scope2_PWORK;                      // '<Root>/Scope2'
-
-  struct {
-    void *LoggedData;
-  } Scope3_PWORK;                      // '<Root>/Scope3'
-
-  struct {
-    void *LoggedData;
-  } Scope6_PWORK;                      // '<Root>/Scope6'
-
+  sCBS0Ia3qD76sOwKERvBoFE_mpcpr_T opts;// '<Root>/MATLAB Function5'
+  real_T x0[15];                       // '<Root>/MATLAB Function5'
+  real_T u_prev[3];                    // '<Root>/MATLAB Function5'
   struct {
     void *LoggedData;
   } Scope_PWORK;                       // '<Root>/Scope'
 
-  int8_T EnabledSubsystem_SubsysRanBC; // '<S3>/Enabled Subsystem'
   boolean_T doneDoubleBufferReInit;    // '<Root>/MATLAB Function5'
-  boolean_T A_not_empty;               // '<Root>/MATLAB Function5'
+  boolean_T doneDoubleBufferReInit_h;  // '<Root>/MATLAB Function'
 };
 
 // Parameters (default storage)
 struct P_mpcprueba2_T_ {
-  px4_Bus_sensor_gyro Out1_Y0;         // Computed Parameter: Out1_Y0
-                                          //  Referenced by: '<S4>/Out1'
+  real_T F[45];                        // Variable: F
+                                          //  Referenced by: '<Root>/MATLAB Function5'
 
-  px4_Bus_sensor_gyro Constant_Value;  // Computed Parameter: Constant_Value
-                                          //  Referenced by: '<S3>/Constant'
+  real_T G[225];                       // Variable: G
+                                          //  Referenced by: '<Root>/MATLAB Function5'
 
-  real_T Constant9_Value;              // Expression: 0
-                                          //  Referenced by: '<Root>/Constant9'
+  real_T H[225];                       // Variable: H
+                                          //  Referenced by: '<Root>/MATLAB Function5'
 
-  real_T Constant8_Value;              // Expression: 0
-                                          //  Referenced by: '<Root>/Constant8'
+  real_T Pc[990];                      // Variable: Pc
+                                          //  Referenced by: '<Root>/MATLAB Function5'
 
-  real_T Constant11_Value;             // Expression: 0
-                                          //  Referenced by: '<Root>/Constant11'
+  real_T Qvec[225];                    // Variable: Qvec
+                                          //  Referenced by: '<Root>/MATLAB Function5'
 
-  real_T Constant10_Value;             // Expression: 0.3606542355797865
-                                          //  Referenced by: '<Root>/Constant10'
+  real_T Sc[198];                      // Variable: Sc
+                                          //  Referenced by: '<Root>/MATLAB Function5'
+
+  real_T qc[66];                       // Variable: qc
+                                          //  Referenced by: '<Root>/MATLAB Function5'
+
+  real_T Constant2_Value;              // Expression: 0
+                                          //  Referenced by: '<Root>/Constant2'
+
+  real_T Constant4_Value;              // Expression: 0
+                                          //  Referenced by: '<Root>/Constant4'
+
+  real_T Constant5_Value;              // Expression: 0
+                                          //  Referenced by: '<Root>/Constant5'
+
+  real_T Saturation_UpperSat;          // Expression: 1
+                                          //  Referenced by: '<Root>/Saturation'
+
+  real_T Saturation_LowerSat;          // Expression: 0
+                                          //  Referenced by: '<Root>/Saturation'
 
   real_T Saturation1_UpperSat;         // Expression: 1
                                           //  Referenced by: '<Root>/Saturation1'
@@ -375,24 +321,17 @@ struct P_mpcprueba2_T_ {
   real_T Saturation1_LowerSat;         // Expression: 0
                                           //  Referenced by: '<Root>/Saturation1'
 
-  real32_T Gain3_Gain;                 // Computed Parameter: Gain3_Gain
-                                          //  Referenced by: '<Root>/Gain3'
+  real_T Saturation3_UpperSat;         // Expression: 1
+                                          //  Referenced by: '<Root>/Saturation3'
 
-  real32_T Gain4_Gain;                 // Computed Parameter: Gain4_Gain
-                                          //  Referenced by: '<Root>/Gain4'
+  real_T Saturation3_LowerSat;         // Expression: 0
+                                          //  Referenced by: '<Root>/Saturation3'
 
-  real32_T Gain5_Gain;                 // Computed Parameter: Gain5_Gain
-                                          //  Referenced by: '<Root>/Gain5'
+  real_T Saturation2_UpperSat;         // Expression: 1
+                                          //  Referenced by: '<Root>/Saturation2'
 
-  boolean_T Constant7_Value;           // Computed Parameter: Constant7_Value
-                                          //  Referenced by: '<Root>/Constant7'
-
-  boolean_T Constant6_Value;           // Computed Parameter: Constant6_Value
-                                          //  Referenced by: '<Root>/Constant6'
-
-  uint8_T ManualSwitch1_CurrentSetting;
-                             // Computed Parameter: ManualSwitch1_CurrentSetting
-                                //  Referenced by: '<Root>/Manual Switch1'
+  real_T Saturation2_LowerSat;         // Expression: 0
+                                          //  Referenced by: '<Root>/Saturation2'
 
 };
 
@@ -507,13 +446,6 @@ extern volatile boolean_T stopRequested;
 extern volatile boolean_T runModel;
 
 //-
-//  These blocks were eliminated from the model due to optimizations:
-//
-//  Block '<S3>/NOT' : Unused code path elimination
-//  Block '<Root>/Data Type Conversion13' : Eliminate redundant data type conversion
-
-
-//-
 //  The generated code includes comments that allow you to trace directly
 //  back to the appropriate location in the model.  The basic format
 //  is <system>/block_name, where system is the system number (uniquely
@@ -528,10 +460,8 @@ extern volatile boolean_T runModel;
 //  Here is the system hierarchy for this model
 //
 //  '<Root>' : 'mpcprueba2'
-//  '<S1>'   : 'mpcprueba2/Gyroscope1'
+//  '<S1>'   : 'mpcprueba2/MATLAB Function'
 //  '<S2>'   : 'mpcprueba2/MATLAB Function5'
-//  '<S3>'   : 'mpcprueba2/Gyroscope1/PX4 uORB Read'
-//  '<S4>'   : 'mpcprueba2/Gyroscope1/PX4 uORB Read/Enabled Subsystem'
 
 #endif                                 // mpcprueba2_h_
 

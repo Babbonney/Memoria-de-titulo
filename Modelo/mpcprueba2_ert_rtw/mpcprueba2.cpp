@@ -7,9 +7,9 @@
 //
 // Code generated for Simulink model 'mpcprueba2'.
 //
-// Model version                  : 12.42
+// Model version                  : 12.49
 // Simulink Coder version         : 25.1 (R2025a) 21-Nov-2024
-// C/C++ source code generated on : Wed Jan 14 15:02:40 2026
+// C/C++ source code generated on : Fri Jan 23 15:03:24 2026
 //
 // Target selection: ert.tlc
 // Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -20,7 +20,6 @@
 #include "rtwtypes.h"
 #include "mpcprueba2_types.h"
 #include <string.h>
-#include <math.h>
 
 extern "C"
 {
@@ -29,6 +28,7 @@ extern "C"
 
 }
 
+#include <math.h>
 #include "mpcprueba2_private.h"
 
 // Block signals (default storage)
@@ -42,871 +42,155 @@ RT_MODEL_mpcprueba2_T mpcprueba2_M_ = RT_MODEL_mpcprueba2_T();
 RT_MODEL_mpcprueba2_T *const mpcprueba2_M = &mpcprueba2_M_;
 
 // Forward declaration for local functions
-static void mpcprueba2_inv(const real_T x[9], real_T y[9]);
-static void mpcprueba2_mpower(const real_T a[9], real_T b, real_T c[9]);
-static void mpcprue_modifyOverheadPhaseOne_(shMFFa6ZZiYob3JbcpnnDNC_mpcpr_T *obj);
-static void mpcprueba2_setProblemType(shMFFa6ZZiYob3JbcpnnDNC_mpcpr_T *obj,
-  int32_T PROBLEM_TYPE);
 static boolean_T mpcprueba2_strcmp(const char_T a[8]);
-static real_T mpcprueba2_xnrm2(int32_T n, const real_T x[703], int32_T ix0);
+static real_T mpcprueba2_xnrm2_l(int32_T n, const real_T x[1072], int32_T ix0);
 static real_T mpcprueba2_rt_hypotd_snf(real_T u0, real_T u1);
-static real_T mpcprueba2_xzlarfg(int32_T n, real_T *alpha1, real_T x[703],
+static real_T mpcprueba2_xzlarfg(int32_T n, real_T *alpha1, real_T x[1072],
   int32_T ix0);
 static void mpcprueba2_xzlarf(int32_T m, int32_T n, int32_T iv0, real_T tau,
-  real_T C[703], int32_T ic0, real_T work[37]);
-static void mpcprueba2_qrf(real_T A[703], int32_T ia0, int32_T m, int32_T n,
-  int32_T nfxd, real_T tau[19]);
-static void mpcprueba2_xgeqp3(real_T A[703], int32_T m, int32_T n, int32_T jpvt
-  [37], real_T tau[19]);
-static void mpcprueba2_computeQ_(sIxc6e90CRmt17sP6BCIycE_mpcpr_T *obj, int32_T
+  real_T C[1072], int32_T ic0, real_T work[67]);
+static void mpcprueba2_qrf(real_T A[1072], int32_T ia0, int32_T m, int32_T n,
+  int32_T nfxd, real_T tau[16]);
+static void mpcprueba2_xgeqp3(real_T A[1072], int32_T m, int32_T n, int32_T
+  jpvt[67], real_T tau[16]);
+static void mpcprueba2_computeQ_(ssq2hyGkLOLhNlUBS6YfcCD_mpcpr_T *obj, int32_T
   nrows);
-static int32_T mpcprueb_ComputeNumDependentEq_(sIxc6e90CRmt17sP6BCIycE_mpcpr_T
-  *qrmanager, const real_T beqf[37], int32_T mConstr, int32_T nVar);
-static void mpcprueba2_IndexOfDependentEq_(int32_T depIdx[37], int32_T mFixed,
-  int32_T nDep, sIxc6e90CRmt17sP6BCIycE_mpcpr_T *qrmanager, int32_T mRows,
+static int32_T mpcprueb_ComputeNumDependentEq_(ssq2hyGkLOLhNlUBS6YfcCD_mpcpr_T
+  *qrmanager, const real_T beqf[67], int32_T mConstr, int32_T nVar);
+static void mpcprueba2_IndexOfDependentEq_(int32_T depIdx[67], int32_T mFixed,
+  int32_T nDep, ssq2hyGkLOLhNlUBS6YfcCD_mpcpr_T *qrmanager, int32_T mRows,
   int32_T nCols);
-static void mpcprueba2_countsort(int32_T x[37], int32_T xLen, int32_T workspace
-  [37], int32_T xMin, int32_T xMax);
-static void mpcprueba2_removeConstr(shMFFa6ZZiYob3JbcpnnDNC_mpcpr_T *obj,
+static void mpcprueba2_countsort(int32_T x[67], int32_T xLen, int32_T workspace
+  [67], int32_T xMin, int32_T xMax);
+static void mpcprueba2_removeConstr(sbYdmyzq7l8Oes4F6y6cc2C_mpcpr_T *obj,
   int32_T idx_global);
-static void mpcprueba2_removeEqConstr(shMFFa6ZZiYob3JbcpnnDNC_mpcpr_T *obj,
+static void mpcprueba2_removeEqConstr(sbYdmyzq7l8Oes4F6y6cc2C_mpcpr_T *obj,
   int32_T idx_global);
-static void mpcprueba2_RemoveDependentIneq_(shMFFa6ZZiYob3JbcpnnDNC_mpcpr_T
-  *workingset, sIxc6e90CRmt17sP6BCIycE_mpcpr_T *qrmanager,
-  sDXqx68fEcBxWtF9wVQzAm_mpcpru_T *memspace, real_T tolfactor);
-static int32_T mpcprueba2_rank(const real_T qrmanager_QR[703], int32_T
+static void mpcprueba2_RemoveDependentIneq_(sbYdmyzq7l8Oes4F6y6cc2C_mpcpr_T
+  *workingset, ssq2hyGkLOLhNlUBS6YfcCD_mpcpr_T *qrmanager,
+  sFevNsrsl34D5b5aqm3qNjD_mpcpr_T *memspace, real_T tolfactor);
+static int32_T mpcprueba2_rank(const real_T qrmanager_QR[1072], int32_T
   qrmanager_mrows, int32_T qrmanager_ncols);
-static real_T mpcprueb_maxConstraintViolation(const
-  shMFFa6ZZiYob3JbcpnnDNC_mpcpr_T *obj, const real_T x[703], int32_T ix0);
-static boolean_T mpcprue_feasibleX0ForWorkingSet(real_T workspace[703], real_T
-  xCurrent[19], const shMFFa6ZZiYob3JbcpnnDNC_mpcpr_T *workingset,
-  sIxc6e90CRmt17sP6BCIycE_mpcpr_T *qrmanager);
-static real_T mpcpru_maxConstraintViolation_i(const
-  shMFFa6ZZiYob3JbcpnnDNC_mpcpr_T *obj, const real_T x[19], int32_T ix0);
-static void mpcprueba2_PresolveWorkingSet(szTgroxymWCv1wbPz1KDaqC_mpcpr_T
-  *solution, sDXqx68fEcBxWtF9wVQzAm_mpcpru_T *memspace,
-  shMFFa6ZZiYob3JbcpnnDNC_mpcpr_T *workingset, const
-  sqZVQFgLZG74FDpCArykMHB_mpcpr_T *options, sIxc6e90CRmt17sP6BCIycE_mpcpr_T
+static void mpcprueba2_xgemv(int32_T m, int32_T n, const real_T A[1056], int32_T
+  lda, const real_T x[1072], real_T y[67]);
+static real_T mpcprueb_maxConstraintViolation(sbYdmyzq7l8Oes4F6y6cc2C_mpcpr_T
+  *obj, const real_T x[1072]);
+static void mpcprueba2_xgemv_j(int32_T m, int32_T n, const real_T A[1056],
+  int32_T lda, const real_T x[1072], real_T y[67]);
+static real_T mpcpru_maxConstraintViolation_n(sbYdmyzq7l8Oes4F6y6cc2C_mpcpr_T
+  *obj, const real_T x[1072]);
+static boolean_T mpcprue_feasibleX0ForWorkingSet(real_T workspace[1072], real_T
+  xCurrent[16], sbYdmyzq7l8Oes4F6y6cc2C_mpcpr_T *workingset,
+  ssq2hyGkLOLhNlUBS6YfcCD_mpcpr_T *qrmanager);
+static void mpcprueba2_xgemv_j3(int32_T m, int32_T n, const real_T A[1056],
+  int32_T lda, const real_T x[16], real_T y[67]);
+static real_T mpcpr_maxConstraintViolation_n3(sbYdmyzq7l8Oes4F6y6cc2C_mpcpr_T
+  *obj, const real_T x[16]);
+static void mpcprueba2_PresolveWorkingSet(sqvdR3NQrfOjUOrC18Muj0B_mpcpr_T
+  *solution, sFevNsrsl34D5b5aqm3qNjD_mpcpr_T *memspace,
+  sbYdmyzq7l8Oes4F6y6cc2C_mpcpr_T *workingset, const
+  sqZVQFgLZG74FDpCArykMHB_mpcpr_T *options, ssq2hyGkLOLhNlUBS6YfcCD_mpcpr_T
   *qrmanager);
-static void mpcprueba2_xgemv(int32_T m, int32_T n, const real_T A[324], int32_T
-  lda, const real_T x[19], real_T y[18]);
-static void mpcprueba2_computeGrad_StoreHx(sSitMryErsR3bMncKlW48mF_mpcpr_T *obj,
-  const real_T H[324], const real_T f[18], const real_T x[19]);
+static void mpcprue_modifyOverheadPhaseOne_(sbYdmyzq7l8Oes4F6y6cc2C_mpcpr_T *obj);
+static void mpcprueba2_setProblemType(sbYdmyzq7l8Oes4F6y6cc2C_mpcpr_T *obj,
+  int32_T PROBLEM_TYPE);
+static void mpcprueba2_xgemv_j30(int32_T m, int32_T n, const real_T A[225],
+  int32_T lda, const real_T x[16], real_T y[15]);
+static void mpcprueba2_computeGrad_StoreHx(s3c01M66EFWFQJ5qmFcUbmD_mpcpr_T *obj,
+  const real_T b_H[225], const real_T f[15], const real_T x[16]);
 static real_T mpcprueba2_computeFval_ReuseHx(const
-  sSitMryErsR3bMncKlW48mF_mpcpr_T *obj, real_T workspace[703], const real_T f[18],
-  const real_T x[19]);
+  s3c01M66EFWFQJ5qmFcUbmD_mpcpr_T *obj, real_T workspace[1072], const real_T f
+  [15], const real_T x[16]);
 static void mpcprueba2_xrotg(real_T *a, real_T *b, real_T *c, real_T *s);
-static void mpcprueba2_squareQ_appendCol(sIxc6e90CRmt17sP6BCIycE_mpcpr_T *obj,
-  const real_T vec[703], int32_T iv0);
-static void mpcprueba2_deleteColMoveEnd(sIxc6e90CRmt17sP6BCIycE_mpcpr_T *obj,
+static void mpcprueba2_squareQ_appendCol(ssq2hyGkLOLhNlUBS6YfcCD_mpcpr_T *obj,
+  const real_T vec[1072], int32_T iv0);
+static void mpcprueba2_deleteColMoveEnd(ssq2hyGkLOLhNlUBS6YfcCD_mpcpr_T *obj,
   int32_T idx);
-static int32_T mpcprueba2_ixamax(int32_T n, const real_T x[361], int32_T incx);
-static void mpcprueba2_fullColLDL2_(sBSaEu6uV23R8SnQxWoeC5G_mpcpr_T *obj,
+static int32_T mpcprueba2_ixamax(int32_T n, const real_T x[256], int32_T incx);
+static void mpcprueba2_fullColLDL2_(sOWFOmKuLvD2kpFwfdM45bG_mpcpr_T *obj,
   int32_T LD_offset, int32_T NColsRemain, real_T REG_PRIMAL);
-static void mpcprueba2_xgemv_f(int32_T m, int32_T n, const real_T A[361],
-  int32_T ia0, int32_T lda, const real_T x[703], real_T y[19]);
-static void mpcprueba2_compute_deltax(const real_T H[324],
-  szTgroxymWCv1wbPz1KDaqC_mpcpr_T *solution, sDXqx68fEcBxWtF9wVQzAm_mpcpru_T
-  *memspace, const sIxc6e90CRmt17sP6BCIycE_mpcpr_T *qrmanager,
-  sBSaEu6uV23R8SnQxWoeC5G_mpcpr_T *cholmanager, const
-  sSitMryErsR3bMncKlW48mF_mpcpr_T *objective);
-static real_T mpcprueba2_xnrm2_j(int32_T n, const real_T x[19]);
-static void mpcprueba2_ratiotest(const real_T solution_xstar[19], const real_T
-  solution_searchDir[19], const real_T workspace[703], int32_T workingset_nVar,
-  const real_T workingset_lb[19], const real_T workingset_ub[19], const int32_T
-  workingset_indexLB[19], const int32_T workingset_indexUB[19], const int32_T
-  workingset_sizes[5], const int32_T workingset_isActiveIdx[6], const boolean_T
-  workingset_isActiveConstr[37], const int32_T workingset_nWConstr[5], boolean_T
-  isPhaseOne, real_T tolcon, real_T *toldelta, real_T toltau, real_T *alpha,
-  boolean_T *newBlocking, int32_T *constrType, int32_T *constrIdx);
-static void mpcprueba2_feasibleratiotest(const real_T solution_xstar[19], const
-  real_T solution_searchDir[19], const real_T workspace[703], int32_T
-  workingset_nVar, const real_T workingset_lb[19], const real_T workingset_ub[19],
-  const int32_T workingset_indexLB[19], const int32_T workingset_indexUB[19],
-  const int32_T workingset_sizes[5], const int32_T workingset_isActiveIdx[6],
-  const boolean_T workingset_isActiveConstr[37], const int32_T
-  workingset_nWConstr[5], boolean_T isPhaseOne, real_T tolcon, real_T *alpha,
-  boolean_T *newBlocking, int32_T *constrType, int32_T *constrIdx);
-static void mpcp_addBoundToActiveSetMatrix_(shMFFa6ZZiYob3JbcpnnDNC_mpcpr_T *obj,
+static void mpcprueba2_xgemv_j30b(int32_T m, int32_T n, const real_T A[256],
+  int32_T ia0, int32_T lda, const real_T x[1072], real_T y[16]);
+static void mpcprueba2_compute_deltax(const real_T b_H[225],
+  sqvdR3NQrfOjUOrC18Muj0B_mpcpr_T *solution, sFevNsrsl34D5b5aqm3qNjD_mpcpr_T
+  *memspace, const ssq2hyGkLOLhNlUBS6YfcCD_mpcpr_T *qrmanager,
+  sOWFOmKuLvD2kpFwfdM45bG_mpcpr_T *cholmanager, const
+  s3c01M66EFWFQJ5qmFcUbmD_mpcpr_T *objective);
+static real_T mpcprueba2_xnrm2_ls(int32_T n, const real_T x[16]);
+static void mpcprueba2_xgemv_j30bu(int32_T m, int32_T n, const real_T A[1056],
+  int32_T lda, const real_T x[16], real_T y[1072]);
+static void mpcprueba2_xgemv_j30bul(int32_T m, int32_T n, const real_T A[1056],
+  int32_T lda, const real_T x[16], real_T y[1072]);
+static void mpcprueba2_ratiotest(const real_T solution_xstar[16], const real_T
+  solution_searchDir[16], real_T workspace[1072], int32_T workingset_nVar,
+  int32_T workingset_ldA, const real_T workingset_Aineq[1056], const real_T
+  workingset_bineq[66], const real_T workingset_lb[16], const real_T
+  workingset_ub[16], const int32_T workingset_indexLB[16], const int32_T
+  workingset_indexUB[16], const int32_T workingset_sizes[5], const int32_T
+  workingset_isActiveIdx[6], const boolean_T workingset_isActiveConstr[67],
+  const int32_T workingset_nWConstr[5], boolean_T isPhaseOne, real_T tolcon,
+  real_T *toldelta, real_T *alpha, boolean_T *newBlocking, int32_T *constrType,
+  int32_T *constrIdx);
+static void mpcprueba2_feasibleratiotest(const real_T solution_xstar[16], const
+  real_T solution_searchDir[16], real_T workspace[1072], int32_T workingset_nVar,
+  int32_T workingset_ldA, const real_T workingset_Aineq[1056], const real_T
+  workingset_bineq[66], const real_T workingset_lb[16], const real_T
+  workingset_ub[16], const int32_T workingset_indexLB[16], const int32_T
+  workingset_indexUB[16], const int32_T workingset_sizes[5], const int32_T
+  workingset_isActiveIdx[6], const boolean_T workingset_isActiveConstr[67],
+  const int32_T workingset_nWConstr[5], boolean_T isPhaseOne, real_T tolcon,
+  real_T *alpha, boolean_T *newBlocking, int32_T *constrType, int32_T *constrIdx);
+static void mpcp_addBoundToActiveSetMatrix_(sbYdmyzq7l8Oes4F6y6cc2C_mpcpr_T *obj,
   int32_T TYPE, int32_T idx_local);
-static void mpcprueba2_compute_lambda(real_T workspace[703],
-  szTgroxymWCv1wbPz1KDaqC_mpcpr_T *solution, const
-  sSitMryErsR3bMncKlW48mF_mpcpr_T *objective, const
-  sIxc6e90CRmt17sP6BCIycE_mpcpr_T *qrmanager);
+static void mpcprueba2_compute_lambda(real_T workspace[1072],
+  sqvdR3NQrfOjUOrC18Muj0B_mpcpr_T *solution, const
+  s3c01M66EFWFQJ5qmFcUbmD_mpcpr_T *objective, const
+  ssq2hyGkLOLhNlUBS6YfcCD_mpcpr_T *qrmanager);
 static void mpcp_checkStoppingAndUpdateFval(int32_T *activeSetChangeID, const
-  real_T f[18], szTgroxymWCv1wbPz1KDaqC_mpcpr_T *solution,
-  sDXqx68fEcBxWtF9wVQzAm_mpcpru_T *memspace, const
-  sSitMryErsR3bMncKlW48mF_mpcpr_T *objective, const
-  shMFFa6ZZiYob3JbcpnnDNC_mpcpr_T *workingset, sIxc6e90CRmt17sP6BCIycE_mpcpr_T
-  *qrmanager, real_T options_ObjectiveLimit, real_T options_ConstraintTolerance,
-  int32_T runTimeOptions_MaxIterations, real_T runTimeOptions_ConstrRelTolFact,
+  real_T f[15], sqvdR3NQrfOjUOrC18Muj0B_mpcpr_T *solution,
+  sFevNsrsl34D5b5aqm3qNjD_mpcpr_T *memspace, const
+  s3c01M66EFWFQJ5qmFcUbmD_mpcpr_T *objective, sbYdmyzq7l8Oes4F6y6cc2C_mpcpr_T
+  *workingset, ssq2hyGkLOLhNlUBS6YfcCD_mpcpr_T *qrmanager, real_T
+  options_ObjectiveLimit, real_T options_ConstraintTolerance, int32_T
+  runTimeOptions_MaxIterations, real_T runTimeOptions_ConstrRelTolFact,
   boolean_T *updateFval, boolean_T iterDisplayQP);
-static void mpcprueba2_computeFirstOrderOpt(szTgroxymWCv1wbPz1KDaqC_mpcpr_T
-  *solution, const sSitMryErsR3bMncKlW48mF_mpcpr_T *objective, int32_T
-  workingset_nVar, int32_T workingset_ldA, const real_T workingset_ATwset[703],
-  int32_T workingset_nActiveConstr, real_T workspace[703]);
-static void mpcprueba2_iterate(const real_T H[324], const real_T f[18],
-  szTgroxymWCv1wbPz1KDaqC_mpcpr_T *solution, sDXqx68fEcBxWtF9wVQzAm_mpcpru_T
-  *memspace, shMFFa6ZZiYob3JbcpnnDNC_mpcpr_T *workingset,
-  sIxc6e90CRmt17sP6BCIycE_mpcpr_T *qrmanager, sBSaEu6uV23R8SnQxWoeC5G_mpcpr_T
-  *cholmanager, sSitMryErsR3bMncKlW48mF_mpcpr_T *objective, boolean_T
+static void mpcprueba2_computeFirstOrderOpt(sqvdR3NQrfOjUOrC18Muj0B_mpcpr_T
+  *solution, const s3c01M66EFWFQJ5qmFcUbmD_mpcpr_T *objective, int32_T
+  workingset_nVar, int32_T workingset_ldA, const real_T workingset_ATwset[1072],
+  int32_T workingset_nActiveConstr, real_T workspace[1072]);
+static void mpcprueba2_iterate(const real_T b_H[225], const real_T f[15],
+  sqvdR3NQrfOjUOrC18Muj0B_mpcpr_T *solution, sFevNsrsl34D5b5aqm3qNjD_mpcpr_T
+  *memspace, sbYdmyzq7l8Oes4F6y6cc2C_mpcpr_T *workingset,
+  ssq2hyGkLOLhNlUBS6YfcCD_mpcpr_T *qrmanager, sOWFOmKuLvD2kpFwfdM45bG_mpcpr_T
+  *cholmanager, s3c01M66EFWFQJ5qmFcUbmD_mpcpr_T *objective, boolean_T
   options_IterDisplayQP, real_T options_ObjectiveLimit, real_T
   options_PricingTolerance, real_T options_ConstraintTolerance, real_T
   options_StepTolerance, const sIOJhD9KwAkF5sEguPjYquC_mpcpr_T runTimeOptions);
-static void mpcprueba2_PresolveWorkingSet_c(szTgroxymWCv1wbPz1KDaqC_mpcpr_T
-  *solution, sDXqx68fEcBxWtF9wVQzAm_mpcpru_T *memspace,
-  shMFFa6ZZiYob3JbcpnnDNC_mpcpr_T *workingset, sIxc6e90CRmt17sP6BCIycE_mpcpr_T
+static void mpcprueba2_PresolveWorkingSet_e(sqvdR3NQrfOjUOrC18Muj0B_mpcpr_T
+  *solution, sFevNsrsl34D5b5aqm3qNjD_mpcpr_T *memspace,
+  sbYdmyzq7l8Oes4F6y6cc2C_mpcpr_T *workingset, ssq2hyGkLOLhNlUBS6YfcCD_mpcpr_T
   *qrmanager, const sqZVQFgLZG74FDpCArykMHB_mpcpr_T *options);
 static void mpcprueba2_linearForm_(boolean_T obj_hasLinear, int32_T obj_nvar,
-  real_T workspace[703], const real_T H[324], const real_T f[18], const real_T
-  x[19]);
-static real_T mpcprueba2_computeFval(const sSitMryErsR3bMncKlW48mF_mpcpr_T *obj,
-  real_T workspace[703], const real_T H[324], const real_T f[18], const real_T
-  x[19]);
-static void mpcprueba2_driver(const real_T H[324], const real_T f[18],
-  szTgroxymWCv1wbPz1KDaqC_mpcpr_T *solution, sDXqx68fEcBxWtF9wVQzAm_mpcpru_T
-  *memspace, shMFFa6ZZiYob3JbcpnnDNC_mpcpr_T *workingset,
-  sBSaEu6uV23R8SnQxWoeC5G_mpcpr_T *cholmanager, const
+  real_T workspace[1072], const real_T b_H[225], const real_T f[15], const
+  real_T x[16]);
+static real_T mpcprueba2_computeFval(const s3c01M66EFWFQJ5qmFcUbmD_mpcpr_T *obj,
+  real_T workspace[1072], const real_T b_H[225], const real_T f[15], const
+  real_T x[16]);
+static void mpcprueba2_driver(const real_T b_H[225], const real_T f[15],
+  sqvdR3NQrfOjUOrC18Muj0B_mpcpr_T *solution, sFevNsrsl34D5b5aqm3qNjD_mpcpr_T
+  *memspace, sbYdmyzq7l8Oes4F6y6cc2C_mpcpr_T *workingset,
+  sOWFOmKuLvD2kpFwfdM45bG_mpcpr_T *cholmanager, const
   sqZVQFgLZG74FDpCArykMHB_mpcpr_T options, int32_T runTimeOptions_MaxIterations,
   real_T runTimeOptions_ConstrRelTolFact, real_T runTimeOptions_ProbRelTolFactor,
-  sIxc6e90CRmt17sP6BCIycE_mpcpr_T *qrmanager, sSitMryErsR3bMncKlW48mF_mpcpr_T
+  ssq2hyGkLOLhNlUBS6YfcCD_mpcpr_T *qrmanager, s3c01M66EFWFQJ5qmFcUbmD_mpcpr_T
   *objective);
-static void mpcprueba2_quadprog(const real_T H[324], const real_T f[18], const
-  real_T lb[18], const real_T ub[18], boolean_T optionsIn_NonFiniteSupport,
-  boolean_T optionsIn_IterDisplayQP, real_T optionsIn_PricingTolerance, real_T
-  optionsIn_ObjectiveLimit, real_T optionsIn_ConstraintTolerance, real_T
-  optionsIn_OptimalityTolerance, real_T optionsIn_StepTolerance, real_T
-  optionsIn_MaxIterations, const char_T optionsIn_SolverName[8], real_T x[18],
-  real_T *fval, real_T *exitflag);
-static void mpcprueb_PX4Actuators_setupImpl(px4_internal_block_PX4Actuato_T *obj);
+static real_T mpcprueba2_xnrm2(int32_T n, const real_T x[12], int32_T ix0);
+static void mpcprueba2_mldivide(const real_T A[12], const real_T B[3], real_T Y
+  [4]);
 int32_T div_nde_s32_floor(int32_T numerator, int32_T denominator)
 {
   return (((numerator < 0) != (denominator < 0)) && (numerator % denominator !=
            0) ? -1 : 0) + numerator / denominator;
-}
-
-// Function for MATLAB Function: '<Root>/MATLAB Function5'
-static void mpcprueba2_inv(const real_T x[9], real_T y[9])
-{
-  real_T absx21;
-  real_T absx31;
-  int32_T p1;
-  int32_T p2;
-  int32_T p3;
-  memcpy(&mpcprueba2_B.b_x[0], &x[0], 9U * sizeof(real_T));
-  p1 = 0;
-  p2 = 3;
-  p3 = 6;
-  mpcprueba2_B.absx11 = fabs(x[0]);
-  absx21 = fabs(x[1]);
-  absx31 = fabs(x[2]);
-  if ((absx21 > mpcprueba2_B.absx11) && (absx21 > absx31)) {
-    p1 = 3;
-    p2 = 0;
-    mpcprueba2_B.b_x[0] = x[1];
-    mpcprueba2_B.b_x[1] = x[0];
-    mpcprueba2_B.b_x[3] = x[4];
-    mpcprueba2_B.b_x[4] = x[3];
-    mpcprueba2_B.b_x[6] = x[7];
-    mpcprueba2_B.b_x[7] = x[6];
-  } else if (absx31 > mpcprueba2_B.absx11) {
-    p1 = 6;
-    p3 = 0;
-    mpcprueba2_B.b_x[0] = x[2];
-    mpcprueba2_B.b_x[2] = x[0];
-    mpcprueba2_B.b_x[3] = x[5];
-    mpcprueba2_B.b_x[5] = x[3];
-    mpcprueba2_B.b_x[6] = x[8];
-    mpcprueba2_B.b_x[8] = x[6];
-  }
-
-  mpcprueba2_B.b_x[1] /= mpcprueba2_B.b_x[0];
-  mpcprueba2_B.b_x[2] /= mpcprueba2_B.b_x[0];
-  mpcprueba2_B.b_x[4] -= mpcprueba2_B.b_x[1] * mpcprueba2_B.b_x[3];
-  mpcprueba2_B.b_x[5] -= mpcprueba2_B.b_x[2] * mpcprueba2_B.b_x[3];
-  mpcprueba2_B.b_x[7] -= mpcprueba2_B.b_x[1] * mpcprueba2_B.b_x[6];
-  mpcprueba2_B.b_x[8] -= mpcprueba2_B.b_x[2] * mpcprueba2_B.b_x[6];
-  if (fabs(mpcprueba2_B.b_x[5]) > fabs(mpcprueba2_B.b_x[4])) {
-    int32_T itmp;
-    itmp = p2;
-    p2 = p3;
-    p3 = itmp;
-    mpcprueba2_B.absx11 = mpcprueba2_B.b_x[1];
-    mpcprueba2_B.b_x[1] = mpcprueba2_B.b_x[2];
-    mpcprueba2_B.b_x[2] = mpcprueba2_B.absx11;
-    mpcprueba2_B.absx11 = mpcprueba2_B.b_x[4];
-    mpcprueba2_B.b_x[4] = mpcprueba2_B.b_x[5];
-    mpcprueba2_B.b_x[5] = mpcprueba2_B.absx11;
-    mpcprueba2_B.absx11 = mpcprueba2_B.b_x[7];
-    mpcprueba2_B.b_x[7] = mpcprueba2_B.b_x[8];
-    mpcprueba2_B.b_x[8] = mpcprueba2_B.absx11;
-  }
-
-  mpcprueba2_B.b_x[5] /= mpcprueba2_B.b_x[4];
-  mpcprueba2_B.b_x[8] -= mpcprueba2_B.b_x[5] * mpcprueba2_B.b_x[7];
-  mpcprueba2_B.absx11 = (mpcprueba2_B.b_x[1] * mpcprueba2_B.b_x[5] -
-    mpcprueba2_B.b_x[2]) / mpcprueba2_B.b_x[8];
-  absx21 = -(mpcprueba2_B.b_x[7] * mpcprueba2_B.absx11 + mpcprueba2_B.b_x[1]) /
-    mpcprueba2_B.b_x[4];
-  y[p1] = ((1.0 - mpcprueba2_B.b_x[3] * absx21) - mpcprueba2_B.b_x[6] *
-           mpcprueba2_B.absx11) / mpcprueba2_B.b_x[0];
-  y[p1 + 1] = absx21;
-  y[p1 + 2] = mpcprueba2_B.absx11;
-  mpcprueba2_B.absx11 = -mpcprueba2_B.b_x[5] / mpcprueba2_B.b_x[8];
-  absx21 = (1.0 - mpcprueba2_B.b_x[7] * mpcprueba2_B.absx11) / mpcprueba2_B.b_x
-    [4];
-  y[p2] = -(mpcprueba2_B.b_x[3] * absx21 + mpcprueba2_B.b_x[6] *
-            mpcprueba2_B.absx11) / mpcprueba2_B.b_x[0];
-  y[p2 + 1] = absx21;
-  y[p2 + 2] = mpcprueba2_B.absx11;
-  mpcprueba2_B.absx11 = 1.0 / mpcprueba2_B.b_x[8];
-  absx21 = -mpcprueba2_B.b_x[7] * mpcprueba2_B.absx11 / mpcprueba2_B.b_x[4];
-  y[p3] = -(mpcprueba2_B.b_x[3] * absx21 + mpcprueba2_B.b_x[6] *
-            mpcprueba2_B.absx11) / mpcprueba2_B.b_x[0];
-  y[p3 + 1] = absx21;
-  y[p3 + 2] = mpcprueba2_B.absx11;
-}
-
-// Function for MATLAB Function: '<Root>/MATLAB Function5'
-static void mpcprueba2_mpower(const real_T a[9], real_T b, real_T c[9])
-{
-  int32_T b_n;
-  int32_T exitg1;
-  int32_T k;
-  int32_T n;
-  int32_T nb;
-  int32_T nbitson;
-  boolean_T aBufferInUse;
-  boolean_T firstmult;
-  boolean_T lsb;
-  if (floor(b) == b) {
-    if (fabs(b) <= 2.147483647E+9) {
-      memcpy(&mpcprueba2_B.b_a[0], &a[0], 9U * sizeof(real_T));
-      n = static_cast<int32_T>(fabs(b));
-      b_n = n;
-      nbitson = 0;
-      nb = -2;
-      while (b_n > 0) {
-        nb++;
-        if ((static_cast<uint32_T>(b_n) & 1U) != 0U) {
-          nbitson++;
-        }
-
-        b_n >>= 1;
-      }
-
-      if (n <= 2) {
-        if (b == 2.0) {
-          for (b_n = 0; b_n < 3; b_n++) {
-            mpcprueba2_B.e = 0.0;
-            mpcprueba2_B.c = 0.0;
-            mpcprueba2_B.c_n = 0.0;
-            for (nbitson = 0; nbitson < 3; nbitson++) {
-              mpcprueba2_B.d4 = a[3 * b_n + nbitson];
-              mpcprueba2_B.e += a[3 * nbitson] * mpcprueba2_B.d4;
-              mpcprueba2_B.c += a[3 * nbitson + 1] * mpcprueba2_B.d4;
-              mpcprueba2_B.c_n += a[3 * nbitson + 2] * mpcprueba2_B.d4;
-            }
-
-            c[3 * b_n + 2] = mpcprueba2_B.c_n;
-            c[3 * b_n + 1] = mpcprueba2_B.c;
-            c[3 * b_n] = mpcprueba2_B.e;
-          }
-        } else if (b == 1.0) {
-          memcpy(&c[0], &a[0], 9U * sizeof(real_T));
-        } else if (b == -1.0) {
-          mpcprueba2_inv(a, c);
-        } else if (b == -2.0) {
-          for (b_n = 0; b_n < 3; b_n++) {
-            mpcprueba2_B.e = 0.0;
-            mpcprueba2_B.ed2 = 0.0;
-            mpcprueba2_B.c = 0.0;
-            for (nbitson = 0; nbitson < 3; nbitson++) {
-              mpcprueba2_B.d4 = a[3 * b_n + nbitson];
-              mpcprueba2_B.e += a[3 * nbitson] * mpcprueba2_B.d4;
-              mpcprueba2_B.ed2 += a[3 * nbitson + 1] * mpcprueba2_B.d4;
-              mpcprueba2_B.c += a[3 * nbitson + 2] * mpcprueba2_B.d4;
-            }
-
-            mpcprueba2_B.b_a[3 * b_n + 2] = mpcprueba2_B.c;
-            mpcprueba2_B.b_a[3 * b_n + 1] = mpcprueba2_B.ed2;
-            mpcprueba2_B.b_a[3 * b_n] = mpcprueba2_B.e;
-          }
-
-          mpcprueba2_inv(mpcprueba2_B.b_a, c);
-        } else {
-          firstmult = false;
-          for (b_n = 0; b_n < 9; b_n++) {
-            if (!firstmult) {
-              firstmult = rtIsNaN(a[b_n]);
-            }
-          }
-
-          if (firstmult) {
-            for (b_n = 0; b_n < 9; b_n++) {
-              c[b_n] = (rtNaN);
-            }
-          } else {
-            memset(&c[0], 0, 9U * sizeof(real_T));
-            c[0] = 1.0;
-            c[4] = 1.0;
-            c[8] = 1.0;
-          }
-        }
-      } else {
-        firstmult = true;
-        aBufferInUse = false;
-        lsb = ((static_cast<uint32_T>(nbitson) & 1U) != 0U);
-        lsb = ((lsb && (b < 0.0)) || ((!lsb) && (b >= 0.0)));
-        for (k = 0; k <= nb; k++) {
-          if ((static_cast<uint32_T>(n) & 1U) != 0U) {
-            if (firstmult) {
-              firstmult = false;
-              if (lsb) {
-                if (aBufferInUse) {
-                  memcpy(&mpcprueba2_B.cBuffer[0], &mpcprueba2_B.aBuffer[0], 9U *
-                         sizeof(real_T));
-                } else {
-                  memcpy(&mpcprueba2_B.cBuffer[0], &mpcprueba2_B.b_a[0], 9U *
-                         sizeof(real_T));
-                }
-              } else if (aBufferInUse) {
-                memcpy(&c[0], &mpcprueba2_B.aBuffer[0], 9U * sizeof(real_T));
-              } else {
-                memcpy(&c[0], &mpcprueba2_B.b_a[0], 9U * sizeof(real_T));
-              }
-            } else {
-              if (aBufferInUse) {
-                if (lsb) {
-                  for (b_n = 0; b_n < 3; b_n++) {
-                    mpcprueba2_B.e = 0.0;
-                    mpcprueba2_B.c = 0.0;
-                    mpcprueba2_B.c_n = 0.0;
-                    for (nbitson = 0; nbitson < 3; nbitson++) {
-                      mpcprueba2_B.d4 = mpcprueba2_B.aBuffer[3 * b_n + nbitson];
-                      mpcprueba2_B.e += mpcprueba2_B.cBuffer[3 * nbitson] *
-                        mpcprueba2_B.d4;
-                      mpcprueba2_B.c += mpcprueba2_B.cBuffer[3 * nbitson + 1] *
-                        mpcprueba2_B.d4;
-                      mpcprueba2_B.c_n += mpcprueba2_B.cBuffer[3 * nbitson + 2] *
-                        mpcprueba2_B.d4;
-                    }
-
-                    c[3 * b_n + 2] = mpcprueba2_B.c_n;
-                    c[3 * b_n + 1] = mpcprueba2_B.c;
-                    c[3 * b_n] = mpcprueba2_B.e;
-                  }
-                } else {
-                  for (b_n = 0; b_n < 3; b_n++) {
-                    mpcprueba2_B.e = 0.0;
-                    mpcprueba2_B.ed2 = 0.0;
-                    mpcprueba2_B.c = 0.0;
-                    for (nbitson = 0; nbitson < 3; nbitson++) {
-                      mpcprueba2_B.d4 = mpcprueba2_B.aBuffer[3 * b_n + nbitson];
-                      mpcprueba2_B.e += c[3 * nbitson] * mpcprueba2_B.d4;
-                      mpcprueba2_B.ed2 += c[3 * nbitson + 1] * mpcprueba2_B.d4;
-                      mpcprueba2_B.c += c[3 * nbitson + 2] * mpcprueba2_B.d4;
-                    }
-
-                    mpcprueba2_B.cBuffer[3 * b_n + 2] = mpcprueba2_B.c;
-                    mpcprueba2_B.cBuffer[3 * b_n + 1] = mpcprueba2_B.ed2;
-                    mpcprueba2_B.cBuffer[3 * b_n] = mpcprueba2_B.e;
-                  }
-                }
-              } else if (lsb) {
-                for (b_n = 0; b_n < 3; b_n++) {
-                  mpcprueba2_B.e = 0.0;
-                  mpcprueba2_B.c = 0.0;
-                  mpcprueba2_B.c_n = 0.0;
-                  for (nbitson = 0; nbitson < 3; nbitson++) {
-                    mpcprueba2_B.d4 = mpcprueba2_B.b_a[3 * b_n + nbitson];
-                    mpcprueba2_B.e += mpcprueba2_B.cBuffer[3 * nbitson] *
-                      mpcprueba2_B.d4;
-                    mpcprueba2_B.c += mpcprueba2_B.cBuffer[3 * nbitson + 1] *
-                      mpcprueba2_B.d4;
-                    mpcprueba2_B.c_n += mpcprueba2_B.cBuffer[3 * nbitson + 2] *
-                      mpcprueba2_B.d4;
-                  }
-
-                  c[3 * b_n + 2] = mpcprueba2_B.c_n;
-                  c[3 * b_n + 1] = mpcprueba2_B.c;
-                  c[3 * b_n] = mpcprueba2_B.e;
-                }
-              } else {
-                for (b_n = 0; b_n < 3; b_n++) {
-                  mpcprueba2_B.e = 0.0;
-                  mpcprueba2_B.ed2 = 0.0;
-                  mpcprueba2_B.c = 0.0;
-                  for (nbitson = 0; nbitson < 3; nbitson++) {
-                    mpcprueba2_B.d4 = mpcprueba2_B.b_a[3 * b_n + nbitson];
-                    mpcprueba2_B.e += c[3 * nbitson] * mpcprueba2_B.d4;
-                    mpcprueba2_B.ed2 += c[3 * nbitson + 1] * mpcprueba2_B.d4;
-                    mpcprueba2_B.c += c[3 * nbitson + 2] * mpcprueba2_B.d4;
-                  }
-
-                  mpcprueba2_B.cBuffer[3 * b_n + 2] = mpcprueba2_B.c;
-                  mpcprueba2_B.cBuffer[3 * b_n + 1] = mpcprueba2_B.ed2;
-                  mpcprueba2_B.cBuffer[3 * b_n] = mpcprueba2_B.e;
-                }
-              }
-
-              lsb = !lsb;
-            }
-          }
-
-          n >>= 1;
-          if (aBufferInUse) {
-            for (b_n = 0; b_n < 3; b_n++) {
-              mpcprueba2_B.ed2 = 0.0;
-              mpcprueba2_B.c = 0.0;
-              mpcprueba2_B.c_n = 0.0;
-              for (nbitson = 0; nbitson < 3; nbitson++) {
-                mpcprueba2_B.d4 = mpcprueba2_B.aBuffer[3 * b_n + nbitson];
-                mpcprueba2_B.ed2 += mpcprueba2_B.aBuffer[3 * nbitson] *
-                  mpcprueba2_B.d4;
-                mpcprueba2_B.c += mpcprueba2_B.aBuffer[3 * nbitson + 1] *
-                  mpcprueba2_B.d4;
-                mpcprueba2_B.c_n += mpcprueba2_B.aBuffer[3 * nbitson + 2] *
-                  mpcprueba2_B.d4;
-              }
-
-              mpcprueba2_B.b_a[3 * b_n + 2] = mpcprueba2_B.c_n;
-              mpcprueba2_B.b_a[3 * b_n + 1] = mpcprueba2_B.c;
-              mpcprueba2_B.b_a[3 * b_n] = mpcprueba2_B.ed2;
-            }
-          } else {
-            for (b_n = 0; b_n < 3; b_n++) {
-              mpcprueba2_B.e = 0.0;
-              mpcprueba2_B.ed2 = 0.0;
-              mpcprueba2_B.c = 0.0;
-              for (nbitson = 0; nbitson < 3; nbitson++) {
-                mpcprueba2_B.d4 = mpcprueba2_B.b_a[3 * b_n + nbitson];
-                mpcprueba2_B.e += mpcprueba2_B.b_a[3 * nbitson] *
-                  mpcprueba2_B.d4;
-                mpcprueba2_B.ed2 += mpcprueba2_B.b_a[3 * nbitson + 1] *
-                  mpcprueba2_B.d4;
-                mpcprueba2_B.c += mpcprueba2_B.b_a[3 * nbitson + 2] *
-                  mpcprueba2_B.d4;
-              }
-
-              mpcprueba2_B.aBuffer[3 * b_n + 2] = mpcprueba2_B.c;
-              mpcprueba2_B.aBuffer[3 * b_n + 1] = mpcprueba2_B.ed2;
-              mpcprueba2_B.aBuffer[3 * b_n] = mpcprueba2_B.e;
-            }
-          }
-
-          aBufferInUse = !aBufferInUse;
-        }
-
-        if (firstmult) {
-          if (b < 0.0) {
-            if (aBufferInUse) {
-              mpcprueba2_inv(mpcprueba2_B.aBuffer, c);
-            } else {
-              mpcprueba2_inv(mpcprueba2_B.b_a, c);
-            }
-          } else if (aBufferInUse) {
-            memcpy(&c[0], &mpcprueba2_B.aBuffer[0], 9U * sizeof(real_T));
-          } else {
-            memcpy(&c[0], &mpcprueba2_B.b_a[0], 9U * sizeof(real_T));
-          }
-        } else if (b < 0.0) {
-          for (b_n = 0; b_n < 3; b_n++) {
-            mpcprueba2_B.e = 0.0;
-            mpcprueba2_B.c = 0.0;
-            mpcprueba2_B.c_n = 0.0;
-            for (nbitson = 0; nbitson < 3; nbitson++) {
-              n = 3 * b_n + nbitson;
-              mpcprueba2_B.d4 = mpcprueba2_B.aBuffer[n];
-              mpcprueba2_B.e += c[3 * nbitson] * mpcprueba2_B.d4;
-              mpcprueba2_B.c += c[3 * nbitson + 1] * mpcprueba2_B.d4;
-              mpcprueba2_B.c_n += c[3 * nbitson + 2] * mpcprueba2_B.d4;
-              mpcprueba2_B.cBuffer_b[n] = 0.0;
-            }
-
-            n = 3 * b_n + 2;
-            mpcprueba2_B.cBuffer[n] = mpcprueba2_B.c_n;
-            nb = 3 * b_n + 1;
-            mpcprueba2_B.cBuffer[nb] = mpcprueba2_B.c;
-            mpcprueba2_B.cBuffer[3 * b_n] = mpcprueba2_B.e;
-            mpcprueba2_B.e = mpcprueba2_B.cBuffer_b[3 * b_n];
-            mpcprueba2_B.c = mpcprueba2_B.cBuffer_b[nb];
-            mpcprueba2_B.c_n = mpcprueba2_B.cBuffer_b[n];
-            for (nbitson = 0; nbitson < 3; nbitson++) {
-              mpcprueba2_B.d4 = mpcprueba2_B.b_a[3 * b_n + nbitson];
-              mpcprueba2_B.e += c[3 * nbitson] * mpcprueba2_B.d4;
-              mpcprueba2_B.c += c[3 * nbitson + 1] * mpcprueba2_B.d4;
-              mpcprueba2_B.c_n += c[3 * nbitson + 2] * mpcprueba2_B.d4;
-            }
-
-            mpcprueba2_B.cBuffer_b[n] = mpcprueba2_B.c_n;
-            mpcprueba2_B.cBuffer_b[nb] = mpcprueba2_B.c;
-            mpcprueba2_B.cBuffer_b[3 * b_n] = mpcprueba2_B.e;
-          }
-
-          if (aBufferInUse) {
-            memcpy(&mpcprueba2_B.b_a[0], &mpcprueba2_B.cBuffer[0], 9U * sizeof
-                   (real_T));
-          } else {
-            memcpy(&mpcprueba2_B.b_a[0], &mpcprueba2_B.cBuffer_b[0], 9U * sizeof
-                   (real_T));
-          }
-
-          mpcprueba2_inv(mpcprueba2_B.b_a, c);
-        } else {
-          for (b_n = 0; b_n < 3; b_n++) {
-            mpcprueba2_B.e = 0.0;
-            mpcprueba2_B.ed2 = 0.0;
-            mpcprueba2_B.c = 0.0;
-            for (nbitson = 0; nbitson < 3; nbitson++) {
-              n = 3 * b_n + nbitson;
-              mpcprueba2_B.d4 = mpcprueba2_B.aBuffer[n];
-              mpcprueba2_B.e += mpcprueba2_B.cBuffer[3 * nbitson] *
-                mpcprueba2_B.d4;
-              mpcprueba2_B.ed2 += mpcprueba2_B.cBuffer[3 * nbitson + 1] *
-                mpcprueba2_B.d4;
-              mpcprueba2_B.c += mpcprueba2_B.cBuffer[3 * nbitson + 2] *
-                mpcprueba2_B.d4;
-              c[n] = 0.0;
-            }
-
-            n = 3 * b_n + 2;
-            mpcprueba2_B.cBuffer_b[n] = mpcprueba2_B.c;
-            nb = 3 * b_n + 1;
-            mpcprueba2_B.cBuffer_b[nb] = mpcprueba2_B.ed2;
-            mpcprueba2_B.cBuffer_b[3 * b_n] = mpcprueba2_B.e;
-            mpcprueba2_B.e = c[3 * b_n];
-            mpcprueba2_B.ed2 = c[nb];
-            mpcprueba2_B.c = c[n];
-            for (nbitson = 0; nbitson < 3; nbitson++) {
-              mpcprueba2_B.d4 = mpcprueba2_B.b_a[3 * b_n + nbitson];
-              mpcprueba2_B.e += mpcprueba2_B.cBuffer[3 * nbitson] *
-                mpcprueba2_B.d4;
-              mpcprueba2_B.ed2 += mpcprueba2_B.cBuffer[3 * nbitson + 1] *
-                mpcprueba2_B.d4;
-              mpcprueba2_B.c += mpcprueba2_B.cBuffer[3 * nbitson + 2] *
-                mpcprueba2_B.d4;
-            }
-
-            c[n] = mpcprueba2_B.c;
-            c[nb] = mpcprueba2_B.ed2;
-            c[3 * b_n] = mpcprueba2_B.e;
-          }
-
-          if (aBufferInUse) {
-            memcpy(&c[0], &mpcprueba2_B.cBuffer_b[0], 9U * sizeof(real_T));
-          }
-        }
-      }
-    } else {
-      memcpy(&mpcprueba2_B.b_a[0], &a[0], 9U * sizeof(real_T));
-      if (!rtIsInf(b)) {
-        mpcprueba2_B.e = fabs(b);
-        firstmult = true;
-        do {
-          exitg1 = 0;
-          mpcprueba2_B.ed2 = floor(mpcprueba2_B.e / 2.0);
-          if (2.0 * mpcprueba2_B.ed2 != mpcprueba2_B.e) {
-            if (firstmult) {
-              memcpy(&c[0], &mpcprueba2_B.b_a[0], 9U * sizeof(real_T));
-              firstmult = false;
-            } else {
-              for (b_n = 0; b_n < 3; b_n++) {
-                mpcprueba2_B.e = 0.0;
-                mpcprueba2_B.c = 0.0;
-                mpcprueba2_B.c_n = 0.0;
-                for (nbitson = 0; nbitson < 3; nbitson++) {
-                  mpcprueba2_B.d4 = mpcprueba2_B.b_a[3 * b_n + nbitson];
-                  mpcprueba2_B.e += c[3 * nbitson] * mpcprueba2_B.d4;
-                  mpcprueba2_B.c += c[3 * nbitson + 1] * mpcprueba2_B.d4;
-                  mpcprueba2_B.c_n += c[3 * nbitson + 2] * mpcprueba2_B.d4;
-                }
-
-                mpcprueba2_B.cBuffer[3 * b_n + 2] = mpcprueba2_B.c_n;
-                mpcprueba2_B.cBuffer[3 * b_n + 1] = mpcprueba2_B.c;
-                mpcprueba2_B.cBuffer[3 * b_n] = mpcprueba2_B.e;
-              }
-
-              memcpy(&c[0], &mpcprueba2_B.cBuffer[0], 9U * sizeof(real_T));
-            }
-          }
-
-          if (mpcprueba2_B.ed2 == 0.0) {
-            exitg1 = 1;
-          } else {
-            mpcprueba2_B.e = mpcprueba2_B.ed2;
-            for (b_n = 0; b_n < 3; b_n++) {
-              mpcprueba2_B.ed2 = 0.0;
-              mpcprueba2_B.c = 0.0;
-              mpcprueba2_B.c_n = 0.0;
-              for (nbitson = 0; nbitson < 3; nbitson++) {
-                mpcprueba2_B.d4 = mpcprueba2_B.b_a[3 * b_n + nbitson];
-                mpcprueba2_B.ed2 += mpcprueba2_B.b_a[3 * nbitson] *
-                  mpcprueba2_B.d4;
-                mpcprueba2_B.c += mpcprueba2_B.b_a[3 * nbitson + 1] *
-                  mpcprueba2_B.d4;
-                mpcprueba2_B.c_n += mpcprueba2_B.b_a[3 * nbitson + 2] *
-                  mpcprueba2_B.d4;
-              }
-
-              mpcprueba2_B.aBuffer[3 * b_n + 2] = mpcprueba2_B.c_n;
-              mpcprueba2_B.aBuffer[3 * b_n + 1] = mpcprueba2_B.c;
-              mpcprueba2_B.aBuffer[3 * b_n] = mpcprueba2_B.ed2;
-            }
-
-            memcpy(&mpcprueba2_B.b_a[0], &mpcprueba2_B.aBuffer[0], 9U * sizeof
-                   (real_T));
-          }
-        } while (exitg1 == 0);
-
-        if (b < 0.0) {
-          memcpy(&mpcprueba2_B.b_a[0], &c[0], 9U * sizeof(real_T));
-          mpcprueba2_inv(mpcprueba2_B.b_a, c);
-        }
-      } else {
-        for (b_n = 0; b_n < 9; b_n++) {
-          c[b_n] = (rtNaN);
-        }
-      }
-    }
-  } else {
-    for (b_n = 0; b_n < 9; b_n++) {
-      c[b_n] = (rtNaN);
-    }
-  }
-}
-
-// Function for MATLAB Function: '<Root>/MATLAB Function5'
-static void mpcprue_modifyOverheadPhaseOne_(shMFFa6ZZiYob3JbcpnnDNC_mpcpr_T *obj)
-{
-  int32_T idxEq;
-  int32_T idxStartIneq;
-  idxStartIneq = obj->sizes[0];
-  for (int32_T idx = 0; idx < idxStartIneq; idx++) {
-    obj->ATwset[(obj->nVar + obj->ldA * idx) - 1] = 0.0;
-  }
-
-  idxStartIneq = obj->sizes[1];
-  for (int32_T idx = 0; idx < idxStartIneq; idx++) {
-    obj->ATwset[((obj->ldA * idx + obj->nVar) + obj->ldA * (obj->isActiveIdx[1]
-      - 1)) - 1] = 0.0;
-  }
-
-  obj->indexLB[obj->sizes[3] - 1] = obj->nVar;
-  obj->lb[obj->nVar - 1] = obj->SLACK0;
-  idxStartIneq = obj->isActiveIdx[2];
-  idxEq = obj->nActiveConstr;
-  for (int32_T idx = idxStartIneq; idx <= idxEq; idx++) {
-    obj->ATwset[(obj->nVar + obj->ldA * (idx - 1)) - 1] = -1.0;
-  }
-
-  idxStartIneq = obj->isActiveIdx[4] - 1;
-  if (obj->nWConstr[4] > 0) {
-    idxEq = obj->sizesNormal[4];
-    for (int32_T idx = idxEq; idx >= 1; idx--) {
-      int32_T tmp;
-      tmp = idxStartIneq + idx;
-      obj->isActiveConstr[tmp] = obj->isActiveConstr[tmp - 1];
-    }
-  } else {
-    obj->isActiveConstr[(obj->isActiveIdx[4] + obj->sizesNormal[4]) - 1] = false;
-  }
-
-  obj->isActiveConstr[obj->isActiveIdx[4] - 1] = false;
-}
-
-// Function for MATLAB Function: '<Root>/MATLAB Function5'
-static void mpcprueba2_setProblemType(shMFFa6ZZiYob3JbcpnnDNC_mpcpr_T *obj,
-  int32_T PROBLEM_TYPE)
-{
-  int32_T c;
-  int32_T colOffsetATw;
-  int32_T colOffsetAineq;
-  int32_T idxUpperExisting;
-  int32_T offsetEq1;
-  int32_T offsetEq2;
-  int32_T offsetIneq;
-  switch (PROBLEM_TYPE) {
-   case 3:
-    obj->nVar = obj->nVarOrig;
-    obj->mConstr = obj->mConstrOrig;
-    if (obj->nWConstr[4] > 0) {
-      idxUpperExisting = obj->isActiveIdx[4] - 2;
-      offsetEq1 = obj->sizesNormal[4];
-      for (colOffsetATw = 0; colOffsetATw < offsetEq1; colOffsetATw++) {
-        offsetIneq = (colOffsetATw + idxUpperExisting) + 1;
-        obj->isActiveConstr[(obj->isActiveIdxNormal[4] + colOffsetATw) - 1] =
-          obj->isActiveConstr[offsetIneq];
-        obj->isActiveConstr[offsetIneq] = false;
-      }
-    }
-
-    for (offsetIneq = 0; offsetIneq < 5; offsetIneq++) {
-      obj->sizes[offsetIneq] = obj->sizesNormal[offsetIneq];
-    }
-
-    for (offsetIneq = 0; offsetIneq < 6; offsetIneq++) {
-      obj->isActiveIdx[offsetIneq] = obj->isActiveIdxNormal[offsetIneq];
-    }
-    break;
-
-   case 1:
-    obj->nVar = obj->nVarOrig + 1;
-    obj->mConstr = obj->mConstrOrig + 1;
-    for (offsetIneq = 0; offsetIneq < 5; offsetIneq++) {
-      obj->sizes[offsetIneq] = obj->sizesPhaseOne[offsetIneq];
-    }
-
-    mpcprue_modifyOverheadPhaseOne_(obj);
-    for (offsetIneq = 0; offsetIneq < 6; offsetIneq++) {
-      obj->isActiveIdx[offsetIneq] = obj->isActiveIdxPhaseOne[offsetIneq];
-    }
-    break;
-
-   case 2:
-    obj->nVar = obj->nVarMax - 1;
-    obj->mConstr = obj->mConstrMax - 1;
-    for (offsetIneq = 0; offsetIneq < 5; offsetIneq++) {
-      obj->sizes[offsetIneq] = obj->sizesRegularized[offsetIneq];
-    }
-
-    if (obj->probType != 4) {
-      idxUpperExisting = obj->sizes[1];
-      offsetIneq = obj->nVarOrig + 1;
-      offsetEq1 = obj->nVarOrig + obj->sizes[2];
-      offsetEq2 = (obj->nVarOrig + obj->sizes[2]) + obj->sizes[1];
-      c = obj->sizes[0];
-      for (colOffsetAineq = 0; colOffsetAineq < c; colOffsetAineq++) {
-        colOffsetATw = obj->ldA * colOffsetAineq;
-        if (obj->nVarOrig + 1 <= obj->nVar) {
-          memset(&obj->ATwset[((obj->nVarOrig + 1) + colOffsetATw) + -1], 0,
-                 static_cast<uint32_T>((((obj->nVar + colOffsetATw) -
-                    (obj->nVarOrig + 1)) - colOffsetATw) + 1) * sizeof(real_T));
-        }
-      }
-
-      for (colOffsetAineq = 0; colOffsetAineq < idxUpperExisting; colOffsetAineq
-           ++) {
-        colOffsetATw = ((obj->isActiveIdx[1] - 1) + colOffsetAineq) * obj->ldA -
-          1;
-        if (offsetIneq <= offsetEq1) {
-          memset(&obj->ATwset[offsetIneq + colOffsetATw], 0,
-                 static_cast<uint32_T>((((offsetEq1 + colOffsetATw) - offsetIneq)
-                   - colOffsetATw) + 1) * sizeof(real_T));
-        }
-
-        c = colOffsetAineq + offsetEq1;
-        if (offsetEq1 + 1 <= (c + 1) - 1) {
-          memset(&obj->ATwset[(offsetEq1 + colOffsetATw) + 1], 0,
-                 static_cast<uint32_T>(((((c + 1) + colOffsetATw) - offsetEq1) -
-                   colOffsetATw) - 1) * sizeof(real_T));
-        }
-
-        obj->ATwset[(c + colOffsetATw) + 1] = -1.0;
-        c += 2;
-        if (c <= offsetEq2) {
-          memset(&obj->ATwset[c + colOffsetATw], 0, static_cast<uint32_T>
-                 ((((offsetEq2 + colOffsetATw) - c) - colOffsetATw) + 1) *
-                 sizeof(real_T));
-        }
-
-        c = colOffsetAineq + offsetEq2;
-        if (offsetEq2 + 1 <= (c + 1) - 1) {
-          memset(&obj->ATwset[(offsetEq2 + colOffsetATw) + 1], 0,
-                 static_cast<uint32_T>(((((c + 1) + colOffsetATw) - offsetEq2) -
-                   colOffsetATw) - 1) * sizeof(real_T));
-        }
-
-        obj->ATwset[(c + colOffsetATw) + 1] = 1.0;
-        c += 2;
-        if (c <= obj->nVar) {
-          memset(&obj->ATwset[c + colOffsetATw], 0, static_cast<uint32_T>
-                 ((((obj->nVar + colOffsetATw) - c) - colOffsetATw) + 1) *
-                 sizeof(real_T));
-        }
-      }
-
-      idxUpperExisting = obj->nVarOrig;
-      offsetEq1 = obj->sizesNormal[3] + 1;
-      offsetEq2 = obj->sizesRegularized[3];
-      for (colOffsetATw = offsetEq1; colOffsetATw <= offsetEq2; colOffsetATw++)
-      {
-        idxUpperExisting++;
-        obj->indexLB[colOffsetATw - 1] = idxUpperExisting;
-      }
-
-      if (obj->nWConstr[4] > 0) {
-        idxUpperExisting = obj->sizesRegularized[4];
-        for (colOffsetATw = 0; colOffsetATw < idxUpperExisting; colOffsetATw++)
-        {
-          obj->isActiveConstr[obj->isActiveIdxRegularized[4] + colOffsetATw] =
-            obj->isActiveConstr[(obj->isActiveIdx[4] + colOffsetATw) - 1];
-        }
-      }
-
-      idxUpperExisting = obj->isActiveIdx[4];
-      offsetEq1 = obj->isActiveIdxRegularized[4];
-      if (idxUpperExisting <= offsetEq1 - 1) {
-        memset(&obj->isActiveConstr[idxUpperExisting + -1], 0, static_cast<
-               uint32_T>(offsetEq1 - idxUpperExisting) * sizeof(boolean_T));
-      }
-
-      offsetEq1 = (obj->nVarOrig + obj->sizes[2]) + (obj->sizes[1] << 1);
-      if (obj->nVarOrig + 1 <= offsetEq1) {
-        memset(&obj->lb[(obj->nVarOrig + 1) + -1], 0, static_cast<uint32_T>
-               ((offsetEq1 - (obj->nVarOrig + 1)) + 1) * sizeof(real_T));
-      }
-
-      offsetEq1 = obj->isActiveIdx[2];
-      offsetEq2 = obj->nActiveConstr;
-      for (idxUpperExisting = offsetEq1; idxUpperExisting <= offsetEq2;
-           idxUpperExisting++) {
-        colOffsetATw = (idxUpperExisting - 1) * obj->ldA - 1;
-        if (obj->Wid[idxUpperExisting - 1] == 3) {
-          colOffsetAineq = (obj->Wlocalidx[idxUpperExisting - 1] + offsetIneq) -
-            2;
-          if (offsetIneq <= colOffsetAineq) {
-            memset(&obj->ATwset[offsetIneq + colOffsetATw], 0,
-                   static_cast<uint32_T>((((colOffsetAineq + colOffsetATw) -
-                      offsetIneq) - colOffsetATw) + 1) * sizeof(real_T));
-          }
-
-          obj->ATwset[((offsetIneq + obj->Wlocalidx[idxUpperExisting - 1]) +
-                       colOffsetATw) - 1] = -1.0;
-          colOffsetAineq = obj->Wlocalidx[idxUpperExisting - 1] + offsetIneq;
-          if (colOffsetAineq <= obj->nVar) {
-            memset(&obj->ATwset[colOffsetAineq + colOffsetATw], 0,
-                   static_cast<uint32_T>((((obj->nVar + colOffsetATw) -
-                      colOffsetAineq) - colOffsetATw) + 1) * sizeof(real_T));
-          }
-        } else if (offsetIneq <= obj->nVar) {
-          memset(&obj->ATwset[offsetIneq + colOffsetATw], 0,
-                 static_cast<uint32_T>((((obj->nVar + colOffsetATw) - offsetIneq)
-                   - colOffsetATw) + 1) * sizeof(real_T));
-        }
-      }
-    }
-
-    for (offsetIneq = 0; offsetIneq < 6; offsetIneq++) {
-      obj->isActiveIdx[offsetIneq] = obj->isActiveIdxRegularized[offsetIneq];
-    }
-    break;
-
-   default:
-    obj->nVar = obj->nVarMax;
-    obj->mConstr = obj->mConstrMax;
-    for (offsetIneq = 0; offsetIneq < 5; offsetIneq++) {
-      obj->sizes[offsetIneq] = obj->sizesRegPhaseOne[offsetIneq];
-    }
-
-    mpcprue_modifyOverheadPhaseOne_(obj);
-    for (offsetIneq = 0; offsetIneq < 6; offsetIneq++) {
-      obj->isActiveIdx[offsetIneq] = obj->isActiveIdxRegPhaseOne[offsetIneq];
-    }
-    break;
-  }
-
-  obj->probType = PROBLEM_TYPE;
 }
 
 // Function for MATLAB Function: '<Root>/MATLAB Function5'
@@ -950,7 +234,7 @@ static boolean_T mpcprueba2_strcmp(const char_T a[8])
 }
 
 // Function for MATLAB Function: '<Root>/MATLAB Function5'
-static real_T mpcprueba2_xnrm2(int32_T n, const real_T x[703], int32_T ix0)
+static real_T mpcprueba2_xnrm2_l(int32_T n, const real_T x[1072], int32_T ix0)
 {
   real_T y;
   y = 0.0;
@@ -982,17 +266,16 @@ static real_T mpcprueba2_xnrm2(int32_T n, const real_T x[703], int32_T ix0)
 
 static real_T mpcprueba2_rt_hypotd_snf(real_T u0, real_T u1)
 {
-  real_T b;
   real_T y;
   mpcprueba2_B.a_h = fabs(u0);
-  b = fabs(u1);
-  if (mpcprueba2_B.a_h < b) {
-    mpcprueba2_B.a_h /= b;
-    y = sqrt(mpcprueba2_B.a_h * mpcprueba2_B.a_h + 1.0) * b;
-  } else if (mpcprueba2_B.a_h > b) {
-    b /= mpcprueba2_B.a_h;
-    y = sqrt(b * b + 1.0) * mpcprueba2_B.a_h;
-  } else if (rtIsNaN(b)) {
+  mpcprueba2_B.b = fabs(u1);
+  if (mpcprueba2_B.a_h < mpcprueba2_B.b) {
+    mpcprueba2_B.a_h /= mpcprueba2_B.b;
+    y = sqrt(mpcprueba2_B.a_h * mpcprueba2_B.a_h + 1.0) * mpcprueba2_B.b;
+  } else if (mpcprueba2_B.a_h > mpcprueba2_B.b) {
+    mpcprueba2_B.b /= mpcprueba2_B.a_h;
+    y = sqrt(mpcprueba2_B.b * mpcprueba2_B.b + 1.0) * mpcprueba2_B.a_h;
+  } else if (rtIsNaN(mpcprueba2_B.b)) {
     y = (rtNaN);
   } else {
     y = mpcprueba2_B.a_h * 1.4142135623730951;
@@ -1002,7 +285,7 @@ static real_T mpcprueba2_rt_hypotd_snf(real_T u0, real_T u1)
 }
 
 // Function for MATLAB Function: '<Root>/MATLAB Function5'
-static real_T mpcprueba2_xzlarfg(int32_T n, real_T *alpha1, real_T x[703],
+static real_T mpcprueba2_xzlarfg(int32_T n, real_T *alpha1, real_T x[1072],
   int32_T ix0)
 {
   real_T tau;
@@ -1011,7 +294,7 @@ static real_T mpcprueba2_xzlarfg(int32_T n, real_T *alpha1, real_T x[703],
   int32_T knt;
   tau = 0.0;
   if (n > 0) {
-    mpcprueba2_B.xnorm = mpcprueba2_xnrm2(n - 1, x, ix0);
+    mpcprueba2_B.xnorm = mpcprueba2_xnrm2_l(n - 1, x, ix0);
     if (mpcprueba2_B.xnorm != 0.0) {
       mpcprueba2_B.xnorm = mpcprueba2_rt_hypotd_snf(*alpha1, mpcprueba2_B.xnorm);
       if (*alpha1 >= 0.0) {
@@ -1032,8 +315,8 @@ static real_T mpcprueba2_xzlarfg(int32_T n, real_T *alpha1, real_T x[703],
         } while ((fabs(mpcprueba2_B.xnorm) < 1.0020841800044864E-292) && (knt <
                   20));
 
-        mpcprueba2_B.xnorm = mpcprueba2_rt_hypotd_snf(*alpha1, mpcprueba2_xnrm2
-          (n - 1, x, ix0));
+        mpcprueba2_B.xnorm = mpcprueba2_rt_hypotd_snf(*alpha1,
+          mpcprueba2_xnrm2_l(n - 1, x, ix0));
         if (*alpha1 >= 0.0) {
           mpcprueba2_B.xnorm = -mpcprueba2_B.xnorm;
         }
@@ -1067,7 +350,7 @@ static real_T mpcprueba2_xzlarfg(int32_T n, real_T *alpha1, real_T x[703],
 
 // Function for MATLAB Function: '<Root>/MATLAB Function5'
 static void mpcprueba2_xzlarf(int32_T m, int32_T n, int32_T iv0, real_T tau,
-  real_T C[703], int32_T ic0, real_T work[37])
+  real_T C[1072], int32_T ic0, real_T work[67])
 {
   int32_T b_ia;
   int32_T coltop;
@@ -1086,7 +369,7 @@ static void mpcprueba2_xzlarf(int32_T m, int32_T n, int32_T iv0, real_T tau,
     exitg2 = false;
     while ((!exitg2) && (lastc > 0)) {
       int32_T exitg1;
-      coltop = (lastc - 1) * 19 + ic0;
+      coltop = ((lastc - 1) << 4) + ic0;
       b_ia = coltop;
       do {
         exitg1 = 0;
@@ -1121,75 +404,77 @@ static void mpcprueba2_xzlarf(int32_T m, int32_T n, int32_T iv0, real_T tau,
         memset(&work[0], 0, static_cast<uint32_T>(lastc + 1) * sizeof(real_T));
       }
 
-      jA = 19 * lastc + ic0;
-      for (coltop = ic0; coltop <= jA; coltop += 19) {
-        mpcprueba2_B.c_j = 0.0;
+      jA = (lastc << 4) + ic0;
+      for (coltop = ic0; coltop <= jA; coltop += 16) {
+        mpcprueba2_B.c = 0.0;
         d = coltop + lastv;
         for (b_ia = coltop; b_ia < d; b_ia++) {
-          mpcprueba2_B.c_j += C[((iv0 + b_ia) - coltop) - 1] * C[b_ia - 1];
+          mpcprueba2_B.c += C[((iv0 + b_ia) - coltop) - 1] * C[b_ia - 1];
         }
 
-        b_ia = div_nde_s32_floor(coltop - ic0, 19);
-        work[b_ia] += mpcprueba2_B.c_j;
+        b_ia = (coltop - ic0) >> 4;
+        work[b_ia] += mpcprueba2_B.c;
       }
     }
 
     if (!(-tau == 0.0)) {
       jA = ic0;
       for (coltop = 0; coltop <= lastc; coltop++) {
-        mpcprueba2_B.c_j = work[coltop];
-        if (mpcprueba2_B.c_j != 0.0) {
-          mpcprueba2_B.c_j *= -tau;
+        mpcprueba2_B.c = work[coltop];
+        if (mpcprueba2_B.c != 0.0) {
+          mpcprueba2_B.c *= -tau;
           d = lastv + jA;
           for (b_ia = jA; b_ia < d; b_ia++) {
-            C[b_ia - 1] += C[((iv0 + b_ia) - jA) - 1] * mpcprueba2_B.c_j;
+            C[b_ia - 1] += C[((iv0 + b_ia) - jA) - 1] * mpcprueba2_B.c;
           }
         }
 
-        jA += 19;
+        jA += 16;
       }
     }
   }
 }
 
 // Function for MATLAB Function: '<Root>/MATLAB Function5'
-static void mpcprueba2_qrf(real_T A[703], int32_T ia0, int32_T m, int32_T n,
-  int32_T nfxd, real_T tau[19])
+static void mpcprueba2_qrf(real_T A[1072], int32_T ia0, int32_T m, int32_T n,
+  int32_T nfxd, real_T tau[16])
 {
   int32_T i;
   int32_T ii;
   int32_T mmi;
-  memset(&mpcprueba2_B.work_k[0], 0, 37U * sizeof(real_T));
+  memset(&mpcprueba2_B.work_m[0], 0, 67U * sizeof(real_T));
   for (i = 0; i < nfxd; i++) {
-    ii = ((i * 19 + ia0) + i) - 1;
+    ii = (((i << 4) + ia0) + i) - 1;
     mmi = m - i;
     if (i + 1 < m) {
       mpcprueba2_B.b_atmp = A[ii];
-      mpcprueba2_B.tau = mpcprueba2_xzlarfg(mmi, &mpcprueba2_B.b_atmp, A, ii + 2);
-      tau[i] = mpcprueba2_B.tau;
+      mpcprueba2_B.tau_n = mpcprueba2_xzlarfg(mmi, &mpcprueba2_B.b_atmp, A, ii +
+        2);
+      tau[i] = mpcprueba2_B.tau_n;
       A[ii] = mpcprueba2_B.b_atmp;
     } else {
-      mpcprueba2_B.tau = 0.0;
+      mpcprueba2_B.tau_n = 0.0;
       tau[i] = 0.0;
     }
 
     if (i + 1 < n) {
       mpcprueba2_B.b_atmp = A[ii];
       A[ii] = 1.0;
-      mpcprueba2_xzlarf(mmi, (n - i) - 1, ii + 1, mpcprueba2_B.tau, A, ii + 20,
-                        mpcprueba2_B.work_k);
+      mpcprueba2_xzlarf(mmi, (n - i) - 1, ii + 1, mpcprueba2_B.tau_n, A, ii + 17,
+                        mpcprueba2_B.work_m);
       A[ii] = mpcprueba2_B.b_atmp;
     }
   }
 }
 
 // Function for MATLAB Function: '<Root>/MATLAB Function5'
-static void mpcprueba2_xgeqp3(real_T A[703], int32_T m, int32_T n, int32_T jpvt
-  [37], real_T tau[19])
+static void mpcprueba2_xgeqp3(real_T A[1072], int32_T m, int32_T n, int32_T
+  jpvt[67], real_T tau[16])
 {
   int32_T b_temp_tmp;
   int32_T c_ix;
   int32_T i;
+  int32_T idxmax;
   int32_T temp_tmp;
   if (m <= n) {
     mpcprueba2_B.minmn_j = m;
@@ -1197,7 +482,7 @@ static void mpcprueba2_xgeqp3(real_T A[703], int32_T m, int32_T n, int32_T jpvt
     mpcprueba2_B.minmn_j = n;
   }
 
-  memset(&tau[0], 0, 19U * sizeof(real_T));
+  memset(&tau[0], 0, sizeof(real_T) << 4U);
   if (mpcprueba2_B.minmn_j < 1) {
     for (mpcprueba2_B.minmn_j = 0; mpcprueba2_B.minmn_j < n;
          mpcprueba2_B.minmn_j++) {
@@ -1209,10 +494,10 @@ static void mpcprueba2_xgeqp3(real_T A[703], int32_T m, int32_T n, int32_T jpvt
       if (jpvt[i] != 0) {
         mpcprueba2_B.nfxd++;
         if (i + 1 != mpcprueba2_B.nfxd + 1) {
-          mpcprueba2_B.ix_o = i * 19;
-          mpcprueba2_B.iy = mpcprueba2_B.nfxd * 19;
+          mpcprueba2_B.ix_j = i << 4;
+          mpcprueba2_B.iy = mpcprueba2_B.nfxd << 4;
           for (mpcprueba2_B.mmi = 0; mpcprueba2_B.mmi < m; mpcprueba2_B.mmi++) {
-            temp_tmp = mpcprueba2_B.ix_o + mpcprueba2_B.mmi;
+            temp_tmp = mpcprueba2_B.ix_j + mpcprueba2_B.mmi;
             mpcprueba2_B.temp_m = A[temp_tmp];
             mpcprueba2_B.itemp = mpcprueba2_B.iy + mpcprueba2_B.mmi;
             A[temp_tmp] = A[mpcprueba2_B.itemp];
@@ -1235,28 +520,28 @@ static void mpcprueba2_xgeqp3(real_T A[703], int32_T m, int32_T n, int32_T jpvt
       mpcprueba2_B.nfxd = mpcprueba2_B.minmn_j;
     }
 
-    memset(&tau[0], 0, 19U * sizeof(real_T));
+    memset(&tau[0], 0, sizeof(real_T) << 4U);
     mpcprueba2_qrf(A, 1, m, n, mpcprueba2_B.nfxd, tau);
     if (mpcprueba2_B.nfxd < mpcprueba2_B.minmn_j) {
-      memset(&mpcprueba2_B.work[0], 0, 37U * sizeof(real_T));
-      memset(&mpcprueba2_B.vn1[0], 0, 37U * sizeof(real_T));
-      memset(&mpcprueba2_B.vn2[0], 0, 37U * sizeof(real_T));
+      memset(&mpcprueba2_B.work[0], 0, 67U * sizeof(real_T));
+      memset(&mpcprueba2_B.vn1[0], 0, 67U * sizeof(real_T));
+      memset(&mpcprueba2_B.vn2[0], 0, 67U * sizeof(real_T));
       for (i = mpcprueba2_B.nfxd + 1; i <= n; i++) {
-        mpcprueba2_B.temp_m = mpcprueba2_xnrm2(m - mpcprueba2_B.nfxd, A, ((i - 1)
-          * 19 + mpcprueba2_B.nfxd) + 1);
+        mpcprueba2_B.temp_m = mpcprueba2_xnrm2_l(m - mpcprueba2_B.nfxd, A, (((i
+          - 1) << 4) + mpcprueba2_B.nfxd) + 1);
         mpcprueba2_B.vn1[i - 1] = mpcprueba2_B.temp_m;
         mpcprueba2_B.vn2[i - 1] = mpcprueba2_B.temp_m;
       }
 
       for (i = mpcprueba2_B.nfxd + 1; i <= mpcprueba2_B.minmn_j; i++) {
-        temp_tmp = (i - 1) * 19;
-        mpcprueba2_B.ix_o = (temp_tmp + i) - 1;
+        temp_tmp = (i - 1) << 4;
+        mpcprueba2_B.ix_j = (temp_tmp + i) - 1;
         mpcprueba2_B.iy = (n - i) + 1;
         mpcprueba2_B.mmi = m - i;
         if (mpcprueba2_B.iy < 1) {
-          mpcprueba2_B.idxmax = -2;
+          idxmax = -2;
         } else {
-          mpcprueba2_B.idxmax = -1;
+          idxmax = -1;
           if (mpcprueba2_B.iy > 1) {
             mpcprueba2_B.temp_m = fabs(mpcprueba2_B.vn1[i - 1]);
             for (mpcprueba2_B.itemp = 2; mpcprueba2_B.itemp <= mpcprueba2_B.iy;
@@ -1264,21 +549,20 @@ static void mpcprueba2_xgeqp3(real_T A[703], int32_T m, int32_T n, int32_T jpvt
               mpcprueba2_B.s = fabs(mpcprueba2_B.vn1[(i + mpcprueba2_B.itemp) -
                                     2]);
               if (mpcprueba2_B.s > mpcprueba2_B.temp_m) {
-                mpcprueba2_B.idxmax = mpcprueba2_B.itemp - 2;
+                idxmax = mpcprueba2_B.itemp - 2;
                 mpcprueba2_B.temp_m = mpcprueba2_B.s;
               }
             }
           }
         }
 
-        mpcprueba2_B.pvt = i + mpcprueba2_B.idxmax;
+        mpcprueba2_B.pvt = i + idxmax;
         if (mpcprueba2_B.pvt + 1 != i) {
-          c_ix = mpcprueba2_B.pvt * 19;
-          for (mpcprueba2_B.idxmax = 0; mpcprueba2_B.idxmax < m;
-               mpcprueba2_B.idxmax++) {
-            b_temp_tmp = c_ix + mpcprueba2_B.idxmax;
+          c_ix = mpcprueba2_B.pvt << 4;
+          for (idxmax = 0; idxmax < m; idxmax++) {
+            b_temp_tmp = c_ix + idxmax;
             mpcprueba2_B.temp_m = A[b_temp_tmp];
-            mpcprueba2_B.itemp = temp_tmp + mpcprueba2_B.idxmax;
+            mpcprueba2_B.itemp = temp_tmp + idxmax;
             A[b_temp_tmp] = A[mpcprueba2_B.itemp];
             A[mpcprueba2_B.itemp] = mpcprueba2_B.temp_m;
           }
@@ -1291,31 +575,31 @@ static void mpcprueba2_xgeqp3(real_T A[703], int32_T m, int32_T n, int32_T jpvt
         }
 
         if (i < m) {
-          mpcprueba2_B.s = A[mpcprueba2_B.ix_o];
+          mpcprueba2_B.s = A[mpcprueba2_B.ix_j];
           mpcprueba2_B.temp_m = mpcprueba2_xzlarfg(mpcprueba2_B.mmi + 1,
-            &mpcprueba2_B.s, A, mpcprueba2_B.ix_o + 2);
+            &mpcprueba2_B.s, A, mpcprueba2_B.ix_j + 2);
           tau[i - 1] = mpcprueba2_B.temp_m;
-          A[mpcprueba2_B.ix_o] = mpcprueba2_B.s;
+          A[mpcprueba2_B.ix_j] = mpcprueba2_B.s;
         } else {
           mpcprueba2_B.temp_m = 0.0;
           tau[i - 1] = 0.0;
         }
 
         if (i < n) {
-          mpcprueba2_B.s = A[mpcprueba2_B.ix_o];
-          A[mpcprueba2_B.ix_o] = 1.0;
+          mpcprueba2_B.s = A[mpcprueba2_B.ix_j];
+          A[mpcprueba2_B.ix_j] = 1.0;
           mpcprueba2_xzlarf(mpcprueba2_B.mmi + 1, mpcprueba2_B.iy - 1,
-                            mpcprueba2_B.ix_o + 1, mpcprueba2_B.temp_m, A,
-                            mpcprueba2_B.ix_o + 20, mpcprueba2_B.work);
-          A[mpcprueba2_B.ix_o] = mpcprueba2_B.s;
+                            mpcprueba2_B.ix_j + 1, mpcprueba2_B.temp_m, A,
+                            mpcprueba2_B.ix_j + 17, mpcprueba2_B.work);
+          A[mpcprueba2_B.ix_j] = mpcprueba2_B.s;
         }
 
         for (mpcprueba2_B.itemp = i + 1; mpcprueba2_B.itemp <= n;
              mpcprueba2_B.itemp++) {
-          mpcprueba2_B.ix_o = (mpcprueba2_B.itemp - 1) * 19 + i;
+          mpcprueba2_B.ix_j = ((mpcprueba2_B.itemp - 1) << 4) + i;
           mpcprueba2_B.temp_m = mpcprueba2_B.vn1[mpcprueba2_B.itemp - 1];
           if (mpcprueba2_B.temp_m != 0.0) {
-            mpcprueba2_B.s = fabs(A[mpcprueba2_B.ix_o - 1]) /
+            mpcprueba2_B.s = fabs(A[mpcprueba2_B.ix_j - 1]) /
               mpcprueba2_B.temp_m;
             mpcprueba2_B.s = 1.0 - mpcprueba2_B.s * mpcprueba2_B.s;
             if (mpcprueba2_B.s < 0.0) {
@@ -1328,8 +612,8 @@ static void mpcprueba2_xgeqp3(real_T A[703], int32_T m, int32_T n, int32_T jpvt
               mpcprueba2_B.s;
             if (mpcprueba2_B.temp2 <= 1.4901161193847656E-8) {
               if (i < m) {
-                mpcprueba2_B.temp_m = mpcprueba2_xnrm2(mpcprueba2_B.mmi, A,
-                  mpcprueba2_B.ix_o + 1);
+                mpcprueba2_B.temp_m = mpcprueba2_xnrm2_l(mpcprueba2_B.mmi, A,
+                  mpcprueba2_B.ix_j + 1);
                 mpcprueba2_B.vn1[mpcprueba2_B.itemp - 1] = mpcprueba2_B.temp_m;
                 mpcprueba2_B.vn2[mpcprueba2_B.itemp - 1] = mpcprueba2_B.temp_m;
               } else {
@@ -1348,7 +632,7 @@ static void mpcprueba2_xgeqp3(real_T A[703], int32_T m, int32_T n, int32_T jpvt
 }
 
 // Function for MATLAB Function: '<Root>/MATLAB Function5'
-static void mpcprueba2_computeQ_(sIxc6e90CRmt17sP6BCIycE_mpcpr_T *obj, int32_T
+static void mpcprueba2_computeQ_(ssq2hyGkLOLhNlUBS6YfcCD_mpcpr_T *obj, int32_T
   nrows)
 {
   int32_T b_k;
@@ -1380,7 +664,7 @@ static void mpcprueba2_computeQ_(sIxc6e90CRmt17sP6BCIycE_mpcpr_T *obj, int32_T
     }
 
     iQR0 = obj->minRowCol - 1;
-    memset(&mpcprueba2_B.work_c[0], 0, 19U * sizeof(real_T));
+    memset(&mpcprueba2_B.work_c[0], 0, sizeof(real_T) << 4U);
     for (i = obj->minRowCol; i >= 1; i--) {
       int32_T jA;
       iaii = ((i - 1) * b_k + i) - 1;
@@ -1493,8 +777,8 @@ static void mpcprueba2_computeQ_(sIxc6e90CRmt17sP6BCIycE_mpcpr_T *obj, int32_T
 }
 
 // Function for MATLAB Function: '<Root>/MATLAB Function5'
-static int32_T mpcprueb_ComputeNumDependentEq_(sIxc6e90CRmt17sP6BCIycE_mpcpr_T
-  *qrmanager, const real_T beqf[37], int32_T mConstr, int32_T nVar)
+static int32_T mpcprueb_ComputeNumDependentEq_(ssq2hyGkLOLhNlUBS6YfcCD_mpcpr_T
+  *qrmanager, const real_T beqf[67], int32_T mConstr, int32_T nVar)
 {
   int32_T numDependent;
   boolean_T exitg1;
@@ -1553,12 +837,12 @@ static int32_T mpcprueb_ComputeNumDependentEq_(sIxc6e90CRmt17sP6BCIycE_mpcpr_T
 
   if (numDependent > 0) {
     mpcprueba2_computeQ_(qrmanager, qrmanager->mrows);
-    mpcprueba2_B.b_idx = 0;
+    mpcprueba2_B.b_idx_e = 0;
     exitg1 = false;
-    while ((!exitg1) && (mpcprueba2_B.b_idx <= numDependent - 1)) {
+    while ((!exitg1) && (mpcprueba2_B.b_idx_e <= numDependent - 1)) {
       mpcprueba2_B.qtb = 0.0;
       if (mConstr >= 1) {
-        mpcprueba2_B.ix_a = ((mConstr - mpcprueba2_B.b_idx) - 1) *
+        mpcprueba2_B.ix_a = ((mConstr - mpcprueba2_B.b_idx_e) - 1) *
           qrmanager->ldq;
         for (mpcprueba2_B.totalRank = 0; mpcprueba2_B.totalRank < mConstr;
              mpcprueba2_B.totalRank++) {
@@ -1571,7 +855,7 @@ static int32_T mpcprueb_ComputeNumDependentEq_(sIxc6e90CRmt17sP6BCIycE_mpcpr_T
         numDependent = -1;
         exitg1 = true;
       } else {
-        mpcprueba2_B.b_idx++;
+        mpcprueba2_B.b_idx_e++;
       }
     }
   }
@@ -1580,8 +864,8 @@ static int32_T mpcprueb_ComputeNumDependentEq_(sIxc6e90CRmt17sP6BCIycE_mpcpr_T
 }
 
 // Function for MATLAB Function: '<Root>/MATLAB Function5'
-static void mpcprueba2_IndexOfDependentEq_(int32_T depIdx[37], int32_T mFixed,
-  int32_T nDep, sIxc6e90CRmt17sP6BCIycE_mpcpr_T *qrmanager, int32_T mRows,
+static void mpcprueba2_IndexOfDependentEq_(int32_T depIdx[67], int32_T mFixed,
+  int32_T nDep, ssq2hyGkLOLhNlUBS6YfcCD_mpcpr_T *qrmanager, int32_T mRows,
   int32_T nCols)
 {
   for (mpcprueba2_B.idx = 0; mpcprueba2_B.idx < mFixed; mpcprueba2_B.idx++) {
@@ -1617,8 +901,8 @@ static void mpcprueba2_IndexOfDependentEq_(int32_T depIdx[37], int32_T mFixed,
 }
 
 // Function for MATLAB Function: '<Root>/MATLAB Function5'
-static void mpcprueba2_countsort(int32_T x[37], int32_T xLen, int32_T workspace
-  [37], int32_T xMin, int32_T xMax)
+static void mpcprueba2_countsort(int32_T x[67], int32_T xLen, int32_T workspace
+  [67], int32_T xMin, int32_T xMax)
 {
   if ((xLen > 1) && (xMax > xMin)) {
     int32_T b;
@@ -1659,7 +943,7 @@ static void mpcprueba2_countsort(int32_T x[37], int32_T xLen, int32_T workspace
 }
 
 // Function for MATLAB Function: '<Root>/MATLAB Function5'
-static void mpcprueba2_removeConstr(shMFFa6ZZiYob3JbcpnnDNC_mpcpr_T *obj,
+static void mpcprueba2_removeConstr(sbYdmyzq7l8Oes4F6y6cc2C_mpcpr_T *obj,
   int32_T idx_global)
 {
   int32_T TYPE;
@@ -1684,7 +968,7 @@ static void mpcprueba2_removeConstr(shMFFa6ZZiYob3JbcpnnDNC_mpcpr_T *obj,
 }
 
 // Function for MATLAB Function: '<Root>/MATLAB Function5'
-static void mpcprueba2_removeEqConstr(shMFFa6ZZiYob3JbcpnnDNC_mpcpr_T *obj,
+static void mpcprueba2_removeEqConstr(sbYdmyzq7l8Oes4F6y6cc2C_mpcpr_T *obj,
   int32_T idx_global)
 {
   int32_T TYPE;
@@ -1726,9 +1010,9 @@ static void mpcprueba2_removeEqConstr(shMFFa6ZZiYob3JbcpnnDNC_mpcpr_T *obj,
 }
 
 // Function for MATLAB Function: '<Root>/MATLAB Function5'
-static void mpcprueba2_RemoveDependentIneq_(shMFFa6ZZiYob3JbcpnnDNC_mpcpr_T
-  *workingset, sIxc6e90CRmt17sP6BCIycE_mpcpr_T *qrmanager,
-  sDXqx68fEcBxWtF9wVQzAm_mpcpru_T *memspace, real_T tolfactor)
+static void mpcprueba2_RemoveDependentIneq_(sbYdmyzq7l8Oes4F6y6cc2C_mpcpr_T
+  *workingset, ssq2hyGkLOLhNlUBS6YfcCD_mpcpr_T *qrmanager,
+  sFevNsrsl34D5b5aqm3qNjD_mpcpr_T *memspace, real_T tolfactor)
 {
   mpcprueba2_B.nActiveConstr = workingset->nActiveConstr;
   mpcprueba2_B.nFixedConstr = workingset->nWConstr[0] + workingset->nWConstr[1];
@@ -1736,21 +1020,21 @@ static void mpcprueba2_RemoveDependentIneq_(shMFFa6ZZiYob3JbcpnnDNC_mpcpr_T
   if ((workingset->nWConstr[2] + workingset->nWConstr[3]) + workingset->
       nWConstr[4] > 0) {
     if (workingset->nVar >= workingset->nActiveConstr) {
-      mpcprueba2_B.b_idx_p = workingset->nVar;
+      mpcprueba2_B.b_idx = workingset->nVar;
     } else {
-      mpcprueba2_B.b_idx_p = workingset->nActiveConstr;
+      mpcprueba2_B.b_idx = workingset->nActiveConstr;
     }
 
     mpcprueba2_B.u1 = 2.2204460492503131E-15 * static_cast<real_T>
-      (mpcprueba2_B.b_idx_p);
+      (mpcprueba2_B.b_idx);
     if (mpcprueba2_B.u1 >= 1.4901161193847656E-8) {
       mpcprueba2_B.u1 = 1.4901161193847656E-8;
     }
 
-    mpcprueba2_B.tol_l = tolfactor * mpcprueba2_B.u1;
-    for (mpcprueba2_B.b_idx_p = 0; mpcprueba2_B.b_idx_p <
-         mpcprueba2_B.nFixedConstr; mpcprueba2_B.b_idx_p++) {
-      qrmanager->jpvt[mpcprueba2_B.b_idx_p] = 1;
+    mpcprueba2_B.tol_g = tolfactor * mpcprueba2_B.u1;
+    for (mpcprueba2_B.b_idx = 0; mpcprueba2_B.b_idx < mpcprueba2_B.nFixedConstr;
+         mpcprueba2_B.b_idx++) {
+      qrmanager->jpvt[mpcprueba2_B.b_idx] = 1;
     }
 
     if (mpcprueba2_B.nFixedConstr + 1 <= mpcprueba2_B.nActiveConstr) {
@@ -1759,14 +1043,14 @@ static void mpcprueba2_RemoveDependentIneq_(shMFFa6ZZiYob3JbcpnnDNC_mpcpr_T
               mpcprueba2_B.nFixedConstr) * sizeof(int32_T));
     }
 
-    for (mpcprueba2_B.b_idx_p = 0; mpcprueba2_B.b_idx_p <
-         mpcprueba2_B.nActiveConstr; mpcprueba2_B.b_idx_p++) {
-      mpcprueba2_B.iy0_a = qrmanager->ldq * mpcprueba2_B.b_idx_p;
-      mpcprueba2_B.ix0_p = workingset->ldA * mpcprueba2_B.b_idx_p;
+    for (mpcprueba2_B.b_idx = 0; mpcprueba2_B.b_idx < mpcprueba2_B.nActiveConstr;
+         mpcprueba2_B.b_idx++) {
+      mpcprueba2_B.iy0_p = qrmanager->ldq * mpcprueba2_B.b_idx;
+      mpcprueba2_B.ix0_c = workingset->ldA * mpcprueba2_B.b_idx;
       for (mpcprueba2_B.b_k = 0; mpcprueba2_B.b_k < mpcprueba2_B.nVar_c;
            mpcprueba2_B.b_k++) {
-        qrmanager->QR[mpcprueba2_B.iy0_a + mpcprueba2_B.b_k] =
-          workingset->ATwset[mpcprueba2_B.b_k + mpcprueba2_B.ix0_p];
+        qrmanager->QR[mpcprueba2_B.iy0_p + mpcprueba2_B.b_k] =
+          workingset->ATwset[mpcprueba2_B.b_k + mpcprueba2_B.ix0_c];
       }
     }
 
@@ -1790,16 +1074,16 @@ static void mpcprueba2_RemoveDependentIneq_(shMFFa6ZZiYob3JbcpnnDNC_mpcpr_T
     }
 
     mpcprueba2_B.nActiveConstr = 0;
-    mpcprueba2_B.b_idx_p = workingset->nActiveConstr - 1;
-    while (mpcprueba2_B.b_idx_p + 1 > mpcprueba2_B.nVar_c) {
+    mpcprueba2_B.b_idx = workingset->nActiveConstr - 1;
+    while (mpcprueba2_B.b_idx + 1 > mpcprueba2_B.nVar_c) {
       mpcprueba2_B.nActiveConstr++;
       memspace->workspace_int[mpcprueba2_B.nActiveConstr - 1] = qrmanager->
-        jpvt[mpcprueba2_B.b_idx_p];
-      mpcprueba2_B.b_idx_p--;
+        jpvt[mpcprueba2_B.b_idx];
+      mpcprueba2_B.b_idx--;
     }
 
     mpcprueba2_B.maxDiag = fabs(qrmanager->QR[0]);
-    for (mpcprueba2_B.nVar_c = 0; mpcprueba2_B.nVar_c < mpcprueba2_B.b_idx_p;
+    for (mpcprueba2_B.nVar_c = 0; mpcprueba2_B.nVar_c < mpcprueba2_B.b_idx;
          mpcprueba2_B.nVar_c++) {
       mpcprueba2_B.u1 = fabs(qrmanager->QR[((mpcprueba2_B.nVar_c + 1) *
         qrmanager->ldq + mpcprueba2_B.nVar_c) + 1]);
@@ -1809,16 +1093,16 @@ static void mpcprueba2_RemoveDependentIneq_(shMFFa6ZZiYob3JbcpnnDNC_mpcpr_T
       }
     }
 
-    if (mpcprueba2_B.b_idx_p + 1 <= workingset->nVar) {
-      mpcprueba2_B.nVar_c = qrmanager->ldq * mpcprueba2_B.b_idx_p +
-        mpcprueba2_B.b_idx_p;
-      while ((mpcprueba2_B.b_idx_p + 1 > mpcprueba2_B.nFixedConstr) && (fabs
-              (qrmanager->QR[mpcprueba2_B.nVar_c]) < mpcprueba2_B.tol_l *
+    if (mpcprueba2_B.b_idx + 1 <= workingset->nVar) {
+      mpcprueba2_B.nVar_c = qrmanager->ldq * mpcprueba2_B.b_idx +
+        mpcprueba2_B.b_idx;
+      while ((mpcprueba2_B.b_idx + 1 > mpcprueba2_B.nFixedConstr) && (fabs
+              (qrmanager->QR[mpcprueba2_B.nVar_c]) < mpcprueba2_B.tol_g *
               mpcprueba2_B.maxDiag)) {
         mpcprueba2_B.nActiveConstr++;
         memspace->workspace_int[mpcprueba2_B.nActiveConstr - 1] =
-          qrmanager->jpvt[mpcprueba2_B.b_idx_p];
-        mpcprueba2_B.b_idx_p--;
+          qrmanager->jpvt[mpcprueba2_B.b_idx];
+        mpcprueba2_B.b_idx--;
         mpcprueba2_B.nVar_c = (mpcprueba2_B.nVar_c - qrmanager->ldq) - 1;
       }
     }
@@ -1835,7 +1119,7 @@ static void mpcprueba2_RemoveDependentIneq_(shMFFa6ZZiYob3JbcpnnDNC_mpcpr_T
 }
 
 // Function for MATLAB Function: '<Root>/MATLAB Function5'
-static int32_T mpcprueba2_rank(const real_T qrmanager_QR[703], int32_T
+static int32_T mpcprueba2_rank(const real_T qrmanager_QR[1072], int32_T
   qrmanager_mrows, int32_T qrmanager_ncols)
 {
   int32_T minmn;
@@ -1862,7 +1146,7 @@ static int32_T mpcprueba2_rank(const real_T qrmanager_QR[703], int32_T
     }
 
     tol *= fabs(qrmanager_QR[0]);
-    while ((r < minmn) && (!(fabs(qrmanager_QR[19 * r + r]) <= tol))) {
+    while ((r < minmn) && (!(fabs(qrmanager_QR[(r << 4) + r]) <= tol))) {
       r++;
     }
   }
@@ -1871,21 +1155,85 @@ static int32_T mpcprueba2_rank(const real_T qrmanager_QR[703], int32_T
 }
 
 // Function for MATLAB Function: '<Root>/MATLAB Function5'
-static real_T mpcprueb_maxConstraintViolation(const
-  shMFFa6ZZiYob3JbcpnnDNC_mpcpr_T *obj, const real_T x[703], int32_T ix0)
+static void mpcprueba2_xgemv(int32_T m, int32_T n, const real_T A[1056], int32_T
+  lda, const real_T x[1072], real_T y[67])
+{
+  if ((m != 0) && (n != 0)) {
+    int32_T b;
+    int32_T iy;
+    for (int32_T b_iy = 0; b_iy < n; b_iy++) {
+      y[b_iy] = -y[b_iy];
+    }
+
+    iy = 0;
+    b = (n - 1) * lda + 1;
+    for (int32_T b_iy = 1; lda < 0 ? b_iy >= b : b_iy <= b; b_iy += lda) {
+      real_T c;
+      int32_T d;
+      c = 0.0;
+      d = b_iy + m;
+      for (int32_T ia = b_iy; ia < d; ia++) {
+        c += A[ia - 1] * x[ia - b_iy];
+      }
+
+      y[iy] += c;
+      iy++;
+    }
+  }
+}
+
+// Function for MATLAB Function: '<Root>/MATLAB Function5'
+static real_T mpcprueb_maxConstraintViolation(sbYdmyzq7l8Oes4F6y6cc2C_mpcpr_T
+  *obj, const real_T x[1072])
 {
   real_T u1;
   real_T v;
+  int32_T k;
   int32_T mFixed;
+  int32_T mIneq;
   int32_T mLB;
   int32_T mUB;
   mLB = obj->sizes[3];
   mUB = obj->sizes[4];
   mFixed = obj->sizes[0];
-  v = 0.0;
+  if (obj->probType == 2) {
+    v = 0.0;
+    mIneq = obj->sizes[2];
+    if (mIneq - 1 >= 0) {
+      memcpy(&obj->maxConstrWorkspace[0], &obj->bineq[0], static_cast<uint32_T>
+             (mIneq) * sizeof(real_T));
+    }
+
+    mpcprueba2_xgemv(obj->nVarOrig, obj->sizes[2], obj->Aineq, obj->ldA, x,
+                     obj->maxConstrWorkspace);
+    for (k = 0; k < mIneq; k++) {
+      obj->maxConstrWorkspace[k] -= x[obj->nVarOrig + k];
+      u1 = obj->maxConstrWorkspace[k];
+      if ((!(v >= u1)) && (!rtIsNaN(u1))) {
+        v = u1;
+      }
+    }
+  } else {
+    v = 0.0;
+    mIneq = obj->sizes[2];
+    if (mIneq - 1 >= 0) {
+      memcpy(&obj->maxConstrWorkspace[0], &obj->bineq[0], static_cast<uint32_T>
+             (mIneq) * sizeof(real_T));
+    }
+
+    mpcprueba2_xgemv(obj->nVar, obj->sizes[2], obj->Aineq, obj->ldA, x,
+                     obj->maxConstrWorkspace);
+    for (k = 0; k < mIneq; k++) {
+      u1 = obj->maxConstrWorkspace[k];
+      if ((!(v >= u1)) && (!rtIsNaN(u1))) {
+        v = u1;
+      }
+    }
+  }
+
   if (obj->sizes[3] > 0) {
-    for (int32_T idx = 0; idx < mLB; idx++) {
-      u1 = -x[(ix0 + obj->indexLB[idx]) - 2] - obj->lb[obj->indexLB[idx] - 1];
+    for (mIneq = 0; mIneq < mLB; mIneq++) {
+      u1 = -x[obj->indexLB[mIneq] - 1] - obj->lb[obj->indexLB[mIneq] - 1];
       if ((!(v >= u1)) && (!rtIsNaN(u1))) {
         v = u1;
       }
@@ -1893,8 +1241,8 @@ static real_T mpcprueb_maxConstraintViolation(const
   }
 
   if (obj->sizes[4] > 0) {
-    for (int32_T idx = 0; idx < mUB; idx++) {
-      u1 = x[(ix0 + obj->indexUB[idx]) - 2] - obj->ub[obj->indexUB[idx] - 1];
+    for (mLB = 0; mLB < mUB; mLB++) {
+      u1 = x[obj->indexUB[mLB] - 1] - obj->ub[obj->indexUB[mLB] - 1];
       if ((!(v >= u1)) && (!rtIsNaN(u1))) {
         v = u1;
       }
@@ -1903,8 +1251,7 @@ static real_T mpcprueb_maxConstraintViolation(const
 
   if (obj->sizes[0] > 0) {
     for (mUB = 0; mUB < mFixed; mUB++) {
-      u1 = fabs(x[(ix0 + obj->indexFixed[mUB]) - 2] - obj->ub[obj->
-                indexFixed[mUB] - 1]);
+      u1 = fabs(x[obj->indexFixed[mUB] - 1] - obj->ub[obj->indexFixed[mUB] - 1]);
       if ((!(v >= u1)) && (!rtIsNaN(u1))) {
         v = u1;
       }
@@ -1915,19 +1262,126 @@ static real_T mpcprueb_maxConstraintViolation(const
 }
 
 // Function for MATLAB Function: '<Root>/MATLAB Function5'
-static boolean_T mpcprue_feasibleX0ForWorkingSet(real_T workspace[703], real_T
-  xCurrent[19], const shMFFa6ZZiYob3JbcpnnDNC_mpcpr_T *workingset,
-  sIxc6e90CRmt17sP6BCIycE_mpcpr_T *qrmanager)
+static void mpcprueba2_xgemv_j(int32_T m, int32_T n, const real_T A[1056],
+  int32_T lda, const real_T x[1072], real_T y[67])
+{
+  if ((m != 0) && (n != 0)) {
+    int32_T b;
+    int32_T iy;
+    for (int32_T b_iy = 0; b_iy < n; b_iy++) {
+      y[b_iy] = -y[b_iy];
+    }
+
+    iy = 0;
+    b = (n - 1) * lda + 1;
+    for (int32_T b_iy = 1; lda < 0 ? b_iy >= b : b_iy <= b; b_iy += lda) {
+      real_T c;
+      int32_T d;
+      c = 0.0;
+      d = b_iy + m;
+      for (int32_T ia = b_iy; ia < d; ia++) {
+        c += x[(ia - b_iy) + 67] * A[ia - 1];
+      }
+
+      y[iy] += c;
+      iy++;
+    }
+  }
+}
+
+// Function for MATLAB Function: '<Root>/MATLAB Function5'
+static real_T mpcpru_maxConstraintViolation_n(sbYdmyzq7l8Oes4F6y6cc2C_mpcpr_T
+  *obj, const real_T x[1072])
+{
+  real_T u1;
+  real_T v;
+  int32_T k;
+  int32_T mFixed;
+  int32_T mIneq;
+  int32_T mLB;
+  int32_T mUB;
+  mLB = obj->sizes[3];
+  mUB = obj->sizes[4];
+  mFixed = obj->sizes[0];
+  if (obj->probType == 2) {
+    v = 0.0;
+    mIneq = obj->sizes[2];
+    if (mIneq - 1 >= 0) {
+      memcpy(&obj->maxConstrWorkspace[0], &obj->bineq[0], static_cast<uint32_T>
+             (mIneq) * sizeof(real_T));
+    }
+
+    mpcprueba2_xgemv_j(obj->nVarOrig, obj->sizes[2], obj->Aineq, obj->ldA, x,
+                       obj->maxConstrWorkspace);
+    for (k = 0; k < mIneq; k++) {
+      obj->maxConstrWorkspace[k] -= x[(obj->nVarOrig + k) + 67];
+      u1 = obj->maxConstrWorkspace[k];
+      if ((!(v >= u1)) && (!rtIsNaN(u1))) {
+        v = u1;
+      }
+    }
+  } else {
+    v = 0.0;
+    mIneq = obj->sizes[2];
+    if (mIneq - 1 >= 0) {
+      memcpy(&obj->maxConstrWorkspace[0], &obj->bineq[0], static_cast<uint32_T>
+             (mIneq) * sizeof(real_T));
+    }
+
+    mpcprueba2_xgemv_j(obj->nVar, obj->sizes[2], obj->Aineq, obj->ldA, x,
+                       obj->maxConstrWorkspace);
+    for (k = 0; k < mIneq; k++) {
+      u1 = obj->maxConstrWorkspace[k];
+      if ((!(v >= u1)) && (!rtIsNaN(u1))) {
+        v = u1;
+      }
+    }
+  }
+
+  if (obj->sizes[3] > 0) {
+    for (mIneq = 0; mIneq < mLB; mIneq++) {
+      u1 = -x[obj->indexLB[mIneq] + 66] - obj->lb[obj->indexLB[mIneq] - 1];
+      if ((!(v >= u1)) && (!rtIsNaN(u1))) {
+        v = u1;
+      }
+    }
+  }
+
+  if (obj->sizes[4] > 0) {
+    for (mLB = 0; mLB < mUB; mLB++) {
+      u1 = x[obj->indexUB[mLB] + 66] - obj->ub[obj->indexUB[mLB] - 1];
+      if ((!(v >= u1)) && (!rtIsNaN(u1))) {
+        v = u1;
+      }
+    }
+  }
+
+  if (obj->sizes[0] > 0) {
+    for (mUB = 0; mUB < mFixed; mUB++) {
+      u1 = fabs(x[obj->indexFixed[mUB] + 66] - obj->ub[obj->indexFixed[mUB] - 1]);
+      if ((!(v >= u1)) && (!rtIsNaN(u1))) {
+        v = u1;
+      }
+    }
+  }
+
+  return v;
+}
+
+// Function for MATLAB Function: '<Root>/MATLAB Function5'
+static boolean_T mpcprue_feasibleX0ForWorkingSet(real_T workspace[1072], real_T
+  xCurrent[16], sbYdmyzq7l8Oes4F6y6cc2C_mpcpr_T *workingset,
+  ssq2hyGkLOLhNlUBS6YfcCD_mpcpr_T *qrmanager)
 {
   int32_T exitg1;
   boolean_T guard1;
   boolean_T nonDegenerateWset;
   mpcprueba2_B.mWConstr = workingset->nActiveConstr;
-  mpcprueba2_B.nVar_a = workingset->nVar - 1;
+  mpcprueba2_B.nVar_f = workingset->nVar - 1;
   nonDegenerateWset = true;
   if (workingset->nActiveConstr != 0) {
     if (workingset->nActiveConstr >= workingset->nVar) {
-      for (mpcprueba2_B.rankQR = 0; mpcprueba2_B.rankQR <= mpcprueba2_B.nVar_a;
+      for (mpcprueba2_B.rankQR = 0; mpcprueba2_B.rankQR <= mpcprueba2_B.nVar_f;
            mpcprueba2_B.rankQR++) {
         mpcprueba2_B.offsetQR = qrmanager->ldq * mpcprueba2_B.rankQR;
         for (mpcprueba2_B.ldq = 0; mpcprueba2_B.ldq < mpcprueba2_B.mWConstr;
@@ -1964,7 +1418,7 @@ static boolean_T mpcprue_feasibleX0ForWorkingSet(real_T workspace[703], real_T
       for (mpcprueba2_B.ldq = 0; mpcprueba2_B.ldq < mpcprueba2_B.mWConstr;
            mpcprueba2_B.ldq++) {
         workspace[mpcprueba2_B.ldq] = workingset->bwset[mpcprueba2_B.ldq];
-        workspace[mpcprueba2_B.ldq + 37] = workingset->bwset[mpcprueba2_B.ldq];
+        workspace[mpcprueba2_B.ldq + 67] = workingset->bwset[mpcprueba2_B.ldq];
       }
 
       mpcprueba2_B.ix = workingset->ldA;
@@ -1976,7 +1430,7 @@ static boolean_T mpcprue_feasibleX0ForWorkingSet(real_T workspace[703], real_T
              mpcprueba2_B.iAcol : mpcprueba2_B.ldq <= mpcprueba2_B.iAcol;
              mpcprueba2_B.ldq += mpcprueba2_B.ix) {
           mpcprueba2_B.temp = 0.0;
-          mpcprueba2_B.b_ar = mpcprueba2_B.ldq + mpcprueba2_B.nVar_a;
+          mpcprueba2_B.b_ar = mpcprueba2_B.ldq + mpcprueba2_B.nVar_f;
           for (mpcprueba2_B.offsetQR = mpcprueba2_B.ldq; mpcprueba2_B.offsetQR <=
                mpcprueba2_B.b_ar; mpcprueba2_B.offsetQR++) {
             mpcprueba2_B.temp += workingset->ATwset[mpcprueba2_B.offsetQR - 1] *
@@ -1989,24 +1443,24 @@ static boolean_T mpcprue_feasibleX0ForWorkingSet(real_T workspace[703], real_T
       }
 
       mpcprueba2_B.ldq = qrmanager->ldq;
-      memcpy(&mpcprueba2_B.B[0], &workspace[0], 703U * sizeof(real_T));
+      memcpy(&mpcprueba2_B.B[0], &workspace[0], 1072U * sizeof(real_T));
       if (workingset->nVar != 0) {
         mpcprueba2_B.iAcol = -1;
-        for (mpcprueba2_B.offsetQR = 0; mpcprueba2_B.offsetQR <= 37;
-             mpcprueba2_B.offsetQR += 37) {
-          mpcprueba2_B.jBcol = (mpcprueba2_B.offsetQR + mpcprueba2_B.nVar_a) + 1;
+        for (mpcprueba2_B.offsetQR = 0; mpcprueba2_B.offsetQR <= 67;
+             mpcprueba2_B.offsetQR += 67) {
+          mpcprueba2_B.jBcol = (mpcprueba2_B.offsetQR + mpcprueba2_B.nVar_f) + 1;
           for (mpcprueba2_B.ix = mpcprueba2_B.offsetQR + 1; mpcprueba2_B.ix <=
                mpcprueba2_B.jBcol; mpcprueba2_B.ix++) {
             workspace[mpcprueba2_B.ix - 1] = 0.0;
           }
         }
 
-        for (mpcprueba2_B.offsetQR = 0; mpcprueba2_B.offsetQR <= 37;
-             mpcprueba2_B.offsetQR += 37) {
+        for (mpcprueba2_B.offsetQR = 0; mpcprueba2_B.offsetQR <= 67;
+             mpcprueba2_B.offsetQR += 67) {
           mpcprueba2_B.b_ar = -1;
-          mpcprueba2_B.d_j = (mpcprueba2_B.offsetQR + mpcprueba2_B.nVar_a) + 1;
+          mpcprueba2_B.d_a = (mpcprueba2_B.offsetQR + mpcprueba2_B.nVar_f) + 1;
           for (mpcprueba2_B.ix = mpcprueba2_B.offsetQR + 1; mpcprueba2_B.ix <=
-               mpcprueba2_B.d_j; mpcprueba2_B.ix++) {
+               mpcprueba2_B.d_a; mpcprueba2_B.ix++) {
             mpcprueba2_B.temp = 0.0;
             for (mpcprueba2_B.jBcol = 0; mpcprueba2_B.jBcol <
                  mpcprueba2_B.mWConstr; mpcprueba2_B.jBcol++) {
@@ -2019,13 +1473,13 @@ static boolean_T mpcprue_feasibleX0ForWorkingSet(real_T workspace[703], real_T
             mpcprueba2_B.b_ar += mpcprueba2_B.ldq;
           }
 
-          mpcprueba2_B.iAcol += 37;
+          mpcprueba2_B.iAcol += 67;
         }
       }
 
       for (mpcprueba2_B.mWConstr = 0; mpcprueba2_B.mWConstr < 2;
            mpcprueba2_B.mWConstr++) {
-        mpcprueba2_B.iAcol = 37 * mpcprueba2_B.mWConstr - 1;
+        mpcprueba2_B.iAcol = 67 * mpcprueba2_B.mWConstr - 1;
         for (mpcprueba2_B.ix = mpcprueba2_B.rankQR; mpcprueba2_B.ix >= 1;
              mpcprueba2_B.ix--) {
           mpcprueba2_B.b_ar = (mpcprueba2_B.ix - 1) * mpcprueba2_B.ldq;
@@ -2036,8 +1490,8 @@ static boolean_T mpcprue_feasibleX0ForWorkingSet(real_T workspace[703], real_T
               QR[(mpcprueba2_B.ix + mpcprueba2_B.b_ar) - 1];
             for (mpcprueba2_B.jBcol = 0; mpcprueba2_B.jBcol <= mpcprueba2_B.ix -
                  2; mpcprueba2_B.jBcol++) {
-              mpcprueba2_B.d_j = (mpcprueba2_B.jBcol + mpcprueba2_B.iAcol) + 1;
-              workspace[mpcprueba2_B.d_j] -= qrmanager->QR[mpcprueba2_B.jBcol +
+              mpcprueba2_B.d_a = (mpcprueba2_B.jBcol + mpcprueba2_B.iAcol) + 1;
+              workspace[mpcprueba2_B.d_a] -= qrmanager->QR[mpcprueba2_B.jBcol +
                 mpcprueba2_B.b_ar] * workspace[mpcprueba2_B.offsetQR];
             }
           }
@@ -2045,31 +1499,32 @@ static boolean_T mpcprue_feasibleX0ForWorkingSet(real_T workspace[703], real_T
       }
 
       for (mpcprueba2_B.ldq = mpcprueba2_B.rankQR + 1; mpcprueba2_B.ldq <=
-           mpcprueba2_B.nVar_a + 1; mpcprueba2_B.ldq++) {
+           mpcprueba2_B.nVar_f + 1; mpcprueba2_B.ldq++) {
         workspace[mpcprueba2_B.ldq - 1] = 0.0;
-        workspace[mpcprueba2_B.ldq + 36] = 0.0;
+        workspace[mpcprueba2_B.ldq + 66] = 0.0;
       }
 
-      for (mpcprueba2_B.rankQR = 0; mpcprueba2_B.rankQR <= mpcprueba2_B.nVar_a;
+      for (mpcprueba2_B.rankQR = 0; mpcprueba2_B.rankQR <= mpcprueba2_B.nVar_f;
            mpcprueba2_B.rankQR++) {
-        workspace[qrmanager->jpvt[mpcprueba2_B.rankQR] + 73] =
+        workspace[qrmanager->jpvt[mpcprueba2_B.rankQR] + 133] =
           workspace[mpcprueba2_B.rankQR];
       }
 
-      for (mpcprueba2_B.rankQR = 0; mpcprueba2_B.rankQR <= mpcprueba2_B.nVar_a;
+      for (mpcprueba2_B.rankQR = 0; mpcprueba2_B.rankQR <= mpcprueba2_B.nVar_f;
            mpcprueba2_B.rankQR++) {
-        workspace[mpcprueba2_B.rankQR] = workspace[mpcprueba2_B.rankQR + 74];
+        workspace[mpcprueba2_B.rankQR] = workspace[mpcprueba2_B.rankQR + 134];
       }
 
-      for (mpcprueba2_B.rankQR = 0; mpcprueba2_B.rankQR <= mpcprueba2_B.nVar_a;
+      for (mpcprueba2_B.rankQR = 0; mpcprueba2_B.rankQR <= mpcprueba2_B.nVar_f;
            mpcprueba2_B.rankQR++) {
-        workspace[qrmanager->jpvt[mpcprueba2_B.rankQR] + 73] =
-          workspace[mpcprueba2_B.rankQR + 37];
+        workspace[qrmanager->jpvt[mpcprueba2_B.rankQR] + 133] =
+          workspace[mpcprueba2_B.rankQR + 67];
       }
 
-      for (mpcprueba2_B.rankQR = 0; mpcprueba2_B.rankQR <= mpcprueba2_B.nVar_a;
+      for (mpcprueba2_B.rankQR = 0; mpcprueba2_B.rankQR <= mpcprueba2_B.nVar_f;
            mpcprueba2_B.rankQR++) {
-        workspace[mpcprueba2_B.rankQR + 37] = workspace[mpcprueba2_B.rankQR + 74];
+        workspace[mpcprueba2_B.rankQR + 67] = workspace[mpcprueba2_B.rankQR +
+          134];
       }
     } else {
       if (mpcprueba2_B.mWConstr - 1 >= 0) {
@@ -2084,7 +1539,7 @@ static boolean_T mpcprue_feasibleX0ForWorkingSet(real_T workspace[703], real_T
              mpcprueba2_B.mWConstr; mpcprueba2_B.rankQR++) {
           mpcprueba2_B.offsetQR = workingset->ldA * mpcprueba2_B.rankQR;
           mpcprueba2_B.ix = qrmanager->ldq * mpcprueba2_B.rankQR;
-          for (mpcprueba2_B.ldq = 0; mpcprueba2_B.ldq <= mpcprueba2_B.nVar_a;
+          for (mpcprueba2_B.ldq = 0; mpcprueba2_B.ldq <= mpcprueba2_B.nVar_f;
                mpcprueba2_B.ldq++) {
             qrmanager->QR[mpcprueba2_B.ix + mpcprueba2_B.ldq] =
               workingset->ATwset[mpcprueba2_B.offsetQR + mpcprueba2_B.ldq];
@@ -2121,11 +1576,11 @@ static boolean_T mpcprue_feasibleX0ForWorkingSet(real_T workspace[703], real_T
       for (mpcprueba2_B.ldq = 0; mpcprueba2_B.ldq < mpcprueba2_B.mWConstr;
            mpcprueba2_B.ldq++) {
         mpcprueba2_B.temp = 0.0;
-        if (mpcprueba2_B.nVar_a + 1 >= 1) {
+        if (mpcprueba2_B.nVar_f + 1 >= 1) {
           mpcprueba2_B.ix = (qrmanager->jpvt[mpcprueba2_B.ldq] - 1) *
             workingset->ldA;
           for (mpcprueba2_B.offsetQR = 0; mpcprueba2_B.offsetQR <=
-               mpcprueba2_B.nVar_a; mpcprueba2_B.offsetQR++) {
+               mpcprueba2_B.nVar_f; mpcprueba2_B.offsetQR++) {
             mpcprueba2_B.temp += workingset->ATwset[mpcprueba2_B.ix +
               mpcprueba2_B.offsetQR] * xCurrent[mpcprueba2_B.offsetQR];
           }
@@ -2133,14 +1588,14 @@ static boolean_T mpcprue_feasibleX0ForWorkingSet(real_T workspace[703], real_T
 
         workspace[mpcprueba2_B.ldq] = workingset->bwset[qrmanager->
           jpvt[mpcprueba2_B.ldq] - 1] - mpcprueba2_B.temp;
-        workspace[mpcprueba2_B.ldq + 37] = workingset->bwset[qrmanager->
+        workspace[mpcprueba2_B.ldq + 67] = workingset->bwset[qrmanager->
           jpvt[mpcprueba2_B.ldq] - 1];
       }
 
       mpcprueba2_B.ldq = qrmanager->ldq;
       for (mpcprueba2_B.mWConstr = 0; mpcprueba2_B.mWConstr < 2;
            mpcprueba2_B.mWConstr++) {
-        mpcprueba2_B.jBcol = 37 * mpcprueba2_B.mWConstr;
+        mpcprueba2_B.jBcol = 67 * mpcprueba2_B.mWConstr;
         for (mpcprueba2_B.offsetQR = 0; mpcprueba2_B.offsetQR <
              mpcprueba2_B.rankQR; mpcprueba2_B.offsetQR++) {
           mpcprueba2_B.iAcol = mpcprueba2_B.ldq * mpcprueba2_B.offsetQR;
@@ -2158,12 +1613,12 @@ static boolean_T mpcprue_feasibleX0ForWorkingSet(real_T workspace[703], real_T
         }
       }
 
-      memcpy(&mpcprueba2_B.B[0], &workspace[0], 703U * sizeof(real_T));
+      memcpy(&mpcprueba2_B.B[0], &workspace[0], 1072U * sizeof(real_T));
       if (workingset->nVar != 0) {
         mpcprueba2_B.jBcol = 1;
-        for (mpcprueba2_B.mWConstr = 0; mpcprueba2_B.mWConstr <= 37;
-             mpcprueba2_B.mWConstr += 37) {
-          mpcprueba2_B.ix = (mpcprueba2_B.mWConstr + mpcprueba2_B.nVar_a) + 1;
+        for (mpcprueba2_B.mWConstr = 0; mpcprueba2_B.mWConstr <= 67;
+             mpcprueba2_B.mWConstr += 67) {
+          mpcprueba2_B.ix = (mpcprueba2_B.mWConstr + mpcprueba2_B.nVar_f) + 1;
           for (mpcprueba2_B.offsetQR = mpcprueba2_B.mWConstr + 1;
                mpcprueba2_B.offsetQR <= mpcprueba2_B.ix; mpcprueba2_B.offsetQR++)
           {
@@ -2171,15 +1626,15 @@ static boolean_T mpcprue_feasibleX0ForWorkingSet(real_T workspace[703], real_T
           }
         }
 
-        for (mpcprueba2_B.mWConstr = 0; mpcprueba2_B.mWConstr <= 37;
-             mpcprueba2_B.mWConstr += 37) {
+        for (mpcprueba2_B.mWConstr = 0; mpcprueba2_B.mWConstr <= 67;
+             mpcprueba2_B.mWConstr += 67) {
           mpcprueba2_B.iAcol = -1;
           mpcprueba2_B.b_ar = mpcprueba2_B.jBcol + mpcprueba2_B.rankQR;
           for (mpcprueba2_B.offsetQR = mpcprueba2_B.jBcol; mpcprueba2_B.offsetQR
                < mpcprueba2_B.b_ar; mpcprueba2_B.offsetQR++) {
-            mpcprueba2_B.d_j = (mpcprueba2_B.mWConstr + mpcprueba2_B.nVar_a) + 1;
+            mpcprueba2_B.d_a = (mpcprueba2_B.mWConstr + mpcprueba2_B.nVar_f) + 1;
             for (mpcprueba2_B.ix = mpcprueba2_B.mWConstr + 1; mpcprueba2_B.ix <=
-                 mpcprueba2_B.d_j; mpcprueba2_B.ix++) {
+                 mpcprueba2_B.d_a; mpcprueba2_B.ix++) {
               workspace[mpcprueba2_B.ix - 1] += qrmanager->Q[(mpcprueba2_B.iAcol
                 + mpcprueba2_B.ix) - mpcprueba2_B.mWConstr] *
                 mpcprueba2_B.B[mpcprueba2_B.offsetQR - 1];
@@ -2188,7 +1643,7 @@ static boolean_T mpcprue_feasibleX0ForWorkingSet(real_T workspace[703], real_T
             mpcprueba2_B.iAcol += mpcprueba2_B.ldq;
           }
 
-          mpcprueba2_B.jBcol += 37;
+          mpcprueba2_B.jBcol += 67;
         }
       }
     }
@@ -2196,39 +1651,39 @@ static boolean_T mpcprue_feasibleX0ForWorkingSet(real_T workspace[703], real_T
     mpcprueba2_B.rankQR = 0;
     do {
       exitg1 = 0;
-      if (mpcprueba2_B.rankQR <= mpcprueba2_B.nVar_a) {
+      if (mpcprueba2_B.rankQR <= mpcprueba2_B.nVar_f) {
         if (rtIsInf(workspace[mpcprueba2_B.rankQR]) || rtIsNaN
             (workspace[mpcprueba2_B.rankQR])) {
           nonDegenerateWset = false;
           exitg1 = 1;
-        } else if (rtIsInf(workspace[mpcprueba2_B.rankQR + 37]) || rtIsNaN
-                   (workspace[mpcprueba2_B.rankQR + 37])) {
+        } else if (rtIsInf(workspace[mpcprueba2_B.rankQR + 67]) || rtIsNaN
+                   (workspace[mpcprueba2_B.rankQR + 67])) {
           nonDegenerateWset = false;
           exitg1 = 1;
         } else {
           mpcprueba2_B.rankQR++;
         }
       } else {
-        if (mpcprueba2_B.nVar_a >= 0) {
+        if (mpcprueba2_B.nVar_f >= 0) {
           for (mpcprueba2_B.rankQR = 0; mpcprueba2_B.rankQR <=
-               mpcprueba2_B.nVar_a; mpcprueba2_B.rankQR++) {
+               mpcprueba2_B.nVar_f; mpcprueba2_B.rankQR++) {
             workspace[mpcprueba2_B.rankQR] += xCurrent[mpcprueba2_B.rankQR];
           }
         }
 
         mpcprueba2_B.temp = mpcprueb_maxConstraintViolation(workingset,
-          workspace, 1);
-        mpcprueba2_B.constrViolation_basicX = mpcprueb_maxConstraintViolation
-          (workingset, workspace, 38);
+          workspace);
+        mpcprueba2_B.constrViolation_basicX = mpcpru_maxConstraintViolation_n
+          (workingset, workspace);
         if ((mpcprueba2_B.temp <= 2.2204460492503131E-16) || (mpcprueba2_B.temp <
              mpcprueba2_B.constrViolation_basicX)) {
-          if (mpcprueba2_B.nVar_a >= 0) {
+          if (mpcprueba2_B.nVar_f >= 0) {
             memcpy(&xCurrent[0], &workspace[0], static_cast<uint32_T>
-                   (mpcprueba2_B.nVar_a + 1) * sizeof(real_T));
+                   (mpcprueba2_B.nVar_f + 1) * sizeof(real_T));
           }
-        } else if (mpcprueba2_B.nVar_a >= 0) {
-          memcpy(&xCurrent[0], &workspace[37], static_cast<uint32_T>
-                 (mpcprueba2_B.nVar_a + 1) * sizeof(real_T));
+        } else if (mpcprueba2_B.nVar_f >= 0) {
+          memcpy(&xCurrent[0], &workspace[67], static_cast<uint32_T>
+                 (mpcprueba2_B.nVar_f + 1) * sizeof(real_T));
         }
 
         exitg1 = 1;
@@ -2240,21 +1695,85 @@ static boolean_T mpcprue_feasibleX0ForWorkingSet(real_T workspace[703], real_T
 }
 
 // Function for MATLAB Function: '<Root>/MATLAB Function5'
-static real_T mpcpru_maxConstraintViolation_i(const
-  shMFFa6ZZiYob3JbcpnnDNC_mpcpr_T *obj, const real_T x[19], int32_T ix0)
+static void mpcprueba2_xgemv_j3(int32_T m, int32_T n, const real_T A[1056],
+  int32_T lda, const real_T x[16], real_T y[67])
+{
+  if ((m != 0) && (n != 0)) {
+    int32_T b;
+    int32_T iy;
+    for (int32_T b_iy = 0; b_iy < n; b_iy++) {
+      y[b_iy] = -y[b_iy];
+    }
+
+    iy = 0;
+    b = (n - 1) * lda + 1;
+    for (int32_T b_iy = 1; lda < 0 ? b_iy >= b : b_iy <= b; b_iy += lda) {
+      real_T c;
+      int32_T d;
+      c = 0.0;
+      d = b_iy + m;
+      for (int32_T ia = b_iy; ia < d; ia++) {
+        c += A[ia - 1] * x[ia - b_iy];
+      }
+
+      y[iy] += c;
+      iy++;
+    }
+  }
+}
+
+// Function for MATLAB Function: '<Root>/MATLAB Function5'
+static real_T mpcpr_maxConstraintViolation_n3(sbYdmyzq7l8Oes4F6y6cc2C_mpcpr_T
+  *obj, const real_T x[16])
 {
   real_T u1;
   real_T v;
+  int32_T k;
   int32_T mFixed;
+  int32_T mIneq;
   int32_T mLB;
   int32_T mUB;
   mLB = obj->sizes[3];
   mUB = obj->sizes[4];
   mFixed = obj->sizes[0];
-  v = 0.0;
+  if (obj->probType == 2) {
+    v = 0.0;
+    mIneq = obj->sizes[2];
+    if (mIneq - 1 >= 0) {
+      memcpy(&obj->maxConstrWorkspace[0], &obj->bineq[0], static_cast<uint32_T>
+             (mIneq) * sizeof(real_T));
+    }
+
+    mpcprueba2_xgemv_j3(obj->nVarOrig, obj->sizes[2], obj->Aineq, obj->ldA, x,
+                        obj->maxConstrWorkspace);
+    for (k = 0; k < mIneq; k++) {
+      obj->maxConstrWorkspace[k] -= x[obj->nVarOrig + k];
+      u1 = obj->maxConstrWorkspace[k];
+      if ((!(v >= u1)) && (!rtIsNaN(u1))) {
+        v = u1;
+      }
+    }
+  } else {
+    v = 0.0;
+    mIneq = obj->sizes[2];
+    if (mIneq - 1 >= 0) {
+      memcpy(&obj->maxConstrWorkspace[0], &obj->bineq[0], static_cast<uint32_T>
+             (mIneq) * sizeof(real_T));
+    }
+
+    mpcprueba2_xgemv_j3(obj->nVar, obj->sizes[2], obj->Aineq, obj->ldA, x,
+                        obj->maxConstrWorkspace);
+    for (k = 0; k < mIneq; k++) {
+      u1 = obj->maxConstrWorkspace[k];
+      if ((!(v >= u1)) && (!rtIsNaN(u1))) {
+        v = u1;
+      }
+    }
+  }
+
   if (obj->sizes[3] > 0) {
-    for (int32_T idx = 0; idx < mLB; idx++) {
-      u1 = -x[(ix0 + obj->indexLB[idx]) - 2] - obj->lb[obj->indexLB[idx] - 1];
+    for (mIneq = 0; mIneq < mLB; mIneq++) {
+      u1 = -x[obj->indexLB[mIneq] - 1] - obj->lb[obj->indexLB[mIneq] - 1];
       if ((!(v >= u1)) && (!rtIsNaN(u1))) {
         v = u1;
       }
@@ -2262,8 +1781,8 @@ static real_T mpcpru_maxConstraintViolation_i(const
   }
 
   if (obj->sizes[4] > 0) {
-    for (int32_T idx = 0; idx < mUB; idx++) {
-      u1 = x[(ix0 + obj->indexUB[idx]) - 2] - obj->ub[obj->indexUB[idx] - 1];
+    for (mLB = 0; mLB < mUB; mLB++) {
+      u1 = x[obj->indexUB[mLB] - 1] - obj->ub[obj->indexUB[mLB] - 1];
       if ((!(v >= u1)) && (!rtIsNaN(u1))) {
         v = u1;
       }
@@ -2272,8 +1791,7 @@ static real_T mpcpru_maxConstraintViolation_i(const
 
   if (obj->sizes[0] > 0) {
     for (mUB = 0; mUB < mFixed; mUB++) {
-      u1 = fabs(x[(ix0 + obj->indexFixed[mUB]) - 2] - obj->ub[obj->
-                indexFixed[mUB] - 1]);
+      u1 = fabs(x[obj->indexFixed[mUB] - 1] - obj->ub[obj->indexFixed[mUB] - 1]);
       if ((!(v >= u1)) && (!rtIsNaN(u1))) {
         v = u1;
       }
@@ -2284,68 +1802,68 @@ static real_T mpcpru_maxConstraintViolation_i(const
 }
 
 // Function for MATLAB Function: '<Root>/MATLAB Function5'
-static void mpcprueba2_PresolveWorkingSet(szTgroxymWCv1wbPz1KDaqC_mpcpr_T
-  *solution, sDXqx68fEcBxWtF9wVQzAm_mpcpru_T *memspace,
-  shMFFa6ZZiYob3JbcpnnDNC_mpcpr_T *workingset, const
-  sqZVQFgLZG74FDpCArykMHB_mpcpr_T *options, sIxc6e90CRmt17sP6BCIycE_mpcpr_T
+static void mpcprueba2_PresolveWorkingSet(sqvdR3NQrfOjUOrC18Muj0B_mpcpr_T
+  *solution, sFevNsrsl34D5b5aqm3qNjD_mpcpr_T *memspace,
+  sbYdmyzq7l8Oes4F6y6cc2C_mpcpr_T *workingset, const
+  sqZVQFgLZG74FDpCArykMHB_mpcpr_T *options, ssq2hyGkLOLhNlUBS6YfcCD_mpcpr_T
   *qrmanager)
 {
   boolean_T guard1;
   boolean_T okWorkingSet;
   solution->state = 82;
-  qrmanager->ldq = 19;
-  memset(&qrmanager->QR[0], 0, 703U * sizeof(real_T));
-  memset(&qrmanager->Q[0], 0, 361U * sizeof(real_T));
-  memset(&qrmanager->jpvt[0], 0, 37U * sizeof(int32_T));
+  qrmanager->ldq = 16;
+  memset(&qrmanager->QR[0], 0, 1072U * sizeof(real_T));
+  memset(&qrmanager->Q[0], 0, sizeof(real_T) << 8U);
+  memset(&qrmanager->jpvt[0], 0, 67U * sizeof(int32_T));
   qrmanager->mrows = 0;
   qrmanager->ncols = 0;
-  memset(&qrmanager->tau[0], 0, 19U * sizeof(real_T));
+  memset(&qrmanager->tau[0], 0, sizeof(real_T) << 4U);
   qrmanager->minRowCol = 0;
   qrmanager->usedPivoting = false;
-  mpcprueba2_B.nVar_m = workingset->nVar;
-  mpcprueba2_B.mTotalWorkingEq_c = workingset->nWConstr[0] +
+  mpcprueba2_B.nVar_n = workingset->nVar;
+  mpcprueba2_B.mTotalWorkingEq_m = workingset->nWConstr[0] +
     workingset->nWConstr[1];
-  mpcprueba2_B.nDepInd_m = 0;
-  if (mpcprueba2_B.mTotalWorkingEq_c > 0) {
-    for (mpcprueba2_B.i_c = 0; mpcprueba2_B.i_c < mpcprueba2_B.mTotalWorkingEq_c;
-         mpcprueba2_B.i_c++) {
+  mpcprueba2_B.nDepInd_c = 0;
+  if (mpcprueba2_B.mTotalWorkingEq_m > 0) {
+    for (mpcprueba2_B.i_h = 0; mpcprueba2_B.i_h < mpcprueba2_B.mTotalWorkingEq_m;
+         mpcprueba2_B.i_h++) {
       for (mpcprueba2_B.idxStartIneq_m = 0; mpcprueba2_B.idxStartIneq_m <
-           mpcprueba2_B.nVar_m; mpcprueba2_B.idxStartIneq_m++) {
-        qrmanager->QR[mpcprueba2_B.i_c + 19 * mpcprueba2_B.idxStartIneq_m] =
-          workingset->ATwset[workingset->ldA * mpcprueba2_B.i_c +
+           mpcprueba2_B.nVar_n; mpcprueba2_B.idxStartIneq_m++) {
+        qrmanager->QR[mpcprueba2_B.i_h + (mpcprueba2_B.idxStartIneq_m << 4)] =
+          workingset->ATwset[workingset->ldA * mpcprueba2_B.i_h +
           mpcprueba2_B.idxStartIneq_m];
       }
     }
 
-    mpcprueba2_B.nDepInd_m = mpcprueb_ComputeNumDependentEq_(qrmanager,
-      workingset->bwset, mpcprueba2_B.mTotalWorkingEq_c, workingset->nVar);
-    if (mpcprueba2_B.nDepInd_m > 0) {
-      for (mpcprueba2_B.i_c = 0; mpcprueba2_B.i_c <
-           mpcprueba2_B.mTotalWorkingEq_c; mpcprueba2_B.i_c++) {
-        mpcprueba2_B.iy0_h = qrmanager->ldq * mpcprueba2_B.i_c;
-        mpcprueba2_B.ix0_j = workingset->ldA * mpcprueba2_B.i_c;
+    mpcprueba2_B.nDepInd_c = mpcprueb_ComputeNumDependentEq_(qrmanager,
+      workingset->bwset, mpcprueba2_B.mTotalWorkingEq_m, workingset->nVar);
+    if (mpcprueba2_B.nDepInd_c > 0) {
+      for (mpcprueba2_B.i_h = 0; mpcprueba2_B.i_h <
+           mpcprueba2_B.mTotalWorkingEq_m; mpcprueba2_B.i_h++) {
+        mpcprueba2_B.iy0_j = qrmanager->ldq * mpcprueba2_B.i_h;
+        mpcprueba2_B.ix0_m = workingset->ldA * mpcprueba2_B.i_h;
         for (mpcprueba2_B.idxStartIneq_m = 0; mpcprueba2_B.idxStartIneq_m <
-             mpcprueba2_B.nVar_m; mpcprueba2_B.idxStartIneq_m++) {
-          qrmanager->QR[mpcprueba2_B.iy0_h + mpcprueba2_B.idxStartIneq_m] =
-            workingset->ATwset[mpcprueba2_B.idxStartIneq_m + mpcprueba2_B.ix0_j];
+             mpcprueba2_B.nVar_n; mpcprueba2_B.idxStartIneq_m++) {
+          qrmanager->QR[mpcprueba2_B.iy0_j + mpcprueba2_B.idxStartIneq_m] =
+            workingset->ATwset[mpcprueba2_B.idxStartIneq_m + mpcprueba2_B.ix0_m];
         }
       }
 
       mpcprueba2_IndexOfDependentEq_(memspace->workspace_int,
-        workingset->nWConstr[0], mpcprueba2_B.nDepInd_m, qrmanager,
-        workingset->nVar, mpcprueba2_B.mTotalWorkingEq_c);
-      mpcprueba2_countsort(memspace->workspace_int, mpcprueba2_B.nDepInd_m,
+        workingset->nWConstr[0], mpcprueba2_B.nDepInd_c, qrmanager,
+        workingset->nVar, mpcprueba2_B.mTotalWorkingEq_m);
+      mpcprueba2_countsort(memspace->workspace_int, mpcprueba2_B.nDepInd_c,
                            memspace->workspace_sort, 1,
-                           mpcprueba2_B.mTotalWorkingEq_c);
-      for (mpcprueba2_B.i_c = mpcprueba2_B.nDepInd_m; mpcprueba2_B.i_c >= 1;
-           mpcprueba2_B.i_c--) {
+                           mpcprueba2_B.mTotalWorkingEq_m);
+      for (mpcprueba2_B.i_h = mpcprueba2_B.nDepInd_c; mpcprueba2_B.i_h >= 1;
+           mpcprueba2_B.i_h--) {
         mpcprueba2_removeEqConstr(workingset, memspace->
-          workspace_int[mpcprueba2_B.i_c - 1]);
+          workspace_int[mpcprueba2_B.i_h - 1]);
       }
     }
   }
 
-  if ((mpcprueba2_B.nDepInd_m != -1) && (workingset->nActiveConstr <=
+  if ((mpcprueba2_B.nDepInd_c != -1) && (workingset->nActiveConstr <=
        qrmanager->ldq)) {
     mpcprueba2_RemoveDependentIneq_(workingset, qrmanager, memspace, 1.0);
     okWorkingSet = mpcprue_feasibleX0ForWorkingSet(memspace->workspace_float,
@@ -2367,9 +1885,9 @@ static void mpcprueba2_PresolveWorkingSet(szTgroxymWCv1wbPz1KDaqC_mpcpr_T
     if (guard1) {
       if (workingset->nWConstr[0] + workingset->nWConstr[1] == workingset->nVar)
       {
-        mpcprueba2_B.constrViolation_p = mpcpru_maxConstraintViolation_i
-          (workingset, solution->xstar, 1);
-        if (mpcprueba2_B.constrViolation_p > options->ConstraintTolerance) {
+        mpcprueba2_B.constrViolation_d = mpcpr_maxConstraintViolation_n3
+          (workingset, solution->xstar);
+        if (mpcprueba2_B.constrViolation_d > options->ConstraintTolerance) {
           solution->state = -2;
         }
       }
@@ -2378,11 +1896,11 @@ static void mpcprueba2_PresolveWorkingSet(szTgroxymWCv1wbPz1KDaqC_mpcpr_T
     solution->state = -3;
     mpcprueba2_B.idxStartIneq_m = (workingset->nWConstr[0] +
       workingset->nWConstr[1]) + 1;
-    mpcprueba2_B.nVar_m = workingset->nActiveConstr;
-    for (mpcprueba2_B.i_c = mpcprueba2_B.idxStartIneq_m; mpcprueba2_B.i_c <=
-         mpcprueba2_B.nVar_m; mpcprueba2_B.i_c++) {
+    mpcprueba2_B.nVar_n = workingset->nActiveConstr;
+    for (mpcprueba2_B.i_h = mpcprueba2_B.idxStartIneq_m; mpcprueba2_B.i_h <=
+         mpcprueba2_B.nVar_n; mpcprueba2_B.i_h++) {
       workingset->isActiveConstr[(workingset->isActiveIdx[workingset->
-        Wid[mpcprueba2_B.i_c - 1] - 1] + workingset->Wlocalidx[mpcprueba2_B.i_c
+        Wid[mpcprueba2_B.i_h - 1] - 1] + workingset->Wlocalidx[mpcprueba2_B.i_h
         - 1]) - 2] = false;
     }
 
@@ -2394,8 +1912,264 @@ static void mpcprueba2_PresolveWorkingSet(szTgroxymWCv1wbPz1KDaqC_mpcpr_T
 }
 
 // Function for MATLAB Function: '<Root>/MATLAB Function5'
-static void mpcprueba2_xgemv(int32_T m, int32_T n, const real_T A[324], int32_T
-  lda, const real_T x[19], real_T y[18])
+static void mpcprue_modifyOverheadPhaseOne_(sbYdmyzq7l8Oes4F6y6cc2C_mpcpr_T *obj)
+{
+  int32_T idxEq;
+  int32_T idxStartIneq;
+  idxStartIneq = obj->sizes[0];
+  for (int32_T idx = 0; idx < idxStartIneq; idx++) {
+    obj->ATwset[(obj->nVar + obj->ldA * idx) - 1] = 0.0;
+  }
+
+  idxStartIneq = obj->sizes[1];
+  for (int32_T idx = 0; idx < idxStartIneq; idx++) {
+    obj->ATwset[((obj->ldA * idx + obj->nVar) + obj->ldA * (obj->isActiveIdx[1]
+      - 1)) - 1] = 0.0;
+  }
+
+  idxStartIneq = obj->sizes[2];
+  for (int32_T idx = 0; idx < idxStartIneq; idx++) {
+    obj->Aineq[(obj->nVar + obj->ldA * idx) - 1] = -1.0;
+  }
+
+  obj->indexLB[obj->sizes[3] - 1] = obj->nVar;
+  obj->lb[obj->nVar - 1] = obj->SLACK0;
+  idxStartIneq = obj->isActiveIdx[2];
+  idxEq = obj->nActiveConstr;
+  for (int32_T idx = idxStartIneq; idx <= idxEq; idx++) {
+    obj->ATwset[(obj->nVar + obj->ldA * (idx - 1)) - 1] = -1.0;
+  }
+
+  idxStartIneq = obj->isActiveIdx[4] - 1;
+  if (obj->nWConstr[4] > 0) {
+    idxEq = obj->sizesNormal[4];
+    for (int32_T idx = idxEq; idx >= 1; idx--) {
+      int32_T tmp;
+      tmp = idxStartIneq + idx;
+      obj->isActiveConstr[tmp] = obj->isActiveConstr[tmp - 1];
+    }
+  } else {
+    obj->isActiveConstr[(obj->isActiveIdx[4] + obj->sizesNormal[4]) - 1] = false;
+  }
+
+  obj->isActiveConstr[obj->isActiveIdx[4] - 1] = false;
+}
+
+// Function for MATLAB Function: '<Root>/MATLAB Function5'
+static void mpcprueba2_setProblemType(sbYdmyzq7l8Oes4F6y6cc2C_mpcpr_T *obj,
+  int32_T PROBLEM_TYPE)
+{
+  int32_T c;
+  int32_T colOffsetATw;
+  int32_T colOffsetAineq;
+  int32_T idxUpperExisting;
+  int32_T mIneq;
+  int32_T offsetEq1;
+  int32_T offsetEq2;
+  int32_T offsetIneq;
+  switch (PROBLEM_TYPE) {
+   case 3:
+    obj->nVar = obj->nVarOrig;
+    obj->mConstr = obj->mConstrOrig;
+    if (obj->nWConstr[4] > 0) {
+      idxUpperExisting = obj->isActiveIdx[4] - 2;
+      offsetEq1 = obj->sizesNormal[4];
+      for (colOffsetATw = 0; colOffsetATw < offsetEq1; colOffsetATw++) {
+        offsetIneq = (colOffsetATw + idxUpperExisting) + 1;
+        obj->isActiveConstr[(obj->isActiveIdxNormal[4] + colOffsetATw) - 1] =
+          obj->isActiveConstr[offsetIneq];
+        obj->isActiveConstr[offsetIneq] = false;
+      }
+    }
+
+    for (offsetIneq = 0; offsetIneq < 5; offsetIneq++) {
+      obj->sizes[offsetIneq] = obj->sizesNormal[offsetIneq];
+    }
+
+    for (offsetIneq = 0; offsetIneq < 6; offsetIneq++) {
+      obj->isActiveIdx[offsetIneq] = obj->isActiveIdxNormal[offsetIneq];
+    }
+    break;
+
+   case 1:
+    obj->nVar = obj->nVarOrig + 1;
+    obj->mConstr = obj->mConstrOrig + 1;
+    for (offsetIneq = 0; offsetIneq < 5; offsetIneq++) {
+      obj->sizes[offsetIneq] = obj->sizesPhaseOne[offsetIneq];
+    }
+
+    mpcprue_modifyOverheadPhaseOne_(obj);
+    for (offsetIneq = 0; offsetIneq < 6; offsetIneq++) {
+      obj->isActiveIdx[offsetIneq] = obj->isActiveIdxPhaseOne[offsetIneq];
+    }
+    break;
+
+   case 2:
+    obj->nVar = obj->nVarMax - 1;
+    obj->mConstr = obj->mConstrMax - 1;
+    for (offsetIneq = 0; offsetIneq < 5; offsetIneq++) {
+      obj->sizes[offsetIneq] = obj->sizesRegularized[offsetIneq];
+    }
+
+    if (obj->probType != 4) {
+      mIneq = obj->sizes[2];
+      idxUpperExisting = obj->sizes[1];
+      offsetIneq = obj->nVarOrig + 1;
+      offsetEq1 = obj->nVarOrig + obj->sizes[2];
+      offsetEq2 = (obj->nVarOrig + obj->sizes[2]) + obj->sizes[1];
+      c = obj->sizes[0];
+      for (colOffsetAineq = 0; colOffsetAineq < c; colOffsetAineq++) {
+        colOffsetATw = obj->ldA * colOffsetAineq;
+        if (obj->nVarOrig + 1 <= obj->nVar) {
+          memset(&obj->ATwset[((obj->nVarOrig + 1) + colOffsetATw) + -1], 0,
+                 static_cast<uint32_T>((((obj->nVar + colOffsetATw) -
+                    (obj->nVarOrig + 1)) - colOffsetATw) + 1) * sizeof(real_T));
+        }
+      }
+
+      for (colOffsetATw = 0; colOffsetATw < mIneq; colOffsetATw++) {
+        colOffsetAineq = obj->ldA * colOffsetATw - 1;
+        c = offsetIneq + colOffsetATw;
+        if (offsetIneq <= c - 1) {
+          memset(&obj->Aineq[offsetIneq + colOffsetAineq], 0,
+                 static_cast<uint32_T>(((c + colOffsetAineq) - offsetIneq) -
+                  colOffsetAineq) * sizeof(real_T));
+        }
+
+        obj->Aineq[c + colOffsetAineq] = -1.0;
+        c++;
+        if (c <= obj->nVar) {
+          memset(&obj->Aineq[c + colOffsetAineq], 0, static_cast<uint32_T>
+                 ((((obj->nVar + colOffsetAineq) - c) - colOffsetAineq) + 1) *
+                 sizeof(real_T));
+        }
+      }
+
+      for (mIneq = 0; mIneq < idxUpperExisting; mIneq++) {
+        colOffsetATw = ((obj->isActiveIdx[1] - 1) + mIneq) * obj->ldA - 1;
+        if (offsetIneq <= offsetEq1) {
+          memset(&obj->ATwset[offsetIneq + colOffsetATw], 0,
+                 static_cast<uint32_T>((((offsetEq1 + colOffsetATw) - offsetIneq)
+                   - colOffsetATw) + 1) * sizeof(real_T));
+        }
+
+        c = mIneq + offsetEq1;
+        if (offsetEq1 + 1 <= (c + 1) - 1) {
+          memset(&obj->ATwset[(offsetEq1 + colOffsetATw) + 1], 0,
+                 static_cast<uint32_T>(((((c + 1) + colOffsetATw) - offsetEq1) -
+                   colOffsetATw) - 1) * sizeof(real_T));
+        }
+
+        obj->ATwset[(c + colOffsetATw) + 1] = -1.0;
+        c += 2;
+        if (c <= offsetEq2) {
+          memset(&obj->ATwset[c + colOffsetATw], 0, static_cast<uint32_T>
+                 ((((offsetEq2 + colOffsetATw) - c) - colOffsetATw) + 1) *
+                 sizeof(real_T));
+        }
+
+        c = mIneq + offsetEq2;
+        if (offsetEq2 + 1 <= (c + 1) - 1) {
+          memset(&obj->ATwset[(offsetEq2 + colOffsetATw) + 1], 0,
+                 static_cast<uint32_T>(((((c + 1) + colOffsetATw) - offsetEq2) -
+                   colOffsetATw) - 1) * sizeof(real_T));
+        }
+
+        obj->ATwset[(c + colOffsetATw) + 1] = 1.0;
+        c += 2;
+        if (c <= obj->nVar) {
+          memset(&obj->ATwset[c + colOffsetATw], 0, static_cast<uint32_T>
+                 ((((obj->nVar + colOffsetATw) - c) - colOffsetATw) + 1) *
+                 sizeof(real_T));
+        }
+      }
+
+      idxUpperExisting = obj->nVarOrig;
+      offsetEq1 = obj->sizesNormal[3] + 1;
+      offsetEq2 = obj->sizesRegularized[3];
+      for (colOffsetATw = offsetEq1; colOffsetATw <= offsetEq2; colOffsetATw++)
+      {
+        idxUpperExisting++;
+        obj->indexLB[colOffsetATw - 1] = idxUpperExisting;
+      }
+
+      if (obj->nWConstr[4] > 0) {
+        idxUpperExisting = obj->sizesRegularized[4];
+        for (colOffsetATw = 0; colOffsetATw < idxUpperExisting; colOffsetATw++)
+        {
+          obj->isActiveConstr[obj->isActiveIdxRegularized[4] + colOffsetATw] =
+            obj->isActiveConstr[(obj->isActiveIdx[4] + colOffsetATw) - 1];
+        }
+      }
+
+      idxUpperExisting = obj->isActiveIdx[4];
+      offsetEq1 = obj->isActiveIdxRegularized[4];
+      if (idxUpperExisting <= offsetEq1 - 1) {
+        memset(&obj->isActiveConstr[idxUpperExisting + -1], 0, static_cast<
+               uint32_T>(offsetEq1 - idxUpperExisting) * sizeof(boolean_T));
+      }
+
+      offsetEq1 = (obj->nVarOrig + obj->sizes[2]) + (obj->sizes[1] << 1);
+      if (obj->nVarOrig + 1 <= offsetEq1) {
+        memset(&obj->lb[(obj->nVarOrig + 1) + -1], 0, static_cast<uint32_T>
+               ((offsetEq1 - (obj->nVarOrig + 1)) + 1) * sizeof(real_T));
+      }
+
+      offsetEq1 = obj->isActiveIdx[2];
+      offsetEq2 = obj->nActiveConstr;
+      for (idxUpperExisting = offsetEq1; idxUpperExisting <= offsetEq2;
+           idxUpperExisting++) {
+        colOffsetATw = (idxUpperExisting - 1) * obj->ldA - 1;
+        if (obj->Wid[idxUpperExisting - 1] == 3) {
+          colOffsetAineq = (obj->Wlocalidx[idxUpperExisting - 1] + offsetIneq) -
+            2;
+          if (offsetIneq <= colOffsetAineq) {
+            memset(&obj->ATwset[offsetIneq + colOffsetATw], 0,
+                   static_cast<uint32_T>((((colOffsetAineq + colOffsetATw) -
+                      offsetIneq) - colOffsetATw) + 1) * sizeof(real_T));
+          }
+
+          obj->ATwset[((offsetIneq + obj->Wlocalidx[idxUpperExisting - 1]) +
+                       colOffsetATw) - 1] = -1.0;
+          colOffsetAineq = obj->Wlocalidx[idxUpperExisting - 1] + offsetIneq;
+          if (colOffsetAineq <= obj->nVar) {
+            memset(&obj->ATwset[colOffsetAineq + colOffsetATw], 0,
+                   static_cast<uint32_T>((((obj->nVar + colOffsetATw) -
+                      colOffsetAineq) - colOffsetATw) + 1) * sizeof(real_T));
+          }
+        } else if (offsetIneq <= obj->nVar) {
+          memset(&obj->ATwset[offsetIneq + colOffsetATw], 0,
+                 static_cast<uint32_T>((((obj->nVar + colOffsetATw) - offsetIneq)
+                   - colOffsetATw) + 1) * sizeof(real_T));
+        }
+      }
+    }
+
+    for (offsetIneq = 0; offsetIneq < 6; offsetIneq++) {
+      obj->isActiveIdx[offsetIneq] = obj->isActiveIdxRegularized[offsetIneq];
+    }
+    break;
+
+   default:
+    obj->nVar = obj->nVarMax;
+    obj->mConstr = obj->mConstrMax;
+    for (offsetIneq = 0; offsetIneq < 5; offsetIneq++) {
+      obj->sizes[offsetIneq] = obj->sizesRegPhaseOne[offsetIneq];
+    }
+
+    mpcprue_modifyOverheadPhaseOne_(obj);
+    for (offsetIneq = 0; offsetIneq < 6; offsetIneq++) {
+      obj->isActiveIdx[offsetIneq] = obj->isActiveIdxRegPhaseOne[offsetIneq];
+    }
+    break;
+  }
+
+  obj->probType = PROBLEM_TYPE;
+}
+
+// Function for MATLAB Function: '<Root>/MATLAB Function5'
+static void mpcprueba2_xgemv_j30(int32_T m, int32_T n, const real_T A[225],
+  int32_T lda, const real_T x[16], real_T y[15])
 {
   if ((m != 0) && (n != 0)) {
     int32_T b;
@@ -2421,8 +2195,8 @@ static void mpcprueba2_xgemv(int32_T m, int32_T n, const real_T A[324], int32_T
 }
 
 // Function for MATLAB Function: '<Root>/MATLAB Function5'
-static void mpcprueba2_computeGrad_StoreHx(sSitMryErsR3bMncKlW48mF_mpcpr_T *obj,
-  const real_T H[324], const real_T f[18], const real_T x[19])
+static void mpcprueba2_computeGrad_StoreHx(s3c01M66EFWFQJ5qmFcUbmD_mpcpr_T *obj,
+  const real_T b_H[225], const real_T f[15], const real_T x[16])
 {
   int32_T d;
   int32_T ixlast;
@@ -2438,7 +2212,7 @@ static void mpcprueba2_computeGrad_StoreHx(sSitMryErsR3bMncKlW48mF_mpcpr_T *obj,
     break;
 
    case 3:
-    mpcprueba2_xgemv(obj->nvar, obj->nvar, H, obj->nvar, x, obj->Hx);
+    mpcprueba2_xgemv_j30(obj->nvar, obj->nvar, b_H, obj->nvar, x, obj->Hx);
     if (obj->nvar - 1 >= 0) {
       memcpy(&obj->grad[0], &obj->Hx[0], static_cast<uint32_T>(obj->nvar) *
              sizeof(real_T));
@@ -2454,7 +2228,7 @@ static void mpcprueba2_computeGrad_StoreHx(sSitMryErsR3bMncKlW48mF_mpcpr_T *obj,
 
    case 4:
     maxRegVar = obj->maxVar - 1;
-    mpcprueba2_xgemv(obj->nvar, obj->nvar, H, obj->nvar, x, obj->Hx);
+    mpcprueba2_xgemv_j30(obj->nvar, obj->nvar, b_H, obj->nvar, x, obj->Hx);
     d = obj->nvar + 1;
     for (ixlast = d; ixlast <= maxRegVar; ixlast++) {
       obj->Hx[ixlast - 1] = x[ixlast - 1] * obj->beta;
@@ -2485,8 +2259,8 @@ static void mpcprueba2_computeGrad_StoreHx(sSitMryErsR3bMncKlW48mF_mpcpr_T *obj,
 
 // Function for MATLAB Function: '<Root>/MATLAB Function5'
 static real_T mpcprueba2_computeFval_ReuseHx(const
-  sSitMryErsR3bMncKlW48mF_mpcpr_T *obj, real_T workspace[703], const real_T f[18],
-  const real_T x[19])
+  s3c01M66EFWFQJ5qmFcUbmD_mpcpr_T *obj, real_T workspace[1072], const real_T f
+  [15], const real_T x[16])
 {
   real_T val;
   val = 0.0;
@@ -2583,8 +2357,8 @@ static void mpcprueba2_xrotg(real_T *a, real_T *b, real_T *c, real_T *s)
     mpcprueba2_B.roe = *a;
   }
 
-  mpcprueba2_B.scale_d = mpcprueba2_B.absa + mpcprueba2_B.absb;
-  if (mpcprueba2_B.scale_d == 0.0) {
+  mpcprueba2_B.scale_l = mpcprueba2_B.absa + mpcprueba2_B.absb;
+  if (mpcprueba2_B.scale_l == 0.0) {
     *s = 0.0;
     *c = 1.0;
     *a = 0.0;
@@ -2592,15 +2366,15 @@ static void mpcprueba2_xrotg(real_T *a, real_T *b, real_T *c, real_T *s)
   } else {
     real_T ads;
     real_T bds;
-    ads = mpcprueba2_B.absa / mpcprueba2_B.scale_d;
-    bds = mpcprueba2_B.absb / mpcprueba2_B.scale_d;
-    mpcprueba2_B.scale_d *= sqrt(ads * ads + bds * bds);
+    ads = mpcprueba2_B.absa / mpcprueba2_B.scale_l;
+    bds = mpcprueba2_B.absb / mpcprueba2_B.scale_l;
+    mpcprueba2_B.scale_l *= sqrt(ads * ads + bds * bds);
     if (mpcprueba2_B.roe < 0.0) {
-      mpcprueba2_B.scale_d = -mpcprueba2_B.scale_d;
+      mpcprueba2_B.scale_l = -mpcprueba2_B.scale_l;
     }
 
-    *c = *a / mpcprueba2_B.scale_d;
-    *s = *b / mpcprueba2_B.scale_d;
+    *c = *a / mpcprueba2_B.scale_l;
+    *s = *b / mpcprueba2_B.scale_l;
     if (mpcprueba2_B.absa > mpcprueba2_B.absb) {
       *b = *s;
     } else if (*c != 0.0) {
@@ -2609,13 +2383,13 @@ static void mpcprueba2_xrotg(real_T *a, real_T *b, real_T *c, real_T *s)
       *b = 1.0;
     }
 
-    *a = mpcprueba2_B.scale_d;
+    *a = mpcprueba2_B.scale_l;
   }
 }
 
 // Function for MATLAB Function: '<Root>/MATLAB Function5'
-static void mpcprueba2_squareQ_appendCol(sIxc6e90CRmt17sP6BCIycE_mpcpr_T *obj,
-  const real_T vec[703], int32_T iv0)
+static void mpcprueba2_squareQ_appendCol(ssq2hyGkLOLhNlUBS6YfcCD_mpcpr_T *obj,
+  const real_T vec[1072], int32_T iv0)
 {
   real_T b_c;
   int32_T Qk0;
@@ -2657,10 +2431,10 @@ static void mpcprueba2_squareQ_appendCol(sIxc6e90CRmt17sP6BCIycE_mpcpr_T *obj,
   obj->jpvt[obj->ncols - 1] = obj->ncols;
   for (idx = obj->mrows - 2; idx + 2 > obj->ncols; idx--) {
     b_iy = (obj->ncols - 1) * obj->ldq + idx;
-    mpcprueba2_B.temp_l = obj->QR[b_iy + 1];
-    mpcprueba2_xrotg(&obj->QR[b_iy], &mpcprueba2_B.temp_l, &b_c,
+    mpcprueba2_B.temp_da = obj->QR[b_iy + 1];
+    mpcprueba2_xrotg(&obj->QR[b_iy], &mpcprueba2_B.temp_da, &b_c,
                      &mpcprueba2_B.s_b);
-    obj->QR[b_iy + 1] = mpcprueba2_B.temp_l;
+    obj->QR[b_iy + 1] = mpcprueba2_B.temp_da;
     Qk0 = obj->ldq * idx;
     iyend = obj->mrows;
     if (obj->mrows >= 1) {
@@ -2668,17 +2442,17 @@ static void mpcprueba2_squareQ_appendCol(sIxc6e90CRmt17sP6BCIycE_mpcpr_T *obj,
       for (b_iy = 0; b_iy < iyend; b_iy++) {
         e = iy + b_iy;
         temp_tmp = Qk0 + b_iy;
-        mpcprueba2_B.temp_l = obj->Q[temp_tmp] * b_c + obj->Q[e] *
+        mpcprueba2_B.temp_da = obj->Q[temp_tmp] * b_c + obj->Q[e] *
           mpcprueba2_B.s_b;
         obj->Q[e] = obj->Q[e] * b_c - obj->Q[temp_tmp] * mpcprueba2_B.s_b;
-        obj->Q[temp_tmp] = mpcprueba2_B.temp_l;
+        obj->Q[temp_tmp] = mpcprueba2_B.temp_da;
       }
     }
   }
 }
 
 // Function for MATLAB Function: '<Root>/MATLAB Function5'
-static void mpcprueba2_deleteColMoveEnd(sIxc6e90CRmt17sP6BCIycE_mpcpr_T *obj,
+static void mpcprueba2_deleteColMoveEnd(ssq2hyGkLOLhNlUBS6YfcCD_mpcpr_T *obj,
   int32_T idx)
 {
   int32_T QRk0;
@@ -2727,21 +2501,21 @@ static void mpcprueba2_deleteColMoveEnd(sIxc6e90CRmt17sP6BCIycE_mpcpr_T *obj,
       idxRotGCol = (idx - 1) * obj->ldq;
       while (k >= idx) {
         QRk0 = k + idxRotGCol;
-        mpcprueba2_B.b_temp_l = obj->QR[QRk0];
-        mpcprueba2_xrotg(&obj->QR[QRk0 - 1], &mpcprueba2_B.b_temp_l,
+        mpcprueba2_B.b_temp_d = obj->QR[QRk0];
+        mpcprueba2_xrotg(&obj->QR[QRk0 - 1], &mpcprueba2_B.b_temp_d,
                          &mpcprueba2_B.c_c, &mpcprueba2_B.b_s);
-        obj->QR[QRk0] = mpcprueba2_B.b_temp_l;
+        obj->QR[QRk0] = mpcprueba2_B.b_temp_d;
         obj->QR[k + obj->ldq * (k - 1)] = 0.0;
         QRk0 = obj->ldq * idx + k;
         b_ix = obj->ncols - idx;
         if (b_ix >= 1) {
           ix = QRk0 - 1;
           for (b_n = 0; b_n < b_ix; b_n++) {
-            mpcprueba2_B.b_temp_l = mpcprueba2_B.c_c * obj->QR[ix] +
+            mpcprueba2_B.b_temp_d = mpcprueba2_B.c_c * obj->QR[ix] +
               mpcprueba2_B.b_s * obj->QR[QRk0];
             obj->QR[QRk0] = mpcprueba2_B.c_c * obj->QR[QRk0] - mpcprueba2_B.b_s *
               obj->QR[ix];
-            obj->QR[ix] = mpcprueba2_B.b_temp_l;
+            obj->QR[ix] = mpcprueba2_B.b_temp_d;
             QRk0 += obj->ldq;
             ix += obj->ldq;
           }
@@ -2754,11 +2528,11 @@ static void mpcprueba2_deleteColMoveEnd(sIxc6e90CRmt17sP6BCIycE_mpcpr_T *obj,
           for (b_n = 0; b_n < b_ix; b_n++) {
             d_temp_tmp = ix + b_n;
             c_temp_tmp = QRk0 + b_n;
-            mpcprueba2_B.b_temp_l = obj->Q[c_temp_tmp] * mpcprueba2_B.c_c +
+            mpcprueba2_B.b_temp_d = obj->Q[c_temp_tmp] * mpcprueba2_B.c_c +
               obj->Q[d_temp_tmp] * mpcprueba2_B.b_s;
             obj->Q[d_temp_tmp] = obj->Q[d_temp_tmp] * mpcprueba2_B.c_c - obj->
               Q[c_temp_tmp] * mpcprueba2_B.b_s;
-            obj->Q[c_temp_tmp] = mpcprueba2_B.b_temp_l;
+            obj->Q[c_temp_tmp] = mpcprueba2_B.b_temp_d;
           }
         }
 
@@ -2767,20 +2541,20 @@ static void mpcprueba2_deleteColMoveEnd(sIxc6e90CRmt17sP6BCIycE_mpcpr_T *obj,
 
       for (k = idx + 1; k <= i; k++) {
         QRk0 = (k - 1) * obj->ldq + k;
-        mpcprueba2_B.b_temp_l = obj->QR[QRk0];
-        mpcprueba2_xrotg(&obj->QR[QRk0 - 1], &mpcprueba2_B.b_temp_l,
+        mpcprueba2_B.b_temp_d = obj->QR[QRk0];
+        mpcprueba2_xrotg(&obj->QR[QRk0 - 1], &mpcprueba2_B.b_temp_d,
                          &mpcprueba2_B.c_c, &mpcprueba2_B.b_s);
-        obj->QR[QRk0] = mpcprueba2_B.b_temp_l;
+        obj->QR[QRk0] = mpcprueba2_B.b_temp_d;
         QRk0 = (obj->ldq + 1) * k;
         b_n = obj->ncols - k;
         if (b_n >= 1) {
           b_ix = QRk0 - 1;
           for (idxRotGCol = 0; idxRotGCol < b_n; idxRotGCol++) {
-            mpcprueba2_B.b_temp_l = mpcprueba2_B.c_c * obj->QR[b_ix] +
+            mpcprueba2_B.b_temp_d = mpcprueba2_B.c_c * obj->QR[b_ix] +
               mpcprueba2_B.b_s * obj->QR[QRk0];
             obj->QR[QRk0] = mpcprueba2_B.c_c * obj->QR[QRk0] - mpcprueba2_B.b_s *
               obj->QR[b_ix];
-            obj->QR[b_ix] = mpcprueba2_B.b_temp_l;
+            obj->QR[b_ix] = mpcprueba2_B.b_temp_d;
             QRk0 += obj->ldq;
             b_ix += obj->ldq;
           }
@@ -2793,11 +2567,11 @@ static void mpcprueba2_deleteColMoveEnd(sIxc6e90CRmt17sP6BCIycE_mpcpr_T *obj,
           for (idxRotGCol = 0; idxRotGCol < b_n; idxRotGCol++) {
             ix = b_ix + idxRotGCol;
             d_temp_tmp = QRk0 + idxRotGCol;
-            mpcprueba2_B.b_temp_l = obj->Q[d_temp_tmp] * mpcprueba2_B.c_c +
+            mpcprueba2_B.b_temp_d = obj->Q[d_temp_tmp] * mpcprueba2_B.c_c +
               obj->Q[ix] * mpcprueba2_B.b_s;
             obj->Q[ix] = obj->Q[ix] * mpcprueba2_B.c_c - obj->Q[d_temp_tmp] *
               mpcprueba2_B.b_s;
-            obj->Q[d_temp_tmp] = mpcprueba2_B.b_temp_l;
+            obj->Q[d_temp_tmp] = mpcprueba2_B.b_temp_d;
           }
         }
       }
@@ -2806,7 +2580,7 @@ static void mpcprueba2_deleteColMoveEnd(sIxc6e90CRmt17sP6BCIycE_mpcpr_T *obj,
 }
 
 // Function for MATLAB Function: '<Root>/MATLAB Function5'
-static int32_T mpcprueba2_ixamax(int32_T n, const real_T x[361], int32_T incx)
+static int32_T mpcprueba2_ixamax(int32_T n, const real_T x[256], int32_T incx)
 {
   int32_T idxmax;
   if ((n < 1) || (incx < 1)) {
@@ -2831,7 +2605,7 @@ static int32_T mpcprueba2_ixamax(int32_T n, const real_T x[361], int32_T incx)
 }
 
 // Function for MATLAB Function: '<Root>/MATLAB Function5'
-static void mpcprueba2_fullColLDL2_(sBSaEu6uV23R8SnQxWoeC5G_mpcpr_T *obj,
+static void mpcprueba2_fullColLDL2_(sOWFOmKuLvD2kpFwfdM45bG_mpcpr_T *obj,
   int32_T LD_offset, int32_T NColsRemain, real_T REG_PRIMAL)
 {
   int32_T LDimSizeP1;
@@ -2856,14 +2630,14 @@ static void mpcprueba2_fullColLDL2_(sBSaEu6uV23R8SnQxWoeC5G_mpcpr_T *obj,
       int32_T jA;
       jA = (LD_diagOffset + LDimSizeP1) + 2;
       for (b_k = 0; b_k <= subMatrixDim - 2; b_k++) {
-        mpcprueba2_B.temp_g = obj->workspace_[b_k];
-        if (mpcprueba2_B.temp_g != 0.0) {
+        mpcprueba2_B.temp_d = obj->workspace_[b_k];
+        if (mpcprueba2_B.temp_d != 0.0) {
           int32_T b;
-          mpcprueba2_B.temp_g *= mpcprueba2_B.alpha1;
+          mpcprueba2_B.temp_d *= mpcprueba2_B.alpha1;
           b = subMatrixDim + jA;
           for (int32_T ijA = jA; ijA <= b - 2; ijA++) {
             obj->FMat[ijA - 1] += obj->workspace_[ijA - jA] *
-              mpcprueba2_B.temp_g;
+              mpcprueba2_B.temp_d;
           }
         }
 
@@ -2886,8 +2660,8 @@ static void mpcprueba2_fullColLDL2_(sBSaEu6uV23R8SnQxWoeC5G_mpcpr_T *obj,
 }
 
 // Function for MATLAB Function: '<Root>/MATLAB Function5'
-static void mpcprueba2_xgemv_f(int32_T m, int32_T n, const real_T A[361],
-  int32_T ia0, int32_T lda, const real_T x[703], real_T y[19])
+static void mpcprueba2_xgemv_j30b(int32_T m, int32_T n, const real_T A[256],
+  int32_T ia0, int32_T lda, const real_T x[1072], real_T y[16])
 {
   if ((m != 0) && (n != 0)) {
     int32_T b;
@@ -2913,27 +2687,28 @@ static void mpcprueba2_xgemv_f(int32_T m, int32_T n, const real_T A[361],
 }
 
 // Function for MATLAB Function: '<Root>/MATLAB Function5'
-static void mpcprueba2_compute_deltax(const real_T H[324],
-  szTgroxymWCv1wbPz1KDaqC_mpcpr_T *solution, sDXqx68fEcBxWtF9wVQzAm_mpcpru_T
-  *memspace, const sIxc6e90CRmt17sP6BCIycE_mpcpr_T *qrmanager,
-  sBSaEu6uV23R8SnQxWoeC5G_mpcpr_T *cholmanager, const
-  sSitMryErsR3bMncKlW48mF_mpcpr_T *objective)
+static void mpcprueba2_compute_deltax(const real_T b_H[225],
+  sqvdR3NQrfOjUOrC18Muj0B_mpcpr_T *solution, sFevNsrsl34D5b5aqm3qNjD_mpcpr_T
+  *memspace, const ssq2hyGkLOLhNlUBS6YfcCD_mpcpr_T *qrmanager,
+  sOWFOmKuLvD2kpFwfdM45bG_mpcpr_T *cholmanager, const
+  s3c01M66EFWFQJ5qmFcUbmD_mpcpr_T *objective)
 {
   int32_T b_jjA;
   int32_T c_ix;
   int32_T exitg1;
+  int32_T g;
   int32_T h;
   int32_T i;
   int32_T ic;
-  mpcprueba2_B.nVar_e = qrmanager->mrows - 1;
+  mpcprueba2_B.nVar_p = qrmanager->mrows - 1;
   mpcprueba2_B.mNull = qrmanager->mrows - qrmanager->ncols;
   if (mpcprueba2_B.mNull <= 0) {
-    if (mpcprueba2_B.nVar_e >= 0) {
+    if (mpcprueba2_B.nVar_p >= 0) {
       memset(&solution->searchDir[0], 0, static_cast<uint32_T>
-             (mpcprueba2_B.nVar_e + 1) * sizeof(real_T));
+             (mpcprueba2_B.nVar_p + 1) * sizeof(real_T));
     }
   } else {
-    for (mpcprueba2_B.b_idx_a = 0; mpcprueba2_B.b_idx_a <= mpcprueba2_B.nVar_e;
+    for (mpcprueba2_B.b_idx_a = 0; mpcprueba2_B.b_idx_a <= mpcprueba2_B.nVar_p;
          mpcprueba2_B.b_idx_a++) {
       solution->searchDir[mpcprueba2_B.b_idx_a] = -objective->
         grad[mpcprueba2_B.b_idx_a];
@@ -2944,15 +2719,15 @@ static void mpcprueba2_compute_deltax(const real_T H[324],
         mpcprueba2_B.b_SCALED_REG_PRIMAL = 1.4901161193847656E-8 *
           cholmanager->scaleFactor * static_cast<real_T>(qrmanager->mrows);
         cholmanager->ndims = qrmanager->mrows;
-        for (mpcprueba2_B.mNull = 0; mpcprueba2_B.mNull <= mpcprueba2_B.nVar_e;
+        for (mpcprueba2_B.mNull = 0; mpcprueba2_B.mNull <= mpcprueba2_B.nVar_p;
              mpcprueba2_B.mNull++) {
-          mpcprueba2_B.nullStartIdx = (mpcprueba2_B.nVar_e + 1) *
+          mpcprueba2_B.nullStartIdx = (mpcprueba2_B.nVar_p + 1) *
             mpcprueba2_B.mNull;
           mpcprueba2_B.nVars = cholmanager->ldm * mpcprueba2_B.mNull;
           for (mpcprueba2_B.b_idx_a = 0; mpcprueba2_B.b_idx_a <=
-               mpcprueba2_B.nVar_e; mpcprueba2_B.b_idx_a++) {
+               mpcprueba2_B.nVar_p; mpcprueba2_B.b_idx_a++) {
             cholmanager->FMat[mpcprueba2_B.nVars + mpcprueba2_B.b_idx_a] =
-              H[mpcprueba2_B.b_idx_a + mpcprueba2_B.nullStartIdx];
+              b_H[mpcprueba2_B.b_idx_a + mpcprueba2_B.nullStartIdx];
           }
         }
 
@@ -2960,12 +2735,12 @@ static void mpcprueba2_compute_deltax(const real_T H[324],
           cholmanager->FMat, cholmanager->ldm + 1) - 1;
         mpcprueba2_B.b_temp = fabs(cholmanager->FMat[cholmanager->ldm *
           mpcprueba2_B.mNull + mpcprueba2_B.mNull]) * 2.2204460492503131E-16;
-        mpcprueba2_B.u1_d = fabs(mpcprueba2_B.b_SCALED_REG_PRIMAL);
-        if ((mpcprueba2_B.b_temp >= mpcprueba2_B.u1_d) || rtIsNaN
-            (mpcprueba2_B.u1_d)) {
+        mpcprueba2_B.u1_l = fabs(mpcprueba2_B.b_SCALED_REG_PRIMAL);
+        if ((mpcprueba2_B.b_temp >= mpcprueba2_B.u1_l) || rtIsNaN
+            (mpcprueba2_B.u1_l)) {
           cholmanager->regTol_ = mpcprueba2_B.b_temp;
         } else {
-          cholmanager->regTol_ = mpcprueba2_B.u1_d;
+          cholmanager->regTol_ = mpcprueba2_B.u1_l;
         }
 
         mpcprueba2_fullColLDL2_(cholmanager, 1, qrmanager->mrows,
@@ -2974,7 +2749,7 @@ static void mpcprueba2_compute_deltax(const real_T H[324],
           mpcprueba2_B.mNull = 0;
           do {
             exitg1 = 0;
-            if (mpcprueba2_B.mNull <= mpcprueba2_B.nVar_e) {
+            if (mpcprueba2_B.mNull <= mpcprueba2_B.nVar_p) {
               if (cholmanager->FMat[cholmanager->ldm * mpcprueba2_B.mNull +
                   mpcprueba2_B.mNull] <= 0.0) {
                 cholmanager->info = -mpcprueba2_B.mNull - 1;
@@ -2992,13 +2767,13 @@ static void mpcprueba2_compute_deltax(const real_T H[324],
         if (cholmanager->info != 0) {
           solution->state = -6;
         } else {
-          mpcprueba2_B.nVar_e = cholmanager->ndims;
+          mpcprueba2_B.nVar_p = cholmanager->ndims;
           if (cholmanager->ndims != 0) {
             for (mpcprueba2_B.mNull = 0; mpcprueba2_B.mNull <
-                 mpcprueba2_B.nVar_e; mpcprueba2_B.mNull++) {
+                 mpcprueba2_B.nVar_p; mpcprueba2_B.mNull++) {
               mpcprueba2_B.nullStartIdx = mpcprueba2_B.mNull * cholmanager->ldm
                 + mpcprueba2_B.mNull;
-              mpcprueba2_B.nVars = (mpcprueba2_B.nVar_e - mpcprueba2_B.mNull) -
+              mpcprueba2_B.nVars = (mpcprueba2_B.nVar_p - mpcprueba2_B.mNull) -
                 2;
               for (mpcprueba2_B.b_idx_a = 0; mpcprueba2_B.b_idx_a <=
                    mpcprueba2_B.nVars; mpcprueba2_B.b_idx_a++) {
@@ -3017,14 +2792,14 @@ static void mpcprueba2_compute_deltax(const real_T H[324],
               FMat[cholmanager->ldm * mpcprueba2_B.mNull + mpcprueba2_B.mNull];
           }
 
-          mpcprueba2_B.nVar_e = cholmanager->ndims;
+          mpcprueba2_B.nVar_p = cholmanager->ndims;
           if (cholmanager->ndims != 0) {
-            for (mpcprueba2_B.mNull = mpcprueba2_B.nVar_e; mpcprueba2_B.mNull >=
+            for (mpcprueba2_B.mNull = mpcprueba2_B.nVar_p; mpcprueba2_B.mNull >=
                  1; mpcprueba2_B.mNull--) {
               mpcprueba2_B.nullStartIdx = (mpcprueba2_B.mNull - 1) *
                 cholmanager->ldm;
               mpcprueba2_B.b_temp = solution->searchDir[mpcprueba2_B.mNull - 1];
-              for (mpcprueba2_B.b_idx_a = mpcprueba2_B.nVar_e;
+              for (mpcprueba2_B.b_idx_a = mpcprueba2_B.nVar_p;
                    mpcprueba2_B.b_idx_a >= mpcprueba2_B.mNull + 1;
                    mpcprueba2_B.b_idx_a--) {
                 mpcprueba2_B.b_temp -= cholmanager->FMat
@@ -3045,12 +2820,12 @@ static void mpcprueba2_compute_deltax(const real_T H[324],
              mpcprueba2_B.mNull; mpcprueba2_B.nullStartIdx++) {
           memspace->workspace_float[mpcprueba2_B.nullStartIdx] = -qrmanager->Q
             [(qrmanager->ncols + mpcprueba2_B.nullStartIdx) * qrmanager->ldq +
-            mpcprueba2_B.nVar_e];
+            mpcprueba2_B.nVar_p];
         }
 
-        mpcprueba2_xgemv_f(qrmanager->mrows, mpcprueba2_B.mNull, qrmanager->Q,
-                           mpcprueba2_B.b_idx_a + 1, qrmanager->ldq,
-                           memspace->workspace_float, solution->searchDir);
+        mpcprueba2_xgemv_j30b(qrmanager->mrows, mpcprueba2_B.mNull, qrmanager->Q,
+                              mpcprueba2_B.b_idx_a + 1, qrmanager->ldq,
+                              memspace->workspace_float, solution->searchDir);
       } else {
         if (objective->objtype == 3) {
           mpcprueba2_B.nVars = qrmanager->mrows;
@@ -3058,24 +2833,22 @@ static void mpcprueba2_compute_deltax(const real_T H[324],
           mpcprueba2_B.ldQ = qrmanager->ldq;
           if ((qrmanager->mrows != 0) && (mpcprueba2_B.mNull != 0)) {
             mpcprueba2_B.br = mpcprueba2_B.b_idx_a;
-            mpcprueba2_B.lastColC = (mpcprueba2_B.mNull - 1) * 37;
-            for (c_ix = 0; c_ix <= mpcprueba2_B.lastColC; c_ix += 37) {
-              mpcprueba2_B.g = c_ix + mpcprueba2_B.nVars;
-              for (ic = c_ix + 1; ic <= mpcprueba2_B.g; ic++) {
+            mpcprueba2_B.lastColC = (mpcprueba2_B.mNull - 1) * 67;
+            for (c_ix = 0; c_ix <= mpcprueba2_B.lastColC; c_ix += 67) {
+              g = c_ix + mpcprueba2_B.nVars;
+              for (ic = c_ix + 1; ic <= g; ic++) {
                 memspace->workspace_float[ic - 1] = 0.0;
               }
             }
 
-            for (c_ix = 0; c_ix <= mpcprueba2_B.lastColC; c_ix += 37) {
+            for (c_ix = 0; c_ix <= mpcprueba2_B.lastColC; c_ix += 67) {
               mpcprueba2_B.ar = -1;
               h = mpcprueba2_B.br + mpcprueba2_B.nVars;
               for (ic = mpcprueba2_B.br + 1; ic <= h; ic++) {
                 i = c_ix + mpcprueba2_B.nVars;
-                for (mpcprueba2_B.g = c_ix + 1; mpcprueba2_B.g <= i;
-                     mpcprueba2_B.g++) {
-                  memspace->workspace_float[mpcprueba2_B.g - 1] += H
-                    [(mpcprueba2_B.ar + mpcprueba2_B.g) - c_ix] * qrmanager->
-                    Q[ic - 1];
+                for (g = c_ix + 1; g <= i; g++) {
+                  memspace->workspace_float[g - 1] += b_H[(mpcprueba2_B.ar + g)
+                    - c_ix] * qrmanager->Q[ic - 1];
                 }
 
                 mpcprueba2_B.ar += mpcprueba2_B.nVars;
@@ -3090,8 +2863,8 @@ static void mpcprueba2_compute_deltax(const real_T H[324],
             mpcprueba2_B.lastColC = (mpcprueba2_B.mNull - 1) * cholmanager->ldm;
             for (c_ix = 0; b_jjA < 0 ? c_ix >= mpcprueba2_B.lastColC : c_ix <=
                  mpcprueba2_B.lastColC; c_ix += b_jjA) {
-              mpcprueba2_B.g = c_ix + mpcprueba2_B.mNull;
-              for (ic = c_ix + 1; ic <= mpcprueba2_B.g; ic++) {
+              g = c_ix + mpcprueba2_B.mNull;
+              for (ic = c_ix + 1; ic <= g; ic++) {
                 cholmanager->FMat[ic - 1] = 0.0;
               }
             }
@@ -3102,18 +2875,16 @@ static void mpcprueba2_compute_deltax(const real_T H[324],
               h = c_ix + mpcprueba2_B.mNull;
               for (ic = c_ix + 1; ic <= h; ic++) {
                 mpcprueba2_B.b_temp = 0.0;
-                for (mpcprueba2_B.g = 0; mpcprueba2_B.g < mpcprueba2_B.nVars;
-                     mpcprueba2_B.g++) {
-                  mpcprueba2_B.b_temp += memspace->workspace_float
-                    [(mpcprueba2_B.g + mpcprueba2_B.br) + 1] * qrmanager->
-                    Q[mpcprueba2_B.g + mpcprueba2_B.ar];
+                for (g = 0; g < mpcprueba2_B.nVars; g++) {
+                  mpcprueba2_B.b_temp += memspace->workspace_float[(g +
+                    mpcprueba2_B.br) + 1] * qrmanager->Q[g + mpcprueba2_B.ar];
                 }
 
                 cholmanager->FMat[ic - 1] += mpcprueba2_B.b_temp;
                 mpcprueba2_B.ar += mpcprueba2_B.ldQ;
               }
 
-              mpcprueba2_B.br += 37;
+              mpcprueba2_B.br += 67;
             }
           }
         }
@@ -3125,12 +2896,12 @@ static void mpcprueba2_compute_deltax(const real_T H[324],
           cholmanager->FMat, cholmanager->ldm + 1) - 1;
         mpcprueba2_B.b_temp = fabs(cholmanager->FMat[cholmanager->ldm *
           mpcprueba2_B.nVars + mpcprueba2_B.nVars]) * 2.2204460492503131E-16;
-        mpcprueba2_B.u1_d = fabs(mpcprueba2_B.b_SCALED_REG_PRIMAL);
-        if ((mpcprueba2_B.b_temp >= mpcprueba2_B.u1_d) || rtIsNaN
-            (mpcprueba2_B.u1_d)) {
+        mpcprueba2_B.u1_l = fabs(mpcprueba2_B.b_SCALED_REG_PRIMAL);
+        if ((mpcprueba2_B.b_temp >= mpcprueba2_B.u1_l) || rtIsNaN
+            (mpcprueba2_B.u1_l)) {
           cholmanager->regTol_ = mpcprueba2_B.b_temp;
         } else {
-          cholmanager->regTol_ = mpcprueba2_B.u1_d;
+          cholmanager->regTol_ = mpcprueba2_B.u1_l;
         }
 
         mpcprueba2_fullColLDL2_(cholmanager, 1, mpcprueba2_B.mNull,
@@ -3169,9 +2940,8 @@ static void mpcprueba2_compute_deltax(const real_T H[324],
                  mpcprueba2_B.nVars <= ic; mpcprueba2_B.nVars +=
                  mpcprueba2_B.ldQ) {
               mpcprueba2_B.b_temp = 0.0;
-              mpcprueba2_B.g = mpcprueba2_B.nVars + mpcprueba2_B.nVar_e;
-              for (b_jjA = mpcprueba2_B.nVars; b_jjA <= mpcprueba2_B.g; b_jjA++)
-              {
+              g = mpcprueba2_B.nVars + mpcprueba2_B.nVar_p;
+              for (b_jjA = mpcprueba2_B.nVars; b_jjA <= g; b_jjA++) {
                 mpcprueba2_B.b_temp += qrmanager->Q[b_jjA - 1] * objective->
                   grad[b_jjA - mpcprueba2_B.nVars];
               }
@@ -3183,51 +2953,52 @@ static void mpcprueba2_compute_deltax(const real_T H[324],
 
           mpcprueba2_B.nVars = cholmanager->ndims;
           if (cholmanager->ndims != 0) {
-            for (mpcprueba2_B.nVar_e = 0; mpcprueba2_B.nVar_e <
-                 mpcprueba2_B.nVars; mpcprueba2_B.nVar_e++) {
-              b_jjA = mpcprueba2_B.nVar_e * cholmanager->ldm +
-                mpcprueba2_B.nVar_e;
-              mpcprueba2_B.ldQ = (mpcprueba2_B.nVars - mpcprueba2_B.nVar_e) - 2;
+            for (mpcprueba2_B.nVar_p = 0; mpcprueba2_B.nVar_p <
+                 mpcprueba2_B.nVars; mpcprueba2_B.nVar_p++) {
+              b_jjA = mpcprueba2_B.nVar_p * cholmanager->ldm +
+                mpcprueba2_B.nVar_p;
+              mpcprueba2_B.ldQ = (mpcprueba2_B.nVars - mpcprueba2_B.nVar_p) - 2;
               for (mpcprueba2_B.nullStartIdx = 0; mpcprueba2_B.nullStartIdx <=
                    mpcprueba2_B.ldQ; mpcprueba2_B.nullStartIdx++) {
-                c_ix = (mpcprueba2_B.nullStartIdx + mpcprueba2_B.nVar_e) + 1;
+                c_ix = (mpcprueba2_B.nullStartIdx + mpcprueba2_B.nVar_p) + 1;
                 memspace->workspace_float[c_ix] -= cholmanager->FMat
                   [(mpcprueba2_B.nullStartIdx + b_jjA) + 1] *
-                  memspace->workspace_float[mpcprueba2_B.nVar_e];
+                  memspace->workspace_float[mpcprueba2_B.nVar_p];
               }
             }
           }
 
           mpcprueba2_B.nullStartIdx = cholmanager->ndims;
-          for (mpcprueba2_B.nVar_e = 0; mpcprueba2_B.nVar_e <
-               mpcprueba2_B.nullStartIdx; mpcprueba2_B.nVar_e++) {
-            memspace->workspace_float[mpcprueba2_B.nVar_e] /= cholmanager->
-              FMat[cholmanager->ldm * mpcprueba2_B.nVar_e + mpcprueba2_B.nVar_e];
+          for (mpcprueba2_B.nVar_p = 0; mpcprueba2_B.nVar_p <
+               mpcprueba2_B.nullStartIdx; mpcprueba2_B.nVar_p++) {
+            memspace->workspace_float[mpcprueba2_B.nVar_p] /= cholmanager->
+              FMat[cholmanager->ldm * mpcprueba2_B.nVar_p + mpcprueba2_B.nVar_p];
           }
 
           mpcprueba2_B.nVars = cholmanager->ndims;
           if (cholmanager->ndims != 0) {
-            for (mpcprueba2_B.nVar_e = mpcprueba2_B.nVars; mpcprueba2_B.nVar_e >=
-                 1; mpcprueba2_B.nVar_e--) {
-              b_jjA = (mpcprueba2_B.nVar_e - 1) * cholmanager->ldm;
+            for (mpcprueba2_B.nVar_p = mpcprueba2_B.nVars; mpcprueba2_B.nVar_p >=
+                 1; mpcprueba2_B.nVar_p--) {
+              b_jjA = (mpcprueba2_B.nVar_p - 1) * cholmanager->ldm;
               mpcprueba2_B.b_temp = memspace->
-                workspace_float[mpcprueba2_B.nVar_e - 1];
+                workspace_float[mpcprueba2_B.nVar_p - 1];
               for (mpcprueba2_B.nullStartIdx = mpcprueba2_B.nVars;
-                   mpcprueba2_B.nullStartIdx >= mpcprueba2_B.nVar_e + 1;
+                   mpcprueba2_B.nullStartIdx >= mpcprueba2_B.nVar_p + 1;
                    mpcprueba2_B.nullStartIdx--) {
                 mpcprueba2_B.b_temp -= cholmanager->FMat[(b_jjA +
                   mpcprueba2_B.nullStartIdx) - 1] * memspace->
                   workspace_float[mpcprueba2_B.nullStartIdx - 1];
               }
 
-              memspace->workspace_float[mpcprueba2_B.nVar_e - 1] =
+              memspace->workspace_float[mpcprueba2_B.nVar_p - 1] =
                 mpcprueba2_B.b_temp;
             }
           }
 
-          mpcprueba2_xgemv_f(qrmanager->mrows, mpcprueba2_B.mNull, qrmanager->Q,
-                             mpcprueba2_B.b_idx_a + 1, qrmanager->ldq,
-                             memspace->workspace_float, solution->searchDir);
+          mpcprueba2_xgemv_j30b(qrmanager->mrows, mpcprueba2_B.mNull,
+                                qrmanager->Q, mpcprueba2_B.b_idx_a + 1,
+                                qrmanager->ldq, memspace->workspace_float,
+                                solution->searchDir);
         }
       }
     }
@@ -3235,7 +3006,7 @@ static void mpcprueba2_compute_deltax(const real_T H[324],
 }
 
 // Function for MATLAB Function: '<Root>/MATLAB Function5'
-static real_T mpcprueba2_xnrm2_j(int32_T n, const real_T x[19])
+static real_T mpcprueba2_xnrm2_ls(int32_T n, const real_T x[16])
 {
   real_T y;
   y = 0.0;
@@ -3268,17 +3039,75 @@ static real_T mpcprueba2_xnrm2_j(int32_T n, const real_T x[19])
 }
 
 // Function for MATLAB Function: '<Root>/MATLAB Function5'
-static void mpcprueba2_ratiotest(const real_T solution_xstar[19], const real_T
-  solution_searchDir[19], const real_T workspace[703], int32_T workingset_nVar,
-  const real_T workingset_lb[19], const real_T workingset_ub[19], const int32_T
-  workingset_indexLB[19], const int32_T workingset_indexUB[19], const int32_T
-  workingset_sizes[5], const int32_T workingset_isActiveIdx[6], const boolean_T
-  workingset_isActiveConstr[37], const int32_T workingset_nWConstr[5], boolean_T
-  isPhaseOne, real_T tolcon, real_T *toldelta, real_T toltau, real_T *alpha,
-  boolean_T *newBlocking, int32_T *constrType, int32_T *constrIdx)
+static void mpcprueba2_xgemv_j30bu(int32_T m, int32_T n, const real_T A[1056],
+  int32_T lda, const real_T x[16], real_T y[1072])
+{
+  if ((m != 0) && (n != 0)) {
+    int32_T b;
+    int32_T iy;
+    for (int32_T b_iy = 0; b_iy < n; b_iy++) {
+      y[b_iy] = -y[b_iy];
+    }
+
+    iy = 0;
+    b = (n - 1) * lda + 1;
+    for (int32_T b_iy = 1; lda < 0 ? b_iy >= b : b_iy <= b; b_iy += lda) {
+      real_T c;
+      int32_T d;
+      c = 0.0;
+      d = b_iy + m;
+      for (int32_T ia = b_iy; ia < d; ia++) {
+        c += A[ia - 1] * x[ia - b_iy];
+      }
+
+      y[iy] += c;
+      iy++;
+    }
+  }
+}
+
+// Function for MATLAB Function: '<Root>/MATLAB Function5'
+static void mpcprueba2_xgemv_j30bul(int32_T m, int32_T n, const real_T A[1056],
+  int32_T lda, const real_T x[16], real_T y[1072])
+{
+  if ((m != 0) && (n != 0)) {
+    int32_T b;
+    int32_T iy;
+    if (n + 67 >= 68) {
+      memset(&y[67], 0, static_cast<uint32_T>(n) * sizeof(real_T));
+    }
+
+    iy = 67;
+    b = (n - 1) * lda + 1;
+    for (int32_T b_iy = 1; lda < 0 ? b_iy >= b : b_iy <= b; b_iy += lda) {
+      real_T c;
+      int32_T d;
+      c = 0.0;
+      d = b_iy + m;
+      for (int32_T ia = b_iy; ia < d; ia++) {
+        c += A[ia - 1] * x[ia - b_iy];
+      }
+
+      y[iy] += c;
+      iy++;
+    }
+  }
+}
+
+// Function for MATLAB Function: '<Root>/MATLAB Function5'
+static void mpcprueba2_ratiotest(const real_T solution_xstar[16], const real_T
+  solution_searchDir[16], real_T workspace[1072], int32_T workingset_nVar,
+  int32_T workingset_ldA, const real_T workingset_Aineq[1056], const real_T
+  workingset_bineq[66], const real_T workingset_lb[16], const real_T
+  workingset_ub[16], const int32_T workingset_indexLB[16], const int32_T
+  workingset_indexUB[16], const int32_T workingset_sizes[5], const int32_T
+  workingset_isActiveIdx[6], const boolean_T workingset_isActiveConstr[67],
+  const int32_T workingset_nWConstr[5], boolean_T isPhaseOne, real_T tolcon,
+  real_T *toldelta, real_T *alpha, boolean_T *newBlocking, int32_T *constrType,
+  int32_T *constrIdx)
 {
   real_T workspace_0;
-  int32_T idx;
+  int32_T k;
   int32_T totalIneq;
   int32_T totalUB;
   int32_T workingset_indexLB_0;
@@ -3289,14 +3118,23 @@ static void mpcprueba2_ratiotest(const real_T solution_xstar[19], const real_T
   *newBlocking = false;
   *constrType = 0;
   *constrIdx = 0;
-  mpcprueba2_B.denomTol = 2.2204460492503131E-13 * mpcprueba2_xnrm2_j
+  mpcprueba2_B.denomTol = 2.2204460492503131E-13 * mpcprueba2_xnrm2_ls
     (workingset_nVar, solution_searchDir);
   if (workingset_nWConstr[2] < workingset_sizes[2]) {
-    for (idx = 0; idx < totalIneq; idx++) {
-      workspace_0 = workspace[idx + 37];
+    if (totalIneq - 1 >= 0) {
+      memcpy(&workspace[0], &workingset_bineq[0], static_cast<uint32_T>
+             (totalIneq) * sizeof(real_T));
+    }
+
+    mpcprueba2_xgemv_j30bu(workingset_nVar, workingset_sizes[2],
+      workingset_Aineq, workingset_ldA, solution_xstar, workspace);
+    mpcprueba2_xgemv_j30bul(workingset_nVar, workingset_sizes[2],
+      workingset_Aineq, workingset_ldA, solution_searchDir, workspace);
+    for (k = 0; k < totalIneq; k++) {
+      workspace_0 = workspace[k + 67];
       if ((workspace_0 > mpcprueba2_B.denomTol) && (!workingset_isActiveConstr
-           [(workingset_isActiveIdx[2] + idx) - 1])) {
-        mpcprueba2_B.phaseOneCorrectionX = workspace[idx];
+           [(workingset_isActiveIdx[2] + k) - 1])) {
+        mpcprueba2_B.phaseOneCorrectionX = workspace[k];
         mpcprueba2_B.alphaTemp = fabs(mpcprueba2_B.phaseOneCorrectionX -
           *toldelta);
         mpcprueba2_B.phaseOneCorrectionP = tolcon -
@@ -3312,7 +3150,7 @@ static void mpcprueba2_ratiotest(const real_T solution_xstar[19], const real_T
              mpcprueba2_B.p_max)) {
           *alpha = mpcprueba2_B.alphaTemp;
           *constrType = 3;
-          *constrIdx = idx + 1;
+          *constrIdx = k + 1;
           *newBlocking = true;
         }
 
@@ -3326,7 +3164,7 @@ static void mpcprueba2_ratiotest(const real_T solution_xstar[19], const real_T
         if (mpcprueba2_B.alphaTemp < *alpha) {
           *alpha = mpcprueba2_B.alphaTemp;
           *constrType = 3;
-          *constrIdx = idx + 1;
+          *constrIdx = k + 1;
           *newBlocking = true;
           mpcprueba2_B.p_max = fabs(workspace_0);
         }
@@ -3340,12 +3178,12 @@ static void mpcprueba2_ratiotest(const real_T solution_xstar[19], const real_T
     mpcprueba2_B.phaseOneCorrectionP = solution_searchDir[workingset_nVar - 1] *
       static_cast<real_T>(isPhaseOne);
     totalIneq = workingset_sizes[3];
-    for (idx = 0; idx <= totalIneq - 2; idx++) {
-      workingset_indexLB_0 = workingset_indexLB[idx];
+    for (k = 0; k <= totalIneq - 2; k++) {
+      workingset_indexLB_0 = workingset_indexLB[k];
       mpcprueba2_B.pk_corrected = -solution_searchDir[workingset_indexLB_0 - 1]
         - mpcprueba2_B.phaseOneCorrectionP;
       if ((mpcprueba2_B.pk_corrected > mpcprueba2_B.denomTol) &&
-          (!workingset_isActiveConstr[(workingset_isActiveIdx[3] + idx) - 1])) {
+          (!workingset_isActiveConstr[(workingset_isActiveIdx[3] + k) - 1])) {
         workspace_0 = -solution_xstar[workingset_indexLB_0 - 1] -
           workingset_lb[workingset_indexLB_0 - 1];
         mpcprueba2_B.ratio = (workspace_0 - *toldelta) -
@@ -3362,7 +3200,7 @@ static void mpcprueba2_ratiotest(const real_T solution_xstar[19], const real_T
              (mpcprueba2_B.pk_corrected) > mpcprueba2_B.p_max)) {
           *alpha = mpcprueba2_B.alphaTemp;
           *constrType = 4;
-          *constrIdx = idx + 1;
+          *constrIdx = k + 1;
           *newBlocking = true;
         }
 
@@ -3378,19 +3216,19 @@ static void mpcprueba2_ratiotest(const real_T solution_xstar[19], const real_T
         if (mpcprueba2_B.alphaTemp < *alpha) {
           *alpha = mpcprueba2_B.alphaTemp;
           *constrType = 4;
-          *constrIdx = idx + 1;
+          *constrIdx = k + 1;
           *newBlocking = true;
           mpcprueba2_B.p_max = fabs(mpcprueba2_B.pk_corrected);
         }
       }
     }
 
-    idx = workingset_indexLB[workingset_sizes[3] - 1] - 1;
-    mpcprueba2_B.phaseOneCorrectionX = solution_searchDir[idx];
+    k = workingset_indexLB[workingset_sizes[3] - 1] - 1;
+    mpcprueba2_B.phaseOneCorrectionX = solution_searchDir[k];
     if ((-mpcprueba2_B.phaseOneCorrectionX > mpcprueba2_B.denomTol) &&
         (!workingset_isActiveConstr[(workingset_isActiveIdx[3] +
           workingset_sizes[3]) - 2])) {
-      workspace_0 = -solution_xstar[idx] - workingset_lb[idx];
+      workspace_0 = -solution_xstar[k] - workingset_lb[k];
       mpcprueba2_B.ratio = workspace_0 - *toldelta;
       mpcprueba2_B.alphaTemp = fabs(mpcprueba2_B.ratio);
       mpcprueba2_B.ratio = tolcon - mpcprueba2_B.ratio;
@@ -3433,12 +3271,12 @@ static void mpcprueba2_ratiotest(const real_T solution_xstar[19], const real_T
       static_cast<real_T>(isPhaseOne);
     mpcprueba2_B.phaseOneCorrectionP = solution_searchDir[workingset_nVar - 1] *
       static_cast<real_T>(isPhaseOne);
-    for (idx = 0; idx < totalUB; idx++) {
-      totalIneq = workingset_indexUB[idx];
+    for (k = 0; k < totalUB; k++) {
+      totalIneq = workingset_indexUB[k];
       mpcprueba2_B.pk_corrected = solution_searchDir[totalIneq - 1] -
         mpcprueba2_B.phaseOneCorrectionP;
       if ((mpcprueba2_B.pk_corrected > mpcprueba2_B.denomTol) &&
-          (!workingset_isActiveConstr[(workingset_isActiveIdx[4] + idx) - 1])) {
+          (!workingset_isActiveConstr[(workingset_isActiveIdx[4] + k) - 1])) {
         workspace_0 = solution_xstar[totalIneq - 1] - workingset_ub[totalIneq -
           1];
         mpcprueba2_B.ratio = (workspace_0 - *toldelta) -
@@ -3455,7 +3293,7 @@ static void mpcprueba2_ratiotest(const real_T solution_xstar[19], const real_T
              (mpcprueba2_B.pk_corrected) > mpcprueba2_B.p_max)) {
           *alpha = mpcprueba2_B.alphaTemp;
           *constrType = 5;
-          *constrIdx = idx + 1;
+          *constrIdx = k + 1;
           *newBlocking = true;
         }
 
@@ -3471,7 +3309,7 @@ static void mpcprueba2_ratiotest(const real_T solution_xstar[19], const real_T
         if (mpcprueba2_B.alphaTemp < *alpha) {
           *alpha = mpcprueba2_B.alphaTemp;
           *constrType = 5;
-          *constrIdx = idx + 1;
+          *constrIdx = k + 1;
           *newBlocking = true;
           mpcprueba2_B.p_max = fabs(mpcprueba2_B.pk_corrected);
         }
@@ -3479,10 +3317,10 @@ static void mpcprueba2_ratiotest(const real_T solution_xstar[19], const real_T
     }
   }
 
-  *toldelta += toltau;
+  *toldelta += 6.608625846508183E-7;
   if (mpcprueba2_B.p_max > 0.0) {
-    mpcprueba2_B.ratio = toltau / mpcprueba2_B.p_max;
-    if ((!(*alpha >= mpcprueba2_B.ratio)) && (!rtIsNaN(mpcprueba2_B.ratio))) {
+    mpcprueba2_B.ratio = 6.608625846508183E-7 / mpcprueba2_B.p_max;
+    if (!(*alpha >= mpcprueba2_B.ratio)) {
       *alpha = mpcprueba2_B.ratio;
     }
   }
@@ -3502,17 +3340,18 @@ static void mpcprueba2_ratiotest(const real_T solution_xstar[19], const real_T
 }
 
 // Function for MATLAB Function: '<Root>/MATLAB Function5'
-static void mpcprueba2_feasibleratiotest(const real_T solution_xstar[19], const
-  real_T solution_searchDir[19], const real_T workspace[703], int32_T
-  workingset_nVar, const real_T workingset_lb[19], const real_T workingset_ub[19],
-  const int32_T workingset_indexLB[19], const int32_T workingset_indexUB[19],
-  const int32_T workingset_sizes[5], const int32_T workingset_isActiveIdx[6],
-  const boolean_T workingset_isActiveConstr[37], const int32_T
-  workingset_nWConstr[5], boolean_T isPhaseOne, real_T tolcon, real_T *alpha,
-  boolean_T *newBlocking, int32_T *constrType, int32_T *constrIdx)
+static void mpcprueba2_feasibleratiotest(const real_T solution_xstar[16], const
+  real_T solution_searchDir[16], real_T workspace[1072], int32_T workingset_nVar,
+  int32_T workingset_ldA, const real_T workingset_Aineq[1056], const real_T
+  workingset_bineq[66], const real_T workingset_lb[16], const real_T
+  workingset_ub[16], const int32_T workingset_indexLB[16], const int32_T
+  workingset_indexUB[16], const int32_T workingset_sizes[5], const int32_T
+  workingset_isActiveIdx[6], const boolean_T workingset_isActiveConstr[67],
+  const int32_T workingset_nWConstr[5], boolean_T isPhaseOne, real_T tolcon,
+  real_T *alpha, boolean_T *newBlocking, int32_T *constrType, int32_T *constrIdx)
 {
   real_T ratio;
-  int32_T idx;
+  int32_T k;
   int32_T totalIneq;
   int32_T totalUB;
   int32_T workingset_indexLB_0;
@@ -3522,25 +3361,34 @@ static void mpcprueba2_feasibleratiotest(const real_T solution_xstar[19], const
   *newBlocking = false;
   *constrType = 0;
   *constrIdx = 0;
-  mpcprueba2_B.denomTol_d = 2.2204460492503131E-13 * mpcprueba2_xnrm2_j
+  mpcprueba2_B.denomTol_o = 2.2204460492503131E-13 * mpcprueba2_xnrm2_ls
     (workingset_nVar, solution_searchDir);
   if (workingset_nWConstr[2] < workingset_sizes[2]) {
-    for (idx = 0; idx < totalIneq; idx++) {
-      mpcprueba2_B.phaseOneCorrectionX_o = workspace[idx + 37];
-      if ((mpcprueba2_B.phaseOneCorrectionX_o > mpcprueba2_B.denomTol_d) &&
-          (!workingset_isActiveConstr[(workingset_isActiveIdx[2] + idx) - 1])) {
-        ratio = workspace[idx];
-        mpcprueba2_B.alphaTemp_l = fabs(ratio);
+    if (totalIneq - 1 >= 0) {
+      memcpy(&workspace[0], &workingset_bineq[0], static_cast<uint32_T>
+             (totalIneq) * sizeof(real_T));
+    }
+
+    mpcprueba2_xgemv_j30bu(workingset_nVar, workingset_sizes[2],
+      workingset_Aineq, workingset_ldA, solution_xstar, workspace);
+    mpcprueba2_xgemv_j30bul(workingset_nVar, workingset_sizes[2],
+      workingset_Aineq, workingset_ldA, solution_searchDir, workspace);
+    for (k = 0; k < totalIneq; k++) {
+      mpcprueba2_B.phaseOneCorrectionX_n = workspace[k + 67];
+      if ((mpcprueba2_B.phaseOneCorrectionX_n > mpcprueba2_B.denomTol_o) &&
+          (!workingset_isActiveConstr[(workingset_isActiveIdx[2] + k) - 1])) {
+        ratio = workspace[k];
+        mpcprueba2_B.alphaTemp_b = fabs(ratio);
         ratio = tolcon - ratio;
-        if ((mpcprueba2_B.alphaTemp_l <= ratio) || rtIsNaN(ratio)) {
-          ratio = mpcprueba2_B.alphaTemp_l;
+        if ((mpcprueba2_B.alphaTemp_b <= ratio) || rtIsNaN(ratio)) {
+          ratio = mpcprueba2_B.alphaTemp_b;
         }
 
-        mpcprueba2_B.alphaTemp_l = ratio / mpcprueba2_B.phaseOneCorrectionX_o;
-        if (mpcprueba2_B.alphaTemp_l < *alpha) {
-          *alpha = mpcprueba2_B.alphaTemp_l;
+        mpcprueba2_B.alphaTemp_b = ratio / mpcprueba2_B.phaseOneCorrectionX_n;
+        if (mpcprueba2_B.alphaTemp_b < *alpha) {
+          *alpha = mpcprueba2_B.alphaTemp_b;
           *constrType = 3;
-          *constrIdx = idx + 1;
+          *constrIdx = k + 1;
           *newBlocking = true;
         }
       }
@@ -3548,51 +3396,52 @@ static void mpcprueba2_feasibleratiotest(const real_T solution_xstar[19], const
   }
 
   if (workingset_nWConstr[3] < workingset_sizes[3]) {
-    mpcprueba2_B.phaseOneCorrectionX_o = solution_xstar[workingset_nVar - 1] *
+    mpcprueba2_B.phaseOneCorrectionX_n = solution_xstar[workingset_nVar - 1] *
       static_cast<real_T>(isPhaseOne);
     mpcprueba2_B.phaseOneCorrectionP_b = solution_searchDir[workingset_nVar - 1]
       * static_cast<real_T>(isPhaseOne);
-    totalIneq = workingset_sizes[3];
-    for (idx = 0; idx <= totalIneq - 2; idx++) {
-      workingset_indexLB_0 = workingset_indexLB[idx];
-      mpcprueba2_B.pk_corrected_n = -solution_searchDir[workingset_indexLB_0 - 1]
+    k = workingset_sizes[3];
+    for (totalIneq = 0; totalIneq <= k - 2; totalIneq++) {
+      workingset_indexLB_0 = workingset_indexLB[totalIneq];
+      mpcprueba2_B.pk_corrected_l = -solution_searchDir[workingset_indexLB_0 - 1]
         - mpcprueba2_B.phaseOneCorrectionP_b;
-      if ((mpcprueba2_B.pk_corrected_n > mpcprueba2_B.denomTol_d) &&
-          (!workingset_isActiveConstr[(workingset_isActiveIdx[3] + idx) - 1])) {
+      if ((mpcprueba2_B.pk_corrected_l > mpcprueba2_B.denomTol_o) &&
+          (!workingset_isActiveConstr[(workingset_isActiveIdx[3] + totalIneq) -
+           1])) {
         ratio = (-solution_xstar[workingset_indexLB_0 - 1] -
                  workingset_lb[workingset_indexLB_0 - 1]) -
-          mpcprueba2_B.phaseOneCorrectionX_o;
-        mpcprueba2_B.alphaTemp_l = fabs(ratio);
+          mpcprueba2_B.phaseOneCorrectionX_n;
+        mpcprueba2_B.alphaTemp_b = fabs(ratio);
         ratio = tolcon - ratio;
-        if ((mpcprueba2_B.alphaTemp_l <= ratio) || rtIsNaN(ratio)) {
-          ratio = mpcprueba2_B.alphaTemp_l;
+        if ((mpcprueba2_B.alphaTemp_b <= ratio) || rtIsNaN(ratio)) {
+          ratio = mpcprueba2_B.alphaTemp_b;
         }
 
-        mpcprueba2_B.alphaTemp_l = ratio / mpcprueba2_B.pk_corrected_n;
-        if (mpcprueba2_B.alphaTemp_l < *alpha) {
-          *alpha = mpcprueba2_B.alphaTemp_l;
+        mpcprueba2_B.alphaTemp_b = ratio / mpcprueba2_B.pk_corrected_l;
+        if (mpcprueba2_B.alphaTemp_b < *alpha) {
+          *alpha = mpcprueba2_B.alphaTemp_b;
           *constrType = 4;
-          *constrIdx = idx + 1;
+          *constrIdx = totalIneq + 1;
           *newBlocking = true;
         }
       }
     }
 
-    idx = workingset_indexLB[workingset_sizes[3] - 1] - 1;
-    mpcprueba2_B.phaseOneCorrectionX_o = -solution_searchDir[idx];
-    if ((mpcprueba2_B.phaseOneCorrectionX_o > mpcprueba2_B.denomTol_d) &&
+    totalIneq = workingset_indexLB[workingset_sizes[3] - 1] - 1;
+    mpcprueba2_B.phaseOneCorrectionX_n = -solution_searchDir[totalIneq];
+    if ((mpcprueba2_B.phaseOneCorrectionX_n > mpcprueba2_B.denomTol_o) &&
         (!workingset_isActiveConstr[(workingset_isActiveIdx[3] +
           workingset_sizes[3]) - 2])) {
-      ratio = -solution_xstar[idx] - workingset_lb[idx];
-      mpcprueba2_B.alphaTemp_l = fabs(ratio);
+      ratio = -solution_xstar[totalIneq] - workingset_lb[totalIneq];
+      mpcprueba2_B.alphaTemp_b = fabs(ratio);
       ratio = tolcon - ratio;
-      if ((mpcprueba2_B.alphaTemp_l <= ratio) || rtIsNaN(ratio)) {
-        ratio = mpcprueba2_B.alphaTemp_l;
+      if ((mpcprueba2_B.alphaTemp_b <= ratio) || rtIsNaN(ratio)) {
+        ratio = mpcprueba2_B.alphaTemp_b;
       }
 
-      mpcprueba2_B.alphaTemp_l = ratio / mpcprueba2_B.phaseOneCorrectionX_o;
-      if (mpcprueba2_B.alphaTemp_l < *alpha) {
-        *alpha = mpcprueba2_B.alphaTemp_l;
+      mpcprueba2_B.alphaTemp_b = ratio / mpcprueba2_B.phaseOneCorrectionX_n;
+      if (mpcprueba2_B.alphaTemp_b < *alpha) {
+        *alpha = mpcprueba2_B.alphaTemp_b;
         *constrType = 4;
         *constrIdx = workingset_sizes[3];
         *newBlocking = true;
@@ -3601,29 +3450,30 @@ static void mpcprueba2_feasibleratiotest(const real_T solution_xstar[19], const
   }
 
   if (workingset_nWConstr[4] < workingset_sizes[4]) {
-    mpcprueba2_B.phaseOneCorrectionX_o = solution_xstar[workingset_nVar - 1] *
+    mpcprueba2_B.phaseOneCorrectionX_n = solution_xstar[workingset_nVar - 1] *
       static_cast<real_T>(isPhaseOne);
     mpcprueba2_B.phaseOneCorrectionP_b = solution_searchDir[workingset_nVar - 1]
       * static_cast<real_T>(isPhaseOne);
-    for (idx = 0; idx < totalUB; idx++) {
-      totalIneq = workingset_indexUB[idx];
-      mpcprueba2_B.pk_corrected_n = solution_searchDir[totalIneq - 1] -
+    for (totalIneq = 0; totalIneq < totalUB; totalIneq++) {
+      k = workingset_indexUB[totalIneq];
+      mpcprueba2_B.pk_corrected_l = solution_searchDir[k - 1] -
         mpcprueba2_B.phaseOneCorrectionP_b;
-      if ((mpcprueba2_B.pk_corrected_n > mpcprueba2_B.denomTol_d) &&
-          (!workingset_isActiveConstr[(workingset_isActiveIdx[4] + idx) - 1])) {
-        ratio = (solution_xstar[totalIneq - 1] - workingset_ub[totalIneq - 1]) -
-          mpcprueba2_B.phaseOneCorrectionX_o;
-        mpcprueba2_B.alphaTemp_l = fabs(ratio);
+      if ((mpcprueba2_B.pk_corrected_l > mpcprueba2_B.denomTol_o) &&
+          (!workingset_isActiveConstr[(workingset_isActiveIdx[4] + totalIneq) -
+           1])) {
+        ratio = (solution_xstar[k - 1] - workingset_ub[k - 1]) -
+          mpcprueba2_B.phaseOneCorrectionX_n;
+        mpcprueba2_B.alphaTemp_b = fabs(ratio);
         ratio = tolcon - ratio;
-        if ((mpcprueba2_B.alphaTemp_l <= ratio) || rtIsNaN(ratio)) {
-          ratio = mpcprueba2_B.alphaTemp_l;
+        if ((mpcprueba2_B.alphaTemp_b <= ratio) || rtIsNaN(ratio)) {
+          ratio = mpcprueba2_B.alphaTemp_b;
         }
 
-        mpcprueba2_B.alphaTemp_l = ratio / mpcprueba2_B.pk_corrected_n;
-        if (mpcprueba2_B.alphaTemp_l < *alpha) {
-          *alpha = mpcprueba2_B.alphaTemp_l;
+        mpcprueba2_B.alphaTemp_b = ratio / mpcprueba2_B.pk_corrected_l;
+        if (mpcprueba2_B.alphaTemp_b < *alpha) {
+          *alpha = mpcprueba2_B.alphaTemp_b;
           *constrType = 5;
-          *constrIdx = idx + 1;
+          *constrIdx = totalIneq + 1;
           *newBlocking = true;
         }
       }
@@ -3639,7 +3489,7 @@ static void mpcprueba2_feasibleratiotest(const real_T solution_xstar[19], const
 }
 
 // Function for MATLAB Function: '<Root>/MATLAB Function5'
-static void mpcp_addBoundToActiveSetMatrix_(shMFFa6ZZiYob3JbcpnnDNC_mpcpr_T *obj,
+static void mpcp_addBoundToActiveSetMatrix_(sbYdmyzq7l8Oes4F6y6cc2C_mpcpr_T *obj,
   int32_T TYPE, int32_T idx_local)
 {
   int32_T colOffset;
@@ -3683,10 +3533,10 @@ static void mpcp_addBoundToActiveSetMatrix_(shMFFa6ZZiYob3JbcpnnDNC_mpcpr_T *obj
 }
 
 // Function for MATLAB Function: '<Root>/MATLAB Function5'
-static void mpcprueba2_compute_lambda(real_T workspace[703],
-  szTgroxymWCv1wbPz1KDaqC_mpcpr_T *solution, const
-  sSitMryErsR3bMncKlW48mF_mpcpr_T *objective, const
-  sIxc6e90CRmt17sP6BCIycE_mpcpr_T *qrmanager)
+static void mpcprueba2_compute_lambda(real_T workspace[1072],
+  sqvdR3NQrfOjUOrC18Muj0B_mpcpr_T *solution, const
+  s3c01M66EFWFQJ5qmFcUbmD_mpcpr_T *objective, const
+  ssq2hyGkLOLhNlUBS6YfcCD_mpcpr_T *qrmanager)
 {
   int32_T nActiveConstr;
   nActiveConstr = qrmanager->ncols;
@@ -3797,25 +3647,25 @@ static void mpcprueba2_compute_lambda(real_T workspace[703],
 
 // Function for MATLAB Function: '<Root>/MATLAB Function5'
 static void mpcp_checkStoppingAndUpdateFval(int32_T *activeSetChangeID, const
-  real_T f[18], szTgroxymWCv1wbPz1KDaqC_mpcpr_T *solution,
-  sDXqx68fEcBxWtF9wVQzAm_mpcpru_T *memspace, const
-  sSitMryErsR3bMncKlW48mF_mpcpr_T *objective, const
-  shMFFa6ZZiYob3JbcpnnDNC_mpcpr_T *workingset, sIxc6e90CRmt17sP6BCIycE_mpcpr_T
-  *qrmanager, real_T options_ObjectiveLimit, real_T options_ConstraintTolerance,
-  int32_T runTimeOptions_MaxIterations, real_T runTimeOptions_ConstrRelTolFact,
+  real_T f[15], sqvdR3NQrfOjUOrC18Muj0B_mpcpr_T *solution,
+  sFevNsrsl34D5b5aqm3qNjD_mpcpr_T *memspace, const
+  s3c01M66EFWFQJ5qmFcUbmD_mpcpr_T *objective, sbYdmyzq7l8Oes4F6y6cc2C_mpcpr_T
+  *workingset, ssq2hyGkLOLhNlUBS6YfcCD_mpcpr_T *qrmanager, real_T
+  options_ObjectiveLimit, real_T options_ConstraintTolerance, int32_T
+  runTimeOptions_MaxIterations, real_T runTimeOptions_ConstrRelTolFact,
   boolean_T *updateFval, boolean_T iterDisplayQP)
 {
   boolean_T nonDegenerateWset;
   solution->iterations++;
-  mpcprueba2_B.nVar_f = objective->nvar;
+  mpcprueba2_B.nVar_j = objective->nvar;
   if ((solution->iterations >= runTimeOptions_MaxIterations) &&
       ((solution->state != 1) || (objective->objtype == 5))) {
     solution->state = 0;
   }
 
   if (solution->iterations - solution->iterations / 50 * 50 == 0) {
-    mpcprueba2_B.tempMaxConstr = mpcpru_maxConstraintViolation_i(workingset,
-      solution->xstar, 1);
+    mpcprueba2_B.tempMaxConstr = mpcpr_maxConstraintViolation_n3(workingset,
+      solution->xstar);
     solution->maxConstr = mpcprueba2_B.tempMaxConstr;
     if (objective->objtype == 5) {
       mpcprueba2_B.tempMaxConstr = solution->maxConstr - solution->
@@ -3824,9 +3674,9 @@ static void mpcp_checkStoppingAndUpdateFval(int32_T *activeSetChangeID, const
 
     if (mpcprueba2_B.tempMaxConstr > options_ConstraintTolerance *
         runTimeOptions_ConstrRelTolFact) {
-      if (mpcprueba2_B.nVar_f - 1 >= 0) {
+      if (mpcprueba2_B.nVar_j - 1 >= 0) {
         memcpy(&solution->searchDir[0], &solution->xstar[0],
-               static_cast<uint32_T>(mpcprueba2_B.nVar_f) * sizeof(real_T));
+               static_cast<uint32_T>(mpcprueba2_B.nVar_j) * sizeof(real_T));
       }
 
       nonDegenerateWset = mpcprue_feasibleX0ForWorkingSet
@@ -3836,12 +3686,12 @@ static void mpcp_checkStoppingAndUpdateFval(int32_T *activeSetChangeID, const
       }
 
       *activeSetChangeID = 0;
-      mpcprueba2_B.tempMaxConstr = mpcpru_maxConstraintViolation_i(workingset,
-        solution->searchDir, 1);
+      mpcprueba2_B.tempMaxConstr = mpcpr_maxConstraintViolation_n3(workingset,
+        solution->searchDir);
       if (mpcprueba2_B.tempMaxConstr < solution->maxConstr) {
-        if (mpcprueba2_B.nVar_f - 1 >= 0) {
+        if (mpcprueba2_B.nVar_j - 1 >= 0) {
           memcpy(&solution->xstar[0], &solution->searchDir[0],
-                 static_cast<uint32_T>(mpcprueba2_B.nVar_f) * sizeof(real_T));
+                 static_cast<uint32_T>(mpcprueba2_B.nVar_j) * sizeof(real_T));
         }
 
         solution->maxConstr = mpcprueba2_B.tempMaxConstr;
@@ -3865,10 +3715,10 @@ static void mpcp_checkStoppingAndUpdateFval(int32_T *activeSetChangeID, const
 }
 
 // Function for MATLAB Function: '<Root>/MATLAB Function5'
-static void mpcprueba2_computeFirstOrderOpt(szTgroxymWCv1wbPz1KDaqC_mpcpr_T
-  *solution, const sSitMryErsR3bMncKlW48mF_mpcpr_T *objective, int32_T
-  workingset_nVar, int32_T workingset_ldA, const real_T workingset_ATwset[703],
-  int32_T workingset_nActiveConstr, real_T workspace[703])
+static void mpcprueba2_computeFirstOrderOpt(sqvdR3NQrfOjUOrC18Muj0B_mpcpr_T
+  *solution, const s3c01M66EFWFQJ5qmFcUbmD_mpcpr_T *objective, int32_T
+  workingset_nVar, int32_T workingset_ldA, const real_T workingset_ATwset[1072],
+  int32_T workingset_nActiveConstr, real_T workspace[1072])
 {
   real_T infNorm;
   int32_T k;
@@ -3918,11 +3768,11 @@ static void mpcprueba2_computeFirstOrderOpt(szTgroxymWCv1wbPz1KDaqC_mpcpr_T
 }
 
 // Function for MATLAB Function: '<Root>/MATLAB Function5'
-static void mpcprueba2_iterate(const real_T H[324], const real_T f[18],
-  szTgroxymWCv1wbPz1KDaqC_mpcpr_T *solution, sDXqx68fEcBxWtF9wVQzAm_mpcpru_T
-  *memspace, shMFFa6ZZiYob3JbcpnnDNC_mpcpr_T *workingset,
-  sIxc6e90CRmt17sP6BCIycE_mpcpr_T *qrmanager, sBSaEu6uV23R8SnQxWoeC5G_mpcpr_T
-  *cholmanager, sSitMryErsR3bMncKlW48mF_mpcpr_T *objective, boolean_T
+static void mpcprueba2_iterate(const real_T b_H[225], const real_T f[15],
+  sqvdR3NQrfOjUOrC18Muj0B_mpcpr_T *solution, sFevNsrsl34D5b5aqm3qNjD_mpcpr_T
+  *memspace, sbYdmyzq7l8Oes4F6y6cc2C_mpcpr_T *workingset,
+  ssq2hyGkLOLhNlUBS6YfcCD_mpcpr_T *qrmanager, sOWFOmKuLvD2kpFwfdM45bG_mpcpr_T
+  *cholmanager, s3c01M66EFWFQJ5qmFcUbmD_mpcpr_T *objective, boolean_T
   options_IterDisplayQP, real_T options_ObjectiveLimit, real_T
   options_PricingTolerance, real_T options_ConstraintTolerance, real_T
   options_StepTolerance, const sIOJhD9KwAkF5sEguPjYquC_mpcpr_T runTimeOptions)
@@ -3940,7 +3790,7 @@ static void mpcprueba2_iterate(const real_T H[324], const real_T f[18],
   mpcprueba2_B.tolDelta = 6.7434957617430445E-7;
   mpcprueba2_B.nVar = workingset->nVar;
   mpcprueba2_B.globalActiveConstrIdx = 0;
-  mpcprueba2_computeGrad_StoreHx(objective, H, f, solution->xstar);
+  mpcprueba2_computeGrad_StoreHx(objective, b_H, f, solution->xstar);
   solution->fstar = mpcprueba2_computeFval_ReuseHx(objective,
     memspace->workspace_float, f, solution->xstar);
   if (solution->iterations < runTimeOptions.MaxIterations) {
@@ -3986,10 +3836,10 @@ static void mpcprueba2_iterate(const real_T H[324], const real_T f[18],
           mpcprueba2_B.iAw0 = workingset->nActiveConstr;
           guard1 = false;
           if (mpcprueba2_B.nVar * workingset->nActiveConstr > 0) {
-            for (mpcprueba2_B.i_j = 0; mpcprueba2_B.i_j < mpcprueba2_B.iAw0;
-                 mpcprueba2_B.i_j++) {
-              mpcprueba2_B.ix0 = workingset->ldA * mpcprueba2_B.i_j;
-              mpcprueba2_B.iy0 = qrmanager->ldq * mpcprueba2_B.i_j;
+            for (mpcprueba2_B.i_b = 0; mpcprueba2_B.i_b < mpcprueba2_B.iAw0;
+                 mpcprueba2_B.i_b++) {
+              mpcprueba2_B.ix0 = workingset->ldA * mpcprueba2_B.i_b;
+              mpcprueba2_B.iy0 = qrmanager->ldq * mpcprueba2_B.i_b;
               for (mpcprueba2_B.minmn = 0; mpcprueba2_B.minmn <
                    mpcprueba2_B.nVar; mpcprueba2_B.minmn++) {
                 qrmanager->QR[mpcprueba2_B.iy0 + mpcprueba2_B.minmn] =
@@ -4011,9 +3861,9 @@ static void mpcprueba2_iterate(const real_T H[324], const real_T f[18],
             qrmanager->mrows = mpcprueba2_B.nVar;
             qrmanager->ncols = workingset->nActiveConstr;
             mpcprueba2_B.minmn = workingset->nActiveConstr;
-            for (mpcprueba2_B.i_j = 0; mpcprueba2_B.i_j < mpcprueba2_B.minmn;
-                 mpcprueba2_B.i_j++) {
-              qrmanager->jpvt[mpcprueba2_B.i_j] = mpcprueba2_B.i_j + 1;
+            for (mpcprueba2_B.i_b = 0; mpcprueba2_B.i_b < mpcprueba2_B.minmn;
+                 mpcprueba2_B.i_b++) {
+              qrmanager->jpvt[mpcprueba2_B.i_b] = mpcprueba2_B.i_b + 1;
             }
 
             if (mpcprueba2_B.nVar <= workingset->nActiveConstr) {
@@ -4028,9 +3878,9 @@ static void mpcprueba2_iterate(const real_T H[324], const real_T f[18],
               mpcprueba2_B.minmn = workingset->nActiveConstr;
             }
 
-            memset(&qrmanager->tau[0], 0, 19U * sizeof(real_T));
+            memset(&qrmanager->tau[0], 0, sizeof(real_T) << 4U);
             if (mpcprueba2_B.minmn >= 1) {
-              memset(&qrmanager->tau[0], 0, 19U * sizeof(real_T));
+              memset(&qrmanager->tau[0], 0, sizeof(real_T) << 4U);
               mpcprueba2_qrf(qrmanager->QR, 1, mpcprueba2_B.nVar,
                              workingset->nActiveConstr, mpcprueba2_B.minmn,
                              qrmanager->tau);
@@ -4041,12 +3891,12 @@ static void mpcprueba2_iterate(const real_T H[324], const real_T f[18],
           break;
         }
 
-        mpcprueba2_compute_deltax(H, solution, memspace, qrmanager, cholmanager,
-          objective);
+        mpcprueba2_compute_deltax(b_H, solution, memspace, qrmanager,
+          cholmanager, objective);
         if (solution->state != -5) {
           exitg1 = 1;
         } else {
-          mpcprueba2_B.normDelta = mpcprueba2_xnrm2_j(mpcprueba2_B.nVar,
+          mpcprueba2_B.normDelta = mpcprueba2_xnrm2_ls(mpcprueba2_B.nVar,
             solution->searchDir);
           guard11 = true;
         }
@@ -4075,13 +3925,13 @@ static void mpcprueba2_iterate(const real_T H[324], const real_T f[18],
             mpcprueba2_B.iAw0 = (workingset->nWConstr[0] + workingset->nWConstr
                                  [1]) + 1;
             mpcprueba2_B.ix0 = workingset->nActiveConstr;
-            for (mpcprueba2_B.i_j = mpcprueba2_B.iAw0; mpcprueba2_B.i_j <=
-                 mpcprueba2_B.ix0; mpcprueba2_B.i_j++) {
-              mpcprueba2_B.solution_lambda = solution->lambda[mpcprueba2_B.i_j -
+            for (mpcprueba2_B.i_b = mpcprueba2_B.iAw0; mpcprueba2_B.i_b <=
+                 mpcprueba2_B.ix0; mpcprueba2_B.i_b++) {
+              mpcprueba2_B.solution_lambda = solution->lambda[mpcprueba2_B.i_b -
                 1];
               if (mpcprueba2_B.solution_lambda < mpcprueba2_B.minLambda) {
                 mpcprueba2_B.minLambda = mpcprueba2_B.solution_lambda;
-                mpcprueba2_B.minmn = mpcprueba2_B.i_j;
+                mpcprueba2_B.minmn = mpcprueba2_B.i_b;
               }
             }
 
@@ -4113,24 +3963,27 @@ static void mpcprueba2_iterate(const real_T H[324], const real_T f[18],
           updateFval = (mpcprueba2_B.TYPE == 5);
           if (updateFval || runTimeOptions.RemainFeasible) {
             mpcprueba2_feasibleratiotest(solution->xstar, solution->searchDir,
-              memspace->workspace_float, workingset->nVar, workingset->lb,
+              memspace->workspace_float, workingset->nVar, workingset->ldA,
+              workingset->Aineq, workingset->bineq, workingset->lb,
               workingset->ub, workingset->indexLB, workingset->indexUB,
               workingset->sizes, workingset->isActiveIdx,
               workingset->isActiveConstr, workingset->nWConstr, updateFval,
               options_ConstraintTolerance, &mpcprueba2_B.minLambda, &newBlocking,
-              &mpcprueba2_B.minmn, &mpcprueba2_B.i_j);
+              &mpcprueba2_B.minmn, &mpcprueba2_B.i_b);
           } else {
             mpcprueba2_ratiotest(solution->xstar, solution->searchDir,
                                  memspace->workspace_float, workingset->nVar,
-                                 workingset->lb, workingset->ub,
-                                 workingset->indexLB, workingset->indexUB,
-                                 workingset->sizes, workingset->isActiveIdx,
+                                 workingset->ldA, workingset->Aineq,
+                                 workingset->bineq, workingset->lb,
+                                 workingset->ub, workingset->indexLB,
+                                 workingset->indexUB, workingset->sizes,
+                                 workingset->isActiveIdx,
                                  workingset->isActiveConstr,
                                  workingset->nWConstr, false,
                                  options_ConstraintTolerance,
-                                 &mpcprueba2_B.tolDelta, 6.608625846508183E-7,
-                                 &mpcprueba2_B.minLambda, &newBlocking,
-                                 &mpcprueba2_B.minmn, &mpcprueba2_B.i_j);
+                                 &mpcprueba2_B.tolDelta, &mpcprueba2_B.minLambda,
+                                 &newBlocking, &mpcprueba2_B.minmn,
+                                 &mpcprueba2_B.i_b);
           }
 
           if (newBlocking) {
@@ -4138,26 +3991,40 @@ static void mpcprueba2_iterate(const real_T H[324], const real_T f[18],
              case 3:
               workingset->nWConstr[2]++;
               workingset->isActiveConstr[(workingset->isActiveIdx[2] +
-                mpcprueba2_B.i_j) - 2] = true;
+                mpcprueba2_B.i_b) - 2] = true;
               workingset->nActiveConstr++;
               workingset->Wid[workingset->nActiveConstr - 1] = 3;
               workingset->Wlocalidx[workingset->nActiveConstr - 1] =
-                mpcprueba2_B.i_j;
+                mpcprueba2_B.i_b;
+              mpcprueba2_B.minmn = (mpcprueba2_B.i_b - 1) * workingset->ldA;
+              mpcprueba2_B.iAw0 = (workingset->nActiveConstr - 1) *
+                workingset->ldA;
+              mpcprueba2_B.ix0 = workingset->nVar;
+              for (mpcprueba2_B.activeSetChangeID = 0;
+                   mpcprueba2_B.activeSetChangeID < mpcprueba2_B.ix0;
+                   mpcprueba2_B.activeSetChangeID++) {
+                workingset->ATwset[mpcprueba2_B.iAw0 +
+                  mpcprueba2_B.activeSetChangeID] = workingset->
+                  Aineq[mpcprueba2_B.minmn + mpcprueba2_B.activeSetChangeID];
+              }
+
+              workingset->bwset[workingset->nActiveConstr - 1] =
+                workingset->bineq[mpcprueba2_B.i_b - 1];
               break;
 
              case 4:
-              mpcp_addBoundToActiveSetMatrix_(workingset, 4, mpcprueba2_B.i_j);
+              mpcp_addBoundToActiveSetMatrix_(workingset, 4, mpcprueba2_B.i_b);
               break;
 
              default:
-              mpcp_addBoundToActiveSetMatrix_(workingset, 5, mpcprueba2_B.i_j);
+              mpcp_addBoundToActiveSetMatrix_(workingset, 5, mpcprueba2_B.i_b);
               break;
             }
 
             mpcprueba2_B.activeSetChangeID = 1;
           } else {
             if (objective->objtype == 5) {
-              if (mpcprueba2_xnrm2_j(objective->nvar, solution->searchDir) >
+              if (mpcprueba2_xnrm2_ls(objective->nvar, solution->searchDir) >
                   100.0 * static_cast<real_T>(objective->nvar) *
                   1.4901161193847656E-8) {
                 solution->state = 3;
@@ -4173,14 +4040,14 @@ static void mpcprueba2_iterate(const real_T H[324], const real_T f[18],
           }
 
           if ((mpcprueba2_B.nVar >= 1) && (!(mpcprueba2_B.minLambda == 0.0))) {
-            for (mpcprueba2_B.i_j = 0; mpcprueba2_B.i_j < mpcprueba2_B.nVar;
-                 mpcprueba2_B.i_j++) {
-              solution->xstar[mpcprueba2_B.i_j] += mpcprueba2_B.minLambda *
-                solution->searchDir[mpcprueba2_B.i_j];
+            for (mpcprueba2_B.i_b = 0; mpcprueba2_B.i_b < mpcprueba2_B.nVar;
+                 mpcprueba2_B.i_b++) {
+              solution->xstar[mpcprueba2_B.i_b] += mpcprueba2_B.minLambda *
+                solution->searchDir[mpcprueba2_B.i_b];
             }
           }
 
-          mpcprueba2_computeGrad_StoreHx(objective, H, f, solution->xstar);
+          mpcprueba2_computeGrad_StoreHx(objective, b_H, f, solution->xstar);
           updateFval = true;
         }
 
@@ -4196,8 +4063,8 @@ static void mpcprueba2_iterate(const real_T H[324], const real_T f[18],
             std::printf(" Iter            Fval     Feasibility      Optimality    Norm of step\n");
             std::fflush(stdout);
           } else {
-            solution->maxConstr = mpcpru_maxConstraintViolation_i(workingset,
-              solution->xstar, 1);
+            solution->maxConstr = mpcpr_maxConstraintViolation_n3(workingset,
+              solution->xstar);
           }
 
           mpcprueba2_computeFirstOrderOpt(solution, objective, workingset->nVar,
@@ -4227,26 +4094,26 @@ static void mpcprueba2_iterate(const real_T H[324], const real_T f[18],
 }
 
 // Function for MATLAB Function: '<Root>/MATLAB Function5'
-static void mpcprueba2_PresolveWorkingSet_c(szTgroxymWCv1wbPz1KDaqC_mpcpr_T
-  *solution, sDXqx68fEcBxWtF9wVQzAm_mpcpru_T *memspace,
-  shMFFa6ZZiYob3JbcpnnDNC_mpcpr_T *workingset, sIxc6e90CRmt17sP6BCIycE_mpcpr_T
+static void mpcprueba2_PresolveWorkingSet_e(sqvdR3NQrfOjUOrC18Muj0B_mpcpr_T
+  *solution, sFevNsrsl34D5b5aqm3qNjD_mpcpr_T *memspace,
+  sbYdmyzq7l8Oes4F6y6cc2C_mpcpr_T *workingset, ssq2hyGkLOLhNlUBS6YfcCD_mpcpr_T
   *qrmanager, const sqZVQFgLZG74FDpCArykMHB_mpcpr_T *options)
 {
   boolean_T guard1;
   boolean_T okWorkingSet;
   solution->state = 82;
-  mpcprueba2_B.nVar_n = workingset->nVar;
+  mpcprueba2_B.nVar_o = workingset->nVar;
   mpcprueba2_B.mTotalWorkingEq = workingset->nWConstr[0] + workingset->nWConstr
     [1];
   mpcprueba2_B.nDepInd = 0;
   if (mpcprueba2_B.mTotalWorkingEq > 0) {
     for (mpcprueba2_B.idx_row = 0; mpcprueba2_B.idx_row <
          mpcprueba2_B.mTotalWorkingEq; mpcprueba2_B.idx_row++) {
-      for (mpcprueba2_B.idxStartIneq_i = 0; mpcprueba2_B.idxStartIneq_i <
-           mpcprueba2_B.nVar_n; mpcprueba2_B.idxStartIneq_i++) {
+      for (mpcprueba2_B.idxStartIneq_n = 0; mpcprueba2_B.idxStartIneq_n <
+           mpcprueba2_B.nVar_o; mpcprueba2_B.idxStartIneq_n++) {
         qrmanager->QR[mpcprueba2_B.idx_row + qrmanager->ldq *
-          mpcprueba2_B.idxStartIneq_i] = workingset->ATwset[workingset->ldA *
-          mpcprueba2_B.idx_row + mpcprueba2_B.idxStartIneq_i];
+          mpcprueba2_B.idxStartIneq_n] = workingset->ATwset[workingset->ldA *
+          mpcprueba2_B.idx_row + mpcprueba2_B.idxStartIneq_n];
       }
     }
 
@@ -4255,12 +4122,12 @@ static void mpcprueba2_PresolveWorkingSet_c(szTgroxymWCv1wbPz1KDaqC_mpcpr_T
     if (mpcprueba2_B.nDepInd > 0) {
       for (mpcprueba2_B.idx_row = 0; mpcprueba2_B.idx_row <
            mpcprueba2_B.mTotalWorkingEq; mpcprueba2_B.idx_row++) {
-        mpcprueba2_B.iy0_n = qrmanager->ldq * mpcprueba2_B.idx_row;
-        mpcprueba2_B.ix0_o = workingset->ldA * mpcprueba2_B.idx_row;
-        for (mpcprueba2_B.idxStartIneq_i = 0; mpcprueba2_B.idxStartIneq_i <
-             mpcprueba2_B.nVar_n; mpcprueba2_B.idxStartIneq_i++) {
-          qrmanager->QR[mpcprueba2_B.iy0_n + mpcprueba2_B.idxStartIneq_i] =
-            workingset->ATwset[mpcprueba2_B.idxStartIneq_i + mpcprueba2_B.ix0_o];
+        mpcprueba2_B.iy0_o = qrmanager->ldq * mpcprueba2_B.idx_row;
+        mpcprueba2_B.ix0_i = workingset->ldA * mpcprueba2_B.idx_row;
+        for (mpcprueba2_B.idxStartIneq_n = 0; mpcprueba2_B.idxStartIneq_n <
+             mpcprueba2_B.nVar_o; mpcprueba2_B.idxStartIneq_n++) {
+          qrmanager->QR[mpcprueba2_B.iy0_o + mpcprueba2_B.idxStartIneq_n] =
+            workingset->ATwset[mpcprueba2_B.idxStartIneq_n + mpcprueba2_B.ix0_i];
         }
       }
 
@@ -4300,8 +4167,8 @@ static void mpcprueba2_PresolveWorkingSet_c(szTgroxymWCv1wbPz1KDaqC_mpcpr_T
     if (guard1) {
       if (workingset->nWConstr[0] + workingset->nWConstr[1] == workingset->nVar)
       {
-        mpcprueba2_B.constrViolation = mpcpru_maxConstraintViolation_i
-          (workingset, solution->xstar, 1);
+        mpcprueba2_B.constrViolation = mpcpr_maxConstraintViolation_n3
+          (workingset, solution->xstar);
         if (mpcprueba2_B.constrViolation > options->ConstraintTolerance) {
           solution->state = -2;
         }
@@ -4309,11 +4176,11 @@ static void mpcprueba2_PresolveWorkingSet_c(szTgroxymWCv1wbPz1KDaqC_mpcpr_T
     }
   } else {
     solution->state = -3;
-    mpcprueba2_B.idxStartIneq_i = (workingset->nWConstr[0] +
+    mpcprueba2_B.idxStartIneq_n = (workingset->nWConstr[0] +
       workingset->nWConstr[1]) + 1;
-    mpcprueba2_B.nVar_n = workingset->nActiveConstr;
-    for (mpcprueba2_B.idx_row = mpcprueba2_B.idxStartIneq_i;
-         mpcprueba2_B.idx_row <= mpcprueba2_B.nVar_n; mpcprueba2_B.idx_row++) {
+    mpcprueba2_B.nVar_o = workingset->nActiveConstr;
+    for (mpcprueba2_B.idx_row = mpcprueba2_B.idxStartIneq_n;
+         mpcprueba2_B.idx_row <= mpcprueba2_B.nVar_o; mpcprueba2_B.idx_row++) {
       workingset->isActiveConstr[(workingset->isActiveIdx[workingset->
         Wid[mpcprueba2_B.idx_row - 1] - 1] + workingset->
         Wlocalidx[mpcprueba2_B.idx_row - 1]) - 2] = false;
@@ -4328,8 +4195,8 @@ static void mpcprueba2_PresolveWorkingSet_c(szTgroxymWCv1wbPz1KDaqC_mpcpr_T
 
 // Function for MATLAB Function: '<Root>/MATLAB Function5'
 static void mpcprueba2_linearForm_(boolean_T obj_hasLinear, int32_T obj_nvar,
-  real_T workspace[703], const real_T H[324], const real_T f[18], const real_T
-  x[19])
+  real_T workspace[1072], const real_T b_H[225], const real_T f[15], const
+  real_T x[16])
 {
   int32_T beta1;
   beta1 = 0;
@@ -4359,7 +4226,7 @@ static void mpcprueba2_linearForm_(boolean_T obj_hasLinear, int32_T obj_nvar,
       for (int32_T ia = beta1; ia < e; ia++) {
         int32_T tmp;
         tmp = ia - beta1;
-        workspace[tmp] += H[ia - 1] * c;
+        workspace[tmp] += b_H[ia - 1] * c;
       }
 
       ix++;
@@ -4368,9 +4235,9 @@ static void mpcprueba2_linearForm_(boolean_T obj_hasLinear, int32_T obj_nvar,
 }
 
 // Function for MATLAB Function: '<Root>/MATLAB Function5'
-static real_T mpcprueba2_computeFval(const sSitMryErsR3bMncKlW48mF_mpcpr_T *obj,
-  real_T workspace[703], const real_T H[324], const real_T f[18], const real_T
-  x[19])
+static real_T mpcprueba2_computeFval(const s3c01M66EFWFQJ5qmFcUbmD_mpcpr_T *obj,
+  real_T workspace[1072], const real_T b_H[225], const real_T f[15], const
+  real_T x[16])
 {
   real_T val;
   int32_T c;
@@ -4383,7 +4250,7 @@ static real_T mpcprueba2_computeFval(const sSitMryErsR3bMncKlW48mF_mpcpr_T *obj,
     break;
 
    case 3:
-    mpcprueba2_linearForm_(obj->hasLinear, obj->nvar, workspace, H, f, x);
+    mpcprueba2_linearForm_(obj->hasLinear, obj->nvar, workspace, b_H, f, x);
     if (obj->nvar >= 1) {
       ixlast = obj->nvar;
       for (k = 0; k < ixlast; k++) {
@@ -4393,7 +4260,7 @@ static real_T mpcprueba2_computeFval(const sSitMryErsR3bMncKlW48mF_mpcpr_T *obj,
     break;
 
    case 4:
-    mpcprueba2_linearForm_(obj->hasLinear, obj->nvar, workspace, H, f, x);
+    mpcprueba2_linearForm_(obj->hasLinear, obj->nvar, workspace, b_H, f, x);
     ixlast = obj->nvar + 1;
     c = obj->maxVar;
     for (k = ixlast; k < c; k++) {
@@ -4413,13 +4280,13 @@ static real_T mpcprueba2_computeFval(const sSitMryErsR3bMncKlW48mF_mpcpr_T *obj,
 }
 
 // Function for MATLAB Function: '<Root>/MATLAB Function5'
-static void mpcprueba2_driver(const real_T H[324], const real_T f[18],
-  szTgroxymWCv1wbPz1KDaqC_mpcpr_T *solution, sDXqx68fEcBxWtF9wVQzAm_mpcpru_T
-  *memspace, shMFFa6ZZiYob3JbcpnnDNC_mpcpr_T *workingset,
-  sBSaEu6uV23R8SnQxWoeC5G_mpcpr_T *cholmanager, const
+static void mpcprueba2_driver(const real_T b_H[225], const real_T f[15],
+  sqvdR3NQrfOjUOrC18Muj0B_mpcpr_T *solution, sFevNsrsl34D5b5aqm3qNjD_mpcpr_T
+  *memspace, sbYdmyzq7l8Oes4F6y6cc2C_mpcpr_T *workingset,
+  sOWFOmKuLvD2kpFwfdM45bG_mpcpr_T *cholmanager, const
   sqZVQFgLZG74FDpCArykMHB_mpcpr_T options, int32_T runTimeOptions_MaxIterations,
   real_T runTimeOptions_ConstrRelTolFact, real_T runTimeOptions_ProbRelTolFactor,
-  sIxc6e90CRmt17sP6BCIycE_mpcpr_T *qrmanager, sSitMryErsR3bMncKlW48mF_mpcpr_T
+  ssq2hyGkLOLhNlUBS6YfcCD_mpcpr_T *qrmanager, s3c01M66EFWFQJ5qmFcUbmD_mpcpr_T
   *objective)
 {
   boolean_T exitg1;
@@ -4427,11 +4294,11 @@ static void mpcprueba2_driver(const real_T H[324], const real_T f[18],
   boolean_T guard2;
   boolean_T runTimeOptions_RemainFeasible;
   boolean_T tmp;
-  memset(&objective->grad[0], 0, 19U * sizeof(real_T));
-  memset(&objective->Hx[0], 0, 18U * sizeof(real_T));
+  memset(&objective->grad[0], 0, sizeof(real_T) << 4U);
+  memset(&objective->Hx[0], 0, 15U * sizeof(real_T));
   objective->hasLinear = true;
-  objective->nvar = 18;
-  objective->maxVar = 19;
+  objective->nvar = 15;
+  objective->maxVar = 16;
   objective->beta = 0.0;
   objective->rho = 0.0;
   objective->objtype = 3;
@@ -4439,18 +4306,18 @@ static void mpcprueba2_driver(const real_T H[324], const real_T f[18],
   objective->prev_nvar = 0;
   objective->prev_hasLinear = false;
   objective->gammaScalar = 0.0;
-  qrmanager->ldq = 19;
-  memset(&qrmanager->QR[0], 0, 703U * sizeof(real_T));
-  memset(&qrmanager->Q[0], 0, 361U * sizeof(real_T));
-  memset(&qrmanager->jpvt[0], 0, 37U * sizeof(int32_T));
+  qrmanager->ldq = 16;
+  memset(&qrmanager->QR[0], 0, 1072U * sizeof(real_T));
+  memset(&qrmanager->Q[0], 0, sizeof(real_T) << 8U);
+  memset(&qrmanager->jpvt[0], 0, 67U * sizeof(int32_T));
   qrmanager->mrows = 0;
   qrmanager->ncols = 0;
-  memset(&qrmanager->tau[0], 0, 19U * sizeof(real_T));
+  memset(&qrmanager->tau[0], 0, sizeof(real_T) << 4U);
   qrmanager->minRowCol = 0;
   qrmanager->usedPivoting = false;
   solution->iterations = 0;
   runTimeOptions_RemainFeasible = (options.PricingTolerance <= 0.0);
-  mpcprueba2_B.i_b = workingset->nVar;
+  mpcprueba2_B.i_e = workingset->nVar;
   tmp = mpcprueba2_strcmp(options.SolverName);
   guard1 = false;
   guard2 = false;
@@ -4495,11 +4362,11 @@ static void mpcprueba2_driver(const real_T H[324], const real_T f[18],
 
   if (guard2) {
     solution->iterations = 0;
-    solution->maxConstr = mpcpru_maxConstraintViolation_i(workingset,
-      solution->xstar, 1);
-    mpcprueba2_B.d3 = options.ConstraintTolerance *
+    solution->maxConstr = mpcpr_maxConstraintViolation_n3(workingset,
+      solution->xstar);
+    mpcprueba2_B.d = options.ConstraintTolerance *
       runTimeOptions_ConstrRelTolFact;
-    if (solution->maxConstr > mpcprueba2_B.d3) {
+    if (solution->maxConstr > mpcprueba2_B.d) {
       solution->xstar[workingset->nVar] = solution->maxConstr + 1.0;
       mpcprueba2_B.b_workingset = *workingset;
       if (workingset->probType == 3) {
@@ -4529,7 +4396,7 @@ static void mpcprueba2_driver(const real_T H[324], const real_T f[18],
         mpcprueba2_B.b_workingset.nWConstr[0] +
         mpcprueba2_B.b_workingset.nWConstr[1];
       objective->prev_objtype = 3;
-      objective->prev_nvar = 18;
+      objective->prev_nvar = 15;
       objective->prev_hasLinear = true;
       objective->objtype = 5;
       objective->nvar = workingset->nVar + 1;
@@ -4537,17 +4404,17 @@ static void mpcprueba2_driver(const real_T H[324], const real_T f[18],
       objective->hasLinear = true;
       solution->fstar = solution->xstar[workingset->nVar];
       solution->state = 5;
-      mpcprueba2_B.expl_temp_f.ProbRelTolFactor =
+      mpcprueba2_B.expl_temp_c.ProbRelTolFactor =
         runTimeOptions_ProbRelTolFactor;
-      mpcprueba2_B.expl_temp_f.ConstrRelTolFactor =
+      mpcprueba2_B.expl_temp_c.ConstrRelTolFactor =
         runTimeOptions_ConstrRelTolFact;
-      mpcprueba2_B.expl_temp_f.MaxIterations = runTimeOptions_MaxIterations;
-      mpcprueba2_B.expl_temp_f.RemainFeasible = runTimeOptions_RemainFeasible;
-      mpcprueba2_iterate(H, f, solution, memspace, &mpcprueba2_B.b_workingset,
+      mpcprueba2_B.expl_temp_c.MaxIterations = runTimeOptions_MaxIterations;
+      mpcprueba2_B.expl_temp_c.RemainFeasible = runTimeOptions_RemainFeasible;
+      mpcprueba2_iterate(b_H, f, solution, memspace, &mpcprueba2_B.b_workingset,
                          qrmanager, cholmanager, objective,
-                         options.IterDisplayQP, mpcprueba2_B.d3,
+                         options.IterDisplayQP, mpcprueba2_B.d,
                          options.PricingTolerance, options.ConstraintTolerance,
-                         1.4901161193847657E-10, mpcprueba2_B.expl_temp_f);
+                         1.4901161193847657E-10, mpcprueba2_B.expl_temp_c);
       if (mpcprueba2_B.b_workingset.isActiveConstr
           [(mpcprueba2_B.b_workingset.isActiveIdx[3] +
             mpcprueba2_B.b_workingset.sizes[3]) - 2]) {
@@ -4585,9 +4452,10 @@ static void mpcprueba2_driver(const real_T H[324], const real_T f[18],
       *workingset = mpcprueba2_B.b_workingset;
       if (solution->state == 0) {
       } else {
-        solution->maxConstr = mpcpru_maxConstraintViolation_i
-          (&mpcprueba2_B.b_workingset, solution->xstar, 1);
-        if (solution->maxConstr > mpcprueba2_B.d3) {
+        solution->maxConstr = mpcpr_maxConstraintViolation_n3
+          (&mpcprueba2_B.b_workingset, solution->xstar);
+        *workingset = mpcprueba2_B.b_workingset;
+        if (solution->maxConstr > mpcprueba2_B.d) {
           mpcprueba2_B.mConstr = mpcprueba2_B.b_workingset.mConstrMax;
           if (mpcprueba2_B.mConstr - 1 >= 0) {
             memset(&solution->lambda[0], 0, static_cast<uint32_T>
@@ -4595,25 +4463,25 @@ static void mpcprueba2_driver(const real_T H[324], const real_T f[18],
           }
 
           solution->fstar = mpcprueba2_computeFval(objective,
-            memspace->workspace_float, H, f, solution->xstar);
+            memspace->workspace_float, b_H, f, solution->xstar);
           solution->state = -2;
         } else {
           if (solution->maxConstr > 0.0) {
-            if (mpcprueba2_B.i_b - 1 >= 0) {
+            if (mpcprueba2_B.i_e - 1 >= 0) {
               memcpy(&solution->searchDir[0], &solution->xstar[0],
-                     static_cast<uint32_T>(mpcprueba2_B.i_b) * sizeof(real_T));
+                     static_cast<uint32_T>(mpcprueba2_B.i_e) * sizeof(real_T));
             }
 
-            mpcprueba2_PresolveWorkingSet_c(solution, memspace,
+            mpcprueba2_PresolveWorkingSet_e(solution, memspace,
               &mpcprueba2_B.b_workingset, qrmanager, &options);
             *workingset = mpcprueba2_B.b_workingset;
-            mpcprueba2_B.maxConstr_new = mpcpru_maxConstraintViolation_i
-              (workingset, solution->xstar, 1);
+            mpcprueba2_B.maxConstr_new = mpcpr_maxConstraintViolation_n3
+              (workingset, solution->xstar);
             if (mpcprueba2_B.maxConstr_new >= solution->maxConstr) {
               solution->maxConstr = mpcprueba2_B.maxConstr_new;
-              if (mpcprueba2_B.i_b - 1 >= 0) {
+              if (mpcprueba2_B.i_e - 1 >= 0) {
                 memcpy(&solution->xstar[0], &solution->searchDir[0],
-                       static_cast<uint32_T>(mpcprueba2_B.i_b) * sizeof(real_T));
+                       static_cast<uint32_T>(mpcprueba2_B.i_e) * sizeof(real_T));
               }
             }
           }
@@ -4627,19 +4495,19 @@ static void mpcprueba2_driver(const real_T H[324], const real_T f[18],
   }
 
   if (guard1) {
-    mpcprueba2_B.expl_temp_c.ProbRelTolFactor = runTimeOptions_ProbRelTolFactor;
-    mpcprueba2_B.expl_temp_c.ConstrRelTolFactor =
+    mpcprueba2_B.expl_temp_p.ProbRelTolFactor = runTimeOptions_ProbRelTolFactor;
+    mpcprueba2_B.expl_temp_p.ConstrRelTolFactor =
       runTimeOptions_ConstrRelTolFact;
-    mpcprueba2_B.expl_temp_c.MaxIterations = runTimeOptions_MaxIterations;
-    mpcprueba2_B.expl_temp_c.RemainFeasible = runTimeOptions_RemainFeasible;
-    mpcprueba2_iterate(H, f, solution, memspace, workingset, qrmanager,
+    mpcprueba2_B.expl_temp_p.MaxIterations = runTimeOptions_MaxIterations;
+    mpcprueba2_B.expl_temp_p.RemainFeasible = runTimeOptions_RemainFeasible;
+    mpcprueba2_iterate(b_H, f, solution, memspace, workingset, qrmanager,
                        cholmanager, objective, options.IterDisplayQP,
                        options.ObjectiveLimit, options.PricingTolerance,
                        options.ConstraintTolerance, options.StepTolerance,
-                       mpcprueba2_B.expl_temp_c);
+                       mpcprueba2_B.expl_temp_p);
     if (tmp && (solution->state != -6)) {
-      solution->maxConstr = mpcpru_maxConstraintViolation_i(workingset,
-        solution->xstar, 1);
+      solution->maxConstr = mpcpr_maxConstraintViolation_n3(workingset,
+        solution->xstar);
       mpcprueba2_computeFirstOrderOpt(solution, objective, workingset->nVar,
         workingset->ldA, workingset->ATwset, workingset->nActiveConstr,
         memspace->workspace_float);
@@ -4647,31 +4515,31 @@ static void mpcprueba2_driver(const real_T H[324], const real_T f[18],
         runTimeOptions_ProbRelTolFactor;
       if ((solution->iterations < runTimeOptions_MaxIterations) &&
           ((solution->state == -7) || ((solution->state == 1) &&
-            ((solution->maxConstr > mpcprueba2_B.d3) || (solution->firstorderopt
-              > mpcprueba2_B.maxConstr_new))))) {
+            ((solution->maxConstr > mpcprueba2_B.d) || (solution->firstorderopt >
+              mpcprueba2_B.maxConstr_new))))) {
+        mpcprueba2_B.expl_temp_f.ProbRelTolFactor =
+          runTimeOptions_ProbRelTolFactor;
+        mpcprueba2_B.expl_temp_f.ConstrRelTolFactor =
+          runTimeOptions_ConstrRelTolFact;
+        mpcprueba2_B.expl_temp_f.MaxIterations = runTimeOptions_MaxIterations;
+        mpcprueba2_B.expl_temp_f.RemainFeasible = false;
         mpcprueba2_B.expl_temp_g.ProbRelTolFactor =
           runTimeOptions_ProbRelTolFactor;
         mpcprueba2_B.expl_temp_g.ConstrRelTolFactor =
           runTimeOptions_ConstrRelTolFact;
         mpcprueba2_B.expl_temp_g.MaxIterations = runTimeOptions_MaxIterations;
         mpcprueba2_B.expl_temp_g.RemainFeasible = false;
-        mpcprueba2_B.expl_temp_g1.ProbRelTolFactor =
-          runTimeOptions_ProbRelTolFactor;
-        mpcprueba2_B.expl_temp_g1.ConstrRelTolFactor =
-          runTimeOptions_ConstrRelTolFact;
-        mpcprueba2_B.expl_temp_g1.MaxIterations = runTimeOptions_MaxIterations;
-        mpcprueba2_B.expl_temp_g1.RemainFeasible = false;
       }
 
       while ((solution->iterations < runTimeOptions_MaxIterations) &&
              ((solution->state == -7) || ((solution->state == 1) &&
-               ((solution->maxConstr > mpcprueba2_B.d3) ||
+               ((solution->maxConstr > mpcprueba2_B.d) ||
                 (solution->firstorderopt > mpcprueba2_B.maxConstr_new))))) {
         mpcprue_feasibleX0ForWorkingSet(memspace->workspace_float,
           solution->xstar, workingset, qrmanager);
-        mpcprueba2_PresolveWorkingSet_c(solution, memspace, workingset,
+        mpcprueba2_PresolveWorkingSet_e(solution, memspace, workingset,
           qrmanager, &options);
-        mpcprueba2_B.i_b = workingset->probType;
+        mpcprueba2_B.i_e = workingset->probType;
         mpcprueba2_B.mConstr = workingset->nVar;
         mpcprueba2_B.idxStartIneq = workingset->nVar;
         solution->xstar[workingset->nVar] = solution->maxConstr + 1.0;
@@ -4707,11 +4575,11 @@ static void mpcprueba2_driver(const real_T H[324], const real_T f[18],
         objective->hasLinear = true;
         solution->fstar = solution->xstar[mpcprueba2_B.idxStartIneq];
         solution->state = 5;
-        mpcprueba2_iterate(H, f, solution, memspace, workingset, qrmanager,
+        mpcprueba2_iterate(b_H, f, solution, memspace, workingset, qrmanager,
                            cholmanager, objective, options.IterDisplayQP,
-                           mpcprueba2_B.d3, options.PricingTolerance,
+                           mpcprueba2_B.d, options.PricingTolerance,
                            options.ConstraintTolerance, 1.4901161193847657E-10,
-                           mpcprueba2_B.expl_temp_g);
+                           mpcprueba2_B.expl_temp_f);
         if (workingset->isActiveConstr[(workingset->isActiveIdx[3] +
              workingset->sizes[3]) - 2]) {
           mpcprueba2_B.idxEndIneq = workingset->sizes[0] + workingset->sizes[1];
@@ -4738,17 +4606,17 @@ static void mpcprueba2_driver(const real_T H[324], const real_T f[18],
         }
 
         solution->maxConstr = solution->xstar[mpcprueba2_B.idxStartIneq];
-        mpcprueba2_setProblemType(workingset, mpcprueba2_B.i_b);
+        mpcprueba2_setProblemType(workingset, mpcprueba2_B.i_e);
         objective->objtype = objective->prev_objtype;
         objective->nvar = objective->prev_nvar;
         objective->hasLinear = objective->prev_hasLinear;
-        mpcprueba2_iterate(H, f, solution, memspace, workingset, qrmanager,
+        mpcprueba2_iterate(b_H, f, solution, memspace, workingset, qrmanager,
                            cholmanager, objective, options.IterDisplayQP,
                            options.ObjectiveLimit, options.PricingTolerance,
                            options.ConstraintTolerance, options.StepTolerance,
-                           mpcprueba2_B.expl_temp_g1);
-        solution->maxConstr = mpcpru_maxConstraintViolation_i(workingset,
-          solution->xstar, 1);
+                           mpcprueba2_B.expl_temp_g);
+        solution->maxConstr = mpcpr_maxConstraintViolation_n3(workingset,
+          solution->xstar);
         mpcprueba2_computeFirstOrderOpt(solution, objective, workingset->nVar,
           workingset->ldA, workingset->ATwset, workingset->nActiveConstr,
           memspace->workspace_float);
@@ -4757,1063 +4625,714 @@ static void mpcprueba2_driver(const real_T H[324], const real_T f[18],
   }
 }
 
-// Function for MATLAB Function: '<Root>/MATLAB Function5'
-static void mpcprueba2_quadprog(const real_T H[324], const real_T f[18], const
-  real_T lb[18], const real_T ub[18], boolean_T optionsIn_NonFiniteSupport,
-  boolean_T optionsIn_IterDisplayQP, real_T optionsIn_PricingTolerance, real_T
-  optionsIn_ObjectiveLimit, real_T optionsIn_ConstraintTolerance, real_T
-  optionsIn_OptimalityTolerance, real_T optionsIn_StepTolerance, real_T
-  optionsIn_MaxIterations, const char_T optionsIn_SolverName[8], real_T x[18],
-  real_T *fval, real_T *exitflag)
+// Function for MATLAB Function: '<Root>/MATLAB Function'
+static real_T mpcprueba2_xnrm2(int32_T n, const real_T x[12], int32_T ix0)
 {
-  boolean_T exitg1;
-  boolean_T guard1;
-  *exitflag = (rtInf);
-  mpcprueba2_B.c_k = 0;
-  exitg1 = false;
-  while ((!exitg1) && (mpcprueba2_B.c_k < 18)) {
-    if (lb[mpcprueba2_B.c_k] > ub[mpcprueba2_B.c_k]) {
-      *exitflag = -2.0;
-      exitg1 = true;
+  real_T y;
+  y = 0.0;
+  if (n >= 1) {
+    if (n == 1) {
+      y = fabs(x[ix0 - 1]);
     } else {
-      mpcprueba2_B.c_k++;
-    }
-  }
-
-  if (*exitflag == -2.0) {
-    memset(&x[0], 0, 18U * sizeof(real_T));
-    *fval = (rtInf);
-  } else {
-    if (optionsIn_ConstraintTolerance < 0.0) {
-      mpcprueba2_B.options_ConstraintTolerance = 1.0E-8;
-    } else {
-      mpcprueba2_B.options_ConstraintTolerance = optionsIn_ConstraintTolerance;
-    }
-
-    mpcprueba2_B.solution.fstar = 0.0;
-    mpcprueba2_B.solution.firstorderopt = 0.0;
-    memset(&mpcprueba2_B.solution.lambda[0], 0, 37U * sizeof(real_T));
-    mpcprueba2_B.solution.state = 0;
-    mpcprueba2_B.solution.maxConstr = 0.0;
-    mpcprueba2_B.solution.iterations = 0;
-    memset(&mpcprueba2_B.solution.searchDir[0], 0, 19U * sizeof(real_T));
-    memset(&mpcprueba2_B.solution.xstar[0], 0, 18U * sizeof(real_T));
-    mpcprueba2_B.CholRegManager.ldm = 19;
-    mpcprueba2_B.CholRegManager.ndims = 0;
-    mpcprueba2_B.CholRegManager.info = 0;
-    mpcprueba2_B.CholRegManager.ConvexCheck = true;
-    mpcprueba2_B.CholRegManager.regTol_ = 0.0;
-    mpcprueba2_B.WorkingSet.nVar = 18;
-    mpcprueba2_B.WorkingSet.nVarOrig = 18;
-    mpcprueba2_B.WorkingSet.nVarMax = 19;
-    mpcprueba2_B.WorkingSet.ldA = 19;
-    memset(&mpcprueba2_B.WorkingSet.lb[0], 0, 19U * sizeof(real_T));
-    memset(&mpcprueba2_B.WorkingSet.ub[0], 0, 19U * sizeof(real_T));
-    mpcprueba2_B.WorkingSet.mEqRemoved = 0;
-    memset(&mpcprueba2_B.WorkingSet.ATwset[0], 0, 703U * sizeof(real_T));
-    mpcprueba2_B.WorkingSet.nActiveConstr = 0;
-    memset(&mpcprueba2_B.WorkingSet.bwset[0], 0, 37U * sizeof(real_T));
-    memset(&mpcprueba2_B.WorkingSet.maxConstrWorkspace[0], 0, 37U * sizeof
-           (real_T));
-    memset(&mpcprueba2_B.WorkingSet.Wid[0], 0, 37U * sizeof(int32_T));
-    memset(&mpcprueba2_B.WorkingSet.Wlocalidx[0], 0, 37U * sizeof(int32_T));
-    for (mpcprueba2_B.i_e = 0; mpcprueba2_B.i_e < 37; mpcprueba2_B.i_e++) {
-      mpcprueba2_B.WorkingSet.isActiveConstr[mpcprueba2_B.i_e] = false;
-    }
-
-    for (mpcprueba2_B.i_e = 0; mpcprueba2_B.i_e < 5; mpcprueba2_B.i_e++) {
-      mpcprueba2_B.WorkingSet.nWConstr[mpcprueba2_B.i_e] = 0;
-    }
-
-    mpcprueba2_B.WorkingSet.probType = 3;
-    mpcprueba2_B.WorkingSet.SLACK0 = 1.0E-5;
-    memset(&mpcprueba2_B.WorkingSet.indexLB[0], 0, 19U * sizeof(int32_T));
-    memset(&mpcprueba2_B.WorkingSet.indexUB[0], 0, 19U * sizeof(int32_T));
-    memset(&mpcprueba2_B.WorkingSet.indexFixed[0], 0, 19U * sizeof(int32_T));
-    mpcprueba2_B.c_k = 0;
-    mpcprueba2_B.mUB = 0;
-    mpcprueba2_B.mFixed = 0;
-    for (mpcprueba2_B.idxFillStart = 0; mpcprueba2_B.idxFillStart < 18;
-         mpcprueba2_B.idxFillStart++) {
-      mpcprueba2_B.H_infnrm = lb[mpcprueba2_B.idxFillStart];
-      guard1 = false;
-      if ((!rtIsInf(mpcprueba2_B.H_infnrm)) && (!rtIsNaN(mpcprueba2_B.H_infnrm)))
-      {
-        if (fabs(mpcprueba2_B.H_infnrm - ub[mpcprueba2_B.idxFillStart]) <
-            mpcprueba2_B.options_ConstraintTolerance) {
-          mpcprueba2_B.mFixed++;
-          mpcprueba2_B.WorkingSet.indexFixed[mpcprueba2_B.mFixed - 1] =
-            mpcprueba2_B.idxFillStart + 1;
+      int32_T kend;
+      mpcprueba2_B.scale_j = 3.3121686421112381E-170;
+      kend = ix0 + n;
+      for (int32_T k = ix0; k < kend; k++) {
+        real_T absxk;
+        absxk = fabs(x[k - 1]);
+        if (absxk > mpcprueba2_B.scale_j) {
+          real_T t;
+          t = mpcprueba2_B.scale_j / absxk;
+          y = y * t * t + 1.0;
+          mpcprueba2_B.scale_j = absxk;
         } else {
-          mpcprueba2_B.c_k++;
-          mpcprueba2_B.WorkingSet.indexLB[mpcprueba2_B.c_k - 1] =
-            mpcprueba2_B.idxFillStart + 1;
-          guard1 = true;
-        }
-      } else {
-        guard1 = true;
-      }
-
-      if (guard1) {
-        mpcprueba2_B.H_infnrm = ub[mpcprueba2_B.idxFillStart];
-        if ((!rtIsInf(mpcprueba2_B.H_infnrm)) && (!rtIsNaN(mpcprueba2_B.H_infnrm)))
-        {
-          mpcprueba2_B.mUB++;
-          mpcprueba2_B.WorkingSet.indexUB[mpcprueba2_B.mUB - 1] =
-            mpcprueba2_B.idxFillStart + 1;
+          real_T t;
+          t = absxk / mpcprueba2_B.scale_j;
+          y += t * t;
         }
       }
+
+      y = mpcprueba2_B.scale_j * sqrt(y);
     }
-
-    mpcprueba2_B.WorkingSet.mConstrMax = 37;
-    mpcprueba2_B.idxFillStart = (mpcprueba2_B.c_k + mpcprueba2_B.mUB) +
-      mpcprueba2_B.mFixed;
-    mpcprueba2_B.WorkingSet.mConstr = mpcprueba2_B.idxFillStart;
-    mpcprueba2_B.WorkingSet.mConstrOrig = mpcprueba2_B.idxFillStart;
-    mpcprueba2_B.WorkingSet.sizes[0] = mpcprueba2_B.mFixed;
-    mpcprueba2_B.WorkingSet.sizes[1] = 0;
-    mpcprueba2_B.WorkingSet.sizes[2] = 0;
-    mpcprueba2_B.WorkingSet.sizes[3] = mpcprueba2_B.c_k;
-    mpcprueba2_B.WorkingSet.sizes[4] = mpcprueba2_B.mUB;
-    mpcprueba2_B.WorkingSet.sizesPhaseOne[0] = mpcprueba2_B.mFixed;
-    mpcprueba2_B.WorkingSet.sizesPhaseOne[1] = 0;
-    mpcprueba2_B.WorkingSet.sizesPhaseOne[2] = 0;
-    mpcprueba2_B.WorkingSet.sizesPhaseOne[3] = mpcprueba2_B.c_k + 1;
-    mpcprueba2_B.WorkingSet.sizesPhaseOne[4] = mpcprueba2_B.mUB;
-    for (mpcprueba2_B.idxFillStart = 0; mpcprueba2_B.idxFillStart < 5;
-         mpcprueba2_B.idxFillStart++) {
-      mpcprueba2_B.WorkingSet.sizesNormal[mpcprueba2_B.idxFillStart] =
-        mpcprueba2_B.WorkingSet.sizes[mpcprueba2_B.idxFillStart];
-      mpcprueba2_B.WorkingSet.sizesRegularized[mpcprueba2_B.idxFillStart] =
-        mpcprueba2_B.WorkingSet.sizes[mpcprueba2_B.idxFillStart];
-      mpcprueba2_B.WorkingSet.sizesRegPhaseOne[mpcprueba2_B.idxFillStart] =
-        mpcprueba2_B.WorkingSet.sizesPhaseOne[mpcprueba2_B.idxFillStart];
-    }
-
-    mpcprueba2_B.varargin_2_tmp_tmp[0] = 1;
-    mpcprueba2_B.varargin_2_tmp_tmp[1] = mpcprueba2_B.mFixed;
-    mpcprueba2_B.varargin_2_tmp_tmp[2] = 0;
-    mpcprueba2_B.varargin_2_tmp_tmp[3] = 0;
-    mpcprueba2_B.varargin_2_tmp_tmp[4] = mpcprueba2_B.c_k;
-    mpcprueba2_B.varargin_2_tmp_tmp[5] = mpcprueba2_B.mUB;
-    for (mpcprueba2_B.i_e = 0; mpcprueba2_B.i_e < 6; mpcprueba2_B.i_e++) {
-      mpcprueba2_B.WorkingSet.isActiveIdxNormal[mpcprueba2_B.i_e] =
-        mpcprueba2_B.varargin_2_tmp_tmp[mpcprueba2_B.i_e];
-      mpcprueba2_B.WorkingSet.isActiveIdxRegPhaseOne[mpcprueba2_B.i_e] =
-        mpcprueba2_B.varargin_2_tmp_tmp[mpcprueba2_B.i_e];
-    }
-
-    for (mpcprueba2_B.idxFillStart = 0; mpcprueba2_B.idxFillStart < 5;
-         mpcprueba2_B.idxFillStart++) {
-      mpcprueba2_B.WorkingSet.isActiveIdxRegPhaseOne[mpcprueba2_B.idxFillStart +
-        1] +=
-        mpcprueba2_B.WorkingSet.isActiveIdxRegPhaseOne[mpcprueba2_B.idxFillStart];
-    }
-
-    for (mpcprueba2_B.idxFillStart = 0; mpcprueba2_B.idxFillStart < 6;
-         mpcprueba2_B.idxFillStart++) {
-      mpcprueba2_B.WorkingSet.isActiveIdx[mpcprueba2_B.idxFillStart] =
-        mpcprueba2_B.WorkingSet.isActiveIdxRegPhaseOne[mpcprueba2_B.idxFillStart];
-    }
-
-    for (mpcprueba2_B.idxFillStart = 0; mpcprueba2_B.idxFillStart < 5;
-         mpcprueba2_B.idxFillStart++) {
-      mpcprueba2_B.WorkingSet.isActiveIdxNormal[mpcprueba2_B.idxFillStart + 1] +=
-        mpcprueba2_B.WorkingSet.isActiveIdxNormal[mpcprueba2_B.idxFillStart];
-    }
-
-    mpcprueba2_B.b_x_tmp[0] = 1;
-    mpcprueba2_B.b_x_tmp[1] = mpcprueba2_B.mFixed;
-    mpcprueba2_B.b_x_tmp[2] = 0;
-    mpcprueba2_B.b_x_tmp[3] = 0;
-    mpcprueba2_B.b_x_tmp[4] = mpcprueba2_B.c_k + 1;
-    mpcprueba2_B.b_x_tmp[5] = mpcprueba2_B.mUB;
-    for (mpcprueba2_B.i_e = 0; mpcprueba2_B.i_e < 6; mpcprueba2_B.i_e++) {
-      mpcprueba2_B.WorkingSet.isActiveIdxRegPhaseOne[mpcprueba2_B.i_e] =
-        mpcprueba2_B.b_x_tmp[mpcprueba2_B.i_e];
-    }
-
-    for (mpcprueba2_B.idxFillStart = 0; mpcprueba2_B.idxFillStart < 5;
-         mpcprueba2_B.idxFillStart++) {
-      mpcprueba2_B.WorkingSet.isActiveIdxRegPhaseOne[mpcprueba2_B.idxFillStart +
-        1] +=
-        mpcprueba2_B.WorkingSet.isActiveIdxRegPhaseOne[mpcprueba2_B.idxFillStart];
-    }
-
-    for (mpcprueba2_B.i_e = 0; mpcprueba2_B.i_e < 6; mpcprueba2_B.i_e++) {
-      mpcprueba2_B.WorkingSet.isActiveIdxPhaseOne[mpcprueba2_B.i_e] =
-        mpcprueba2_B.WorkingSet.isActiveIdxRegPhaseOne[mpcprueba2_B.i_e];
-      mpcprueba2_B.WorkingSet.isActiveIdxRegPhaseOne[mpcprueba2_B.i_e] =
-        mpcprueba2_B.varargin_2_tmp_tmp[mpcprueba2_B.i_e];
-    }
-
-    for (mpcprueba2_B.idxFillStart = 0; mpcprueba2_B.idxFillStart < 5;
-         mpcprueba2_B.idxFillStart++) {
-      mpcprueba2_B.WorkingSet.isActiveIdxRegPhaseOne[mpcprueba2_B.idxFillStart +
-        1] +=
-        mpcprueba2_B.WorkingSet.isActiveIdxRegPhaseOne[mpcprueba2_B.idxFillStart];
-    }
-
-    for (mpcprueba2_B.i_e = 0; mpcprueba2_B.i_e < 6; mpcprueba2_B.i_e++) {
-      mpcprueba2_B.WorkingSet.isActiveIdxRegularized[mpcprueba2_B.i_e] =
-        mpcprueba2_B.WorkingSet.isActiveIdxRegPhaseOne[mpcprueba2_B.i_e];
-      mpcprueba2_B.WorkingSet.isActiveIdxRegPhaseOne[mpcprueba2_B.i_e] =
-        mpcprueba2_B.b_x_tmp[mpcprueba2_B.i_e];
-    }
-
-    for (mpcprueba2_B.idxFillStart = 0; mpcprueba2_B.idxFillStart < 5;
-         mpcprueba2_B.idxFillStart++) {
-      mpcprueba2_B.WorkingSet.isActiveIdxRegPhaseOne[mpcprueba2_B.idxFillStart +
-        1] +=
-        mpcprueba2_B.WorkingSet.isActiveIdxRegPhaseOne[mpcprueba2_B.idxFillStart];
-    }
-
-    for (mpcprueba2_B.idxFillStart = 0; mpcprueba2_B.idxFillStart < 18;
-         mpcprueba2_B.idxFillStart++) {
-      mpcprueba2_B.WorkingSet.lb[mpcprueba2_B.idxFillStart] =
-        -lb[mpcprueba2_B.idxFillStart];
-      mpcprueba2_B.WorkingSet.ub[mpcprueba2_B.idxFillStart] =
-        ub[mpcprueba2_B.idxFillStart];
-    }
-
-    mpcprueba2_setProblemType(&mpcprueba2_B.WorkingSet, 3);
-    mpcprueba2_B.idxFillStart = mpcprueba2_B.WorkingSet.isActiveIdx[2];
-    mpcprueba2_B.c_b = mpcprueba2_B.WorkingSet.mConstrMax;
-    if (mpcprueba2_B.idxFillStart <= mpcprueba2_B.c_b) {
-      memset(&mpcprueba2_B.WorkingSet.isActiveConstr[mpcprueba2_B.idxFillStart +
-             -1], 0, static_cast<uint32_T>((mpcprueba2_B.c_b -
-               mpcprueba2_B.idxFillStart) + 1) * sizeof(boolean_T));
-    }
-
-    mpcprueba2_B.WorkingSet.nWConstr[0] = mpcprueba2_B.WorkingSet.sizes[0];
-    mpcprueba2_B.WorkingSet.nWConstr[1] = mpcprueba2_B.WorkingSet.sizes[1];
-    mpcprueba2_B.WorkingSet.nWConstr[2] = 0;
-    mpcprueba2_B.WorkingSet.nWConstr[3] = 0;
-    mpcprueba2_B.WorkingSet.nWConstr[4] = 0;
-    mpcprueba2_B.WorkingSet.nActiveConstr = mpcprueba2_B.WorkingSet.nWConstr[0]
-      + mpcprueba2_B.WorkingSet.nWConstr[1];
-    mpcprueba2_B.idxFillStart = mpcprueba2_B.WorkingSet.sizes[0];
-    for (mpcprueba2_B.c_b = 0; mpcprueba2_B.c_b < mpcprueba2_B.idxFillStart;
-         mpcprueba2_B.c_b++) {
-      mpcprueba2_B.WorkingSet.Wid[mpcprueba2_B.c_b] = 1;
-      mpcprueba2_B.WorkingSet.Wlocalidx[mpcprueba2_B.c_b] = mpcprueba2_B.c_b + 1;
-      mpcprueba2_B.WorkingSet.isActiveConstr[mpcprueba2_B.c_b] = true;
-      mpcprueba2_B.colOffsetATw = mpcprueba2_B.WorkingSet.ldA * mpcprueba2_B.c_b;
-      mpcprueba2_B.d_d = mpcprueba2_B.WorkingSet.indexFixed[mpcprueba2_B.c_b];
-      if (mpcprueba2_B.d_d - 2 >= 0) {
-        memset(&mpcprueba2_B.WorkingSet.ATwset[mpcprueba2_B.colOffsetATw], 0,
-               static_cast<uint32_T>(mpcprueba2_B.d_d - 1) * sizeof(real_T));
-      }
-
-      mpcprueba2_B.WorkingSet.ATwset
-        [(mpcprueba2_B.WorkingSet.indexFixed[mpcprueba2_B.c_b] +
-          mpcprueba2_B.colOffsetATw) - 1] = 1.0;
-      mpcprueba2_B.i_e = mpcprueba2_B.WorkingSet.indexFixed[mpcprueba2_B.c_b] +
-        1;
-      mpcprueba2_B.d_d = mpcprueba2_B.WorkingSet.nVar;
-      if (mpcprueba2_B.i_e <= mpcprueba2_B.d_d) {
-        memset(&mpcprueba2_B.WorkingSet.ATwset[(mpcprueba2_B.i_e +
-                mpcprueba2_B.colOffsetATw) + -1], 0, static_cast<uint32_T>
-               ((((mpcprueba2_B.d_d + mpcprueba2_B.colOffsetATw) -
-                  mpcprueba2_B.i_e) - mpcprueba2_B.colOffsetATw) + 1) * sizeof
-               (real_T));
-      }
-
-      mpcprueba2_B.WorkingSet.bwset[mpcprueba2_B.c_b] =
-        mpcprueba2_B.WorkingSet.ub[mpcprueba2_B.WorkingSet.indexFixed[mpcprueba2_B.c_b]
-        - 1];
-    }
-
-    mpcprueba2_B.idxFillStart = mpcprueba2_B.WorkingSet.sizes[1];
-    for (mpcprueba2_B.c_b = 0; mpcprueba2_B.c_b < mpcprueba2_B.idxFillStart;
-         mpcprueba2_B.c_b++) {
-      // out-of-bounds matrix access would cause program termination and was eliminated 
-    }
-
-    mpcprueba2_B.WorkingSet.SLACK0 = 0.0;
-    mpcprueba2_B.H_infnrm = 0.0;
-    mpcprueba2_B.f_infnrm = 0.0;
-    for (mpcprueba2_B.idxFillStart = 0; mpcprueba2_B.idxFillStart < 18;
-         mpcprueba2_B.idxFillStart++) {
-      mpcprueba2_B.colSum = 0.0;
-      for (mpcprueba2_B.c_b = 0; mpcprueba2_B.c_b < 18; mpcprueba2_B.c_b++) {
-        mpcprueba2_B.colSum += fabs(H[18 * mpcprueba2_B.idxFillStart +
-          mpcprueba2_B.c_b]);
-      }
-
-      if ((!(mpcprueba2_B.H_infnrm >= mpcprueba2_B.colSum)) && (!rtIsNaN
-           (mpcprueba2_B.colSum))) {
-        mpcprueba2_B.H_infnrm = mpcprueba2_B.colSum;
-      }
-
-      mpcprueba2_B.colSum = fabs(f[mpcprueba2_B.idxFillStart]);
-      if ((!(mpcprueba2_B.f_infnrm >= mpcprueba2_B.colSum)) && (!rtIsNaN
-           (mpcprueba2_B.colSum))) {
-        mpcprueba2_B.f_infnrm = mpcprueba2_B.colSum;
-      }
-    }
-
-    if (mpcprueba2_B.f_infnrm <= 1.0) {
-      mpcprueba2_B.f_infnrm = 1.0;
-    }
-
-    if (mpcprueba2_B.f_infnrm >= mpcprueba2_B.H_infnrm) {
-      mpcprueba2_B.H_infnrm = mpcprueba2_B.f_infnrm;
-    }
-
-    mpcprueba2_B.CholRegManager.scaleFactor = mpcprueba2_B.H_infnrm;
-    if (optionsIn_StepTolerance < 0.0) {
-      mpcprueba2_B.expl_temp.StepTolerance = 1.0E-8;
-    } else {
-      mpcprueba2_B.expl_temp.StepTolerance = optionsIn_StepTolerance;
-    }
-
-    if (optionsIn_OptimalityTolerance < 0.0) {
-      mpcprueba2_B.expl_temp.OptimalityTolerance = 1.0E-8;
-    } else {
-      mpcprueba2_B.expl_temp.OptimalityTolerance = optionsIn_OptimalityTolerance;
-    }
-
-    mpcprueba2_B.expl_temp.ConstraintTolerance =
-      mpcprueba2_B.options_ConstraintTolerance;
-    mpcprueba2_B.expl_temp.PricingTolerance = optionsIn_PricingTolerance;
-    mpcprueba2_B.expl_temp.ObjectiveLimit = optionsIn_ObjectiveLimit;
-    mpcprueba2_B.expl_temp.IterDisplayQP = optionsIn_IterDisplayQP;
-    mpcprueba2_B.expl_temp.NonFiniteSupport = optionsIn_NonFiniteSupport;
-    for (mpcprueba2_B.idxFillStart = 0; mpcprueba2_B.idxFillStart < 8;
-         mpcprueba2_B.idxFillStart++) {
-      mpcprueba2_B.expl_temp.SolverName[mpcprueba2_B.idxFillStart] =
-        optionsIn_SolverName[mpcprueba2_B.idxFillStart];
-    }
-
-    if (optionsIn_MaxIterations < 0.0) {
-      mpcprueba2_B.idxFillStart = (((mpcprueba2_B.mFixed + mpcprueba2_B.c_k) +
-        mpcprueba2_B.mUB) + 18) * 10;
-    } else {
-      mpcprueba2_B.idxFillStart = static_cast<int32_T>(optionsIn_MaxIterations);
-    }
-
-    mpcprueba2_driver(H, f, &mpcprueba2_B.solution, &mpcprueba2_B.memspace,
-                      &mpcprueba2_B.WorkingSet, &mpcprueba2_B.CholRegManager,
-                      mpcprueba2_B.expl_temp, mpcprueba2_B.idxFillStart, 1.0,
-                      mpcprueba2_B.H_infnrm, &mpcprueba2_B.QRManager,
-                      &mpcprueba2_B.QPObjective);
-    memcpy(&x[0], &mpcprueba2_B.solution.xstar[0], 18U * sizeof(real_T));
-    if (mpcprueba2_B.solution.state > 0) {
-      *fval = mpcprueba2_B.solution.fstar;
-    } else {
-      *fval = mpcprueba2_computeFval(&mpcprueba2_B.QPObjective,
-        mpcprueba2_B.memspace.workspace_float, H, f, mpcprueba2_B.solution.xstar);
-    }
-
-    switch (mpcprueba2_B.solution.state) {
-     case 2:
-      mpcprueba2_B.solution.state = -3;
-      break;
-
-     case -3:
-      mpcprueba2_B.solution.state = -2;
-      break;
-
-     case 4:
-      mpcprueba2_B.solution.state = -2;
-      break;
-    }
-
-    *exitflag = mpcprueba2_B.solution.state;
   }
+
+  return y;
 }
 
-static void mpcprueb_PX4Actuators_setupImpl(px4_internal_block_PX4Actuato_T *obj)
+// Function for MATLAB Function: '<Root>/MATLAB Function'
+static void mpcprueba2_mldivide(const real_T A[12], const real_T B[3], real_T Y
+  [4])
 {
-  int32_T n;
-  int32_T n_0;
-  obj->ValidMotorIdx[0] = true;
-  obj->ValidMotorIdx[1] = true;
-  obj->ValidMotorIdx[2] = true;
-  obj->ValidMotorIdx[3] = true;
-  n = 0;
-  for (int32_T b_k = 0; b_k < 12; b_k++) {
-    // Start for MATLABSystem: '<Root>/PX4 Actuator Write1'
-    if (obj->ValidMotorIdx[b_k]) {
-      n++;
+  int32_T b_ix;
+  int32_T e;
+  int32_T e_k;
+  int32_T exitg1;
+  int32_T ia;
+  int32_T ii;
+  int32_T iy;
+  int32_T pvt;
+  int32_T rankA;
+  int8_T jpvt[4];
+  int8_T jpvt_0;
+  boolean_T exitg2;
+  mpcprueba2_B.b_B[0] = B[0];
+  mpcprueba2_B.b_B[1] = B[1];
+  mpcprueba2_B.b_B[2] = B[2];
+  jpvt[0] = 1;
+  jpvt[1] = 2;
+  jpvt[2] = 3;
+  jpvt[3] = 4;
+  memcpy(&mpcprueba2_B.b_A[0], &A[0], 12U * sizeof(real_T));
+  mpcprueba2_B.tau[0] = 0.0;
+  mpcprueba2_B.tau[1] = 0.0;
+  mpcprueba2_B.tau[2] = 0.0;
+  mpcprueba2_B.work_k[0] = 0.0;
+  mpcprueba2_B.smax = mpcprueba2_xnrm2(3, A, 1);
+  mpcprueba2_B.vn1_c[0] = mpcprueba2_B.smax;
+  mpcprueba2_B.vn2_b[0] = mpcprueba2_B.smax;
+  mpcprueba2_B.work_k[1] = 0.0;
+  mpcprueba2_B.smax = mpcprueba2_xnrm2(3, A, 4);
+  mpcprueba2_B.vn1_c[1] = mpcprueba2_B.smax;
+  mpcprueba2_B.vn2_b[1] = mpcprueba2_B.smax;
+  mpcprueba2_B.work_k[2] = 0.0;
+  mpcprueba2_B.smax = mpcprueba2_xnrm2(3, A, 7);
+  mpcprueba2_B.vn1_c[2] = mpcprueba2_B.smax;
+  mpcprueba2_B.vn2_b[2] = mpcprueba2_B.smax;
+  mpcprueba2_B.work_k[3] = 0.0;
+  mpcprueba2_B.smax = mpcprueba2_xnrm2(3, A, 10);
+  mpcprueba2_B.vn1_c[3] = mpcprueba2_B.smax;
+  mpcprueba2_B.vn2_b[3] = mpcprueba2_B.smax;
+  for (rankA = 0; rankA < 3; rankA++) {
+    ii = rankA * 3 + rankA;
+    pvt = 5 - rankA;
+    b_ix = 0;
+    mpcprueba2_B.smax = fabs(mpcprueba2_B.vn1_c[rankA]);
+    for (iy = 2; iy < pvt; iy++) {
+      mpcprueba2_B.s_l = fabs(mpcprueba2_B.vn1_c[(rankA + iy) - 1]);
+      if (mpcprueba2_B.s_l > mpcprueba2_B.smax) {
+        b_ix = iy - 1;
+        mpcprueba2_B.smax = mpcprueba2_B.s_l;
+      }
+    }
+
+    pvt = rankA + b_ix;
+    if (pvt != rankA) {
+      b_ix = pvt * 3;
+      iy = rankA * 3;
+      mpcprueba2_B.smax = mpcprueba2_B.b_A[b_ix];
+      mpcprueba2_B.b_A[b_ix] = mpcprueba2_B.b_A[iy];
+      mpcprueba2_B.b_A[iy] = mpcprueba2_B.smax;
+      mpcprueba2_B.smax = mpcprueba2_B.b_A[b_ix + 1];
+      mpcprueba2_B.b_A[b_ix + 1] = mpcprueba2_B.b_A[iy + 1];
+      mpcprueba2_B.b_A[iy + 1] = mpcprueba2_B.smax;
+      mpcprueba2_B.smax = mpcprueba2_B.b_A[b_ix + 2];
+      mpcprueba2_B.b_A[b_ix + 2] = mpcprueba2_B.b_A[iy + 2];
+      mpcprueba2_B.b_A[iy + 2] = mpcprueba2_B.smax;
+      b_ix = jpvt[pvt];
+      jpvt[pvt] = jpvt[rankA];
+      jpvt[rankA] = static_cast<int8_T>(b_ix);
+      mpcprueba2_B.vn1_c[pvt] = mpcprueba2_B.vn1_c[rankA];
+      mpcprueba2_B.vn2_b[pvt] = mpcprueba2_B.vn2_b[rankA];
+    }
+
+    if (rankA + 1 < 3) {
+      mpcprueba2_B.s_l = mpcprueba2_B.b_A[ii];
+      pvt = ii + 2;
+      mpcprueba2_B.tau[rankA] = 0.0;
+      mpcprueba2_B.smax = mpcprueba2_xnrm2(2 - rankA, mpcprueba2_B.b_A, ii + 2);
+      if (mpcprueba2_B.smax != 0.0) {
+        mpcprueba2_B.temp2_p = mpcprueba2_B.b_A[ii];
+        mpcprueba2_B.smax = mpcprueba2_rt_hypotd_snf(mpcprueba2_B.temp2_p,
+          mpcprueba2_B.smax);
+        if (mpcprueba2_B.temp2_p >= 0.0) {
+          mpcprueba2_B.smax = -mpcprueba2_B.smax;
+        }
+
+        if (fabs(mpcprueba2_B.smax) < 1.0020841800044864E-292) {
+          b_ix = 0;
+          iy = (ii - rankA) + 3;
+          do {
+            b_ix++;
+            for (e_k = pvt; e_k <= iy; e_k++) {
+              mpcprueba2_B.b_A[e_k - 1] *= 9.9792015476736E+291;
+            }
+
+            mpcprueba2_B.smax *= 9.9792015476736E+291;
+            mpcprueba2_B.s_l *= 9.9792015476736E+291;
+          } while ((fabs(mpcprueba2_B.smax) < 1.0020841800044864E-292) && (b_ix <
+                    20));
+
+          mpcprueba2_B.smax = mpcprueba2_rt_hypotd_snf(mpcprueba2_B.s_l,
+            mpcprueba2_xnrm2(2 - rankA, mpcprueba2_B.b_A, ii + 2));
+          if (mpcprueba2_B.s_l >= 0.0) {
+            mpcprueba2_B.smax = -mpcprueba2_B.smax;
+          }
+
+          mpcprueba2_B.tau[rankA] = (mpcprueba2_B.smax - mpcprueba2_B.s_l) /
+            mpcprueba2_B.smax;
+          mpcprueba2_B.s_l = 1.0 / (mpcprueba2_B.s_l - mpcprueba2_B.smax);
+          for (e_k = pvt; e_k <= iy; e_k++) {
+            mpcprueba2_B.b_A[e_k - 1] *= mpcprueba2_B.s_l;
+          }
+
+          for (pvt = 0; pvt < b_ix; pvt++) {
+            mpcprueba2_B.smax *= 1.0020841800044864E-292;
+          }
+
+          mpcprueba2_B.s_l = mpcprueba2_B.smax;
+        } else {
+          mpcprueba2_B.tau[rankA] = (mpcprueba2_B.smax - mpcprueba2_B.temp2_p) /
+            mpcprueba2_B.smax;
+          mpcprueba2_B.s_l = 1.0 / (mpcprueba2_B.temp2_p - mpcprueba2_B.smax);
+          b_ix = (ii - rankA) + 3;
+          for (iy = pvt; iy <= b_ix; iy++) {
+            mpcprueba2_B.b_A[iy - 1] *= mpcprueba2_B.s_l;
+          }
+
+          mpcprueba2_B.s_l = mpcprueba2_B.smax;
+        }
+      }
+
+      mpcprueba2_B.b_A[ii] = mpcprueba2_B.s_l;
+    } else {
+      mpcprueba2_B.tau[2] = 0.0;
+    }
+
+    mpcprueba2_B.smax = mpcprueba2_B.b_A[ii];
+    mpcprueba2_B.b_A[ii] = 1.0;
+    if (mpcprueba2_B.tau[rankA] != 0.0) {
+      pvt = 3 - rankA;
+      b_ix = (ii - rankA) + 2;
+      while ((pvt > 0) && (mpcprueba2_B.b_A[b_ix] == 0.0)) {
+        pvt--;
+        b_ix--;
+      }
+
+      b_ix = 3 - rankA;
+      exitg2 = false;
+      while ((!exitg2) && (b_ix > 0)) {
+        iy = ((b_ix - 1) * 3 + ii) + 3;
+        e_k = iy;
+        do {
+          exitg1 = 0;
+          if (e_k + 1 <= iy + pvt) {
+            if (mpcprueba2_B.b_A[e_k] != 0.0) {
+              exitg1 = 1;
+            } else {
+              e_k++;
+            }
+          } else {
+            b_ix--;
+            exitg1 = 2;
+          }
+        } while (exitg1 == 0);
+
+        if (exitg1 == 1) {
+          exitg2 = true;
+        }
+      }
+
+      b_ix--;
+    } else {
+      pvt = 0;
+      b_ix = -1;
+    }
+
+    if (pvt > 0) {
+      if (b_ix + 1 != 0) {
+        memset(&mpcprueba2_B.work_k[0], 0, static_cast<uint32_T>(b_ix + 1) *
+               sizeof(real_T));
+        iy = (3 * b_ix + ii) + 4;
+        for (e_k = ii + 4; e_k <= iy; e_k += 3) {
+          mpcprueba2_B.s_l = 0.0;
+          e = e_k + pvt;
+          for (ia = e_k; ia < e; ia++) {
+            mpcprueba2_B.s_l += mpcprueba2_B.b_A[(ii + ia) - e_k] *
+              mpcprueba2_B.b_A[ia - 1];
+          }
+
+          e = div_nde_s32_floor((e_k - ii) - 4, 3);
+          mpcprueba2_B.work_k[e] += mpcprueba2_B.s_l;
+        }
+      }
+
+      if (!(-mpcprueba2_B.tau[rankA] == 0.0)) {
+        iy = ii + 4;
+        for (e_k = 0; e_k <= b_ix; e_k++) {
+          mpcprueba2_B.s_l = mpcprueba2_B.work_k[e_k];
+          if (mpcprueba2_B.s_l != 0.0) {
+            mpcprueba2_B.s_l *= -mpcprueba2_B.tau[rankA];
+            e = pvt + iy;
+            for (ia = iy; ia < e; ia++) {
+              mpcprueba2_B.b_A[ia - 1] += mpcprueba2_B.b_A[(ii + ia) - iy] *
+                mpcprueba2_B.s_l;
+            }
+          }
+
+          iy += 3;
+        }
+      }
+    }
+
+    mpcprueba2_B.b_A[ii] = mpcprueba2_B.smax;
+    for (ii = rankA + 2; ii < 5; ii++) {
+      pvt = (ii - 1) * 3 + rankA;
+      mpcprueba2_B.smax = mpcprueba2_B.vn1_c[ii - 1];
+      if (mpcprueba2_B.smax != 0.0) {
+        mpcprueba2_B.s_l = fabs(mpcprueba2_B.b_A[pvt]) / mpcprueba2_B.smax;
+        mpcprueba2_B.s_l = 1.0 - mpcprueba2_B.s_l * mpcprueba2_B.s_l;
+        if (mpcprueba2_B.s_l < 0.0) {
+          mpcprueba2_B.s_l = 0.0;
+        }
+
+        mpcprueba2_B.temp2_p = mpcprueba2_B.smax / mpcprueba2_B.vn2_b[ii - 1];
+        mpcprueba2_B.temp2_p = mpcprueba2_B.temp2_p * mpcprueba2_B.temp2_p *
+          mpcprueba2_B.s_l;
+        if (mpcprueba2_B.temp2_p <= 1.4901161193847656E-8) {
+          if (rankA + 1 < 3) {
+            mpcprueba2_B.smax = mpcprueba2_xnrm2(2 - rankA, mpcprueba2_B.b_A,
+              pvt + 2);
+            mpcprueba2_B.vn1_c[ii - 1] = mpcprueba2_B.smax;
+            mpcprueba2_B.vn2_b[ii - 1] = mpcprueba2_B.smax;
+          } else {
+            mpcprueba2_B.vn1_c[ii - 1] = 0.0;
+            mpcprueba2_B.vn2_b[ii - 1] = 0.0;
+          }
+        } else {
+          mpcprueba2_B.vn1_c[ii - 1] = mpcprueba2_B.smax * sqrt(mpcprueba2_B.s_l);
+        }
+      }
     }
   }
 
-  n_0 = 0;
-  for (int32_T b_k = 0; b_k < 8; b_k++) {
-    // Start for MATLABSystem: '<Root>/PX4 Actuator Write1'
-    if (obj->ValidServoIdx[b_k]) {
-      n_0++;
+  rankA = 0;
+  mpcprueba2_B.smax = 8.8817841970012523E-15 * fabs(mpcprueba2_B.b_A[0]);
+  while ((rankA < 3) && (!(fabs(mpcprueba2_B.b_A[3 * rankA + rankA]) <=
+           mpcprueba2_B.smax))) {
+    rankA++;
+  }
+
+  Y[0] = 0.0;
+  Y[1] = 0.0;
+  Y[2] = 0.0;
+  Y[3] = 0.0;
+  for (ii = 0; ii < 3; ii++) {
+    if (mpcprueba2_B.tau[ii] != 0.0) {
+      mpcprueba2_B.smax = mpcprueba2_B.b_B[ii];
+      for (pvt = ii + 2; pvt < 4; pvt++) {
+        mpcprueba2_B.smax += mpcprueba2_B.b_A[(3 * ii + pvt) - 1] *
+          mpcprueba2_B.b_B[pvt - 1];
+      }
+
+      mpcprueba2_B.smax *= mpcprueba2_B.tau[ii];
+      if (mpcprueba2_B.smax != 0.0) {
+        mpcprueba2_B.b_B[ii] -= mpcprueba2_B.smax;
+        for (pvt = ii + 2; pvt < 4; pvt++) {
+          mpcprueba2_B.b_B[pvt - 1] -= mpcprueba2_B.b_A[(3 * ii + pvt) - 1] *
+            mpcprueba2_B.smax;
+        }
+      }
     }
   }
 
-  // Start for MATLABSystem: '<Root>/PX4 Actuator Write1'
-  obj->QSize = static_cast<uint8_T>(n + n_0);
-  MW_actuators_init(obj->QSize);
+  for (ii = 0; ii < rankA; ii++) {
+    Y[jpvt[ii] - 1] = mpcprueba2_B.b_B[ii];
+  }
+
+  for (ii = rankA; ii >= 1; ii--) {
+    jpvt_0 = jpvt[ii - 1];
+    pvt = (ii - 1) * 3;
+    Y[jpvt_0 - 1] /= mpcprueba2_B.b_A[(pvt + ii) - 1];
+    for (b_ix = 0; b_ix <= ii - 2; b_ix++) {
+      iy = jpvt[b_ix] - 1;
+      Y[iy] -= mpcprueba2_B.b_A[pvt + b_ix] * Y[jpvt_0 - 1];
+    }
+  }
 }
 
 // Model step function
 void mpcprueba2_step(void)
 {
-  int8_T b_tmp[3];
-  int8_T ipiv;
-  boolean_T b_varargout_1;
-  static const real_T h[9] = { 0.9347, 0.0043, -0.0283, 0.0728, 0.9492, -0.0333,
-    0.6931, 0.1273, 0.7369 };
+  static const int8_T WorkingSet_tmp[5] = { 0, 0, 66, 0, 0 };
 
-  static const int8_T Q_inst[9] = { 1, 0, 0, 0, 1, 0, 0, 0, 1 };
+  static const int8_T e[5] = { 0, 0, 66, 1, 0 };
 
-  static const int8_T R_inst[9] = { 10, 0, 0, 0, 10, 0, 0, 0, 10 };
+  static const int8_T d_varargin_2[6] = { 1, 0, 0, 66, 0, 0 };
 
-  static const int8_T f[16] = { -1, 1, -1, 1, 1, -1, -1, 1, 1, 1, 1, 1, -1, -1,
-    1, 1 };
+  static const int8_T d[5] = { 0, 0, 66, 66, 0 };
 
-  static const real_T g[9] = { 0.0094, -0.0359, 0.1047, -0.0779, 0.1212, 0.0299,
-    -0.2379, -0.0441, 0.0955 };
+  static const int8_T c[5] = { 0, 0, 66, 67, 0 };
 
-  static const char_T e_FiniteDifferenceType[7] = { 'f', 'o', 'r', 'w', 'a', 'r',
-    'd' };
+  static const int8_T c_varargin_2[6] = { 1, 0, 0, 66, 1, 0 };
 
-  static const char_T e_Algorithm[10] = { 'a', 'c', 't', 'i', 'v', 'e', '-', 's',
-    'e', 't' };
+  static const int8_T b_varargin_2[6] = { 1, 0, 0, 66, 66, 0 };
 
-  static const char_T e_SolverName[8] = { 'q', 'u', 'a', 'd', 'p', 'r', 'o', 'g'
-  };
+  static const int8_T varargin_2[6] = { 1, 0, 0, 66, 67, 0 };
 
-  // Reset subsysRan breadcrumbs
-  srClearBC(mpcprueba2_DW.EnabledSubsystem_SubsysRanBC);
-
-  // MATLABSystem: '<S3>/SourceBlock'
-  b_varargout_1 = uORB_read_step(mpcprueba2_DW.obj_i.orbMetadataObj,
-    &mpcprueba2_DW.obj_i.eventStructObj, &mpcprueba2_B.r, false, 1.0);
-
-  // Outputs for Enabled SubSystem: '<S3>/Enabled Subsystem' incorporates:
-  //   EnablePort: '<S4>/Enable'
-
-  // Start for MATLABSystem: '<S3>/SourceBlock'
-  if (b_varargout_1) {
-    // SignalConversion generated from: '<S4>/In1'
-    mpcprueba2_B.In1 = mpcprueba2_B.r;
-    srUpdateBC(mpcprueba2_DW.EnabledSubsystem_SubsysRanBC);
-  }
-
-  // End of Outputs for SubSystem: '<S3>/Enabled Subsystem'
-
-  // SignalConversion generated from: '<S1>/Bus Selector'
-  mpcprueba2_B.x = mpcprueba2_B.In1.x;
-
-  // SignalConversion generated from: '<S1>/Bus Selector'
-  mpcprueba2_B.y = mpcprueba2_B.In1.y;
-
-  // SignalConversion generated from: '<S1>/Bus Selector'
-  mpcprueba2_B.z = mpcprueba2_B.In1.z;
-
-  // SignalConversion generated from: '<Root>/Mux3'
-  mpcprueba2_B.TmpSignalConversionAtTAQSigLogg[0] = mpcprueba2_B.x;
-  mpcprueba2_B.TmpSignalConversionAtTAQSigLogg[1] = mpcprueba2_B.y;
-  mpcprueba2_B.TmpSignalConversionAtTAQSigLogg[2] = mpcprueba2_B.z;
-
-  // Gain: '<Root>/Gain3' incorporates:
-  //   Constant: '<Root>/Constant9'
-  //   DataTypeConversion: '<Root>/Data Type Conversion10'
-
-  mpcprueba2_B.Gain3 = mpcprueba2_P.Gain3_Gain * static_cast<real32_T>
-    (mpcprueba2_P.Constant9_Value);
-
-  // Gain: '<Root>/Gain4' incorporates:
-  //   Constant: '<Root>/Constant8'
-  //   DataTypeConversion: '<Root>/Data Type Conversion9'
-
-  mpcprueba2_B.Gain4 = mpcprueba2_P.Gain4_Gain * static_cast<real32_T>
-    (mpcprueba2_P.Constant8_Value);
-
-  // Gain: '<Root>/Gain5' incorporates:
-  //   Constant: '<Root>/Constant11'
-  //   DataTypeConversion: '<Root>/Data Type Conversion11'
-
-  mpcprueba2_B.Gain5 = mpcprueba2_P.Gain5_Gain * static_cast<real32_T>
-    (mpcprueba2_P.Constant11_Value);
-
-  // SignalConversion generated from: '<Root>/Mux4'
-  mpcprueba2_B.TmpSignalConversionAtTAQSigLo_m[0] = mpcprueba2_B.Gain3;
-  mpcprueba2_B.TmpSignalConversionAtTAQSigLo_m[1] = mpcprueba2_B.Gain4;
-  mpcprueba2_B.TmpSignalConversionAtTAQSigLo_m[2] = mpcprueba2_B.Gain5;
-
-  // DataTypeConversion: '<Root>/Data Type Conversion12'
-  mpcprueba2_B.rtb_DataTypeConversion12_idx_0 =
-    mpcprueba2_B.TmpSignalConversionAtTAQSigLo_m[0];
-  mpcprueba2_B.rtb_DataTypeConversion12_idx_1 =
-    mpcprueba2_B.TmpSignalConversionAtTAQSigLo_m[1];
-  mpcprueba2_B.rtb_DataTypeConversion12_idx_2 =
-    mpcprueba2_B.TmpSignalConversionAtTAQSigLo_m[2];
+  static const real_T tmp[12] = { 1.0, 1.0, 1.0, -1.0, -1.0, 1.0, -1.0, 1.0,
+    -1.0, 1.0, -1.0, -1.0 };
 
   // MATLAB Function: '<Root>/MATLAB Function5' incorporates:
-  //   Constant: '<Root>/Constant10'
-  //   DataTypeConversion: '<Root>/Data Type Conversion8'
+  //   Constant: '<Root>/Constant2'
+  //   Constant: '<Root>/Constant4'
+  //   Constant: '<Root>/Constant5'
 
-  if (!mpcprueba2_DW.A_not_empty) {
-    mpcprueba2_DW.A_not_empty = true;
-    memset(&mpcprueba2_B.b[0], 0, 54U * sizeof(real_T));
-    memset(&mpcprueba2_DW.Phi[0], 0, 324U * sizeof(real_T));
-    memset(&mpcprueba2_DW.Q_big[0], 0, 324U * sizeof(real_T));
-    memset(&mpcprueba2_B.R_big_mat[0], 0, 324U * sizeof(int8_T));
-    for (mpcprueba2_B.i = 0; mpcprueba2_B.i < 6; mpcprueba2_B.i++) {
-      mpcprueba2_B.ibcol = mpcprueba2_B.i * 3;
-      b_tmp[0] = static_cast<int8_T>(mpcprueba2_B.ibcol + 1);
-      b_tmp[1] = static_cast<int8_T>(mpcprueba2_B.ibcol + 2);
-      b_tmp[2] = static_cast<int8_T>(mpcprueba2_B.ibcol + 3);
-      mpcprueba2_mpower(h, static_cast<real_T>(mpcprueba2_B.i) + 1.0,
-                        mpcprueba2_B.dv3);
-      for (mpcprueba2_B.itilerow = 0; mpcprueba2_B.itilerow < 3;
-           mpcprueba2_B.itilerow++) {
-        mpcprueba2_B.b_tmp = 18 * mpcprueba2_B.itilerow + mpcprueba2_B.ibcol;
-        mpcprueba2_B.b[mpcprueba2_B.b_tmp] = mpcprueba2_B.dv3[3 *
-          mpcprueba2_B.itilerow];
-        mpcprueba2_B.Q_big_tmp = (b_tmp[mpcprueba2_B.itilerow] - 1) * 18 +
-          mpcprueba2_B.ibcol;
-        mpcprueba2_DW.Q_big[mpcprueba2_B.Q_big_tmp] = Q_inst[3 *
-          mpcprueba2_B.itilerow];
-        mpcprueba2_B.R_big_mat[mpcprueba2_B.Q_big_tmp] = R_inst[3 *
-          mpcprueba2_B.itilerow];
-        mpcprueba2_B.jA = 3 * mpcprueba2_B.itilerow + 1;
-        mpcprueba2_B.b[mpcprueba2_B.b_tmp + 1] =
-          mpcprueba2_B.dv3[mpcprueba2_B.jA];
-        mpcprueba2_DW.Q_big[mpcprueba2_B.Q_big_tmp + 1] = Q_inst[mpcprueba2_B.jA];
-        mpcprueba2_B.R_big_mat[mpcprueba2_B.Q_big_tmp + 1] =
-          R_inst[mpcprueba2_B.jA];
-        mpcprueba2_B.jA = 3 * mpcprueba2_B.itilerow + 2;
-        mpcprueba2_B.b[mpcprueba2_B.b_tmp + 2] =
-          mpcprueba2_B.dv3[mpcprueba2_B.jA];
-        mpcprueba2_DW.Q_big[mpcprueba2_B.Q_big_tmp + 2] = Q_inst[mpcprueba2_B.jA];
-        mpcprueba2_B.R_big_mat[mpcprueba2_B.Q_big_tmp + 2] =
-          R_inst[mpcprueba2_B.jA];
-      }
+  for (mpcprueba2_B.i = 0; mpcprueba2_B.i < 15; mpcprueba2_B.i++) {
+    mpcprueba2_B.uvec[mpcprueba2_B.i] = (2.0 * mpcprueba2_P.Constant2_Value *
+      mpcprueba2_P.F[mpcprueba2_B.i] + 2.0 * mpcprueba2_P.Constant4_Value *
+      mpcprueba2_P.F[mpcprueba2_B.i + 15]) + 2.0 * mpcprueba2_P.Constant5_Value *
+      mpcprueba2_P.F[mpcprueba2_B.i + 30];
+    mpcprueba2_B.dv[mpcprueba2_B.i] = 0.0;
+  }
 
-      for (mpcprueba2_B.Q_big_tmp = 0; mpcprueba2_B.Q_big_tmp <= mpcprueba2_B.i;
-           mpcprueba2_B.Q_big_tmp++) {
-        mpcprueba2_mpower(h, static_cast<real_T>(mpcprueba2_B.i -
-          mpcprueba2_B.Q_big_tmp), mpcprueba2_B.dv3);
-        mpcprueba2_B.jA = mpcprueba2_B.Q_big_tmp * 3;
-        for (mpcprueba2_B.itilerow = 0; mpcprueba2_B.itilerow < 3;
-             mpcprueba2_B.itilerow++) {
-          mpcprueba2_B.b_tmp = b_tmp[mpcprueba2_B.itilerow];
-          mpcprueba2_B.d = mpcprueba2_B.dv3[mpcprueba2_B.itilerow];
-          mpcprueba2_B.d1 = mpcprueba2_B.dv3[mpcprueba2_B.itilerow + 3];
-          mpcprueba2_B.d2 = mpcprueba2_B.dv3[mpcprueba2_B.itilerow + 6];
-          for (mpcprueba2_B.ibcol = 0; mpcprueba2_B.ibcol < 3;
-               mpcprueba2_B.ibcol++) {
-            mpcprueba2_B.Phi_tmp = ((mpcprueba2_B.ibcol + mpcprueba2_B.jA) * 18
-              + mpcprueba2_B.b_tmp) - 1;
-            mpcprueba2_DW.Phi[mpcprueba2_B.Phi_tmp] = 0.0;
-            mpcprueba2_DW.Phi[mpcprueba2_B.Phi_tmp] += g[3 * mpcprueba2_B.ibcol]
-              * mpcprueba2_B.d;
-            mpcprueba2_DW.Phi[mpcprueba2_B.Phi_tmp] += g[3 * mpcprueba2_B.ibcol
-              + 1] * mpcprueba2_B.d1;
-            mpcprueba2_DW.Phi[mpcprueba2_B.Phi_tmp] += g[3 * mpcprueba2_B.ibcol
-              + 2] * mpcprueba2_B.d2;
-          }
-        }
-      }
+  for (mpcprueba2_B.i = 0; mpcprueba2_B.i < 15; mpcprueba2_B.i++) {
+    mpcprueba2_B.f_g = mpcprueba2_B.dv[mpcprueba2_B.i];
+    for (mpcprueba2_B.idxFillStart = 0; mpcprueba2_B.idxFillStart < 15;
+         mpcprueba2_B.idxFillStart++) {
+      mpcprueba2_B.f_g += mpcprueba2_P.Qvec[15 * mpcprueba2_B.i +
+        mpcprueba2_B.idxFillStart] * mpcprueba2_B.uvec[mpcprueba2_B.idxFillStart];
     }
 
-    for (mpcprueba2_B.itilerow = 0; mpcprueba2_B.itilerow < 18;
-         mpcprueba2_B.itilerow++) {
-      for (mpcprueba2_B.ibcol = 0; mpcprueba2_B.ibcol < 18; mpcprueba2_B.ibcol++)
-      {
-        mpcprueba2_B.b_tmp = 18 * mpcprueba2_B.itilerow + mpcprueba2_B.ibcol;
-        mpcprueba2_B.H_tmp[mpcprueba2_B.b_tmp] = mpcprueba2_DW.Phi[18 *
-          mpcprueba2_B.ibcol + mpcprueba2_B.itilerow];
-        mpcprueba2_B.H_tmp_m[mpcprueba2_B.b_tmp] = 0.0;
-      }
+    mpcprueba2_B.dv[mpcprueba2_B.i] = mpcprueba2_B.f_g;
+    mpcprueba2_B.f[mpcprueba2_B.i] = 0.0;
+  }
+
+  for (mpcprueba2_B.i = 0; mpcprueba2_B.i < 15; mpcprueba2_B.i++) {
+    mpcprueba2_B.f_g = mpcprueba2_B.f[mpcprueba2_B.i];
+    for (mpcprueba2_B.idxFillStart = 0; mpcprueba2_B.idxFillStart < 15;
+         mpcprueba2_B.idxFillStart++) {
+      mpcprueba2_B.f_g += mpcprueba2_P.G[15 * mpcprueba2_B.i +
+        mpcprueba2_B.idxFillStart] * mpcprueba2_B.dv[mpcprueba2_B.idxFillStart];
     }
 
-    for (mpcprueba2_B.itilerow = 0; mpcprueba2_B.itilerow < 18;
-         mpcprueba2_B.itilerow++) {
-      for (mpcprueba2_B.ibcol = 0; mpcprueba2_B.ibcol < 18; mpcprueba2_B.ibcol++)
-      {
-        mpcprueba2_B.i = static_cast<int32_T>(mpcprueba2_DW.Q_big[18 *
-          mpcprueba2_B.itilerow + mpcprueba2_B.ibcol]);
-        for (mpcprueba2_B.Q_big_tmp = 0; mpcprueba2_B.Q_big_tmp < 18;
-             mpcprueba2_B.Q_big_tmp++) {
-          mpcprueba2_B.b_tmp = 18 * mpcprueba2_B.itilerow +
-            mpcprueba2_B.Q_big_tmp;
-          mpcprueba2_B.H_tmp_m[mpcprueba2_B.b_tmp] += mpcprueba2_B.H_tmp[18 *
-            mpcprueba2_B.ibcol + mpcprueba2_B.Q_big_tmp] * static_cast<real_T>
-            (mpcprueba2_B.i);
-        }
-      }
-    }
+    mpcprueba2_B.f[mpcprueba2_B.i] = mpcprueba2_B.f_g;
+  }
 
-    for (mpcprueba2_B.itilerow = 0; mpcprueba2_B.itilerow < 18;
-         mpcprueba2_B.itilerow++) {
-      for (mpcprueba2_B.ibcol = 0; mpcprueba2_B.ibcol < 18; mpcprueba2_B.ibcol++)
-      {
-        mpcprueba2_B.d = 0.0;
-        for (mpcprueba2_B.i = 0; mpcprueba2_B.i < 18; mpcprueba2_B.i++) {
-          mpcprueba2_B.d += mpcprueba2_B.H_tmp_m[18 * mpcprueba2_B.i +
-            mpcprueba2_B.itilerow] * mpcprueba2_DW.Phi[18 * mpcprueba2_B.ibcol +
-            mpcprueba2_B.i];
-        }
+  for (mpcprueba2_B.i = 0; mpcprueba2_B.i < 225; mpcprueba2_B.i++) {
+    mpcprueba2_B.b_H[mpcprueba2_B.i] = 2.0 * mpcprueba2_P.H[mpcprueba2_B.i];
+  }
 
-        mpcprueba2_B.b_tmp = 18 * mpcprueba2_B.ibcol + mpcprueba2_B.itilerow;
-        mpcprueba2_B.H_tmp_c[mpcprueba2_B.b_tmp] = static_cast<real_T>
-          (mpcprueba2_B.R_big_mat[mpcprueba2_B.b_tmp]) + mpcprueba2_B.d;
-      }
-    }
+  for (mpcprueba2_B.i = 0; mpcprueba2_B.i < 66; mpcprueba2_B.i++) {
+    mpcprueba2_B.b_x[mpcprueba2_B.i] = ((mpcprueba2_P.Sc[mpcprueba2_B.i + 66] *
+      mpcprueba2_P.Constant4_Value + mpcprueba2_P.Sc[mpcprueba2_B.i] *
+      mpcprueba2_P.Constant2_Value) + mpcprueba2_P.Sc[mpcprueba2_B.i + 132] *
+      mpcprueba2_P.Constant5_Value) + mpcprueba2_P.qc[mpcprueba2_B.i];
+  }
 
-    for (mpcprueba2_B.itilerow = 0; mpcprueba2_B.itilerow < 324;
-         mpcprueba2_B.itilerow++) {
-      mpcprueba2_DW.H[mpcprueba2_B.itilerow] = 2.0 *
-        mpcprueba2_B.H_tmp_c[mpcprueba2_B.itilerow];
-    }
+  mpcprueba2_B.solution.fstar = 0.0;
+  mpcprueba2_B.solution.firstorderopt = 0.0;
+  memset(&mpcprueba2_B.solution.lambda[0], 0, 67U * sizeof(real_T));
+  mpcprueba2_B.solution.state = 0;
+  mpcprueba2_B.solution.maxConstr = 0.0;
+  mpcprueba2_B.solution.iterations = 0;
+  memset(&mpcprueba2_B.solution.searchDir[0], 0, sizeof(real_T) << 4U);
+  memcpy(&mpcprueba2_B.solution.xstar[0], &mpcprueba2_DW.x0[0], 15U * sizeof
+         (real_T));
+  mpcprueba2_B.CholRegManager.ldm = 16;
+  mpcprueba2_B.CholRegManager.ndims = 0;
+  mpcprueba2_B.CholRegManager.info = 0;
+  mpcprueba2_B.CholRegManager.ConvexCheck = true;
+  mpcprueba2_B.CholRegManager.regTol_ = 0.0;
+  mpcprueba2_B.WorkingSet.nVarOrig = 15;
+  mpcprueba2_B.WorkingSet.nVarMax = 16;
+  mpcprueba2_B.WorkingSet.ldA = 16;
+  memset(&mpcprueba2_B.WorkingSet.Aineq[0], 0, 1056U * sizeof(real_T));
+  memset(&mpcprueba2_B.WorkingSet.bineq[0], 0, 66U * sizeof(real_T));
+  memset(&mpcprueba2_B.WorkingSet.lb[0], 0, sizeof(real_T) << 4U);
+  memset(&mpcprueba2_B.WorkingSet.ub[0], 0, sizeof(real_T) << 4U);
+  mpcprueba2_B.WorkingSet.mEqRemoved = 0;
+  memset(&mpcprueba2_B.WorkingSet.ATwset[0], 0, 1072U * sizeof(real_T));
+  memset(&mpcprueba2_B.WorkingSet.bwset[0], 0, 67U * sizeof(real_T));
+  memset(&mpcprueba2_B.WorkingSet.maxConstrWorkspace[0], 0, 67U * sizeof(real_T));
+  memset(&mpcprueba2_B.WorkingSet.isActiveConstr[0], 0, 67U * sizeof(boolean_T));
+  memset(&mpcprueba2_B.WorkingSet.Wid[0], 0, 67U * sizeof(int32_T));
+  memset(&mpcprueba2_B.WorkingSet.Wlocalidx[0], 0, 67U * sizeof(int32_T));
+  memset(&mpcprueba2_B.WorkingSet.indexLB[0], 0, sizeof(int32_T) << 4U);
+  memset(&mpcprueba2_B.WorkingSet.indexUB[0], 0, sizeof(int32_T) << 4U);
+  memset(&mpcprueba2_B.WorkingSet.indexFixed[0], 0, sizeof(int32_T) << 4U);
+  mpcprueba2_B.WorkingSet.mConstrMax = 67;
+  mpcprueba2_B.WorkingSet.mConstrOrig = 66;
+  for (mpcprueba2_B.i = 0; mpcprueba2_B.i < 5; mpcprueba2_B.i++) {
+    mpcprueba2_B.WorkingSet.sizesNormal[mpcprueba2_B.i] =
+      WorkingSet_tmp[mpcprueba2_B.i];
+    mpcprueba2_B.WorkingSet.sizesPhaseOne[mpcprueba2_B.i] = e[mpcprueba2_B.i];
+    mpcprueba2_B.WorkingSet.sizesRegularized[mpcprueba2_B.i] = d[mpcprueba2_B.i];
+    mpcprueba2_B.WorkingSet.sizesRegPhaseOne[mpcprueba2_B.i] = c[mpcprueba2_B.i];
+  }
 
-    for (mpcprueba2_B.itilerow = 0; mpcprueba2_B.itilerow < 18;
-         mpcprueba2_B.itilerow++) {
-      memset(&mpcprueba2_B.H_tmp_c[mpcprueba2_B.itilerow * 18], 0, 18U * sizeof
-             (real_T));
-      for (mpcprueba2_B.ibcol = 0; mpcprueba2_B.ibcol < 18; mpcprueba2_B.ibcol++)
-      {
-        mpcprueba2_B.i = static_cast<int32_T>(mpcprueba2_DW.Q_big[18 *
-          mpcprueba2_B.itilerow + mpcprueba2_B.ibcol]);
-        for (mpcprueba2_B.Q_big_tmp = 0; mpcprueba2_B.Q_big_tmp < 18;
-             mpcprueba2_B.Q_big_tmp++) {
-          mpcprueba2_B.b_tmp = 18 * mpcprueba2_B.itilerow +
-            mpcprueba2_B.Q_big_tmp;
-          mpcprueba2_B.H_tmp_c[mpcprueba2_B.b_tmp] += mpcprueba2_B.H_tmp[18 *
-            mpcprueba2_B.ibcol + mpcprueba2_B.Q_big_tmp] * 2.0 *
-            static_cast<real_T>(mpcprueba2_B.i);
-        }
-      }
+  for (mpcprueba2_B.i = 0; mpcprueba2_B.i < 6; mpcprueba2_B.i++) {
+    mpcprueba2_B.WorkingSet.isActiveIdxRegPhaseOne[mpcprueba2_B.i] =
+      d_varargin_2[mpcprueba2_B.i];
+  }
 
-      mpcprueba2_DW.F_f[mpcprueba2_B.itilerow] = 0.0;
-      mpcprueba2_DW.F_f[mpcprueba2_B.itilerow + 18] = 0.0;
-      mpcprueba2_DW.F_f[mpcprueba2_B.itilerow + 36] = 0.0;
-    }
+  for (mpcprueba2_B.i = 0; mpcprueba2_B.i < 5; mpcprueba2_B.i++) {
+    mpcprueba2_B.WorkingSet.isActiveIdxRegPhaseOne[mpcprueba2_B.i + 1] +=
+      mpcprueba2_B.WorkingSet.isActiveIdxRegPhaseOne[mpcprueba2_B.i];
+  }
 
-    for (mpcprueba2_B.itilerow = 0; mpcprueba2_B.itilerow < 3;
-         mpcprueba2_B.itilerow++) {
-      for (mpcprueba2_B.ibcol = 0; mpcprueba2_B.ibcol < 18; mpcprueba2_B.ibcol++)
-      {
-        mpcprueba2_B.d = mpcprueba2_B.b[18 * mpcprueba2_B.itilerow +
-          mpcprueba2_B.ibcol];
-        for (mpcprueba2_B.i = 0; mpcprueba2_B.i < 18; mpcprueba2_B.i++) {
-          mpcprueba2_B.Q_big_tmp = 18 * mpcprueba2_B.itilerow + mpcprueba2_B.i;
-          mpcprueba2_DW.F_f[mpcprueba2_B.Q_big_tmp] += mpcprueba2_B.H_tmp_c[18 *
-            mpcprueba2_B.ibcol + mpcprueba2_B.i] * mpcprueba2_B.d;
-        }
-      }
-    }
+  for (mpcprueba2_B.i = 0; mpcprueba2_B.i < 6; mpcprueba2_B.i++) {
+    mpcprueba2_B.WorkingSet.isActiveIdxNormal[mpcprueba2_B.i] =
+      mpcprueba2_B.WorkingSet.isActiveIdxRegPhaseOne[mpcprueba2_B.i];
+    mpcprueba2_B.WorkingSet.isActiveIdxRegPhaseOne[mpcprueba2_B.i] =
+      c_varargin_2[mpcprueba2_B.i];
+  }
 
-    for (mpcprueba2_B.itilerow = 0; mpcprueba2_B.itilerow < 16;
-         mpcprueba2_B.itilerow++) {
-      mpcprueba2_DW.M[mpcprueba2_B.itilerow] = f[mpcprueba2_B.itilerow];
-    }
+  for (mpcprueba2_B.i = 0; mpcprueba2_B.i < 5; mpcprueba2_B.i++) {
+    mpcprueba2_B.WorkingSet.isActiveIdxRegPhaseOne[mpcprueba2_B.i + 1] +=
+      mpcprueba2_B.WorkingSet.isActiveIdxRegPhaseOne[mpcprueba2_B.i];
+  }
 
-    mpcprueba2_DW.options.NonFiniteSupport = true;
-    mpcprueba2_DW.options.IterDisplaySQP = false;
-    mpcprueba2_DW.options.InitDamping = 0.01;
-    for (mpcprueba2_B.itilerow = 0; mpcprueba2_B.itilerow < 7;
-         mpcprueba2_B.itilerow++) {
-      mpcprueba2_DW.options.FiniteDifferenceType[mpcprueba2_B.itilerow] =
-        e_FiniteDifferenceType[mpcprueba2_B.itilerow];
-    }
+  for (mpcprueba2_B.i = 0; mpcprueba2_B.i < 6; mpcprueba2_B.i++) {
+    mpcprueba2_B.WorkingSet.isActiveIdxPhaseOne[mpcprueba2_B.i] =
+      mpcprueba2_B.WorkingSet.isActiveIdxRegPhaseOne[mpcprueba2_B.i];
+    mpcprueba2_B.WorkingSet.isActiveIdxRegPhaseOne[mpcprueba2_B.i] =
+      b_varargin_2[mpcprueba2_B.i];
+  }
 
-    mpcprueba2_DW.options.SpecifyObjectiveGradient = false;
-    mpcprueba2_DW.options.ScaleProblem = false;
-    mpcprueba2_DW.options.SpecifyConstraintGradient = false;
-    mpcprueba2_DW.options.FiniteDifferenceStepSize = -1.0;
-    mpcprueba2_DW.options.MaxFunctionEvaluations = -1.0;
-    mpcprueba2_DW.options.IterDisplayQP = false;
-    mpcprueba2_DW.options.PricingTolerance = 0.0;
-    for (mpcprueba2_B.itilerow = 0; mpcprueba2_B.itilerow < 10;
-         mpcprueba2_B.itilerow++) {
-      mpcprueba2_DW.options.Algorithm[mpcprueba2_B.itilerow] =
-        e_Algorithm[mpcprueba2_B.itilerow];
-    }
+  for (mpcprueba2_B.i = 0; mpcprueba2_B.i < 5; mpcprueba2_B.i++) {
+    mpcprueba2_B.WorkingSet.isActiveIdxRegPhaseOne[mpcprueba2_B.i + 1] +=
+      mpcprueba2_B.WorkingSet.isActiveIdxRegPhaseOne[mpcprueba2_B.i];
+  }
 
-    mpcprueba2_DW.options.ObjectiveLimit = -1.0E+20;
-    mpcprueba2_DW.options.ConstraintTolerance = -1.0;
-    mpcprueba2_DW.options.OptimalityTolerance = -1.0;
-    mpcprueba2_DW.options.StepTolerance = -1.0;
-    mpcprueba2_DW.options.MaxIterations = -1.0;
-    mpcprueba2_DW.options.FunctionTolerance = (rtInf);
-    for (mpcprueba2_B.itilerow = 0; mpcprueba2_B.itilerow < 8;
-         mpcprueba2_B.itilerow++) {
-      mpcprueba2_DW.options.SolverName[mpcprueba2_B.itilerow] =
-        e_SolverName[mpcprueba2_B.itilerow];
-    }
+  for (mpcprueba2_B.i = 0; mpcprueba2_B.i < 6; mpcprueba2_B.i++) {
+    mpcprueba2_B.WorkingSet.isActiveIdxRegularized[mpcprueba2_B.i] =
+      mpcprueba2_B.WorkingSet.isActiveIdxRegPhaseOne[mpcprueba2_B.i];
+    mpcprueba2_B.WorkingSet.isActiveIdxRegPhaseOne[mpcprueba2_B.i] =
+      varargin_2[mpcprueba2_B.i];
+  }
 
-    mpcprueba2_DW.options.UseCodegenSolver = false;
-    mpcprueba2_DW.options.CheckGradients = false;
-    mpcprueba2_DW.options.DiffMaxChange = (rtInf);
-    mpcprueba2_DW.options.DiffMinChange = 0.0;
-    mpcprueba2_DW.options.Display[0] = 'o';
-    mpcprueba2_DW.options.Diagnostics[0] = 'o';
-    mpcprueba2_DW.options.FunValCheck[0] = 'o';
-    mpcprueba2_DW.options.Display[1] = 'f';
-    mpcprueba2_DW.options.Diagnostics[1] = 'f';
-    mpcprueba2_DW.options.FunValCheck[1] = 'f';
-    mpcprueba2_DW.options.Display[2] = 'f';
-    mpcprueba2_DW.options.Diagnostics[2] = 'f';
-    mpcprueba2_DW.options.FunValCheck[2] = 'f';
-    mpcprueba2_DW.options.UseParallel = false;
-    mpcprueba2_DW.options.LinearSolver[0] = 'a';
-    mpcprueba2_DW.options.LinearSolver[1] = 'u';
-    mpcprueba2_DW.options.LinearSolver[2] = 't';
-    mpcprueba2_DW.options.LinearSolver[3] = 'o';
-    mpcprueba2_DW.options.SubproblemAlgorithm[0] = 'c';
-    mpcprueba2_DW.options.SubproblemAlgorithm[1] = 'g';
-    for (mpcprueba2_B.i = 0; mpcprueba2_B.i < 18; mpcprueba2_B.i++) {
-      mpcprueba2_DW.lb[mpcprueba2_B.i] = -2.0;
-      mpcprueba2_DW.ub[mpcprueba2_B.i] = 2.0;
+  for (mpcprueba2_B.i = 0; mpcprueba2_B.i < 5; mpcprueba2_B.i++) {
+    mpcprueba2_B.WorkingSet.isActiveIdxRegPhaseOne[mpcprueba2_B.i + 1] +=
+      mpcprueba2_B.WorkingSet.isActiveIdxRegPhaseOne[mpcprueba2_B.i];
+  }
+
+  for (mpcprueba2_B.i = 0; mpcprueba2_B.i < 15; mpcprueba2_B.i++) {
+    for (mpcprueba2_B.idxFillStart = 0; mpcprueba2_B.idxFillStart < 66;
+         mpcprueba2_B.idxFillStart++) {
+      mpcprueba2_B.WorkingSet.Aineq[mpcprueba2_B.i + (mpcprueba2_B.idxFillStart <<
+        4)] = mpcprueba2_P.Pc[66 * mpcprueba2_B.i + mpcprueba2_B.idxFillStart];
     }
   }
 
-  for (mpcprueba2_B.itilerow = 0; mpcprueba2_B.itilerow < 6;
-       mpcprueba2_B.itilerow++) {
-    mpcprueba2_B.ibcol = mpcprueba2_B.itilerow * 3;
-    mpcprueba2_B.Ref_seq[mpcprueba2_B.ibcol] =
-      mpcprueba2_B.rtb_DataTypeConversion12_idx_0;
-    mpcprueba2_B.Ref_seq[mpcprueba2_B.ibcol + 1] =
-      mpcprueba2_B.rtb_DataTypeConversion12_idx_1;
-    mpcprueba2_B.Ref_seq[mpcprueba2_B.ibcol + 2] =
-      mpcprueba2_B.rtb_DataTypeConversion12_idx_2;
+  memcpy(&mpcprueba2_B.WorkingSet.bineq[0], &mpcprueba2_B.b_x[0], 66U * sizeof
+         (real_T));
+  mpcprueba2_B.WorkingSet.nVar = 15;
+  mpcprueba2_B.WorkingSet.mConstr = 66;
+  for (mpcprueba2_B.i = 0; mpcprueba2_B.i < 5; mpcprueba2_B.i++) {
+    mpcprueba2_B.WorkingSet.sizes[mpcprueba2_B.i] =
+      mpcprueba2_B.WorkingSet.sizesNormal[mpcprueba2_B.i];
   }
 
-  for (mpcprueba2_B.itilerow = 0; mpcprueba2_B.itilerow < 18;
-       mpcprueba2_B.itilerow++) {
-    memset(&mpcprueba2_B.H_tmp_c[mpcprueba2_B.itilerow * 18], 0, 18U * sizeof
-           (real_T));
-    for (mpcprueba2_B.ibcol = 0; mpcprueba2_B.ibcol < 18; mpcprueba2_B.ibcol++)
-    {
-      mpcprueba2_B.d = mpcprueba2_DW.Q_big[18 * mpcprueba2_B.itilerow +
-        mpcprueba2_B.ibcol];
-      for (mpcprueba2_B.i = 0; mpcprueba2_B.i < 18; mpcprueba2_B.i++) {
-        mpcprueba2_B.Q_big_tmp = 18 * mpcprueba2_B.itilerow + mpcprueba2_B.i;
-        mpcprueba2_B.H_tmp_c[mpcprueba2_B.Q_big_tmp] += mpcprueba2_DW.Phi[18 *
-          mpcprueba2_B.i + mpcprueba2_B.ibcol] * 2.0 * mpcprueba2_B.d;
-      }
+  for (mpcprueba2_B.i = 0; mpcprueba2_B.i < 6; mpcprueba2_B.i++) {
+    mpcprueba2_B.WorkingSet.isActiveIdx[mpcprueba2_B.i] =
+      mpcprueba2_B.WorkingSet.isActiveIdxNormal[mpcprueba2_B.i];
+  }
+
+  mpcprueba2_B.WorkingSet.probType = 3;
+  mpcprueba2_B.idxFillStart = mpcprueba2_B.WorkingSet.isActiveIdx[2];
+  for (mpcprueba2_B.i = mpcprueba2_B.idxFillStart; mpcprueba2_B.i < 68;
+       mpcprueba2_B.i++) {
+    mpcprueba2_B.WorkingSet.isActiveConstr[mpcprueba2_B.i - 1] = false;
+  }
+
+  mpcprueba2_B.WorkingSet.nWConstr[0] = 0;
+  mpcprueba2_B.WorkingSet.nWConstr[1] = 0;
+  mpcprueba2_B.WorkingSet.nWConstr[2] = 0;
+  mpcprueba2_B.WorkingSet.nWConstr[3] = 0;
+  mpcprueba2_B.WorkingSet.nWConstr[4] = 0;
+  mpcprueba2_B.WorkingSet.nActiveConstr = 0;
+  mpcprueba2_B.WorkingSet.SLACK0 = 0.0;
+  mpcprueba2_B.f_g = 1.0;
+  for (mpcprueba2_B.i = 0; mpcprueba2_B.i < 66; mpcprueba2_B.i++) {
+    mpcprueba2_B.colSum = 0.0;
+    mpcprueba2_B.colPos = mpcprueba2_B.i << 4;
+    for (mpcprueba2_B.idxFillStart = 0; mpcprueba2_B.idxFillStart < 15;
+         mpcprueba2_B.idxFillStart++) {
+      mpcprueba2_B.colSum += fabs
+        (mpcprueba2_B.WorkingSet.Aineq[mpcprueba2_B.idxFillStart +
+         mpcprueba2_B.colPos]);
     }
 
-    mpcprueba2_B.dv[mpcprueba2_B.itilerow] = 0.0;
-  }
-
-  for (mpcprueba2_B.itilerow = 0; mpcprueba2_B.itilerow < 3;
-       mpcprueba2_B.itilerow++) {
-    mpcprueba2_B.d =
-      mpcprueba2_B.TmpSignalConversionAtTAQSigLogg[mpcprueba2_B.itilerow];
-    for (mpcprueba2_B.ibcol = 0; mpcprueba2_B.ibcol < 18; mpcprueba2_B.ibcol++)
-    {
-      mpcprueba2_B.dv[mpcprueba2_B.ibcol] += mpcprueba2_DW.F_f[18 *
-        mpcprueba2_B.itilerow + mpcprueba2_B.ibcol] * mpcprueba2_B.d;
-    }
-  }
-
-  memset(&mpcprueba2_B.dv1[0], 0, 18U * sizeof(real_T));
-  for (mpcprueba2_B.itilerow = 0; mpcprueba2_B.itilerow < 18;
-       mpcprueba2_B.itilerow++) {
-    mpcprueba2_B.d = mpcprueba2_B.Ref_seq[mpcprueba2_B.itilerow];
-    for (mpcprueba2_B.ibcol = 0; mpcprueba2_B.ibcol < 18; mpcprueba2_B.ibcol++)
-    {
-      mpcprueba2_B.dv1[mpcprueba2_B.ibcol] += mpcprueba2_B.H_tmp_c[18 *
-        mpcprueba2_B.itilerow + mpcprueba2_B.ibcol] * mpcprueba2_B.d;
+    if ((!(mpcprueba2_B.f_g >= mpcprueba2_B.colSum)) && (!rtIsNaN
+         (mpcprueba2_B.colSum))) {
+      mpcprueba2_B.f_g = mpcprueba2_B.colSum;
     }
   }
 
-  for (mpcprueba2_B.itilerow = 0; mpcprueba2_B.itilerow < 18;
-       mpcprueba2_B.itilerow++) {
-    mpcprueba2_B.dv2[mpcprueba2_B.itilerow] =
-      mpcprueba2_B.dv[mpcprueba2_B.itilerow] -
-      mpcprueba2_B.dv1[mpcprueba2_B.itilerow];
-  }
-
-  mpcprueba2_quadprog(mpcprueba2_DW.H, mpcprueba2_B.dv2, mpcprueba2_DW.lb,
-                      mpcprueba2_DW.ub, mpcprueba2_DW.options.NonFiniteSupport,
-                      mpcprueba2_DW.options.IterDisplayQP,
-                      mpcprueba2_DW.options.PricingTolerance,
-                      mpcprueba2_DW.options.ObjectiveLimit,
-                      mpcprueba2_DW.options.ConstraintTolerance,
-                      mpcprueba2_DW.options.OptimalityTolerance,
-                      mpcprueba2_DW.options.StepTolerance,
-                      mpcprueba2_DW.options.MaxIterations,
-                      mpcprueba2_DW.options.SolverName, mpcprueba2_B.Ref_seq,
-                      &mpcprueba2_B.rtb_DataTypeConversion12_idx_0,
-                      &mpcprueba2_B.rtb_DataTypeConversion12_idx_1);
-  mpcprueba2_B.m_final[0] = 0.0;
-  mpcprueba2_B.m_final[1] = 0.0;
-  mpcprueba2_B.m_final[2] = 0.0;
-  if (mpcprueba2_B.rtb_DataTypeConversion12_idx_1 > 0.0) {
-    mpcprueba2_B.m_final[0] = mpcprueba2_B.Ref_seq[0];
-    mpcprueba2_B.m_final[1] = mpcprueba2_B.Ref_seq[1];
-    mpcprueba2_B.m_final[2] = mpcprueba2_B.Ref_seq[2];
-  }
-
-  mpcprueba2_B.m_final[3] = mpcprueba2_P.Constant10_Value * 4.0;
-  memcpy(&mpcprueba2_B.A[0], &mpcprueba2_DW.M[0], sizeof(real_T) << 4U);
-  mpcprueba2_B.ipiv[0] = 1;
-  mpcprueba2_B.ipiv[1] = 2;
-  mpcprueba2_B.ipiv[2] = 3;
-  mpcprueba2_B.ipiv[3] = 4;
-  for (mpcprueba2_B.itilerow = 0; mpcprueba2_B.itilerow < 3;
-       mpcprueba2_B.itilerow++) {
-    mpcprueba2_B.ibcol = mpcprueba2_B.itilerow * 5;
-    mpcprueba2_B.Q_big_tmp = 5 - mpcprueba2_B.itilerow;
-    mpcprueba2_B.b_tmp = 0;
-    mpcprueba2_B.rtb_DataTypeConversion12_idx_0 = fabs
-      (mpcprueba2_B.A[mpcprueba2_B.ibcol]);
-    for (mpcprueba2_B.i = 2; mpcprueba2_B.i < mpcprueba2_B.Q_big_tmp;
-         mpcprueba2_B.i++) {
-      mpcprueba2_B.rtb_DataTypeConversion12_idx_1 = fabs(mpcprueba2_B.A
-        [(mpcprueba2_B.ibcol + mpcprueba2_B.i) - 1]);
-      if (mpcprueba2_B.rtb_DataTypeConversion12_idx_1 >
-          mpcprueba2_B.rtb_DataTypeConversion12_idx_0) {
-        mpcprueba2_B.b_tmp = mpcprueba2_B.i - 1;
-        mpcprueba2_B.rtb_DataTypeConversion12_idx_0 =
-          mpcprueba2_B.rtb_DataTypeConversion12_idx_1;
-      }
+  mpcprueba2_B.colSum = 0.0;
+  mpcprueba2_B.f_infnrm = 0.0;
+  for (mpcprueba2_B.i = 0; mpcprueba2_B.i < 15; mpcprueba2_B.i++) {
+    mpcprueba2_B.b_colSum = 0.0;
+    for (mpcprueba2_B.idxFillStart = 0; mpcprueba2_B.idxFillStart < 15;
+         mpcprueba2_B.idxFillStart++) {
+      mpcprueba2_B.b_colSum += fabs(mpcprueba2_B.b_H[15 * mpcprueba2_B.i +
+        mpcprueba2_B.idxFillStart]);
     }
 
-    if (mpcprueba2_B.A[mpcprueba2_B.ibcol + mpcprueba2_B.b_tmp] != 0.0) {
-      if (mpcprueba2_B.b_tmp != 0) {
-        mpcprueba2_B.i = mpcprueba2_B.itilerow + mpcprueba2_B.b_tmp;
-        mpcprueba2_B.ipiv[mpcprueba2_B.itilerow] = static_cast<int8_T>
-          (mpcprueba2_B.i + 1);
-        mpcprueba2_B.rtb_DataTypeConversion12_idx_0 =
-          mpcprueba2_B.A[mpcprueba2_B.itilerow];
-        mpcprueba2_B.A[mpcprueba2_B.itilerow] = mpcprueba2_B.A[mpcprueba2_B.i];
-        mpcprueba2_B.A[mpcprueba2_B.i] =
-          mpcprueba2_B.rtb_DataTypeConversion12_idx_0;
-        mpcprueba2_B.rtb_DataTypeConversion12_idx_0 =
-          mpcprueba2_B.A[mpcprueba2_B.itilerow + 4];
-        mpcprueba2_B.A[mpcprueba2_B.itilerow + 4] =
-          mpcprueba2_B.A[mpcprueba2_B.i + 4];
-        mpcprueba2_B.A[mpcprueba2_B.i + 4] =
-          mpcprueba2_B.rtb_DataTypeConversion12_idx_0;
-        mpcprueba2_B.rtb_DataTypeConversion12_idx_0 =
-          mpcprueba2_B.A[mpcprueba2_B.itilerow + 8];
-        mpcprueba2_B.A[mpcprueba2_B.itilerow + 8] =
-          mpcprueba2_B.A[mpcprueba2_B.i + 8];
-        mpcprueba2_B.A[mpcprueba2_B.i + 8] =
-          mpcprueba2_B.rtb_DataTypeConversion12_idx_0;
-        mpcprueba2_B.rtb_DataTypeConversion12_idx_0 =
-          mpcprueba2_B.A[mpcprueba2_B.itilerow + 12];
-        mpcprueba2_B.A[mpcprueba2_B.itilerow + 12] =
-          mpcprueba2_B.A[mpcprueba2_B.i + 12];
-        mpcprueba2_B.A[mpcprueba2_B.i + 12] =
-          mpcprueba2_B.rtb_DataTypeConversion12_idx_0;
-      }
-
-      mpcprueba2_B.Q_big_tmp = (mpcprueba2_B.ibcol - mpcprueba2_B.itilerow) + 4;
-      for (mpcprueba2_B.i = mpcprueba2_B.ibcol + 2; mpcprueba2_B.i <=
-           mpcprueba2_B.Q_big_tmp; mpcprueba2_B.i++) {
-        mpcprueba2_B.A[mpcprueba2_B.i - 1] /= mpcprueba2_B.A[mpcprueba2_B.ibcol];
-      }
+    if ((!(mpcprueba2_B.colSum >= mpcprueba2_B.b_colSum)) && (!rtIsNaN
+         (mpcprueba2_B.b_colSum))) {
+      mpcprueba2_B.colSum = mpcprueba2_B.b_colSum;
     }
 
-    mpcprueba2_B.b_tmp = 2 - mpcprueba2_B.itilerow;
-    mpcprueba2_B.jA = mpcprueba2_B.ibcol + 6;
-    for (mpcprueba2_B.i = 0; mpcprueba2_B.i <= mpcprueba2_B.b_tmp;
-         mpcprueba2_B.i++) {
-      mpcprueba2_B.d = mpcprueba2_B.A[((mpcprueba2_B.i << 2) +
-        mpcprueba2_B.ibcol) + 4];
-      if (mpcprueba2_B.d != 0.0) {
-        mpcprueba2_B.Phi_tmp = (mpcprueba2_B.jA - mpcprueba2_B.itilerow) + 2;
-        for (mpcprueba2_B.Q_big_tmp = mpcprueba2_B.jA; mpcprueba2_B.Q_big_tmp <=
-             mpcprueba2_B.Phi_tmp; mpcprueba2_B.Q_big_tmp++) {
-          mpcprueba2_B.A[mpcprueba2_B.Q_big_tmp - 1] += mpcprueba2_B.A
-            [((mpcprueba2_B.ibcol + mpcprueba2_B.Q_big_tmp) - mpcprueba2_B.jA) +
-            1] * -mpcprueba2_B.d;
-        }
-      }
-
-      mpcprueba2_B.jA += 4;
-    }
-
-    ipiv = mpcprueba2_B.ipiv[mpcprueba2_B.itilerow];
-    if (mpcprueba2_B.itilerow + 1 != ipiv) {
-      mpcprueba2_B.rtb_DataTypeConversion12_idx_0 =
-        mpcprueba2_B.m_final[mpcprueba2_B.itilerow];
-      mpcprueba2_B.m_final[mpcprueba2_B.itilerow] = mpcprueba2_B.m_final[ipiv -
-        1];
-      mpcprueba2_B.m_final[ipiv - 1] =
-        mpcprueba2_B.rtb_DataTypeConversion12_idx_0;
+    mpcprueba2_B.b_colSum = fabs(mpcprueba2_B.f[mpcprueba2_B.i]);
+    if ((!(mpcprueba2_B.f_infnrm >= mpcprueba2_B.b_colSum)) && (!rtIsNaN
+         (mpcprueba2_B.b_colSum))) {
+      mpcprueba2_B.f_infnrm = mpcprueba2_B.b_colSum;
     }
   }
 
-  for (mpcprueba2_B.itilerow = 0; mpcprueba2_B.itilerow < 4;
-       mpcprueba2_B.itilerow++) {
-    mpcprueba2_B.i = mpcprueba2_B.itilerow << 2;
-    if (mpcprueba2_B.m_final[mpcprueba2_B.itilerow] != 0.0) {
-      for (mpcprueba2_B.ibcol = mpcprueba2_B.itilerow + 2; mpcprueba2_B.ibcol <
-           5; mpcprueba2_B.ibcol++) {
-        mpcprueba2_B.m_final[mpcprueba2_B.ibcol - 1] -= mpcprueba2_B.A
-          [(mpcprueba2_B.ibcol + mpcprueba2_B.i) - 1] *
-          mpcprueba2_B.m_final[mpcprueba2_B.itilerow];
-      }
-    }
+  if (mpcprueba2_B.f_g >= mpcprueba2_B.f_infnrm) {
+    mpcprueba2_B.f_infnrm = mpcprueba2_B.f_g;
   }
 
-  for (mpcprueba2_B.itilerow = 3; mpcprueba2_B.itilerow >= 0;
-       mpcprueba2_B.itilerow--) {
-    mpcprueba2_B.i = mpcprueba2_B.itilerow << 2;
-    mpcprueba2_B.rtb_DataTypeConversion12_idx_0 =
-      mpcprueba2_B.m_final[mpcprueba2_B.itilerow];
-    if (mpcprueba2_B.rtb_DataTypeConversion12_idx_0 != 0.0) {
-      mpcprueba2_B.m_final[mpcprueba2_B.itilerow] =
-        mpcprueba2_B.rtb_DataTypeConversion12_idx_0 /
-        mpcprueba2_B.A[mpcprueba2_B.itilerow + mpcprueba2_B.i];
-      for (mpcprueba2_B.ibcol = 0; mpcprueba2_B.ibcol < mpcprueba2_B.itilerow;
-           mpcprueba2_B.ibcol++) {
-        mpcprueba2_B.m_final[mpcprueba2_B.ibcol] -=
-          mpcprueba2_B.A[mpcprueba2_B.ibcol + mpcprueba2_B.i] *
-          mpcprueba2_B.m_final[mpcprueba2_B.itilerow];
-      }
-    }
+  if (mpcprueba2_B.f_infnrm >= mpcprueba2_B.colSum) {
+    mpcprueba2_B.colSum = mpcprueba2_B.f_infnrm;
   }
 
-  if (mpcprueba2_B.m_final[0] <= 1.0) {
-    mpcprueba2_B.rtb_DataTypeConversion12_idx_0 = mpcprueba2_B.m_final[0];
+  mpcprueba2_B.CholRegManager.scaleFactor = mpcprueba2_B.colSum;
+  if (mpcprueba2_DW.opts.StepTolerance < 0.0) {
+    mpcprueba2_B.expl_temp.StepTolerance = 1.0E-8;
   } else {
-    mpcprueba2_B.rtb_DataTypeConversion12_idx_0 = 1.0;
+    mpcprueba2_B.expl_temp.StepTolerance = mpcprueba2_DW.opts.StepTolerance;
   }
 
-  if (!(mpcprueba2_B.rtb_DataTypeConversion12_idx_0 >= 0.0)) {
-    mpcprueba2_B.rtb_DataTypeConversion12_idx_0 = 0.0;
-  }
-
-  // Saturate: '<Root>/Saturation1'
-  if (mpcprueba2_B.rtb_DataTypeConversion12_idx_0 >
-      mpcprueba2_P.Saturation1_UpperSat) {
-    // DataTypeConversion: '<Root>/Data Type Conversion7'
-    mpcprueba2_B.DataTypeConversion7[0] = static_cast<real32_T>
-      (mpcprueba2_P.Saturation1_UpperSat);
-  } else if (mpcprueba2_B.rtb_DataTypeConversion12_idx_0 <
-             mpcprueba2_P.Saturation1_LowerSat) {
-    // DataTypeConversion: '<Root>/Data Type Conversion7'
-    mpcprueba2_B.DataTypeConversion7[0] = static_cast<real32_T>
-      (mpcprueba2_P.Saturation1_LowerSat);
+  if (mpcprueba2_DW.opts.OptimalityTolerance < 0.0) {
+    mpcprueba2_B.expl_temp.OptimalityTolerance = 1.0E-8;
   } else {
-    // DataTypeConversion: '<Root>/Data Type Conversion7'
-    mpcprueba2_B.DataTypeConversion7[0] = static_cast<real32_T>
-      (mpcprueba2_B.rtb_DataTypeConversion12_idx_0);
+    mpcprueba2_B.expl_temp.OptimalityTolerance =
+      mpcprueba2_DW.opts.OptimalityTolerance;
   }
 
-  // MATLAB Function: '<Root>/MATLAB Function5'
-  if (mpcprueba2_B.m_final[1] <= 1.0) {
-    mpcprueba2_B.rtb_DataTypeConversion12_idx_0 = mpcprueba2_B.m_final[1];
+  if (mpcprueba2_DW.opts.ConstraintTolerance < 0.0) {
+    mpcprueba2_B.expl_temp.ConstraintTolerance = 1.0E-8;
   } else {
-    mpcprueba2_B.rtb_DataTypeConversion12_idx_0 = 1.0;
+    mpcprueba2_B.expl_temp.ConstraintTolerance =
+      mpcprueba2_DW.opts.ConstraintTolerance;
   }
 
-  if (!(mpcprueba2_B.rtb_DataTypeConversion12_idx_0 >= 0.0)) {
-    mpcprueba2_B.rtb_DataTypeConversion12_idx_0 = 0.0;
+  mpcprueba2_B.expl_temp.PricingTolerance = mpcprueba2_DW.opts.PricingTolerance;
+  mpcprueba2_B.expl_temp.ObjectiveLimit = mpcprueba2_DW.opts.ObjectiveLimit;
+  mpcprueba2_B.expl_temp.IterDisplayQP = mpcprueba2_DW.opts.IterDisplayQP;
+  mpcprueba2_B.expl_temp.NonFiniteSupport = mpcprueba2_DW.opts.NonFiniteSupport;
+  for (mpcprueba2_B.i = 0; mpcprueba2_B.i < 8; mpcprueba2_B.i++) {
+    mpcprueba2_B.expl_temp.SolverName[mpcprueba2_B.i] =
+      mpcprueba2_DW.opts.SolverName[mpcprueba2_B.i];
   }
 
-  // Saturate: '<Root>/Saturation1'
-  if (mpcprueba2_B.rtb_DataTypeConversion12_idx_0 >
-      mpcprueba2_P.Saturation1_UpperSat) {
-    // DataTypeConversion: '<Root>/Data Type Conversion7'
-    mpcprueba2_B.DataTypeConversion7[1] = static_cast<real32_T>
-      (mpcprueba2_P.Saturation1_UpperSat);
-  } else if (mpcprueba2_B.rtb_DataTypeConversion12_idx_0 <
-             mpcprueba2_P.Saturation1_LowerSat) {
-    // DataTypeConversion: '<Root>/Data Type Conversion7'
-    mpcprueba2_B.DataTypeConversion7[1] = static_cast<real32_T>
-      (mpcprueba2_P.Saturation1_LowerSat);
+  if (mpcprueba2_DW.opts.MaxIterations < 0.0) {
+    mpcprueba2_B.i = 810;
   } else {
-    // DataTypeConversion: '<Root>/Data Type Conversion7'
-    mpcprueba2_B.DataTypeConversion7[1] = static_cast<real32_T>
-      (mpcprueba2_B.rtb_DataTypeConversion12_idx_0);
+    mpcprueba2_B.i = static_cast<int32_T>(mpcprueba2_DW.opts.MaxIterations);
   }
 
-  // MATLAB Function: '<Root>/MATLAB Function5'
-  if (mpcprueba2_B.m_final[2] <= 1.0) {
-    mpcprueba2_B.rtb_DataTypeConversion12_idx_0 = mpcprueba2_B.m_final[2];
+  mpcprueba2_driver(mpcprueba2_B.b_H, mpcprueba2_B.f, &mpcprueba2_B.solution,
+                    &mpcprueba2_B.memspace, &mpcprueba2_B.WorkingSet,
+                    &mpcprueba2_B.CholRegManager, mpcprueba2_B.expl_temp,
+                    mpcprueba2_B.i, mpcprueba2_B.f_g, mpcprueba2_B.colSum,
+                    &mpcprueba2_B.QRManager, &mpcprueba2_B.QPObjective);
+  memcpy(&mpcprueba2_B.uvec[0], &mpcprueba2_B.solution.xstar[0], 15U * sizeof
+         (real_T));
+  if (mpcprueba2_B.solution.state <= 0) {
+    mpcprueba2_computeFval(&mpcprueba2_B.QPObjective,
+      mpcprueba2_B.memspace.workspace_float, mpcprueba2_B.b_H, mpcprueba2_B.f,
+      mpcprueba2_B.solution.xstar);
+  }
+
+  switch (mpcprueba2_B.solution.state) {
+   case 2:
+    mpcprueba2_B.solution.state = -3;
+    break;
+
+   case -3:
+    mpcprueba2_B.solution.state = -2;
+    break;
+
+   case 4:
+    mpcprueba2_B.solution.state = -2;
+    break;
+  }
+
+  if (mpcprueba2_B.solution.state > 0) {
+    mpcprueba2_B.u[0] = mpcprueba2_B.uvec[0];
+    mpcprueba2_DW.u_prev[0] = mpcprueba2_B.uvec[0];
+    mpcprueba2_B.u[1] = mpcprueba2_B.uvec[1];
+    mpcprueba2_DW.u_prev[1] = mpcprueba2_B.uvec[1];
+    mpcprueba2_B.u[2] = mpcprueba2_B.uvec[2];
+    mpcprueba2_DW.u_prev[2] = mpcprueba2_B.uvec[2];
+    memcpy(&mpcprueba2_DW.x0[0], &mpcprueba2_B.uvec[0], 15U * sizeof(real_T));
   } else {
-    mpcprueba2_B.rtb_DataTypeConversion12_idx_0 = 1.0;
+    mpcprueba2_B.u[0] = mpcprueba2_DW.u_prev[0];
+    mpcprueba2_B.u[1] = mpcprueba2_DW.u_prev[1];
+    mpcprueba2_B.u[2] = mpcprueba2_DW.u_prev[2];
   }
 
-  if (!(mpcprueba2_B.rtb_DataTypeConversion12_idx_0 >= 0.0)) {
-    mpcprueba2_B.rtb_DataTypeConversion12_idx_0 = 0.0;
-  }
+  // End of MATLAB Function: '<Root>/MATLAB Function5'
+  // MATLAB Function: '<Root>/MATLAB Function'
+  mpcprueba2_B.dv1[0] = mpcprueba2_B.u[0];
+  mpcprueba2_B.dv1[1] = mpcprueba2_B.u[1];
+  mpcprueba2_B.dv1[2] = mpcprueba2_B.u[2];
+  mpcprueba2_mldivide(tmp, mpcprueba2_B.dv1, mpcprueba2_B.M);
 
-  // Saturate: '<Root>/Saturation1'
-  if (mpcprueba2_B.rtb_DataTypeConversion12_idx_0 >
-      mpcprueba2_P.Saturation1_UpperSat) {
-    // DataTypeConversion: '<Root>/Data Type Conversion7'
-    mpcprueba2_B.DataTypeConversion7[2] = static_cast<real32_T>
-      (mpcprueba2_P.Saturation1_UpperSat);
-  } else if (mpcprueba2_B.rtb_DataTypeConversion12_idx_0 <
-             mpcprueba2_P.Saturation1_LowerSat) {
-    // DataTypeConversion: '<Root>/Data Type Conversion7'
-    mpcprueba2_B.DataTypeConversion7[2] = static_cast<real32_T>
-      (mpcprueba2_P.Saturation1_LowerSat);
+  // Saturate: '<Root>/Saturation' incorporates:
+  //   MATLAB Function: '<Root>/MATLAB Function'
+
+  if (mpcprueba2_B.M[0] + 0.2691 > mpcprueba2_P.Saturation_UpperSat) {
+    // Saturate: '<Root>/Saturation'
+    mpcprueba2_B.Saturation = mpcprueba2_P.Saturation_UpperSat;
+  } else if (mpcprueba2_B.M[0] + 0.2691 < mpcprueba2_P.Saturation_LowerSat) {
+    // Saturate: '<Root>/Saturation'
+    mpcprueba2_B.Saturation = mpcprueba2_P.Saturation_LowerSat;
   } else {
-    // DataTypeConversion: '<Root>/Data Type Conversion7'
-    mpcprueba2_B.DataTypeConversion7[2] = static_cast<real32_T>
-      (mpcprueba2_B.rtb_DataTypeConversion12_idx_0);
+    // Saturate: '<Root>/Saturation'
+    mpcprueba2_B.Saturation = mpcprueba2_B.M[0] + 0.2691;
   }
 
-  // MATLAB Function: '<Root>/MATLAB Function5'
-  if (mpcprueba2_B.m_final[3] <= 1.0) {
-    mpcprueba2_B.rtb_DataTypeConversion12_idx_0 = mpcprueba2_B.m_final[3];
+  // End of Saturate: '<Root>/Saturation'
+  // Saturate: '<Root>/Saturation1' incorporates:
+  //   MATLAB Function: '<Root>/MATLAB Function'
+
+  if (mpcprueba2_B.M[1] + 0.3501 > mpcprueba2_P.Saturation1_UpperSat) {
+    // Saturate: '<Root>/Saturation1'
+    mpcprueba2_B.Saturation1 = mpcprueba2_P.Saturation1_UpperSat;
+  } else if (mpcprueba2_B.M[1] + 0.3501 < mpcprueba2_P.Saturation1_LowerSat) {
+    // Saturate: '<Root>/Saturation1'
+    mpcprueba2_B.Saturation1 = mpcprueba2_P.Saturation1_LowerSat;
   } else {
-    mpcprueba2_B.rtb_DataTypeConversion12_idx_0 = 1.0;
+    // Saturate: '<Root>/Saturation1'
+    mpcprueba2_B.Saturation1 = mpcprueba2_B.M[1] + 0.3501;
   }
 
-  if (!(mpcprueba2_B.rtb_DataTypeConversion12_idx_0 >= 0.0)) {
-    mpcprueba2_B.rtb_DataTypeConversion12_idx_0 = 0.0;
-  }
+  // End of Saturate: '<Root>/Saturation1'
+  // Saturate: '<Root>/Saturation3' incorporates:
+  //   MATLAB Function: '<Root>/MATLAB Function'
 
-  // Saturate: '<Root>/Saturation1'
-  if (mpcprueba2_B.rtb_DataTypeConversion12_idx_0 >
-      mpcprueba2_P.Saturation1_UpperSat) {
-    // DataTypeConversion: '<Root>/Data Type Conversion7'
-    mpcprueba2_B.DataTypeConversion7[3] = static_cast<real32_T>
-      (mpcprueba2_P.Saturation1_UpperSat);
-  } else if (mpcprueba2_B.rtb_DataTypeConversion12_idx_0 <
-             mpcprueba2_P.Saturation1_LowerSat) {
-    // DataTypeConversion: '<Root>/Data Type Conversion7'
-    mpcprueba2_B.DataTypeConversion7[3] = static_cast<real32_T>
-      (mpcprueba2_P.Saturation1_LowerSat);
+  if (mpcprueba2_B.M[3] + 0.3462 > mpcprueba2_P.Saturation3_UpperSat) {
+    // Saturate: '<Root>/Saturation3'
+    mpcprueba2_B.Saturation3 = mpcprueba2_P.Saturation3_UpperSat;
+  } else if (mpcprueba2_B.M[3] + 0.3462 < mpcprueba2_P.Saturation3_LowerSat) {
+    // Saturate: '<Root>/Saturation3'
+    mpcprueba2_B.Saturation3 = mpcprueba2_P.Saturation3_LowerSat;
   } else {
-    // DataTypeConversion: '<Root>/Data Type Conversion7'
-    mpcprueba2_B.DataTypeConversion7[3] = static_cast<real32_T>
-      (mpcprueba2_B.rtb_DataTypeConversion12_idx_0);
+    // Saturate: '<Root>/Saturation3'
+    mpcprueba2_B.Saturation3 = mpcprueba2_B.M[3] + 0.3462;
   }
 
-  // MATLABSystem: '<Root>/PX4 Actuator Write1'
-  for (mpcprueba2_B.itilerow = 0; mpcprueba2_B.itilerow < 12;
-       mpcprueba2_B.itilerow++) {
-    mpcprueba2_B.motorValues[mpcprueba2_B.itilerow] = (rtNaNF);
-  }
+  // End of Saturate: '<Root>/Saturation3'
+  // Saturate: '<Root>/Saturation2' incorporates:
+  //   MATLAB Function: '<Root>/MATLAB Function'
 
-  for (mpcprueba2_B.itilerow = 0; mpcprueba2_B.itilerow < 8;
-       mpcprueba2_B.itilerow++) {
-    mpcprueba2_B.servoValues[mpcprueba2_B.itilerow] = (rtNaNF);
-  }
-
-  mpcprueba2_B.motorValues[0] = mpcprueba2_B.DataTypeConversion7[0];
-  mpcprueba2_B.motorValues[1] = mpcprueba2_B.DataTypeConversion7[1];
-  mpcprueba2_B.motorValues[2] = mpcprueba2_B.DataTypeConversion7[2];
-  mpcprueba2_B.motorValues[3] = mpcprueba2_B.DataTypeConversion7[3];
-
-  // ManualSwitch: '<Root>/Manual Switch1' incorporates:
-  //   Constant: '<Root>/Constant6'
-  //   Constant: '<Root>/Constant7'
-
-  if (mpcprueba2_P.ManualSwitch1_CurrentSetting == 1) {
-    b_varargout_1 = mpcprueba2_P.Constant7_Value;
+  if (mpcprueba2_B.M[2] + 0.2498 > mpcprueba2_P.Saturation2_UpperSat) {
+    // Saturate: '<Root>/Saturation2'
+    mpcprueba2_B.Saturation2 = mpcprueba2_P.Saturation2_UpperSat;
+  } else if (mpcprueba2_B.M[2] + 0.2498 < mpcprueba2_P.Saturation2_LowerSat) {
+    // Saturate: '<Root>/Saturation2'
+    mpcprueba2_B.Saturation2 = mpcprueba2_P.Saturation2_LowerSat;
   } else {
-    b_varargout_1 = mpcprueba2_P.Constant6_Value;
+    // Saturate: '<Root>/Saturation2'
+    mpcprueba2_B.Saturation2 = mpcprueba2_B.M[2] + 0.2498;
   }
 
-  // MATLABSystem: '<Root>/PX4 Actuator Write1' incorporates:
-  //   ManualSwitch: '<Root>/Manual Switch1'
-
-  MW_actuators_set(b_varargout_1, &mpcprueba2_B.motorValues[0],
-                   &mpcprueba2_B.servoValues[0]);
+  // End of Saturate: '<Root>/Saturation2'
 
   // Update absolute time for base rate
   // The "clockTick0" counts the number of times the code of this task has
@@ -5834,27 +5353,23 @@ void mpcprueba2_initialize(void)
   // initialize non-finites
   rt_InitInfAndNaN(sizeof(real_T));
   rtmSetTFinal(mpcprueba2_M, -1);
-  mpcprueba2_M->Timing.stepSize0 = 0.001;
+  mpcprueba2_M->Timing.stepSize0 = 0.0201;
 
   // External mode info
-  mpcprueba2_M->Sizes.checksums[0] = (2974863637U);
-  mpcprueba2_M->Sizes.checksums[1] = (1837404187U);
-  mpcprueba2_M->Sizes.checksums[2] = (2156590025U);
-  mpcprueba2_M->Sizes.checksums[3] = (2425477834U);
+  mpcprueba2_M->Sizes.checksums[0] = (252222445U);
+  mpcprueba2_M->Sizes.checksums[1] = (2844505063U);
+  mpcprueba2_M->Sizes.checksums[2] = (323806627U);
+  mpcprueba2_M->Sizes.checksums[3] = (1810865430U);
 
   {
     static const sysRanDType rtAlwaysEnabled = SUBSYS_RAN_BC_ENABLE;
     static RTWExtModeInfo rt_ExtModeInfo;
-    static const sysRanDType *systemRan[7];
+    static const sysRanDType *systemRan[3];
     mpcprueba2_M->extModeInfo = (&rt_ExtModeInfo);
     rteiSetSubSystemActiveVectorAddresses(&rt_ExtModeInfo, systemRan);
     systemRan[0] = &rtAlwaysEnabled;
-    systemRan[1] = (sysRanDType *)&mpcprueba2_DW.EnabledSubsystem_SubsysRanBC;
+    systemRan[1] = &rtAlwaysEnabled;
     systemRan[2] = &rtAlwaysEnabled;
-    systemRan[3] = &rtAlwaysEnabled;
-    systemRan[4] = &rtAlwaysEnabled;
-    systemRan[5] = &rtAlwaysEnabled;
-    systemRan[6] = &rtAlwaysEnabled;
     rteiSetModelMappingInfoPtr(mpcprueba2_M->extModeInfo,
       &mpcprueba2_M->SpecialInfo.mappingInfo);
     rteiSetChecksumsPtr(mpcprueba2_M->extModeInfo, mpcprueba2_M->Sizes.checksums);
@@ -5870,95 +5385,62 @@ void mpcprueba2_initialize(void)
                 sizeof(DW_mpcprueba2_T));
 
   {
-    int32_T i;
+    static sCBS0Ia3qD76sOwKERvBoFE_mpcpr_T tmp = { true,// NonFiniteSupport
+      false,                           // IterDisplaySQP
+      0.01,                            // InitDamping
 
-    // SystemInitialize for Enabled SubSystem: '<S3>/Enabled Subsystem'
-    // SystemInitialize for SignalConversion generated from: '<S4>/In1' incorporates:
-    //   Outport: '<S4>/Out1'
+      { 'f', 'o', 'r', 'w', 'a', 'r', 'd' },// FiniteDifferenceType
+      false,                           // SpecifyObjectiveGradient
+      false,                           // ScaleProblem
+      false,                           // SpecifyConstraintGradient
+      -1.0,                            // FiniteDifferenceStepSize
+      -1.0,                            // MaxFunctionEvaluations
+      false,                           // IterDisplayQP
+      0.0,                             // PricingTolerance
 
-    mpcprueba2_B.In1 = mpcprueba2_P.Out1_Y0;
+      { 'a', 'c', 't', 'i', 'v', 'e', '-', 's', 'e', 't' },// Algorithm
+      -1.0E+20,                        // ObjectiveLimit
+      -1.0,                            // ConstraintTolerance
+      -1.0,                            // OptimalityTolerance
+      -1.0,                            // StepTolerance
+      -1.0,                            // MaxIterations
+      0.0,                             // FunctionTolerance
 
-    // End of SystemInitialize for SubSystem: '<S3>/Enabled Subsystem'
+      { 'q', 'u', 'a', 'd', 'p', 'r', 'o', 'g' },// SolverName
+
+      { 'o', 'f', 'f' },               // Display
+      false,                           // UseCodegenSolver
+      false,                           // CheckGradients
+
+      { 'o', 'f', 'f' },               // Diagnostics
+      0.0,                             // DiffMaxChange
+      0.0,                             // DiffMinChange
+
+      { 'o', 'f', 'f' },               // FunValCheck
+      false,                           // UseParallel
+
+      { 'a', 'u', 't', 'o' },          // LinearSolver
+
+      { 'c', 'g' }                     // SubproblemAlgorithm
+    };
 
     // SystemInitialize for MATLAB Function: '<Root>/MATLAB Function5'
-    mpcprueba2_DW.A_not_empty = false;
+    tmp.DiffMaxChange = (rtInf);
+    tmp.FunctionTolerance = (rtInf);
 
-    // Start for MATLABSystem: '<S3>/SourceBlock'
-    mpcprueba2_DW.obj_i.matlabCodegenIsDeleted = false;
-    mpcprueba2_DW.obj_i.isSetupComplete = false;
-    mpcprueba2_DW.obj_i.isInitialized = 1;
-    mpcprueba2_DW.obj_i.orbMetadataObj = ORB_ID(sensor_gyro);
-    uORB_read_initialize(mpcprueba2_DW.obj_i.orbMetadataObj,
-                         &mpcprueba2_DW.obj_i.eventStructObj);
-    mpcprueba2_DW.obj_i.isSetupComplete = true;
-
-    // Start for MATLABSystem: '<Root>/PX4 Actuator Write1'
-    for (i = 0; i < 12; i++) {
-      mpcprueba2_DW.obj.ValidMotorIdx[i] = false;
-    }
-
-    for (i = 0; i < 8; i++) {
-      mpcprueba2_DW.obj.ValidServoIdx[i] = false;
-    }
-
-    mpcprueba2_DW.obj.matlabCodegenIsDeleted = false;
-    mpcprueba2_DW.obj.isSetupComplete = false;
-    mpcprueba2_DW.obj.isInitialized = 1;
-    mpcprueb_PX4Actuators_setupImpl(&mpcprueba2_DW.obj);
-    mpcprueba2_DW.obj.isSetupComplete = true;
-
-    // End of Start for MATLABSystem: '<Root>/PX4 Actuator Write1'
+    // SystemInitialize for MATLAB Function: '<Root>/MATLAB Function5'
+    mpcprueba2_DW.opts = tmp;
+    mpcprueba2_DW.u_prev[0] = 0.0;
+    mpcprueba2_DW.u_prev[1] = 0.0;
+    mpcprueba2_DW.u_prev[2] = 0.0;
+    memset(&mpcprueba2_DW.x0[0], 0, 15U * sizeof(real_T));
   }
 }
 
 // Model terminate function
 void mpcprueba2_terminate(void)
 {
-  int32_T i;
-  real32_T servoValues[8];
-
-  // Terminate for MATLABSystem: '<S3>/SourceBlock'
-  if (!mpcprueba2_DW.obj_i.matlabCodegenIsDeleted) {
-    mpcprueba2_DW.obj_i.matlabCodegenIsDeleted = true;
-    if ((mpcprueba2_DW.obj_i.isInitialized == 1) &&
-        mpcprueba2_DW.obj_i.isSetupComplete) {
-      uORB_read_terminate(&mpcprueba2_DW.obj_i.eventStructObj);
-    }
-  }
-
-  // End of Terminate for MATLABSystem: '<S3>/SourceBlock'
-
-  // Terminate for MATLABSystem: '<Root>/PX4 Actuator Write1'
-  if (!mpcprueba2_DW.obj.matlabCodegenIsDeleted) {
-    mpcprueba2_DW.obj.matlabCodegenIsDeleted = true;
-    if ((mpcprueba2_DW.obj.isInitialized == 1) &&
-        mpcprueba2_DW.obj.isSetupComplete) {
-      for (i = 0; i < 12; i++) {
-        mpcprueba2_B.motorValues_p[i] = (rtNaNF);
-      }
-
-      for (i = 0; i < 8; i++) {
-        servoValues[i] = (rtNaNF);
-      }
-
-      for (i = 0; i < 12; i++) {
-        if (mpcprueba2_DW.obj.ValidMotorIdx[i]) {
-          mpcprueba2_B.motorValues_p[i] = 0.0F;
-        }
-      }
-
-      for (i = 0; i < 8; i++) {
-        if (mpcprueba2_DW.obj.ValidServoIdx[i]) {
-          servoValues[i] = 0.0F;
-        }
-      }
-
-      MW_actuators_set(false, &mpcprueba2_B.motorValues_p[0], &servoValues[0]);
-      MW_actuators_terminate();
-    }
-  }
-
-  // End of Terminate for MATLABSystem: '<Root>/PX4 Actuator Write1'
+  // (no terminate code required)
 }
 
 //

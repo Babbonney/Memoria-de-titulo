@@ -7,9 +7,9 @@
 //
 // Code generated for Simulink model 'mpcprueba2'.
 //
-// Model version                  : 12.42
+// Model version                  : 12.49
 // Simulink Coder version         : 25.1 (R2025a) 21-Nov-2024
-// C/C++ source code generated on : Wed Jan 14 15:02:40 2026
+// C/C++ source code generated on : Fri Jan 23 15:03:24 2026
 //
 // Target selection: ert.tlc
 // Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -142,7 +142,7 @@ int px4_simulink_app_task_main (int argc, char *argv[])
   }
 
   // Call RTOS Initialization function
-  nuttxRTOSInit(0.001, 0);
+  nuttxRTOSInit(0.0201, 0);
 
   // Wait for stop semaphore
   px4_sem_wait(&stopSem);
