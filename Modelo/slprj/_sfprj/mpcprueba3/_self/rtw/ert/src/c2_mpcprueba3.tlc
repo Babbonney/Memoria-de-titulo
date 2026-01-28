@@ -7,7 +7,7 @@
 %endfunction
 %function ChartDataMap(block, system) void
   %createrecord ChartDataElements {\
-    NumChartData   2 \
+    NumChartData   8 \
     ChartDataDefaults {\
       RecordType   "ChartData"\
       Dimensions   []\
@@ -26,6 +26,50 @@
       SFName       ""\
       Path         ""\
       SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "trim"\
+      Description  "EmlPersistent"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "mpcprueba3:378:92-96"\
+      Dimensions   [4]\
+    }\
+    ChartData {\
+      Name         "trim_not_empty"\
+      Description  "EmlPersistentSentinel"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "mpcprueba3:378:92-96"\
+    }\
+    ChartData {\
+      Name         "mixer"\
+      Description  "EmlPersistent"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "mpcprueba3:378:97-102"\
+      Dimensions   [4,4]\
+    }\
+    ChartData {\
+      Name         "mixer_not_empty"\
+      Description  "EmlPersistentSentinel"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "mpcprueba3:378:97-102"\
+    }\
+    ChartData {\
+      Name         "thrust"\
+      Description  "EmlPersistent"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "mpcprueba3:378:103-109"\
+    }\
+    ChartData {\
+      Name         "thrust_not_empty"\
+      Description  "EmlPersistentSentinel"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "mpcprueba3:378:103-109"\
     }\
   }
   %return ChartDataElements

@@ -1,0 +1,2203 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><link rel="stylesheet" type="text/css" href="rtwreport.css" /><script language="JavaScript" type="text/javascript" src="rtwshrink.js"></script><script>function postParentWindowMessage(message) {window.parent.postMessage(message, "*");}</script><style> h3 { margin-bottom: 1ex; } h4.function {   font-size: larger; font-weight: normal;   color: #c05709;	margin-bottom: 0ex; } .description {	border-style: none;	color: DimGray; } .footnote { margin-top: 0.5ex; font-size: small; color: DimGray;} a:visited, a:hover { color: #004b87 } ul.services { margin-top: 0.5ex; } .include { color: #992211 } a.include:link { color:inherit; text-decoration: none } a.include:hover { text-decoration: underline } a.fcn:link { color:inherit; text-decoration: none } a.fcn:hover { text-decoration: underline } code.usage { white-space: pre-wrap; } .programlisting {   margin-left: 4ex; margin-right: 4ex;   margin-top: 2ex;  margin-bottom: 2ex; } .tooltip { position: relative; display: inline-block; } .tooltip .tooltip-text {   visibility: hidden;   position: absolute;   top: 110%;   left: 0;   background-color: white;   z-index: 1;   box-shadow: 5px 5px 10px 5px Gainsboro;   border-radius: 10px;   padding: 10px 15px 0px; } .tooltip:hover .tooltip-text { visibility: visible; } .tooltip-text .footnote { white-space: nowrap;} </style><title>
+Code Interface Report for multipid
+</title>
+
+</head>
+<body>
+<h1>
+Code Interface Report for multipid
+</h1>
+<div>
+
+</div>
+<div id="table_of_contents">
+<h3>
+Table of Contents
+</h3>
+<ol>
+<li>
+<a href="#sec_introduction" onclick="rtwTableExpand(window.document, window.document.getElementById('rtwIdDataInterface_table_001_control'), 'rtwIdDataInterface_table_001')">
+Introduction
+</a>
+
+</li>
+<li>
+<span>
+<a href="#sec_execution" onclick="rtwTableExpand(window.document, window.document.getElementById('rtwIdDataInterface_table_002_control'), 'rtwIdDataInterface_table_002')">
+Function Interfaces
+</a>
+<ul>
+<li>
+<a href="#sec_initialize_functions" onclick="rtwTableExpand(window.document, window.document.getElementById('rtwIdDataInterface_table_002_control'), 'rtwIdDataInterface_table_002')">
+Initialize Functions
+</a>
+
+</li>
+<li>
+<a href="#sec_terminate_functions" onclick="rtwTableExpand(window.document, window.document.getElementById('rtwIdDataInterface_table_002_control'), 'rtwIdDataInterface_table_002')">
+Terminate Functions
+</a>
+
+</li>
+<li>
+<a href="#sec_periodic_functions" onclick="rtwTableExpand(window.document, window.document.getElementById('rtwIdDataInterface_table_002_control'), 'rtwIdDataInterface_table_002')">
+Periodic Functions
+</a>
+
+</li>
+<li>
+<a href="#sec_aperiodic_functions" onclick="rtwTableExpand(window.document, window.document.getElementById('rtwIdDataInterface_table_002_control'), 'rtwIdDataInterface_table_002')">
+Aperiodic Functions
+</a>
+
+</li>
+
+</ul>
+</span>
+
+</li>
+<li>
+<span>
+<a href="#sec_data_interfaces" onclick="rtwTableExpand(window.document, window.document.getElementById('rtwIdDataInterface_table_003_control'), 'rtwIdDataInterface_table_003')">
+Data Interfaces
+</a>
+<ul>
+<li>
+<a href="#sec_inports" onclick="rtwTableExpand(window.document, window.document.getElementById('rtwIdDataInterface_table_003_control'), 'rtwIdDataInterface_table_003')">
+Inports
+</a>
+
+</li>
+<li>
+<a href="#sec_outports" onclick="rtwTableExpand(window.document, window.document.getElementById('rtwIdDataInterface_table_003_control'), 'rtwIdDataInterface_table_003')">
+Outports
+</a>
+
+</li>
+<li>
+<a href="#sec_interface_parameters" onclick="rtwTableExpand(window.document, window.document.getElementById('rtwIdDataInterface_table_003_control'), 'rtwIdDataInterface_table_003')">
+Parameters
+</a>
+
+</li>
+<li>
+<a href="#sec_data_stores" onclick="rtwTableExpand(window.document, window.document.getElementById('rtwIdDataInterface_table_003_control'), 'rtwIdDataInterface_table_003')">
+Internal data
+</a>
+
+</li>
+
+</ul>
+</span>
+
+</li>
+
+</ol>
+
+</div>
+<h2 name="sec_Introduction" id="sec_introduction">
+1. Introduction <span title="Click to shrink or expand section" style="cursor:pointer;font-weight:normal;" id="rtwIdDataInterface_table_001_control" onclick ="if (rtwTableShrink) rtwTableShrink(window.document, this, 'rtwIdDataInterface_table_001', false)"><span class="shrink-button">[<u>show</u>]</span></span>
+</h2>
+<table width="100%" style="display: none" name="rtwIdDataInterface_table_001" id="rtwIdDataInterface_table_001" border="0">
+<tr>
+<td align="left" valign="top">
+<p>
+The code generator produced a data code interface for the model. The code interface report summarizes the interface code for model callable entry-point functions and data interface elements, such as root-level inports and outports.
+</p>
+
+</td>
+
+</tr>
+
+</table>
+<h2 name="sec_Function_Interfaces" id="sec_execution">
+2. Function Interfaces <span title="Click to shrink or expand section" style="cursor:pointer;font-weight:normal;" id="rtwIdDataInterface_table_002_control" onclick ="if (rtwTableShrink) rtwTableShrink(window.document, this, 'rtwIdDataInterface_table_002', false)"><span class="shrink-button">[<u>hide</u>]</span></span>
+</h2>
+<table width="100%" name="rtwIdDataInterface_table_002" id="rtwIdDataInterface_table_002" border="0">
+<tr>
+<td align="left" valign="top">
+External code initiates execution of the generated code by calling entry-point functions generated for the model. The type of function code that the code generator produces for a model depends on the modeling style and periodic rates represented in the model. For more information, see <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'helpview(fullfile(docroot,\'toolbox\',\'ecoder\',\'helptargets.map\'),\'model_entry_points\')'})" >Configure Generated C Function Interface for Model Entry-Point Functions</a><br><br>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<section id="sec_initialize_functions">
+<h3>
+2.1 Initialize Functions
+</h3>
+<p>
+Initialize entry-point functions implement startup behavior. In a model, Initialize Function blocks represent startup behavior explicitly.
+</p>
+<div id="fcn_multipid_initialize">
+<h4 class="function">
+multipid_initialize
+</h4>
+<span class="description">
+Initialization entry point of generated code
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+void <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid_initialize'})" class="fcn">multipid_initialize</a>(void)</code>
+</div>
+</div>
+</section>
+<section id="sec_terminate_functions">
+<h3>
+2.2 Terminate Functions
+</h3>
+<p>
+Terminate entry-point functions implement shutdown behavior. In a model, Terminate Function blocks represent shutdown behavior explicitly.
+</p>
+<div id="fcn_multipid_terminate">
+<h4 class="function">
+multipid_terminate
+</h4>
+<span class="description">
+Termination entry point of generated code
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+void <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid_terminate'})" class="fcn">multipid_terminate</a>(void)</code>
+</div>
+</div>
+</section>
+<section id="sec_periodic_functions">
+<h3>
+2.3 Periodic Functions
+</h3>
+<p>
+Periodic entry-point functions implement model behavior that occurs at a fixed sampling rate. For a rate-based model, the code generator produces a periodic entry-point function for each rate used in the model. In a function-call (export-function) model, Function Call Subsystem blocks that specify a sampling rate represent periodic functions.
+</p>
+<div id="fcn_multipid_step0">
+<h4 class="function">
+multipid_step0
+</h4>
+<span class="description">
+Output entry point of generated code. Must be called periodically, every 0.001 seconds. 
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+void <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid_step0'})" class="fcn">multipid_step0</a>(void)</code>
+</div>
+</div>
+<div id="fcn_multipid_step1">
+<h4 class="function">
+multipid_step1
+</h4>
+<span class="description">
+Output entry point of generated code. Must be called periodically, every 0.005 seconds. 
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+void <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid_step1'})" class="fcn">multipid_step1</a>(void)</code>
+</div>
+</div>
+</section>
+<section id="sec_aperiodic_functions">
+<h3>
+2.4 Aperiodic Functions
+</h3>
+<p>
+Aperiodic (asynchronous) entry-point functions implement component behavior occurring asynchronously. In a function-call (export-function) model, Function Call Subsystem blocks that do not specify a sampling rate represent aperiodic functions.
+</p>
+<p>
+No aperiodic functions represented in model.
+</p>
+</section>
+
+</td>
+
+</tr>
+
+</table>
+<h2 name="sec_Data_Interfaces" id="sec_data_interfaces">
+3. Data Interfaces <span title="Click to shrink or expand section" style="cursor:pointer;font-weight:normal;" id="rtwIdDataInterface_table_003_control" onclick ="if (rtwTableShrink) rtwTableShrink(window.document, this, 'rtwIdDataInterface_table_003', false)"><span class="shrink-button">[<u>hide</u>]</span></span>
+</h2>
+<table width="100%" name="rtwIdDataInterface_table_003" id="rtwIdDataInterface_table_003" border="0">
+<tr>
+<td align="left" valign="top">
+A data code interface maps model data interface elements, such as root-level inports and outports, to storage classes. A storage class specifies the appearance and placement of data elements in the generated code. Storage classes apply direct-access data communication. The list of storage classes available for mapping is determined by the Embedded Coder Dictionary that is associated with the model. You map model interface elements to storage classes in the model code mappings.<br><br>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<section id="sec_inports">
+<h3>
+3.1 Inports
+</h3>
+Inputs are variables that are generated in the code based on storage class specifications for model root-level input ports.<p>
+No inport is present in model.
+</p>
+</section>
+<section id="sec_outports">
+<h3>
+3.2 Outports
+</h3>
+Outputs are variables that are generated in the code based on storage class specifications for model root-level output ports.<p>
+No outport is present in model.
+</p>
+</section>
+<section id="sec_interface_parameters">
+<h3>
+3.3 Parameters
+</h3>
+Parameters are variables in the generated code that represent model parameters and model parameter arguments. The variable is generated based on a storage class specification and flagged to be tunable or not tunable while the model code executes in the target environment.<div id="fcn_multipid_P.PIDController1_D">
+<h4 class="function">
+multipid_P.PIDController1_D
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:341\')'})"  name="code2model" class="code2model">&lt;S5&gt;/PID Controller1</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::Dialog:D,multipid.h'})">PIDController1_D</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.PIDController4_D">
+<h4 class="function">
+multipid_P.PIDController4_D
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:380\')'})"  name="code2model" class="code2model">&lt;S5&gt;/PID Controller4</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::Dialog:D,multipid.h'})">PIDController4_D</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.PIDController2_D">
+<h4 class="function">
+multipid_P.PIDController2_D
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:381\')'})"  name="code2model" class="code2model">&lt;S5&gt;/PID Controller2</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::Dialog:D,multipid.h'})">PIDController2_D</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.PIDController1_D_j">
+<h4 class="function">
+multipid_P.PIDController1_D_j
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:348\')'})"  name="code2model" class="code2model">&lt;S7&gt;/PID Controller1</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::Dialog:D,multipid.h'})">PIDController1_D_j</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.PIDController2_D_m">
+<h4 class="function">
+multipid_P.PIDController2_D_m
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:377\')'})"  name="code2model" class="code2model">&lt;S7&gt;/PID Controller2</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::Dialog:D,multipid.h'})">PIDController2_D_m</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.PIDController3_D">
+<h4 class="function">
+multipid_P.PIDController3_D
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:378\')'})"  name="code2model" class="code2model">&lt;S7&gt;/PID Controller3</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::Dialog:D,multipid.h'})">PIDController3_D</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.PIDController_D">
+<h4 class="function">
+multipid_P.PIDController_D
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:384\')'})"  name="code2model" class="code2model">&lt;S8&gt;/PID Controller</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::Dialog:D,multipid.h'})">PIDController_D</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.PIDController1_D_e">
+<h4 class="function">
+multipid_P.PIDController1_D_e
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:387\')'})"  name="code2model" class="code2model">&lt;S8&gt;/PID Controller1</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::Dialog:D,multipid.h'})">PIDController1_D_e</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.PIDController2_D_d">
+<h4 class="function">
+multipid_P.PIDController2_D_d
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:388\')'})"  name="code2model" class="code2model">&lt;S8&gt;/PID Controller2</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::Dialog:D,multipid.h'})">PIDController2_D_d</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.PIDController1_DifferentiatorIC">
+<h4 class="function">
+multipid_P.PIDController1_DifferentiatorIC
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:341\')'})"  name="code2model" class="code2model">&lt;S5&gt;/PID Controller1</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::Dialog:DifferentiatorICPrevScaledInput,multipid.h'})">PIDController1_DifferentiatorIC</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.PIDController4_DifferentiatorIC">
+<h4 class="function">
+multipid_P.PIDController4_DifferentiatorIC
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:380\')'})"  name="code2model" class="code2model">&lt;S5&gt;/PID Controller4</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::Dialog:DifferentiatorICPrevScaledInput,multipid.h'})">PIDController4_DifferentiatorIC</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.PIDController2_DifferentiatorIC">
+<h4 class="function">
+multipid_P.PIDController2_DifferentiatorIC
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:381\')'})"  name="code2model" class="code2model">&lt;S5&gt;/PID Controller2</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::Dialog:DifferentiatorICPrevScaledInput,multipid.h'})">PIDController2_DifferentiatorIC</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.PIDController1_Differentiator_f">
+<h4 class="function">
+multipid_P.PIDController1_Differentiator_f
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:348\')'})"  name="code2model" class="code2model">&lt;S7&gt;/PID Controller1</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::Dialog:DifferentiatorICPrevScaledInput,multipid.h'})">PIDController1_Differentiator_f</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.PIDController2_Differentiator_k">
+<h4 class="function">
+multipid_P.PIDController2_Differentiator_k
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:377\')'})"  name="code2model" class="code2model">&lt;S7&gt;/PID Controller2</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::Dialog:DifferentiatorICPrevScaledInput,multipid.h'})">PIDController2_Differentiator_k</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.PIDController3_DifferentiatorIC">
+<h4 class="function">
+multipid_P.PIDController3_DifferentiatorIC
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:378\')'})"  name="code2model" class="code2model">&lt;S7&gt;/PID Controller3</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::Dialog:DifferentiatorICPrevScaledInput,multipid.h'})">PIDController3_DifferentiatorIC</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.PIDController_DifferentiatorICP">
+<h4 class="function">
+multipid_P.PIDController_DifferentiatorICP
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:384\')'})"  name="code2model" class="code2model">&lt;S8&gt;/PID Controller</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::Dialog:DifferentiatorICPrevScaledInput,multipid.h'})">PIDController_DifferentiatorICP</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.PIDController1_Differentiator_l">
+<h4 class="function">
+multipid_P.PIDController1_Differentiator_l
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:387\')'})"  name="code2model" class="code2model">&lt;S8&gt;/PID Controller1</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::Dialog:DifferentiatorICPrevScaledInput,multipid.h'})">PIDController1_Differentiator_l</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.PIDController2_Differentiator_p">
+<h4 class="function">
+multipid_P.PIDController2_Differentiator_p
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:388\')'})"  name="code2model" class="code2model">&lt;S8&gt;/PID Controller2</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::Dialog:DifferentiatorICPrevScaledInput,multipid.h'})">PIDController2_Differentiator_p</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.PIDController3_I">
+<h4 class="function">
+multipid_P.PIDController3_I
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:378\')'})"  name="code2model" class="code2model">&lt;S7&gt;/PID Controller3</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::Dialog:I,multipid.h'})">PIDController3_I</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.PIDController2_I">
+<h4 class="function">
+multipid_P.PIDController2_I
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:377\')'})"  name="code2model" class="code2model">&lt;S7&gt;/PID Controller2</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::Dialog:I,multipid.h'})">PIDController2_I</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.PIDController1_I">
+<h4 class="function">
+multipid_P.PIDController1_I
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:348\')'})"  name="code2model" class="code2model">&lt;S7&gt;/PID Controller1</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::Dialog:I,multipid.h'})">PIDController1_I</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.PIDController2_I_p">
+<h4 class="function">
+multipid_P.PIDController2_I_p
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:381\')'})"  name="code2model" class="code2model">&lt;S5&gt;/PID Controller2</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::Dialog:I,multipid.h'})">PIDController2_I_p</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.PIDController2_I_h">
+<h4 class="function">
+multipid_P.PIDController2_I_h
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:388\')'})"  name="code2model" class="code2model">&lt;S8&gt;/PID Controller2</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::Dialog:I,multipid.h'})">PIDController2_I_h</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.PIDController4_I">
+<h4 class="function">
+multipid_P.PIDController4_I
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:380\')'})"  name="code2model" class="code2model">&lt;S5&gt;/PID Controller4</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::Dialog:I,multipid.h'})">PIDController4_I</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.PIDController1_I_d">
+<h4 class="function">
+multipid_P.PIDController1_I_d
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:387\')'})"  name="code2model" class="code2model">&lt;S8&gt;/PID Controller1</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::Dialog:I,multipid.h'})">PIDController1_I_d</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.PIDController1_I_h">
+<h4 class="function">
+multipid_P.PIDController1_I_h
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:341\')'})"  name="code2model" class="code2model">&lt;S5&gt;/PID Controller1</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::Dialog:I,multipid.h'})">PIDController1_I_h</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.PIDController_I">
+<h4 class="function">
+multipid_P.PIDController_I
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:384\')'})"  name="code2model" class="code2model">&lt;S8&gt;/PID Controller</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::Dialog:I,multipid.h'})">PIDController_I</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.PIDController1_InitialCondition">
+<h4 class="function">
+multipid_P.PIDController1_InitialCondition
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:341\')'})"  name="code2model" class="code2model">&lt;S5&gt;/PID Controller1</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::Dialog:InitialConditionForIntegrator,multipid.h'})">PIDController1_InitialCondition</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.PIDController4_InitialCondition">
+<h4 class="function">
+multipid_P.PIDController4_InitialCondition
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:380\')'})"  name="code2model" class="code2model">&lt;S5&gt;/PID Controller4</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::Dialog:InitialConditionForIntegrator,multipid.h'})">PIDController4_InitialCondition</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.PIDController2_InitialCondition">
+<h4 class="function">
+multipid_P.PIDController2_InitialCondition
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:381\')'})"  name="code2model" class="code2model">&lt;S5&gt;/PID Controller2</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::Dialog:InitialConditionForIntegrator,multipid.h'})">PIDController2_InitialCondition</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.PIDController1_InitialConditi_l">
+<h4 class="function">
+multipid_P.PIDController1_InitialConditi_l
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:348\')'})"  name="code2model" class="code2model">&lt;S7&gt;/PID Controller1</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::Dialog:InitialConditionForIntegrator,multipid.h'})">PIDController1_InitialConditi_l</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.PIDController2_InitialConditi_j">
+<h4 class="function">
+multipid_P.PIDController2_InitialConditi_j
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:377\')'})"  name="code2model" class="code2model">&lt;S7&gt;/PID Controller2</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::Dialog:InitialConditionForIntegrator,multipid.h'})">PIDController2_InitialConditi_j</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.PIDController3_InitialCondition">
+<h4 class="function">
+multipid_P.PIDController3_InitialCondition
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:378\')'})"  name="code2model" class="code2model">&lt;S7&gt;/PID Controller3</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::Dialog:InitialConditionForIntegrator,multipid.h'})">PIDController3_InitialCondition</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.PIDController_InitialConditionF">
+<h4 class="function">
+multipid_P.PIDController_InitialConditionF
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:384\')'})"  name="code2model" class="code2model">&lt;S8&gt;/PID Controller</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::Dialog:InitialConditionForIntegrator,multipid.h'})">PIDController_InitialConditionF</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.PIDController1_InitialCondit_ls">
+<h4 class="function">
+multipid_P.PIDController1_InitialCondit_ls
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:387\')'})"  name="code2model" class="code2model">&lt;S8&gt;/PID Controller1</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::Dialog:InitialConditionForIntegrator,multipid.h'})">PIDController1_InitialCondit_ls</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.PIDController2_InitialConditi_k">
+<h4 class="function">
+multipid_P.PIDController2_InitialConditi_k
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:388\')'})"  name="code2model" class="code2model">&lt;S8&gt;/PID Controller2</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::Dialog:InitialConditionForIntegrator,multipid.h'})">PIDController2_InitialConditi_k</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.PIDController3_Kb">
+<h4 class="function">
+multipid_P.PIDController3_Kb
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:378\')'})"  name="code2model" class="code2model">&lt;S7&gt;/PID Controller3</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::Dialog:Kb,multipid.h'})">PIDController3_Kb</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.PIDController2_Kb">
+<h4 class="function">
+multipid_P.PIDController2_Kb
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:377\')'})"  name="code2model" class="code2model">&lt;S7&gt;/PID Controller2</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::Dialog:Kb,multipid.h'})">PIDController2_Kb</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.PIDController1_Kb">
+<h4 class="function">
+multipid_P.PIDController1_Kb
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:348\')'})"  name="code2model" class="code2model">&lt;S7&gt;/PID Controller1</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::Dialog:Kb,multipid.h'})">PIDController1_Kb</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.PIDController2_Kb_j">
+<h4 class="function">
+multipid_P.PIDController2_Kb_j
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:381\')'})"  name="code2model" class="code2model">&lt;S5&gt;/PID Controller2</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::Dialog:Kb,multipid.h'})">PIDController2_Kb_j</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.PIDController4_Kb">
+<h4 class="function">
+multipid_P.PIDController4_Kb
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:380\')'})"  name="code2model" class="code2model">&lt;S5&gt;/PID Controller4</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::Dialog:Kb,multipid.h'})">PIDController4_Kb</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.PIDController1_Kb_f">
+<h4 class="function">
+multipid_P.PIDController1_Kb_f
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:341\')'})"  name="code2model" class="code2model">&lt;S5&gt;/PID Controller1</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::Dialog:Kb,multipid.h'})">PIDController1_Kb_f</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.PIDController1_LowerSaturationL">
+<h4 class="function">
+multipid_P.PIDController1_LowerSaturationL
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:341\')'})"  name="code2model" class="code2model">&lt;S5&gt;/PID Controller1</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::Dialog:LowerSaturationLimit,multipid.h'})">PIDController1_LowerSaturationL</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.PIDController4_LowerSaturationL">
+<h4 class="function">
+multipid_P.PIDController4_LowerSaturationL
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:380\')'})"  name="code2model" class="code2model">&lt;S5&gt;/PID Controller4</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::Dialog:LowerSaturationLimit,multipid.h'})">PIDController4_LowerSaturationL</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.PIDController2_LowerSaturationL">
+<h4 class="function">
+multipid_P.PIDController2_LowerSaturationL
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:381\')'})"  name="code2model" class="code2model">&lt;S5&gt;/PID Controller2</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::Dialog:LowerSaturationLimit,multipid.h'})">PIDController2_LowerSaturationL</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.PIDController1_LowerSaturatio_i">
+<h4 class="function">
+multipid_P.PIDController1_LowerSaturatio_i
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:348\')'})"  name="code2model" class="code2model">&lt;S7&gt;/PID Controller1</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::Dialog:LowerSaturationLimit,multipid.h'})">PIDController1_LowerSaturatio_i</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.PIDController2_LowerSaturatio_j">
+<h4 class="function">
+multipid_P.PIDController2_LowerSaturatio_j
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:377\')'})"  name="code2model" class="code2model">&lt;S7&gt;/PID Controller2</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::Dialog:LowerSaturationLimit,multipid.h'})">PIDController2_LowerSaturatio_j</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.PIDController3_LowerSaturationL">
+<h4 class="function">
+multipid_P.PIDController3_LowerSaturationL
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:378\')'})"  name="code2model" class="code2model">&lt;S7&gt;/PID Controller3</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::Dialog:LowerSaturationLimit,multipid.h'})">PIDController3_LowerSaturationL</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.PIDController_LowerSaturationLi">
+<h4 class="function">
+multipid_P.PIDController_LowerSaturationLi
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:105\')'})"  name="code2model" class="code2model">&lt;S3&gt;/PID Controller</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::Dialog:LowerSaturationLimit,multipid.h'})">PIDController_LowerSaturationLi</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.PIDController2_LowerSaturatio_m">
+<h4 class="function">
+multipid_P.PIDController2_LowerSaturatio_m
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:207\')'})"  name="code2model" class="code2model">&lt;S3&gt;/PID Controller2</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::Dialog:LowerSaturationLimit,multipid.h'})">PIDController2_LowerSaturatio_m</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.PIDController1_P">
+<h4 class="function">
+multipid_P.PIDController1_P
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:341\')'})"  name="code2model" class="code2model">&lt;S5&gt;/PID Controller1</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::Dialog:P,multipid.h'})">PIDController1_P</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.PIDController4_P">
+<h4 class="function">
+multipid_P.PIDController4_P
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:380\')'})"  name="code2model" class="code2model">&lt;S5&gt;/PID Controller4</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::Dialog:P,multipid.h'})">PIDController4_P</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.PIDController2_P">
+<h4 class="function">
+multipid_P.PIDController2_P
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:381\')'})"  name="code2model" class="code2model">&lt;S5&gt;/PID Controller2</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::Dialog:P,multipid.h'})">PIDController2_P</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.PIDController1_P_d">
+<h4 class="function">
+multipid_P.PIDController1_P_d
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:348\')'})"  name="code2model" class="code2model">&lt;S7&gt;/PID Controller1</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::Dialog:P,multipid.h'})">PIDController1_P_d</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.PIDController2_P_p">
+<h4 class="function">
+multipid_P.PIDController2_P_p
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:377\')'})"  name="code2model" class="code2model">&lt;S7&gt;/PID Controller2</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::Dialog:P,multipid.h'})">PIDController2_P_p</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.PIDController3_P">
+<h4 class="function">
+multipid_P.PIDController3_P
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:378\')'})"  name="code2model" class="code2model">&lt;S7&gt;/PID Controller3</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::Dialog:P,multipid.h'})">PIDController3_P</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.PIDController_P">
+<h4 class="function">
+multipid_P.PIDController_P
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:384\')'})"  name="code2model" class="code2model">&lt;S8&gt;/PID Controller</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::Dialog:P,multipid.h'})">PIDController_P</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.PIDController1_P_o">
+<h4 class="function">
+multipid_P.PIDController1_P_o
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:387\')'})"  name="code2model" class="code2model">&lt;S8&gt;/PID Controller1</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::Dialog:P,multipid.h'})">PIDController1_P_o</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.PIDController2_P_h">
+<h4 class="function">
+multipid_P.PIDController2_P_h
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:388\')'})"  name="code2model" class="code2model">&lt;S8&gt;/PID Controller2</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::Dialog:P,multipid.h'})">PIDController2_P_h</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.PIDController_P_e">
+<h4 class="function">
+multipid_P.PIDController_P_e
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:105\')'})"  name="code2model" class="code2model">&lt;S3&gt;/PID Controller</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::Dialog:P,multipid.h'})">PIDController_P_e</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.PIDController2_P_o">
+<h4 class="function">
+multipid_P.PIDController2_P_o
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:207\')'})"  name="code2model" class="code2model">&lt;S3&gt;/PID Controller2</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::Dialog:P,multipid.h'})">PIDController2_P_o</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.PIDController1_UpperSaturationL">
+<h4 class="function">
+multipid_P.PIDController1_UpperSaturationL
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:341\')'})"  name="code2model" class="code2model">&lt;S5&gt;/PID Controller1</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::Dialog:UpperSaturationLimit,multipid.h'})">PIDController1_UpperSaturationL</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.PIDController4_UpperSaturationL">
+<h4 class="function">
+multipid_P.PIDController4_UpperSaturationL
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:380\')'})"  name="code2model" class="code2model">&lt;S5&gt;/PID Controller4</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::Dialog:UpperSaturationLimit,multipid.h'})">PIDController4_UpperSaturationL</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.PIDController2_UpperSaturationL">
+<h4 class="function">
+multipid_P.PIDController2_UpperSaturationL
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:381\')'})"  name="code2model" class="code2model">&lt;S5&gt;/PID Controller2</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::Dialog:UpperSaturationLimit,multipid.h'})">PIDController2_UpperSaturationL</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.PIDController1_UpperSaturatio_n">
+<h4 class="function">
+multipid_P.PIDController1_UpperSaturatio_n
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:348\')'})"  name="code2model" class="code2model">&lt;S7&gt;/PID Controller1</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::Dialog:UpperSaturationLimit,multipid.h'})">PIDController1_UpperSaturatio_n</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.PIDController2_UpperSaturatio_n">
+<h4 class="function">
+multipid_P.PIDController2_UpperSaturatio_n
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:377\')'})"  name="code2model" class="code2model">&lt;S7&gt;/PID Controller2</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::Dialog:UpperSaturationLimit,multipid.h'})">PIDController2_UpperSaturatio_n</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.PIDController3_UpperSaturationL">
+<h4 class="function">
+multipid_P.PIDController3_UpperSaturationL
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:378\')'})"  name="code2model" class="code2model">&lt;S7&gt;/PID Controller3</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::Dialog:UpperSaturationLimit,multipid.h'})">PIDController3_UpperSaturationL</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.PIDController_UpperSaturationLi">
+<h4 class="function">
+multipid_P.PIDController_UpperSaturationLi
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:105\')'})"  name="code2model" class="code2model">&lt;S3&gt;/PID Controller</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::Dialog:UpperSaturationLimit,multipid.h'})">PIDController_UpperSaturationLi</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.PIDController2_UpperSaturatio_m">
+<h4 class="function">
+multipid_P.PIDController2_UpperSaturatio_m
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:207\')'})"  name="code2model" class="code2model">&lt;S3&gt;/PID Controller2</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::Dialog:UpperSaturationLimit,multipid.h'})">PIDController2_UpperSaturatio_m</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.Out1_Y0">
+<h4 class="function">
+multipid_P.Out1_Y0
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:82:6:6\')'})"  name="code2model" class="code2model">&lt;S615&gt;/Out1</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  px4_Bus_vehicle_odometry <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::Dialog:InitialOutput,multipid.h'})">Out1_Y0</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.Constant_Value">
+<h4 class="function">
+multipid_P.Constant_Value
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:82:6:2\')'})"  name="code2model" class="code2model">&lt;S614&gt;/Constant</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  px4_Bus_vehicle_odometry <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::Dialog:Value,multipid.h'})">Constant_Value</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.Out1_Y0_l">
+<h4 class="function">
+multipid_P.Out1_Y0_l
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:150:43:6\')'})"  name="code2model" class="code2model">&lt;S118&gt;/Out1</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  px4_Bus_input_rc <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::Dialog:InitialOutput,multipid.h'})">Out1_Y0_l</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.Constant_Value_j">
+<h4 class="function">
+multipid_P.Constant_Value_j
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:150:43:2\')'})"  name="code2model" class="code2model">&lt;S117&gt;/Constant</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  px4_Bus_input_rc <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::Dialog:Value,multipid.h'})">Constant_Value_j</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.Switch_Threshold">
+<h4 class="function">
+multipid_P.Switch_Threshold
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:155\')'})"  name="code2model" class="code2model">&lt;Root&gt;/Switch</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::Dialog:Threshold,multipid.h'})">Switch_Threshold</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.RateTransition_InitialCondition">
+<h4 class="function">
+multipid_P.RateTransition_InitialCondition
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:204\')'})"  name="code2model" class="code2model">&lt;S3&gt;/Rate Transition</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::Dialog:InitialCondition,multipid.h'})">RateTransition_InitialCondition</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.Integrator_gainval">
+<h4 class="function">
+multipid_P.Integrator_gainval
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:341:843\')'})"  name="code2model" class="code2model">&lt;S158&gt;/Integrator</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::NonDialog:gainval,multipid.h'})">Integrator_gainval</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.Tsamp_WtEt">
+<h4 class="function">
+multipid_P.Tsamp_WtEt
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:341:3682\')'})"  name="code2model" class="code2model">&lt;S153&gt;/Tsamp</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::NonDialog:WtEt,multipid.h'})">Tsamp_WtEt</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.RateTransition1_InitialConditio">
+<h4 class="function">
+multipid_P.RateTransition1_InitialConditio
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:210\')'})"  name="code2model" class="code2model">&lt;S3&gt;/Rate Transition1</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::Dialog:InitialCondition,multipid.h'})">RateTransition1_InitialConditio</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.Integrator_gainval_n">
+<h4 class="function">
+multipid_P.Integrator_gainval_n
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:380:843\')'})"  name="code2model" class="code2model">&lt;S266&gt;/Integrator</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::NonDialog:gainval,multipid.h'})">Integrator_gainval_n</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.Tsamp_WtEt_f">
+<h4 class="function">
+multipid_P.Tsamp_WtEt_f
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:380:3682\')'})"  name="code2model" class="code2model">&lt;S261&gt;/Tsamp</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::NonDialog:WtEt,multipid.h'})">Tsamp_WtEt_f</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.DeadZone3_Start">
+<h4 class="function">
+multipid_P.DeadZone3_Start
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:145\')'})"  name="code2model" class="code2model">&lt;S6&gt;/Dead Zone3</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::Dialog:LowerValue,multipid.h'})">DeadZone3_Start</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.DeadZone3_End">
+<h4 class="function">
+multipid_P.DeadZone3_End
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:145\')'})"  name="code2model" class="code2model">&lt;S6&gt;/Dead Zone3</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::Dialog:UpperValue,multipid.h'})">DeadZone3_End</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.Saturation3_UpperSat">
+<h4 class="function">
+multipid_P.Saturation3_UpperSat
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:154\')'})"  name="code2model" class="code2model">&lt;S6&gt;/Saturation3</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::Dialog:UpperLimit,multipid.h'})">Saturation3_UpperSat</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.Saturation3_LowerSat">
+<h4 class="function">
+multipid_P.Saturation3_LowerSat
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:154\')'})"  name="code2model" class="code2model">&lt;S6&gt;/Saturation3</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::Dialog:LowerLimit,multipid.h'})">Saturation3_LowerSat</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.Integrator_gainval_g">
+<h4 class="function">
+multipid_P.Integrator_gainval_g
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:381:843\')'})"  name="code2model" class="code2model">&lt;S212&gt;/Integrator</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::NonDialog:gainval,multipid.h'})">Integrator_gainval_g</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.Tsamp_WtEt_fp">
+<h4 class="function">
+multipid_P.Tsamp_WtEt_fp
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:381:3682\')'})"  name="code2model" class="code2model">&lt;S207&gt;/Tsamp</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::NonDialog:WtEt,multipid.h'})">Tsamp_WtEt_fp</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.Integrator_gainval_i">
+<h4 class="function">
+multipid_P.Integrator_gainval_i
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:348:843\')'})"  name="code2model" class="code2model">&lt;S323&gt;/Integrator</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::NonDialog:gainval,multipid.h'})">Integrator_gainval_i</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.Tsamp_WtEt_fi">
+<h4 class="function">
+multipid_P.Tsamp_WtEt_fi
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:348:3682\')'})"  name="code2model" class="code2model">&lt;S318&gt;/Tsamp</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::NonDialog:WtEt,multipid.h'})">Tsamp_WtEt_fi</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.Integrator_gainval_p">
+<h4 class="function">
+multipid_P.Integrator_gainval_p
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:377:843\')'})"  name="code2model" class="code2model">&lt;S377&gt;/Integrator</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::NonDialog:gainval,multipid.h'})">Integrator_gainval_p</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.Tsamp_WtEt_l">
+<h4 class="function">
+multipid_P.Tsamp_WtEt_l
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:377:3682\')'})"  name="code2model" class="code2model">&lt;S372&gt;/Tsamp</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::NonDialog:WtEt,multipid.h'})">Tsamp_WtEt_l</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.Integrator_gainval_na">
+<h4 class="function">
+multipid_P.Integrator_gainval_na
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:378:843\')'})"  name="code2model" class="code2model">&lt;S431&gt;/Integrator</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::NonDialog:gainval,multipid.h'})">Integrator_gainval_na</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.Tsamp_WtEt_n">
+<h4 class="function">
+multipid_P.Tsamp_WtEt_n
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:378:3682\')'})"  name="code2model" class="code2model">&lt;S426&gt;/Tsamp</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::NonDialog:WtEt,multipid.h'})">Tsamp_WtEt_n</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.Integrator_gainval_a">
+<h4 class="function">
+multipid_P.Integrator_gainval_a
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:384:843\')'})"  name="code2model" class="code2model">&lt;S488&gt;/Integrator</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::NonDialog:gainval,multipid.h'})">Integrator_gainval_a</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.Tsamp_WtEt_c">
+<h4 class="function">
+multipid_P.Tsamp_WtEt_c
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:384:3682\')'})"  name="code2model" class="code2model">&lt;S483&gt;/Tsamp</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::NonDialog:WtEt,multipid.h'})">Tsamp_WtEt_c</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.Integrator_gainval_nl">
+<h4 class="function">
+multipid_P.Integrator_gainval_nl
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:387:843\')'})"  name="code2model" class="code2model">&lt;S542&gt;/Integrator</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::NonDialog:gainval,multipid.h'})">Integrator_gainval_nl</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.Tsamp_WtEt_g">
+<h4 class="function">
+multipid_P.Tsamp_WtEt_g
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:387:3682\')'})"  name="code2model" class="code2model">&lt;S537&gt;/Tsamp</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::NonDialog:WtEt,multipid.h'})">Tsamp_WtEt_g</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.Integrator_gainval_c">
+<h4 class="function">
+multipid_P.Integrator_gainval_c
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:388:843\')'})"  name="code2model" class="code2model">&lt;S596&gt;/Integrator</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::NonDialog:gainval,multipid.h'})">Integrator_gainval_c</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.Tsamp_WtEt_p">
+<h4 class="function">
+multipid_P.Tsamp_WtEt_p
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:388:3682\')'})"  name="code2model" class="code2model">&lt;S591&gt;/Tsamp</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::NonDialog:WtEt,multipid.h'})">Tsamp_WtEt_p</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.DeadZone2_Start">
+<h4 class="function">
+multipid_P.DeadZone2_Start
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:144\')'})"  name="code2model" class="code2model">&lt;S6&gt;/Dead Zone2</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::Dialog:LowerValue,multipid.h'})">DeadZone2_Start</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.DeadZone2_End">
+<h4 class="function">
+multipid_P.DeadZone2_End
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:144\')'})"  name="code2model" class="code2model">&lt;S6&gt;/Dead Zone2</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::Dialog:UpperValue,multipid.h'})">DeadZone2_End</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.Saturation2_UpperSat">
+<h4 class="function">
+multipid_P.Saturation2_UpperSat
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:153\')'})"  name="code2model" class="code2model">&lt;S6&gt;/Saturation2</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::Dialog:UpperLimit,multipid.h'})">Saturation2_UpperSat</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.Saturation2_LowerSat">
+<h4 class="function">
+multipid_P.Saturation2_LowerSat
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:153\')'})"  name="code2model" class="code2model">&lt;S6&gt;/Saturation2</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::Dialog:LowerLimit,multipid.h'})">Saturation2_LowerSat</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.Gain2_Gain">
+<h4 class="function">
+multipid_P.Gain2_Gain
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:376\')'})"  name="code2model" class="code2model">&lt;Root&gt;/Gain2</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::Dialog:Gain,multipid.h'})">Gain2_Gain</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.Saturation4_UpperSat">
+<h4 class="function">
+multipid_P.Saturation4_UpperSat
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:132\')'})"  name="code2model" class="code2model">&lt;Root&gt;/Saturation4</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::Dialog:UpperLimit,multipid.h'})">Saturation4_UpperSat</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.Saturation4_LowerSat">
+<h4 class="function">
+multipid_P.Saturation4_LowerSat
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:132\')'})"  name="code2model" class="code2model">&lt;Root&gt;/Saturation4</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::Dialog:LowerLimit,multipid.h'})">Saturation4_LowerSat</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.DeadZone_Start">
+<h4 class="function">
+multipid_P.DeadZone_Start
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:142\')'})"  name="code2model" class="code2model">&lt;S6&gt;/Dead Zone</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::Dialog:LowerValue,multipid.h'})">DeadZone_Start</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.DeadZone_End">
+<h4 class="function">
+multipid_P.DeadZone_End
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:142\')'})"  name="code2model" class="code2model">&lt;S6&gt;/Dead Zone</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::Dialog:UpperValue,multipid.h'})">DeadZone_End</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.Saturation_UpperSat">
+<h4 class="function">
+multipid_P.Saturation_UpperSat
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:151\')'})"  name="code2model" class="code2model">&lt;S6&gt;/Saturation</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::Dialog:UpperLimit,multipid.h'})">Saturation_UpperSat</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.Saturation_LowerSat">
+<h4 class="function">
+multipid_P.Saturation_LowerSat
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:151\')'})"  name="code2model" class="code2model">&lt;S6&gt;/Saturation</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::Dialog:LowerLimit,multipid.h'})">Saturation_LowerSat</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.Gain_Gain">
+<h4 class="function">
+multipid_P.Gain_Gain
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:114\')'})"  name="code2model" class="code2model">&lt;Root&gt;/Gain</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::Dialog:Gain,multipid.h'})">Gain_Gain</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.DeadZone1_Start">
+<h4 class="function">
+multipid_P.DeadZone1_Start
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:220\')'})"  name="code2model" class="code2model">&lt;S3&gt;/Dead Zone1</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::Dialog:LowerValue,multipid.h'})">DeadZone1_Start</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.DeadZone1_End">
+<h4 class="function">
+multipid_P.DeadZone1_End
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:220\')'})"  name="code2model" class="code2model">&lt;S3&gt;/Dead Zone1</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::Dialog:UpperValue,multipid.h'})">DeadZone1_End</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.DeadZone1_Start_a">
+<h4 class="function">
+multipid_P.DeadZone1_Start_a
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:143\')'})"  name="code2model" class="code2model">&lt;S6&gt;/Dead Zone1</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::Dialog:LowerValue,multipid.h'})">DeadZone1_Start_a</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.DeadZone1_End_o">
+<h4 class="function">
+multipid_P.DeadZone1_End_o
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:143\')'})"  name="code2model" class="code2model">&lt;S6&gt;/Dead Zone1</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::Dialog:UpperValue,multipid.h'})">DeadZone1_End_o</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.Saturation1_UpperSat">
+<h4 class="function">
+multipid_P.Saturation1_UpperSat
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:152\')'})"  name="code2model" class="code2model">&lt;S6&gt;/Saturation1</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::Dialog:UpperLimit,multipid.h'})">Saturation1_UpperSat</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.Saturation1_LowerSat">
+<h4 class="function">
+multipid_P.Saturation1_LowerSat
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:152\')'})"  name="code2model" class="code2model">&lt;S6&gt;/Saturation1</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::Dialog:LowerLimit,multipid.h'})">Saturation1_LowerSat</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.Gain1_Gain">
+<h4 class="function">
+multipid_P.Gain1_Gain
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:218\')'})"  name="code2model" class="code2model">&lt;Root&gt;/Gain1</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::Dialog:Gain,multipid.h'})">Gain1_Gain</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.DeadZone_Start_i">
+<h4 class="function">
+multipid_P.DeadZone_Start_i
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:219\')'})"  name="code2model" class="code2model">&lt;S3&gt;/Dead Zone</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::Dialog:LowerValue,multipid.h'})">DeadZone_Start_i</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.DeadZone_End_m">
+<h4 class="function">
+multipid_P.DeadZone_End_m
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:219\')'})"  name="code2model" class="code2model">&lt;S3&gt;/Dead Zone</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::Dialog:UpperValue,multipid.h'})">DeadZone_End_m</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.Constant1_Value">
+<h4 class="function">
+multipid_P.Constant1_Value
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:136\')'})"  name="code2model" class="code2model">&lt;Root&gt;/Constant1</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  boolean_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::Dialog:Value,multipid.h'})">Constant1_Value</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+<div id="fcn_multipid_P.Constant_Value_b">
+<h4 class="function">
+multipid_P.Constant_Value_b
+</h4>
+<span class="description">
+Parameters for <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'multipid:135\')'})"  name="code2model" class="code2model">&lt;Root&gt;/Constant</a>
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'multipid.h'})" class="include">multipid.h</a>"</span>
+struct {
+  ...
+  boolean_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'P_multipid_T_::Dialog:Value,multipid.h'})">Constant_Value_b</a>;
+  ...
+} multipid_P;</code>
+</div>
+</div>
+</section>
+<section id="sec_data_stores">
+<h3>
+3.4 Internal data
+</h3>
+Internal data are variables in the generated code that represent signal data, blocks that have internal states, and data stores. The variable is generated based on a storage class specification and flagged to be measured or not measured while the model code executes in the target environment.<p>
+No global data stores or data stores with non-auto storage classes in the model.
+</p>
+</section>
+
+</td>
+
+</tr>
+
+</table>
+
+<script>function postParentWindowMessage(message) {window.parent.postMessage(message, "*");}</script>
+</body>
+
+</html>

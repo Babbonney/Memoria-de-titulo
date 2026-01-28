@@ -7,9 +7,9 @@
 //
 // Code generated for Simulink model 'mpcprueba3'.
 //
-// Model version                  : 12.45
+// Model version                  : 12.54
 // Simulink Coder version         : 25.1 (R2025a) 21-Nov-2024
-// C/C++ source code generated on : Thu Jan 22 15:42:05 2026
+// C/C++ source code generated on : Wed Jan 28 14:19:31 2026
 //
 // Target selection: ert.tlc
 // Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -26,6 +26,9 @@
 #ifndef rtmSetTFinal
 #define rtmSetTFinal(rtm, val)         ((rtm)->Timing.tFinal = (val))
 #endif
+
+extern real32_T rt_hypotf_snf(real32_T u0, real32_T u1);
+
 #endif                                 // mpcprueba3_private_h_
 
 //

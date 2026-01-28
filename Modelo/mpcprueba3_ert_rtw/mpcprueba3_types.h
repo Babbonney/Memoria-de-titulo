@@ -7,9 +7,9 @@
 //
 // Code generated for Simulink model 'mpcprueba3'.
 //
-// Model version                  : 12.45
+// Model version                  : 12.54
 // Simulink Coder version         : 25.1 (R2025a) 21-Nov-2024
-// C/C++ source code generated on : Thu Jan 22 15:42:05 2026
+// C/C++ source code generated on : Wed Jan 28 14:19:31 2026
 //
 // Target selection: ert.tlc
 // Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -22,74 +22,74 @@
 #include <uORB/topics/vehicle_odometry.h>
 
 // Custom Type definition for MATLAB Function: '<Root>/MATLAB Function5'
-#ifndef struct_s5MwrMPj8A6eFKmNZJG0YCB_mpcpr_T
-#define struct_s5MwrMPj8A6eFKmNZJG0YCB_mpcpr_T
+#ifndef struct_s53NiOJFNFao3mXDluAcV3_mpcpru_T
+#define struct_s53NiOJFNFao3mXDluAcV3_mpcpru_T
 
-struct s5MwrMPj8A6eFKmNZJG0YCB_mpcpr_T
+struct s53NiOJFNFao3mXDluAcV3_mpcpru_T
 {
-  real_T xstar[16];
-  real_T fstar;
-  real_T firstorderopt;
-  real_T lambda[69];
-  int32_T state;
-  real_T maxConstr;
-  int32_T iterations;
-  real_T searchDir[16];
-};
-
-#endif                                // struct_s5MwrMPj8A6eFKmNZJG0YCB_mpcpr_T
-
-#ifndef struct_s3c01M66EFWFQJ5qmFcUbmD_mpcpr_T
-#define struct_s3c01M66EFWFQJ5qmFcUbmD_mpcpr_T
-
-struct s3c01M66EFWFQJ5qmFcUbmD_mpcpr_T
-{
-  real_T grad[16];
-  real_T Hx[15];
+  real32_T grad[16];
+  real32_T Hx[15];
   boolean_T hasLinear;
   int32_T nvar;
   int32_T maxVar;
-  real_T beta;
-  real_T rho;
+  real32_T beta;
+  real32_T rho;
   int32_T objtype;
   int32_T prev_objtype;
   int32_T prev_nvar;
   boolean_T prev_hasLinear;
-  real_T gammaScalar;
+  real32_T gammaScalar;
 };
 
-#endif                                // struct_s3c01M66EFWFQJ5qmFcUbmD_mpcpr_T
+#endif                                // struct_s53NiOJFNFao3mXDluAcV3_mpcpru_T
 
-#ifndef struct_sOWFOmKuLvD2kpFwfdM45bG_mpcpr_T
-#define struct_sOWFOmKuLvD2kpFwfdM45bG_mpcpr_T
+#ifndef struct_s84kJ6tHYwvmDUGeqLYD2uB_mpcpr_T
+#define struct_s84kJ6tHYwvmDUGeqLYD2uB_mpcpr_T
 
-struct sOWFOmKuLvD2kpFwfdM45bG_mpcpr_T
+struct s84kJ6tHYwvmDUGeqLYD2uB_mpcpr_T
 {
-  real_T FMat[256];
+  real32_T FMat[256];
   int32_T ldm;
   int32_T ndims;
   int32_T info;
-  real_T scaleFactor;
+  real32_T scaleFactor;
   boolean_T ConvexCheck;
-  real_T regTol_;
-  real_T workspace_[768];
-  real_T workspace2_[768];
+  real32_T regTol_;
+  real32_T workspace_[768];
+  real32_T workspace2_[768];
 };
 
-#endif                                // struct_sOWFOmKuLvD2kpFwfdM45bG_mpcpr_T
+#endif                                // struct_s84kJ6tHYwvmDUGeqLYD2uB_mpcpr_T
 
-#ifndef struct_sIOJhD9KwAkF5sEguPjYquC_mpcpr_T
-#define struct_sIOJhD9KwAkF5sEguPjYquC_mpcpr_T
+#ifndef struct_sOIMERIP639G9x3OUDedPv_mpcpru_T
+#define struct_sOIMERIP639G9x3OUDedPv_mpcpru_T
 
-struct sIOJhD9KwAkF5sEguPjYquC_mpcpr_T
+struct sOIMERIP639G9x3OUDedPv_mpcpru_T
 {
   boolean_T RemainFeasible;
   int32_T MaxIterations;
-  real_T ConstrRelTolFactor;
-  real_T ProbRelTolFactor;
+  real32_T ConstrRelTolFactor;
+  real32_T ProbRelTolFactor;
 };
 
-#endif                                // struct_sIOJhD9KwAkF5sEguPjYquC_mpcpr_T
+#endif                                // struct_sOIMERIP639G9x3OUDedPv_mpcpru_T
+
+#ifndef struct_sbtWOgGGLEmAd335P8Y53FE_mpcpr_T
+#define struct_sbtWOgGGLEmAd335P8Y53FE_mpcpr_T
+
+struct sbtWOgGGLEmAd335P8Y53FE_mpcpr_T
+{
+  real32_T xstar[16];
+  real32_T fstar;
+  real32_T firstorderopt;
+  real32_T lambda[67];
+  int32_T state;
+  real32_T maxConstr;
+  int32_T iterations;
+  real32_T searchDir[16];
+};
+
+#endif                                // struct_sbtWOgGGLEmAd335P8Y53FE_mpcpr_T
 
 #ifndef struct_d_px4_internal_block_SampleTi_T
 #define struct_d_px4_internal_block_SampleTi_T
@@ -117,52 +117,52 @@ struct px4_internal_block_Subscriber_T
 #endif                                // struct_px4_internal_block_Subscriber_T
 
 // Custom Type definition for MATLAB Function: '<Root>/MATLAB Function5'
-#ifndef struct_sqZVQFgLZG74FDpCArykMHB_mpcpr_T
-#define struct_sqZVQFgLZG74FDpCArykMHB_mpcpr_T
+#ifndef struct_s9KKbMhkwfdyFmbpWOvu65D_mpcpr_T
+#define struct_s9KKbMhkwfdyFmbpWOvu65D_mpcpr_T
 
-struct sqZVQFgLZG74FDpCArykMHB_mpcpr_T
+struct s9KKbMhkwfdyFmbpWOvu65D_mpcpr_T
 {
   char_T SolverName[8];
   boolean_T NonFiniteSupport;
   boolean_T IterDisplayQP;
-  real_T ObjectiveLimit;
-  real_T PricingTolerance;
-  real_T ConstraintTolerance;
-  real_T OptimalityTolerance;
-  real_T StepTolerance;
+  real32_T ObjectiveLimit;
+  real32_T PricingTolerance;
+  real32_T ConstraintTolerance;
+  real32_T OptimalityTolerance;
+  real32_T StepTolerance;
 };
 
-#endif                                // struct_sqZVQFgLZG74FDpCArykMHB_mpcpr_T
+#endif                                // struct_s9KKbMhkwfdyFmbpWOvu65D_mpcpr_T
 
-#ifndef struct_sAH7N1KP9prIhtBMBOvRIXB_mpcpr_T
-#define struct_sAH7N1KP9prIhtBMBOvRIXB_mpcpr_T
+#ifndef struct_sa62cVcKQKcFBi6rAdMOFyB_mpcpr_T
+#define struct_sa62cVcKQKcFBi6rAdMOFyB_mpcpr_T
 
-struct sAH7N1KP9prIhtBMBOvRIXB_mpcpr_T
+struct sa62cVcKQKcFBi6rAdMOFyB_mpcpr_T
 {
   int32_T ldq;
-  real_T QR[1104];
-  real_T Q[256];
-  int32_T jpvt[69];
+  real32_T QR[1072];
+  real32_T Q[256];
+  int32_T jpvt[67];
   int32_T mrows;
   int32_T ncols;
-  real_T tau[16];
+  real32_T tau[16];
   int32_T minRowCol;
   boolean_T usedPivoting;
 };
 
-#endif                                // struct_sAH7N1KP9prIhtBMBOvRIXB_mpcpr_T
+#endif                                // struct_sa62cVcKQKcFBi6rAdMOFyB_mpcpr_T
 
-#ifndef struct_sh6mpUmasTe6tTil22xIbR_mpcpru_T
-#define struct_sh6mpUmasTe6tTil22xIbR_mpcpru_T
+#ifndef struct_s1ukn1KZwe8HKOg95SKgssB_mpcpr_T
+#define struct_s1ukn1KZwe8HKOg95SKgssB_mpcpr_T
 
-struct sh6mpUmasTe6tTil22xIbR_mpcpru_T
+struct s1ukn1KZwe8HKOg95SKgssB_mpcpr_T
 {
-  real_T workspace_float[1104];
-  int32_T workspace_int[69];
-  int32_T workspace_sort[69];
+  real32_T workspace_float[1072];
+  int32_T workspace_int[67];
+  int32_T workspace_sort[67];
 };
 
-#endif                                // struct_sh6mpUmasTe6tTil22xIbR_mpcpru_T
+#endif                                // struct_s1ukn1KZwe8HKOg95SKgssB_mpcpr_T
 
 #ifndef struct_px4_internal_block_PX4Actuato_T
 #define struct_px4_internal_block_PX4Actuato_T
@@ -180,10 +180,10 @@ struct px4_internal_block_PX4Actuato_T
 #endif                                // struct_px4_internal_block_PX4Actuato_T
 
 // Custom Type definition for MATLAB Function: '<Root>/MATLAB Function5'
-#ifndef struct_sysSSfxvJNaXboKrr7mlsVB_mpcpr_T
-#define struct_sysSSfxvJNaXboKrr7mlsVB_mpcpr_T
+#ifndef struct_sCkfVcG7AQFySWWMtM4hccH_mpcpr_T
+#define struct_sCkfVcG7AQFySWWMtM4hccH_mpcpr_T
 
-struct sysSSfxvJNaXboKrr7mlsVB_mpcpr_T
+struct sCkfVcG7AQFySWWMtM4hccH_mpcpr_T
 {
   int32_T mConstr;
   int32_T mConstrOrig;
@@ -192,18 +192,18 @@ struct sysSSfxvJNaXboKrr7mlsVB_mpcpr_T
   int32_T nVarOrig;
   int32_T nVarMax;
   int32_T ldA;
-  real_T Aineq[1088];
-  real_T bineq[68];
-  real_T lb[16];
-  real_T ub[16];
+  real32_T Aineq[1056];
+  real32_T bineq[66];
+  real32_T lb[16];
+  real32_T ub[16];
   int32_T indexLB[16];
   int32_T indexUB[16];
   int32_T indexFixed[16];
   int32_T mEqRemoved;
-  real_T ATwset[1104];
-  real_T bwset[69];
+  real32_T ATwset[1072];
+  real32_T bwset[67];
   int32_T nActiveConstr;
-  real_T maxConstrWorkspace[69];
+  real32_T maxConstrWorkspace[67];
   int32_T sizes[5];
   int32_T sizesNormal[5];
   int32_T sizesPhaseOne[5];
@@ -214,15 +214,15 @@ struct sysSSfxvJNaXboKrr7mlsVB_mpcpr_T
   int32_T isActiveIdxPhaseOne[6];
   int32_T isActiveIdxRegularized[6];
   int32_T isActiveIdxRegPhaseOne[6];
-  boolean_T isActiveConstr[69];
-  int32_T Wid[69];
-  int32_T Wlocalidx[69];
+  boolean_T isActiveConstr[67];
+  int32_T Wid[67];
+  int32_T Wlocalidx[67];
   int32_T nWConstr[5];
   int32_T probType;
-  real_T SLACK0;
+  real32_T SLACK0;
 };
 
-#endif                                // struct_sysSSfxvJNaXboKrr7mlsVB_mpcpr_T
+#endif                                // struct_sCkfVcG7AQFySWWMtM4hccH_mpcpr_T
 
 #ifndef struct_sCBS0Ia3qD76sOwKERvBoFE_mpcpr_T
 #define struct_sCBS0Ia3qD76sOwKERvBoFE_mpcpr_T

@@ -7,9 +7,9 @@
 //
 //  Code generation for model "mpcprueba3".
 //
-//  Model version              : 12.45
+//  Model version              : 12.54
 //  Simulink Coder version : 25.1 (R2025a) 21-Nov-2024
-//  C++ source code generated on : Thu Jan 22 15:42:05 2026
+//  C++ source code generated on : Wed Jan 28 14:19:31 2026
 //
 //  Target selection: ert.tlc
 //  Embedded hardware selection: ARM Compatible->ARM Cortex

@@ -17,8 +17,6 @@ function RTW_rtwnameSIDMap() {
 	this.sidHashMap["mpcprueba3:399"] = {rtwname: "<Root>/Constant"};
 	this.rtwnameHashMap["<Root>/Constant1"] = {sid: "mpcprueba3:406"};
 	this.sidHashMap["mpcprueba3:406"] = {rtwname: "<Root>/Constant1"};
-	this.rtwnameHashMap["<Root>/Constant3"] = {sid: "mpcprueba3:372"};
-	this.sidHashMap["mpcprueba3:372"] = {rtwname: "<Root>/Constant3"};
 	this.rtwnameHashMap["<Root>/Data Type Conversion"] = {sid: "mpcprueba3:402"};
 	this.sidHashMap["mpcprueba3:402"] = {rtwname: "<Root>/Data Type Conversion"};
 	this.rtwnameHashMap["<Root>/Data Type Conversion1"] = {sid: "mpcprueba3:403"};
@@ -53,6 +51,14 @@ function RTW_rtwnameSIDMap() {
 	this.sidHashMap["mpcprueba3:384"] = {rtwname: "<Root>/Saturation3"};
 	this.rtwnameHashMap["<Root>/Scope"] = {sid: "mpcprueba3:385"};
 	this.sidHashMap["mpcprueba3:385"] = {rtwname: "<Root>/Scope"};
+	this.rtwnameHashMap["<Root>/Scope1"] = {sid: "mpcprueba3:409"};
+	this.sidHashMap["mpcprueba3:409"] = {rtwname: "<Root>/Scope1"};
+	this.rtwnameHashMap["<Root>/Scope2"] = {sid: "mpcprueba3:410"};
+	this.sidHashMap["mpcprueba3:410"] = {rtwname: "<Root>/Scope2"};
+	this.rtwnameHashMap["<Root>/Scope3"] = {sid: "mpcprueba3:411"};
+	this.sidHashMap["mpcprueba3:411"] = {rtwname: "<Root>/Scope3"};
+	this.rtwnameHashMap["<Root>/Scope4"] = {sid: "mpcprueba3:408"};
+	this.sidHashMap["mpcprueba3:408"] = {rtwname: "<Root>/Scope4"};
 	this.rtwnameHashMap["<Root>/Terminator"] = {sid: "mpcprueba3:396"};
 	this.sidHashMap["mpcprueba3:396"] = {rtwname: "<Root>/Terminator"};
 	this.rtwnameHashMap["<Root>/Vehicle Attitude"] = {sid: "mpcprueba3:392"};
