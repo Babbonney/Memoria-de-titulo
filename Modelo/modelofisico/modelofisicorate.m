@@ -10,10 +10,10 @@ uhover= mean(0.1344 + 0.2078 + 0.1551 + 0.2548); %promedio esc
 deltaT= mt*1000;
 ku= (deltaT/0.17)* 0.00980664; %en newtons relacion de cuanto aumenta thrust si aumento u en peque;os valores
 %roll
-taux = ly*ku;
+taux = lx*ku;
 
 %pitch
-tauy = lx*ku;
+tauy = ly*ku;
 % yaw se escoje un valor arbitrario [0.2,0.4]
 tauz= 0.3;
 

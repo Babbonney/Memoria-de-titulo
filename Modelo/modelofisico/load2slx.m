@@ -1,7 +1,7 @@
 clearvars
 close all
 clc
-addpath('./lib_minimal')
+addpath('C:\Users\aero\Desktop\Proyecto control AMPC-DMPC\repositorios\Memoria-de-titulo\Modelo\lib_minimal')
 
 %% Modelo
 Ad=    [ 1.0101         0         0;
@@ -57,7 +57,7 @@ H = (H+H')/2;
 nu= size(H,1);
 % Cargar parametros a simulink
 
-mw = get_param('mpc5','ModelWorkspace');
+mw = get_param('pmpc','ModelWorkspace');
 
 mw.assignin('H',H);
 mw.assignin('F',F);
